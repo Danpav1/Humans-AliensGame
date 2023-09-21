@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import lifeform.LifeForm;
+import lifeform.MockLifeForm;
 
 /**
  * The test cases for the Environment class
@@ -27,10 +28,10 @@ public class TestEnvironment {
   @Test
   public void testAddAndGetLifeForm() {
     Environment environment = new Environment(2, 3);
-    LifeForm charlie = new LifeForm("Charlie", 30);
+    LifeForm charlie = new MockLifeForm("Charlie", 30);
 
     environment.addLifeForm(charlie, 0, 1);
-    assertEquals(environment.getLifeForm(0, 1), charlie);
+    assertEquals(charlie, environment.getLifeForm(0, 1));
   }
 
   /**
@@ -40,7 +41,7 @@ public class TestEnvironment {
   @Test
   public void testInvalidCell() {
     Environment environment = new Environment(4, 3);
-    LifeForm steve = new LifeForm("Steve", 700);
+    LifeForm steve = new MockLifeForm("Steve", 700);
 
     boolean success = environment.addLifeForm(steve, 4, 3);
     assertFalse(success);
@@ -58,7 +59,7 @@ public class TestEnvironment {
   @Test
   public void testRemoveLifeForm() {
     Environment environment = new Environment(1, 1);
-    LifeForm craig =  new LifeForm("Craig", 50);
+    LifeForm craig =  new MockLifeForm("Craig", 50);
 
     environment.addLifeForm(craig, 0, 0);
     assertEquals(craig, environment.getLifeForm(0, 0));

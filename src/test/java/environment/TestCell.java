@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import lifeform.LifeForm;
+import lifeform.MockLifeForm;
 
 /**
  * The test cases for the Cell class
@@ -26,8 +27,8 @@ public class TestCell {
    */
   @Test
   public void testAddLifeForm() {
-    LifeForm bob = new LifeForm("Bob", 40);
-    LifeForm fred = new LifeForm("Fred", 40);
+    LifeForm bob = new MockLifeForm("Bob", 40);
+    LifeForm fred = new MockLifeForm("Fred", 40);
     Cell cell = new Cell();
     // The cell is empty so this should work.
     boolean success = cell.addLifeForm(bob);
@@ -44,12 +45,12 @@ public class TestCell {
    */
   @Test
   public void testRemoveLifeForm() {
-    LifeForm manny = new LifeForm("Manny", 70);
+    LifeForm manny = new MockLifeForm("Manny", 70);
     Cell cell = new Cell();
 
     cell.addLifeForm(manny);
 
-    assertEquals(cell.getLifeForm(), manny);
+    assertEquals(manny, cell.getLifeForm());
 
     cell.removeLifeForm();
 
