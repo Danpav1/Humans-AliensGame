@@ -26,7 +26,7 @@ public class Human extends LifeForm {
    * Accessor for the Human's armor points
    * @return the current armor points of the Human
    */
-  public int getArmorPoints() {
+  int getArmorPoints() {
     return this.armorPoints;
   }
 
@@ -34,7 +34,7 @@ public class Human extends LifeForm {
    * Mutator for the Human's armor points
    * @param points the desired number of points for the human to have
    */
-  public void setArmorPoints(int points) {
+  void setArmorPoints(int points) {
     if (points < 0) {
       this.armorPoints = 0;
     } else {
@@ -47,7 +47,7 @@ public class Human extends LifeForm {
    * @param damage the number of points to damage the LifeForm by
    */
   @Override
-  public void takeHit(int damage) {
+  void takeHit(int damage) {
     super.takeHit(damage);
   }
 }

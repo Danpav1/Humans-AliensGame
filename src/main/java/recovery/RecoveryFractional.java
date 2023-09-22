@@ -1,17 +1,17 @@
 package recovery;
 
 /**
- * A RecoveryBehavior class that recovers health linearly over time
+ * A RecoveryBehavior class that recovers a fraction of the current health per recovery
  */
-public class RecoveryLinear implements RecoveryBehavior {
-  private final int recoveryStep;
+public class RecoveryFractional implements RecoveryBehavior {
+  private final double recoveryFraction;
 
   /**
-   * Creates a RecoveryLinear object
-   * @param recoveryAmount The flat amount the LifeForm should be healed by per recovery
+   * Creates a RecoveryFractional object
+   * @param recoveryFraction
    */
-  public RecoveryLinear(int recoveryAmount) {
-    this.recoveryStep = recoveryAmount;
+  public RecoveryFractional(double recoveryFraction) {
+    this.recoveryFraction = recoveryFraction;
   }
 
   /**
@@ -23,7 +23,7 @@ public class RecoveryLinear implements RecoveryBehavior {
    * have after the recovery
    */
   public int calculateRecovery(int currentLife, int maxLife) {
-    int totalLife = currentLife + this.recoveryStep;
+    int totalLife = (int) (Math.ceil(currentLife + currentLife * this.recoveryFraction));
 
     if (currentLife <= 0) {
       return 0;

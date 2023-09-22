@@ -4,6 +4,8 @@ import recovery.RecoveryBehavior;
 import recovery.RecoveryLinear;
 import recovery.RecoveryNone;
 
+import exceptions.RecoveryRateException;
+
 /**
  * Represents an Alien, as an extension of LifeForm. Has added regenerative functionality over
  * LifeForm, which allows it to recover health over time.
@@ -17,24 +19,56 @@ public class Alien extends LifeForm {
   /**
    * Creates an Alien with no recovery type specified
    * @param name the name of the Alien
-   * @param maxHitPoints the max maxHitPoints points of the Alien
+   * @param maxHitPoints the max maxHitPoints of the Alien
    */
-  public Alien(String name, int maxHitPoints) {
-    super(name, maxHitPoints);
-    this.maxHitPoints = maxHitPoints;
-    this.recoveryType = new RecoveryNone();
-    this.recoveryRate = 0;
+  public Alien(String name, int maxHitPoints) throws RecoveryRateException {
+    this(name, maxHitPoints, new RecoveryNone(), 0);
   }
 
   /**
-   * Creates an Alien with a specified recovery type
-   * @param name
-   * @param maxHitPoints
+   * Creates an Alien with recovery type specified
+   * @param name the name of the Alien
+   * @param maxHitPoints the max maxHitPoints of the Alien
    * @param behavior The RecoveryBehavior to assign to the Alien
    */
-  public Alien(String name, int maxHitPoints, RecoveryBehavior behavior) {
-    this(name, maxHitPoints);
+  public Alien(String name,
+               int maxHitPoints,
+               RecoveryBehavior behavior) throws RecoveryRateException {
+    this(name, maxHitPoints, behavior, 0);
+  }
+
+  /**
+   * Creates an alien with recovery type and rate specified
+   */
+  public Alien(String name,
+               int maxHitPoints,
+               RecoveryBehavior behavior,
+               int recoveryRate) throws RecoveryRateException {
+    super(name, maxHitPoints);
+
+    if (recoveryRate < 0) {
+      throw new RecoveryRateException("Recovery rate cannot be negative.");
+    }
+
+    this.maxHitPoints = maxHitPoints;
     this.recoveryType = behavior;
+    this.recoveryRate = recoveryRate;
+  }
+
+  /**
+   * Accessor for the maxLifePoints field
+   * @return the maxHitPoints field value
+   */
+  int getMaxLifePoints() {
+    return this.maxHitPoints;
+  }
+
+  /**
+   * Accessor for the recoveryRate field
+   * @return the recoveryRate field value
+   */
+  int getRecoveryRate() {
+    return this.recoveryRate;
   }
 
   /**

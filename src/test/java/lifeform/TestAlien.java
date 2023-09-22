@@ -2,6 +2,7 @@ package lifeform;
 
 import static org.junit.Assert.*;
 
+import exceptions.RecoveryRateException;
 import org.junit.Test;
 
 import recovery.*;
@@ -10,20 +11,23 @@ import recovery.*;
  * Tests the functionality provided by the Alien class
  */
 public class TestAlien {
-
   /**
-   * Tests the initialization of an Alien using the constructor that uses only name and maxHP
+   * Tests the initialization of an Alien using the constructor that uses only name
+   * and maxHitPoints
    */
   @Test
-  public void testInitialization() {
+  public void testInitialization() throws RecoveryRateException {
     Alien allen = new Alien("Allen", 10);
 
     assertEquals("Allen", allen.getName());
     assertEquals(10, allen.getCurrentLifePoints());
   }
 
+  /**
+   * Tests that an Alien with linear recovery behaves as expected
+   */
   @Test
-  public void testLinearRecoveryBehavior() {
+  public void testLinearRecoveryBehavior() throws RecoveryRateException {
     Alien et = new Alien("E.T.", 30, new RecoveryLinear(5));
 
     assertEquals(30, et.getCurrentLifePoints());
