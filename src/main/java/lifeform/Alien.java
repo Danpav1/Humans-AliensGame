@@ -44,7 +44,7 @@ public class Alien extends LifeForm {
                int maxHitPoints,
                RecoveryBehavior behavior,
                int recoveryRate) throws RecoveryRateException {
-    super(name, maxHitPoints);
+    super(name, maxHitPoints, 10);
 
     if (recoveryRate < 0) {
       throw new RecoveryRateException("Recovery rate cannot be negative.");
