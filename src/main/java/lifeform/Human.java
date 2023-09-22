@@ -10,11 +10,11 @@ public class Human extends LifeForm {
   /**
    * Create a Human
    * @param name the name of the Human being created
-   * @param lifepoints the life points of the human being created
+   * @param lifePoints the life points of the human being created
    * @param armor the armor of the human being created
    */
-  public Human(String name, int lifepoints, int armor) {
-    super(name, lifepoints);
+  public Human(String name, int lifePoints, int armor) {
+    super(name, lifePoints, 5);
     if (armor < 0) {
       this.armorPoints = 0;
     } else {
@@ -35,9 +35,7 @@ public class Human extends LifeForm {
    * @param points the desired number of points for the human to have
    */
   void setArmorPoints(int points) {
-    if (points < 0) {
-      this.armorPoints = 0;
-    } else {
+    if (points >= 0) {
       this.armorPoints = points;
     }
   }

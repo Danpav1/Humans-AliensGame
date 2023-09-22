@@ -18,6 +18,7 @@ public class TestHuman {
     assertEquals("Fred", fred.getName());
     assertEquals(30, fred.getCurrentLifePoints());
     assertEquals(10, fred.getArmorPoints());
+    assertEquals(5, fred.attackStrength);
   }
 
   /**
