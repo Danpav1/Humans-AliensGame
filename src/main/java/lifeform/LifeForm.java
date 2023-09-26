@@ -33,14 +33,14 @@ public abstract class LifeForm {
   /**
    * @return the name of the life form
    */
-  String getName() {
+  public String getName() {
     return myName;
   }
 
   /**
    * @return the amount of current life points the life form has
    */
-  int getCurrentLifePoints() {
+  public int getCurrentLifePoints() {
     return currentLifePoints;
   }
 

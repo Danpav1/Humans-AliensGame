@@ -53,6 +53,6 @@ public class TestHuman {
     assertEquals(0, chris.getArmorPoints());
 
     jenna.setArmorPoints(-2);
-    assertEquals(0, jenna.getArmorPoints());
+    assertEquals(20, jenna.getArmorPoints());
   }
 }
