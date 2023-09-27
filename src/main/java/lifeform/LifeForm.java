@@ -45,6 +45,13 @@ public abstract class LifeForm {
   }
 
   /**
+   * @return the attackStrength of the LifeForm
+   */
+  public int getAttackStrength() {
+    return this.attackStrength;
+  }
+
+  /**
    * Lowers the LifeForm's currentLifePoints by the given number. Will not allow the
    * currentLifePoints to fall below zero.
    * @param damage the number of points to damage the LifeForm by
@@ -56,6 +63,17 @@ public abstract class LifeForm {
       this.currentLifePoints = 0;
     } else {
       this.currentLifePoints = newLifePoints;
+    }
+  }
+
+  /**
+   * Causes a LifeForm to "attack" another LifeForm. The passed LifeForm's health is
+   * lowered by the called LifeForm's attackStrength.
+   * @param opponent the LifeForm to be attacked
+   */
+  void attack(LifeForm opponent) {
+    if (this.currentLifePoints != 0) {
+      opponent.takeHit(this.attackStrength);
     }
   }
 }

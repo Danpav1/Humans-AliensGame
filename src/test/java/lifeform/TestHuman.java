@@ -2,6 +2,7 @@ package lifeform;
 
 import static org.junit.Assert.*;
 
+import exceptions.RecoveryRateException;
 import org.junit.Test;
 
 /**
@@ -54,5 +55,55 @@ public class TestHuman {
 
     jenna.setArmorPoints(-2);
     assertEquals(20, jenna.getArmorPoints());
+  }
+
+  /**
+   * Tests that Humans can be attacked
+   */
+  @Test
+  public void testCanBeAttacked() throws RecoveryRateException {
+    Human heMan = new Human("He-Man", 100, 0);
+    Alien thing = new Alien("Thing", 50);
+
+    thing.attack(heMan);
+
+    assertEquals(90, heMan.getCurrentLifePoints());
+  }
+
+  /**
+   * Tests that a Human absorbs all damage when armorPoints > damage
+   */
+  @Test
+  public void testAbsorbsLesserDamage() {
+    Human armorDummy = new Human("Armor Dummy", 20, 10);
+
+    armorDummy.takeHit(7);
+
+    assertEquals(20, armorDummy.getCurrentLifePoints());
+  }
+
+  /**
+   * Tests that a Human absorbs all damage when armorPoints == damage
+   */
+  @Test
+  public void testAbsorbsEqualDamage() {
+    Human armorDummy = new Human("Armor Dummy", 20, 10);
+
+    armorDummy.takeHit(10);
+
+    assertEquals(20, armorDummy.getCurrentLifePoints());
+  }
+
+  /**
+   * Tests that a Human absorbs an amount of damage equal to armorPoints
+   * and takes the rest, when armorPoints < damage
+   */
+  @Test
+  public void testReducesGreaterDamage() {
+    Human armorDummy = new Human("Armor Dummy", 20, 10);
+
+    armorDummy.takeHit(15);
+
+    assertEquals(15, armorDummy.getCurrentLifePoints());
   }
 }

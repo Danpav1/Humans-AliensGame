@@ -46,6 +46,6 @@ public class Human extends LifeForm {
    */
   @Override
   void takeHit(int damage) {
-    super.takeHit(damage);
+    super.takeHit(Math.max(0, damage - this.armorPoints));
   }
 }

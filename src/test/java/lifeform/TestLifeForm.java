@@ -15,10 +15,40 @@ public class TestLifeForm {
   @Test
   public void testInitialization() {
     LifeForm entity;
-    entity = new MockLifeForm("Bob", 40);
+    entity = new MockLifeForm("Bob", 40, 12);
 
     assertEquals("Bob", entity.getName());
     assertEquals(40, entity.getCurrentLifePoints());
+    assertEquals(12, entity.getAttackStrength());
+  }
+
+  /**
+   * Tests that LifeForm can damage another LifeForm
+   */
+  @Test
+  public void testCanDamage() {
+    LifeForm harry = new MockLifeForm("Harry", 15, 100);
+    LifeForm voldemort = new MockLifeForm("Voldemort", 200, 100);
+
+    harry.attack(voldemort);
+
+    assertEquals(100, voldemort.getCurrentLifePoints());
+  }
+
+  /**
+   * Tests that a dead LifeForm cannot cause damage
+   */
+  @Test
+  public void testCannotDamageWhenDead() {
+    LifeForm harry = new MockLifeForm("Harry", 15, 100);
+    LifeForm voldemort = new MockLifeForm("Voldemort", 200, 100);
+
+    harry.attack(voldemort);
+    harry.attack(voldemort);
+
+    voldemort.attack(harry);
+
+    assertEquals(15, harry.getCurrentLifePoints());
   }
 
   /**

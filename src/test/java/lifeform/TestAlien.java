@@ -16,7 +16,7 @@ public class TestAlien {
    * and maxHitPoints
    */
   @Test
-  public void testInitialization1() throws RecoveryRateException {
+  public void testInitialization() throws RecoveryRateException {
     Alien allen = new Alien("Allen", 10);
 
     assertEquals("Allen", allen.getName());
