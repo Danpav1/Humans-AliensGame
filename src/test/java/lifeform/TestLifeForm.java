@@ -26,7 +26,7 @@ public class TestLifeForm {
    * Tests that LifeForm can damage another LifeForm
    */
   @Test
-  public void testCanDamage() {
+  public void testCanAttack() {
     LifeForm harry = new MockLifeForm("Harry", 15, 100);
     LifeForm voldemort = new MockLifeForm("Voldemort", 200, 100);
 

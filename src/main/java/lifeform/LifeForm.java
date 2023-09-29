@@ -59,11 +59,7 @@ public abstract class LifeForm {
   void takeHit(int damage) {
     int newLifePoints = this.currentLifePoints - damage;
 
-    if (newLifePoints < 0) {
-      this.currentLifePoints = 0;
-    } else {
-      this.currentLifePoints = newLifePoints;
-    }
+    this.currentLifePoints = Math.max(0, newLifePoints);
   }
 
   /**

@@ -88,7 +88,7 @@ public class Alien extends LifeForm implements TimerObserver {
    * Handles the Alien healing when observing the game timer
    */
   public void updateTime(int time) {
-    if (time % recoveryRate == 0) {
+    if (recoveryRate != 0 && time % recoveryRate == 0) {
       this.recover();
     }
   }
