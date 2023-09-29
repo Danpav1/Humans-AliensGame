@@ -1,8 +1,9 @@
 package lifeform;
 
 import recovery.RecoveryBehavior;
-import recovery.RecoveryLinear;
 import recovery.RecoveryNone;
+
+import gameplay.TimerObserver;
 
 import exceptions.RecoveryRateException;
 
@@ -10,10 +11,11 @@ import exceptions.RecoveryRateException;
  * Represents an Alien, as an extension of LifeForm. Has added regenerative functionality over
  * LifeForm, which allows it to recover health over time.
  */
-public class Alien extends LifeForm {
+public class Alien extends LifeForm implements TimerObserver {
 
   private final int maxHitPoints;
   private int recoveryRate;
+  private int gameTime;
   private RecoveryBehavior recoveryType;
 
   /**
@@ -77,5 +79,15 @@ public class Alien extends LifeForm {
   protected void recover() {
     int recovery = this.recoveryType.calculateRecovery(this.currentLifePoints, this.maxHitPoints);
     this.currentLifePoints = recovery;
+  }
+
+  /**
+   * Handles the Alien healing when observing the game timer
+   */
+  public void updateTime(int time) {
+    this.gameTime = time;
+    if (time % recoveryRate == 0) {
+      this.recover();
+    }
   }
 }

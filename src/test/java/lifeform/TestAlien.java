@@ -3,6 +3,7 @@ package lifeform;
 import static org.junit.Assert.*;
 
 import exceptions.RecoveryRateException;
+import gameplay.SimpleTimer;
 import org.junit.Test;
 
 import recovery.*;
@@ -38,5 +39,26 @@ public class TestAlien {
 
     et.recover();
     assertEquals(20, et.getCurrentLifePoints());
+  }
+
+  /**
+   * Tests that Aliens can watch SimpleTimers and heal according to their recoveryRate
+   */
+  @Test
+  public void testAlienIsTimerObserver() throws RecoveryRateException {
+    Alien greg = new Alien("Greg", 30, new RecoveryLinear(5), 3);
+    SimpleTimer timer = new SimpleTimer();
+    timer.addTimeObserver(greg);
+
+    greg.takeHit(20);
+
+    timer.timeChanged();
+    assertEquals(10, greg.getCurrentLifePoints());
+
+    timer.timeChanged();
+    assertEquals(10, greg.getCurrentLifePoints());
+
+    timer.timeChanged();
+    assertEquals(15, greg.getCurrentLifePoints());
   }
 }
