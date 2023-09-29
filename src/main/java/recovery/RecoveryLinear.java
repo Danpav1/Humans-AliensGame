@@ -27,10 +27,8 @@ public class RecoveryLinear implements RecoveryBehavior {
 
     if (currentLife <= 0) {
       return 0;
-    } else if (totalLife > maxLife) {
-      return maxLife;
     } else {
-      return totalLife;
+      return Math.max(0, Math.min(maxLife, totalLife));
     }
   }
 }

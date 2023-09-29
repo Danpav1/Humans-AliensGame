@@ -8,7 +8,8 @@ public class RecoveryFractional implements RecoveryBehavior {
 
   /**
    * Creates a RecoveryFractional object
-   * @param recoveryFraction
+   * @param recoveryFraction the fractional amount of currentHealth that
+   *                         should be recovered per recovery
    */
   public RecoveryFractional(double recoveryFraction) {
     this.recoveryFraction = recoveryFraction;
@@ -25,12 +26,6 @@ public class RecoveryFractional implements RecoveryBehavior {
   public int calculateRecovery(int currentLife, int maxLife) {
     int totalLife = (int) (Math.ceil(currentLife + currentLife * this.recoveryFraction));
 
-    if (currentLife <= 0) {
-      return 0;
-    } else if (totalLife > maxLife) {
-      return maxLife;
-    } else {
-      return totalLife;
-    }
+    return Math.max(0, Math.min(maxLife, totalLife));
   }
 }

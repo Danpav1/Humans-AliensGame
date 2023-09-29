@@ -21,7 +21,7 @@ public class SimpleTimer extends Thread implements Timer {
         Thread.sleep(this.sleepTime);
         this.timeChanged();
       } catch (InterruptedException e) {
-        System.out.println("Something terrible has happened lol");
+        System.out.println("A thread sleeping exception has occurred.");
       }
     }
   }

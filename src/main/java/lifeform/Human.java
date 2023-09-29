@@ -15,11 +15,7 @@ public class Human extends LifeForm {
    */
   public Human(String name, int lifePoints, int armor) {
     super(name, lifePoints, 5);
-    if (armor < 0) {
-      this.armorPoints = 0;
-    } else {
-      this.armorPoints = armor;
-    }
+    this.armorPoints = Math.max(0, armor);
   }
 
   /**

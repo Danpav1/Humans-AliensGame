@@ -15,7 +15,6 @@ public class Alien extends LifeForm implements TimerObserver {
 
   private final int maxHitPoints;
   private int recoveryRate;
-  private int gameTime;
   private RecoveryBehavior recoveryType;
 
   /**
@@ -41,6 +40,10 @@ public class Alien extends LifeForm implements TimerObserver {
 
   /**
    * Creates an alien with recovery type and rate specified
+   * @param name the name of the Alien
+   * @param maxHitPoints the max maxHitPoints of the Alien
+   * @param behavior the RecoveryBehavior to assign to the Alien
+   * @param recoveryRate the number of rounds between recoveries
    */
   public Alien(String name,
                int maxHitPoints,
@@ -85,7 +88,6 @@ public class Alien extends LifeForm implements TimerObserver {
    * Handles the Alien healing when observing the game timer
    */
   public void updateTime(int time) {
-    this.gameTime = time;
     if (time % recoveryRate == 0) {
       this.recover();
     }

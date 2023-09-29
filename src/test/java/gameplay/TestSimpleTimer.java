@@ -66,7 +66,7 @@ public class TestSimpleTimer {
    * Tests that timeChanged works even without observers
    */
   @Test
-  public void testCanChangeTimeWithoutObservers() {
+  public void testCanUpdateTimeWithoutObservers() {
     SimpleTimer timer = new SimpleTimer();
 
     timer.timeChanged();
