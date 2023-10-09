@@ -242,6 +242,7 @@ of class.
 
 | Meeting # | When | Where | Attendees | Note |
 |---|---|---|---|---|
-| 1 | 10a-11a, 10/08 | MCT162 | All members | Meet the team |
+| 1 | 2:40-3:50pm, 10/02 | MCT162 | All members | Meet the team |
+| 2 | 3:20-3:50, 10/9 | MCT162 | All members | Team Contract|
 
 
