@@ -186,18 +186,22 @@ the section.)
 **Is it acceptable for one or two team members to do more work than the others
 in order to get the team an A?**
 
-Answer:
+Answer: Yes, so long as everyone is trying hard to accomplish the parts they are capable of.
 
 **How will you use the in-class time?**
+
+Answer: To check in and make sure everyone is on the correct time table
 
 Example answer: We will spend most of our in-class time discussing work
 assignment and keeping track of the progress.
 
 **How often will you meet outside of class?**
 
-Answer:
+Answer: twice a week over discord, Tues/Thurs Afternoons
 
 **How will work be divided among team members?**
+
+Answer: Divide the assignments into the 5 portions on the UML, assigning each to a different person based on time availability
 
 Example answer: First we will divide the work load into a few pieces, e.g 4-8
 pieces. We will rate each task with a score between 1 and 5. For example, we
@@ -210,7 +214,7 @@ result could be that one picks the first 3 tasks, the second picks the
 
 **What will you do if one or more team members are not doing their share of the work?**
 
-Example answer: We are aware of the difference in ability among the team
+Answer: We are aware of the difference in ability among the team
 members. While picking the tasks (according to the answer for the above
 question), some member can consider take less work. As long as everybody keeps
 positive and constant communication with the whole team, changes can be
@@ -227,6 +231,8 @@ after the certain lab is finished.)
 
 **How will you track who is responsible for which tasks and the work progress?**
 
+Answer: Using a Discord group listing deadlines and responsibilities, transcribed into the following table.
+
 Example answer: Using the following table
 
 | Task | Assignee | Deadline | Progress (date) |
@@ -242,7 +248,7 @@ of class.
 
 | Meeting # | When | Where | Attendees | Note |
 |---|---|---|---|---|
-| 1 | 2:40-3:50pm, 10/02 | MCT162 | All members | Meet the team |
-| 2 | 3:20-3:50, 10/9 | MCT162 | All members | Team Contract|
+| 1 | 2:40-3:50pm, 10/04 | MCT162 | All members | Meet the team |
+| 2 | 3:20-3:50, 10/9 | MCT162 | All members | Team Contract and Work Assignment|
 
 
