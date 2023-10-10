@@ -74,4 +74,12 @@ public abstract class Attachment implements Weapon {
    * @return a string display of the Weapon and its Attachments
    */
   public abstract String toString();
+
+  /**
+   * Updates the time of the weapon that the Attachment wraps
+   * @param time the current time being held by the Timer subject
+   */
+  public void updateTime(int time) {
+    this.weapon.updateTime(time);
+  }
 }

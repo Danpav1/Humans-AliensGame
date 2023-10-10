@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import gameplay.SimpleTimer;
+
 import exceptions.WeaponException;
 import exceptions.AttachmentException;
 
@@ -62,5 +64,32 @@ public class TestAttachment {
 
     assertTrue(exception1Caught);
     assertFalse(exception2Caught);
+  }
+
+  /**
+   * Tests that Attachment is a TimerObserver
+   */
+  @Test
+  public void testAttachmentIsTimerObserver() throws WeaponException, AttachmentException {
+    SimpleTimer timer = new SimpleTimer();
+    MockAttachment attachment = new MockAttachment(new MockWeapon(1, 10, 20, 5));
+    timer.addTimeObserver(attachment);
+
+    for (int i = 0; i < 5; i++) {
+      assertEquals(10 - i, attachment.getCurrentAmmo());
+      attachment.fire(0);
+    }
+
+    for (int i = 0; i < 3; i++) {
+      assertEquals(10 - 5, attachment.getCurrentAmmo());
+      attachment.fire(0);
+    }
+
+    timer.timeChanged();
+
+    for (int i = 0; i < 3; i++) {
+      assertEquals(10 - 5 - i, attachment.getCurrentAmmo());
+      attachment.fire(0);
+    }
   }
 }

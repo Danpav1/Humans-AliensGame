@@ -1,11 +1,13 @@
 package weapon;
 
+import gameplay.TimerObserver;
+
 import exceptions.WeaponException;
 
 /**
  * Outlines the required methods of each Weapon object
  */
-public interface Weapon {
+public interface Weapon extends TimerObserver {
   /**
    * Fires the Weapon once, and lowers the currentAmmo of the Weapon by 1
    * @return the damage the Weapon will deal to the target

@@ -42,8 +42,9 @@ public class MockWeapon extends GenericWeapon {
       throw new WeaponException("Distance cannot be negative.");
     }
 
-    if (this.currentAmmo > 0) {
+    if (this.currentAmmo > 0 && this.shotsLeft > 0) {
       this.currentAmmo--;
+      this.shotsLeft--;
       if (distance < this.maxRange) {
         return this.baseDamage;
       }

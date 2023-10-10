@@ -2,8 +2,11 @@ package weapon;
 
 import static org.junit.Assert.*;
 
-import exceptions.WeaponException;
 import org.junit.Test;
+
+import gameplay.SimpleTimer;
+
+import exceptions.WeaponException;
 
 /**
  * Tests the functionality of the GenericWeapon class
@@ -51,7 +54,7 @@ public class TestGenericWeapon {
   public void testFireConsumesAmmo() throws WeaponException {
     MockWeapon weapon = new MockWeapon();
 
-    for (int i = 10; i > 4; i--) {
+    for (int i = 10; i > 6; i--) {
       assertEquals(i, weapon.getCurrentAmmo());
       weapon.fire(0);
     }
@@ -90,10 +93,10 @@ public class TestGenericWeapon {
   public void testCanBeReloaded() throws WeaponException {
     MockWeapon weapon = new MockWeapon();
 
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 3; i++) {
       weapon.fire(0);
     }
-    assertEquals(5, weapon.getCurrentAmmo());
+    assertEquals(7, weapon.getCurrentAmmo());
 
     weapon.reload();
     assertEquals(10, weapon.getCurrentAmmo());
@@ -114,5 +117,32 @@ public class TestGenericWeapon {
     }
 
     assertTrue(exceptionCaught);
+  }
+
+  /**
+   * Tests that weapons are TimerObservers and that rateOfFire works as intended
+   */
+  @Test
+  public void testWeaponsAreTimerObservers() throws WeaponException {
+    SimpleTimer timer = new SimpleTimer();
+    MockWeapon weapon = new MockWeapon(1, 10, 20, 5);
+    timer.addTimeObserver(weapon);
+
+    for (int i = 0; i < 5; i++) {
+      assertEquals(10 - i, weapon.getCurrentAmmo());
+      weapon.fire(0);
+    }
+
+    for (int i = 0; i < 3; i++) {
+      assertEquals(5, weapon.getCurrentAmmo());
+      weapon.fire(0);
+    }
+
+    timer.timeChanged();
+
+    for (int i = 0; i < 5; i++) {
+      assertEquals(5 - i, weapon.getCurrentAmmo());
+      weapon.fire(0);
+    }
   }
 }

@@ -80,4 +80,12 @@ public abstract class GenericWeapon implements Weapon {
    * @return a string display of the Weapon and its Attachments
    */
   public abstract String toString();
+
+  /**
+   * Updates the weapon when the round changes so that it can fire again
+   * @param time the current time being held by the Timer subject
+   */
+  public void updateTime(int time) {
+    this.shotsLeft = this.rateOfFire;
+  }
 }
