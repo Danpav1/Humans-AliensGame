@@ -3,6 +3,7 @@ package lifeform;
 import static org.junit.Assert.*;
 
 import exceptions.RecoveryRateException;
+import exceptions.WeaponException;
 import org.junit.Test;
 
 /**
@@ -61,7 +62,7 @@ public class TestHuman {
    * Tests that Humans can be attacked
    */
   @Test
-  public void testCanBeAttacked() throws RecoveryRateException {
+  public void testCanBeAttacked() throws RecoveryRateException, WeaponException {
     Human heMan = new Human("He-Man", 100, 0);
     Alien thing = new Alien("Thing", 50);
 
