@@ -72,13 +72,10 @@ public abstract class LifeForm {
    * lowered by the called LifeForm's attackStrength.
    * @param opponent the LifeForm to be attacked
    */
-public void attack(LifeForm opponent, int distance) throws WeaponException {
+  public void attack(LifeForm opponent, int distance) throws WeaponException {
     int damage;
-<<<<<<< HEAD
-    if(weapon != null && weapon.getCurrentAmmo() > 0 && this.currentLifePoints >0) {
-=======
+
     if (hasWeapon() && weapon.getCurrentAmmo() > 0) {
->>>>>>> 7298cd8a287bb944b689cec764a98fecb5a1c431
       damage = weapon.fire(distance);
     } else if (distance <= 5) {
       damage = this.attackStrength;
@@ -90,22 +87,13 @@ public void attack(LifeForm opponent, int distance) throws WeaponException {
     }
   }
 
-<<<<<<< HEAD
-public void attack(LifeForm opponent) throws WeaponException {
-    attack(opponent, 0);
-  }
-
-  public boolean pickUpWeapon(Weapon weapon) {
-    if(this.hasWeapon() == true) {
-=======
   /**
    * Picks up a weapon if the LifeForm is not already holding one
    * @param weapon the weapon for the LifeForm to pick up
    * @return true, if the appointed weapon was picked up, false otherwise
    */
-  boolean pickUpWeapon(Weapon weapon) {
+  public boolean pickUpWeapon(Weapon weapon) {
     if (this.hasWeapon()) {
->>>>>>> 7298cd8a287bb944b689cec764a98fecb5a1c431
       return false;
     } else {
       this.weapon = weapon;
@@ -125,7 +113,7 @@ public void attack(LifeForm opponent) throws WeaponException {
    * Drops the weapon that the LifeForm is holding and returns it
    * @return the weapon the LifeForm was holding, null if it wasn't holding anything
    */
-  Weapon dropWeapon() {
+  public Weapon dropWeapon() {
     Weapon returnVal = this.weapon;
     this.weapon = null;
     return returnVal;

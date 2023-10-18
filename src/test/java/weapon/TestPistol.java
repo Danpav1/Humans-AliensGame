@@ -7,6 +7,7 @@ import org.junit.Test;
 import exceptions.WeaponException;
 
 import lifeform.MockLifeForm;
+import lifeform.LifeForm;
 
 public class TestPistol {
 
