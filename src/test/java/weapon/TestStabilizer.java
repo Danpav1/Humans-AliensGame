@@ -35,14 +35,14 @@ public class TestStabilizer {
 
   @Test
   public void testReload() throws AttachmentException, WeaponException {
-    Stabilizer b = new Stabilizer(new MockWeapon(10, 4, 10, 10));
-    assertEquals(4, b.getCurrentAmmo());
-    b.fire(5);
+    Stabilizer b = new Stabilizer(new MockWeapon(10, 2, 10, 10));
     assertEquals(2, b.getCurrentAmmo());
+    b.fire(5);
+    assertEquals(1, b.getCurrentAmmo());
     b.fire(5);
     assertEquals(0, b.getCurrentAmmo());
     b.fire(5);
-    assertEquals(4, b.getCurrentAmmo());
+    assertEquals(2, b.getCurrentAmmo());
   }
 
   /**
