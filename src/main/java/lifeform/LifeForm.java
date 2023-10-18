@@ -72,9 +72,9 @@ public abstract class LifeForm {
    * lowered by the called LifeForm's attackStrength.
    * @param opponent the LifeForm to be attacked
    */
-  void attack(LifeForm opponent, int distance) throws WeaponException {
+public void attack(LifeForm opponent, int distance) throws WeaponException {
     int damage;
-    if(weapon != null && weapon.getCurrentAmmo() > 0) {
+    if(weapon != null && weapon.getCurrentAmmo() > 0 && this.currentLifePoints >0) {
       damage = weapon.fire(distance);
     } else if(distance <= 5) {
       damage = this.attackStrength;
@@ -86,11 +86,11 @@ public abstract class LifeForm {
     }
   }
 
-  void attack(LifeForm opponent) throws WeaponException {
+public void attack(LifeForm opponent) throws WeaponException {
     attack(opponent, 0);
   }
 
-  boolean pickUpWeapon(Weapon weapon) {
+  public boolean pickUpWeapon(Weapon weapon) {
     if(this.hasWeapon() == true) {
       return false;
     } else {
