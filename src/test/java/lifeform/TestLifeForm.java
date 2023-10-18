@@ -33,7 +33,7 @@ public class TestLifeForm {
     LifeForm harry = new MockLifeForm("Harry", 15, 100);
     LifeForm voldemort = new MockLifeForm("Voldemort", 200, 100);
 
-    harry.attack(voldemort);
+    harry.attack(voldemort, 0);
 
     assertEquals(100, voldemort.getCurrentLifePoints());
   }
@@ -46,10 +46,10 @@ public class TestLifeForm {
     LifeForm harry = new MockLifeForm("Harry", 15, 100);
     LifeForm voldemort = new MockLifeForm("Voldemort", 200, 100);
 
-    harry.attack(voldemort);
-    harry.attack(voldemort);
+    harry.attack(voldemort, 0);
+    harry.attack(voldemort, 0);
 
-    voldemort.attack(harry);
+    voldemort.attack(harry, 0);
 
     assertEquals(15, harry.getCurrentLifePoints());
   }
