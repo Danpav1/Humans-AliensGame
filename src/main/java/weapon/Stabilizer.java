@@ -22,10 +22,6 @@ public class Stabilizer extends Attachment implements TimerObserver, Weapon {
       weapon.reload();
       return 0;
     }
-    // out of range (return 0 damage)
-    if (distance > weapon.getMaxRange() || weapon.getMaxRange() < distance) {
-      return 0;
-    }
 
     // always rounded DOWN
     //only call fire one time

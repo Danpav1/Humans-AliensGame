@@ -16,16 +16,12 @@ public class PowerBooster extends Attachment implements TimerObserver, Weapon {
  
 @Override
 public int fire(int distance) throws WeaponException {
-  // no ammo (reloads then returns 0 damage)
-  if (weapon.getCurrentAmmo() <= 0) {
-    weapon.reload();
-    return 0;
-  }
-  // out of range (return 0 damage)
-  if (weapon.getMaxRange() < distance) {
-    return 0;
-  }
-  double output = (double) weapon.fire(distance) * (1 + (weapon.getCurrentAmmo() / weapon.getMaxAmmo()));
+
+  double currentAmmo = (double) weapon.getCurrentAmmo();
+  double maxAmmo = (double) weapon.getMaxAmmo();
+  double damage = (double) weapon.fire(distance);
+  double output = damage * (1.0 + (currentAmmo / maxAmmo));
+  //double output = (double) weapon.fire(distance) * (1.0 + ((double) weapon.getCurrentAmmo() / (double) weapon.getMaxAmmo()));
   return (int) output;
 }
 

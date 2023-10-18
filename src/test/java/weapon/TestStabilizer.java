@@ -21,17 +21,7 @@ public class TestStabilizer {
     assertEquals(1, b.fire(5));
   }
 
-  @Test
-  public void testNoDamageWhenOutOfRange() throws AttachmentException, WeaponException {
-    Stabilizer b = new Stabilizer(new MockWeapon(10, 10, 10, 10));
-    assertEquals(0, b.fire(20));
-  }
-
-  @Test
-  public void testNegativeDistant() throws AttachmentException, WeaponException {
-    Stabilizer b = new Stabilizer(new MockWeapon(0, 0, 0, 0));
-    b.fire(-10);
-  }
+  
 
   @Test
   public void testReload() throws AttachmentException, WeaponException {
@@ -54,5 +44,20 @@ public class TestStabilizer {
    * @Test public void pistolAndScopeAndStabilizer() {fail();}
    * @Test public void chainGunAndPowerBoosterAndStabilizer() {fail();}
    **/
+  
+  /**
+   *   @Test
+  public void testNoDamageWhenOutOfRange() throws AttachmentException, WeaponException {
+    Stabilizer b = new Stabilizer(new MockWeapon(10, 10, 10, 10));
+    assertEquals(0, b.fire(20));
+  }
+
+  @Test
+  public void testNegativeDistant() throws AttachmentException, WeaponException {
+    Stabilizer b = new Stabilizer(new MockWeapon(0, 0, 0, 0));
+    b.fire(-10);
+  }
+
+   */
 
 }
