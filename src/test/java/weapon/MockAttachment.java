@@ -10,11 +10,10 @@ public class MockAttachment extends Attachment {
    * @param weapon the weapon that the attachment will apply to
    */
   public MockAttachment(Weapon weapon) throws AttachmentException {
-    if (weapon.getNumAttachments() < 2) {
-      this.weapon = weapon;
-    } else {
+    if (weapon.getNumAttachments() >= 2) {
       throw new AttachmentException("Weapon is full, cannot add more than two attachments.");
     }
+    this.weapon = weapon;
   }
 
   public int fire(int distance) throws WeaponException {

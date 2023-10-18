@@ -6,6 +6,11 @@ import gameplay.TimerObserver;
 
 public class Stabilizer extends Attachment implements TimerObserver, Weapon {
   public Stabilizer(Weapon baseWeapon) throws AttachmentException {
+    if (baseWeapon.getNumAttachments() < 2) {
+      weapon = baseWeapon;
+    } else {
+      throw new AttachmentException("Weapon is full, cannot add more than two attachments.");
+    }
     weapon = baseWeapon;
   }
 
@@ -18,12 +23,14 @@ public class Stabilizer extends Attachment implements TimerObserver, Weapon {
       return 0;
     }
     // out of range (return 0 damage)
-    if (weapon.getMaxRange() < distance) {
+    if (distance > weapon.getMaxRange() || weapon.getMaxRange() < distance) {
       return 0;
     }
 
     // always rounded DOWN
-    return (int) (weapon.fire(distance) + (weapon.fire(distance) * .25));
+    //only call fire one time
+    int damage = weapon.fire(distance);
+    return (int) (damage + (damage * .25));
   }
 
   @Override

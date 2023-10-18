@@ -66,7 +66,7 @@ public class TestHuman {
     Human heMan = new Human("He-Man", 100, 0);
     Alien thing = new Alien("Thing", 50);
 
-    thing.attack(heMan);
+    thing.attack(heMan, 0);
 
     assertEquals(90, heMan.getCurrentLifePoints());
   }

@@ -15,8 +15,6 @@ public class MockWeapon extends GenericWeapon {
    * @param rateOfFire
    */
   public MockWeapon(int baseDamage, int maxAmmo, int maxRange, int rateOfFire){
-
-
     this.baseDamage = baseDamage;
     this.maxAmmo = maxAmmo;
     this.currentAmmo = this.maxAmmo;
