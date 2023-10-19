@@ -22,8 +22,18 @@ public class TestPlasmaCannon {
     assertEquals(100, joe.getCurrentLifePoints());
     timer.timeChanged();
     bob.attack(joe, 10);
-    assertEquals(62, joe.getCurrentLifePoints());
+    assertEquals(63, joe.getCurrentLifePoints());
+    timer.timeChanged();
+    bob.attack(joe, 30);
+    assertEquals(38, joe.getCurrentLifePoints());
+    timer.timeChanged();
+    bob.attack(joe, 11);
+    assertEquals(26, joe.getCurrentLifePoints());
+    bob.attack(joe, 11);
+    assertEquals(26, joe.getCurrentLifePoints());
+    
 
   }
+
 
 }

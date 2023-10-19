@@ -17,9 +17,9 @@ public class TestPistol {
     MockLifeForm joe = new MockLifeForm("joe", 20, 2);
     bob.pickUpWeapon(weapon);
     bob.attack(joe, 20);
-    assertEquals(19, joe.getCurrentLifePoints());
+    assertEquals(12, joe.getCurrentLifePoints());
     bob.attack(joe, 50);
-    assertEquals(19, joe.getCurrentLifePoints());
+    assertEquals(10, joe.getCurrentLifePoints());
 
   }
 
