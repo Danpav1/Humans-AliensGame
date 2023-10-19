@@ -3,7 +3,7 @@ package weapon;
 import exceptions.WeaponException;
 
 public class ChainGun extends GenericWeapon{
-
+  private double damage = 0.0;
   public ChainGun() {
     this.baseDamage = 15; 
     this.maxRange = 60;  
@@ -16,14 +16,16 @@ public class ChainGun extends GenericWeapon{
 
   @Override
   public int fire(int distance) throws WeaponException {
-    double mathDamage = (double)this.baseDamage*(double)distance/(double)this.maxRange;
-    int damage = (int)Math.ceil(mathDamage);
-      if (distance <= this.maxRange && distance > 0 && this.currentAmmo > 0 && this.currentAmmo <= this.maxAmmo) {
-        this.currentAmmo-=1;
-        this.shotsLeft-=1;
-        return damage;
+
+      if (distance <= maxRange && distance > 0 && this.currentAmmo > 0 && this.shotsLeft>0) {
+        damage = (double)this.baseDamage*(double)distance/(double)this.maxRange;
+        this.currentAmmo--;
+        this.shotsLeft--;
+        
       }
       else {throw new WeaponException(null);}
+      
+      return Double.valueOf(Math.floor(damage)).intValue();
       
   }
 

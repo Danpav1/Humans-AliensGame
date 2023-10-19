@@ -3,7 +3,7 @@ package weapon;
 import exceptions.WeaponException;
 
 public class PlasmaCannon extends GenericWeapon{
-
+private double damage = 0.0;
   public PlasmaCannon() {
     this.baseDamage = 50; 
     this.maxRange = 40;  
@@ -15,14 +15,13 @@ public class PlasmaCannon extends GenericWeapon{
 
   @Override
   public int fire(int distance) throws WeaponException {
-    double mathDamage = (double)this.baseDamage*(double)this.currentAmmo/(double)this.maxAmmo;
-    double damage = Math.ceil(mathDamage);
-      if (distance <= this.maxRange && distance > 0 && this.currentAmmo > 0 && this.shotsLeft>0) {
-        this.currentAmmo-=1;
-        this.shotsLeft-=1;
-        return (int)damage;
+      if (distance <= maxRange && distance > 0 && this.currentAmmo > 0 && this.shotsLeft>0) {
+        damage = (double)this.baseDamage*(double)this.currentAmmo/(double)this.maxAmmo;
+        this.currentAmmo--;
+        this.shotsLeft--;
       }
       else {throw new WeaponException(null);}
+      return Double.valueOf(Math.floor(damage)).intValue();
     
   }
   

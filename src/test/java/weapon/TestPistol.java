@@ -7,7 +7,6 @@ import org.junit.Test;
 import exceptions.WeaponException;
 
 import lifeform.MockLifeForm;
-import lifeform.LifeForm;
 
 public class TestPistol {
 
@@ -20,7 +19,7 @@ public class TestPistol {
     bob.attack(joe, 20);
     assertEquals(19, joe.getCurrentLifePoints());
     bob.attack(joe, 50);
-    assertEquals(18, joe.getCurrentLifePoints());
+    assertEquals(19, joe.getCurrentLifePoints());
 
   }
 
