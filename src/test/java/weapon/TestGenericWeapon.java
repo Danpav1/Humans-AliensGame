@@ -31,7 +31,7 @@ public class TestGenericWeapon {
    * Tests that the toString method works
    */
   @Test
-  public void testToString(){
+  public void testToString() {
     MockWeapon weapon = new MockWeapon();
 
     assertEquals("Mock Weapon: ", weapon.toString());

@@ -31,9 +31,7 @@ public class TestPlasmaCannon {
     assertEquals(26, joe.getCurrentLifePoints());
     bob.attack(joe, 11);
     assertEquals(26, joe.getCurrentLifePoints());
-    
 
   }
-
 
 }
