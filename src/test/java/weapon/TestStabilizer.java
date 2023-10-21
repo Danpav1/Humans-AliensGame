@@ -32,9 +32,9 @@ public class TestStabilizer {
     b.fire(5);
     assertEquals(1, b.getCurrentAmmo());
     b.fire(5);
-    assertEquals(0, b.getCurrentAmmo());
-    b.fire(5);
     assertEquals(2, b.getCurrentAmmo());
+    b.fire(5);
+    assertEquals(1, b.getCurrentAmmo());
   }
 
   @Test
