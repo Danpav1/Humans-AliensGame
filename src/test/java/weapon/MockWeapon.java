@@ -43,7 +43,7 @@ public class MockWeapon extends GenericWeapon {
     if (this.currentAmmo > 0 && this.shotsLeft > 0) {
       this.currentAmmo--;
       this.shotsLeft--;
-      if (distance < this.maxRange) {
+      if (distance <= this.maxRange) {
         return this.baseDamage;
       }
     }
@@ -54,6 +54,6 @@ public class MockWeapon extends GenericWeapon {
    * @return a string display of the Weapon and its Attachments
    */
   public String toString() {
-    return "Mock Weapon: ";
+    return "Mock Weapon";
   }
 }

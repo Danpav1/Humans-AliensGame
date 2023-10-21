@@ -23,5 +23,4 @@ public class TestChainGun {
     bob.attack(joe, 23);
     assertEquals(118, joe.getCurrentLifePoints());
   }
-
 }

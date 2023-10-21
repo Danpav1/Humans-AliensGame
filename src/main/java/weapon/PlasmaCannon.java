@@ -2,9 +2,10 @@ package weapon;
 
 import exceptions.WeaponException;
 
+/**
+ * Created by Stella Andersen
+ */
 public class PlasmaCannon extends GenericWeapon {
-  private double damage = 0.0;
-
   /**
    * Constructor for PlasmaCannon weapon.
    */
@@ -27,9 +28,8 @@ public class PlasmaCannon extends GenericWeapon {
    * reduce this damage. The damage will be zero if the target is out of range, or
    * if the weapon is out of ammo.
    */
-  @Override
   public int fire(int distance) throws WeaponException {
-
+    double damage = 0;
     if (distance < 0) {
       throw new WeaponException(null);
     
@@ -43,9 +43,7 @@ public class PlasmaCannon extends GenericWeapon {
       this.currentAmmo--;
       this.shotsLeft--;
     }
-
     return Double.valueOf(Math.floor(damage)).intValue();
-
   }
 
   /**
@@ -53,7 +51,6 @@ public class PlasmaCannon extends GenericWeapon {
    * 
    * @return the String description for the weapon.
    */
-  @Override
   public String toString() {
     String plasmaCannon = "PlasmaCannon";
     return plasmaCannon;

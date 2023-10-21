@@ -34,7 +34,7 @@ public class TestGenericWeapon {
   public void testToString() {
     MockWeapon weapon = new MockWeapon();
 
-    assertEquals("Mock Weapon: ", weapon.toString());
+    assertEquals("Mock Weapon", weapon.toString());
   }
 
   /**

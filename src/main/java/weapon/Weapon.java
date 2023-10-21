@@ -6,6 +6,7 @@ import exceptions.WeaponException;
 
 /**
  * Outlines the required methods of each Weapon object
+ * Created by Daniel Armstrong
  */
 public interface Weapon extends TimerObserver {
   /**

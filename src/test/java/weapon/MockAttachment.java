@@ -21,6 +21,6 @@ public class MockAttachment extends Attachment {
   }
 
   public String toString() {
-    return this.weapon.toString() + "Mock Attachment; ";
+    return this.weapon.toString() + " +Mock Attachment";
   }
 }

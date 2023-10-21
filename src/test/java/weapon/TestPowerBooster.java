@@ -2,6 +2,9 @@ package weapon;
 
 import static org.junit.Assert.*;
 
+import com.sun.net.httpserver.Filter;
+import gameplay.SimpleTimer;
+import lifeform.MockLifeForm;
 import org.junit.Test;
 
 import exceptions.AttachmentException;
@@ -51,20 +54,66 @@ public class TestPowerBooster {
 
     assertTrue(exception1Caught);
   }
-}
-  /**
-  
+
+
   @Test
-  public void chainGunPowerBooster() throws AttachmentException, WeaponException {
-    ChainGun c = new ChainGun();
-    assertEquals(2, c.fire(5));
-    PowerBooster b = new PowerBooster(new ChainGun());
-    assertEquals(2, b.fire(5));
+  public void testChainGunWithPowerBooster() throws WeaponException, AttachmentException {
+    Weapon weapon = new PowerBooster(new ChainGun());
+    MockLifeForm tester = new MockLifeForm("Tester", 10);
+    MockLifeForm dummy = new MockLifeForm("Dummy", 100);
+
+    tester.pickUpWeapon(weapon);
+    tester.attack(dummy, 50);
+    assertEquals(76, dummy.getCurrentLifePoints());
+
+    tester.attack(dummy, 30);
+    assertEquals(63, dummy.getCurrentLifePoints());
   }
+
   @Test
-  public void pistolScopePowerBooster() {fail();}
+  public void testPistolWithScopeAndPowerBooster() throws WeaponException, AttachmentException {
+    Weapon weapon = new PowerBooster(new Scope(new Pistol()));
+    MockLifeForm tester = new MockLifeForm("Tester", 10);
+    MockLifeForm dummy = new MockLifeForm("Dummy", 100);
+
+    tester.pickUpWeapon(weapon);
+    tester.attack(dummy, 60);
+    assertEquals(86, dummy.getCurrentLifePoints());
+
+    tester.attack(dummy, 25);
+    assertEquals(66, dummy.getCurrentLifePoints());
+  }
+
   @Test
-  public void chainGunPowerBoosterPowerBooster() {fail();}
+  public void testChainGunWithTwoPowerBoosters() throws WeaponException, AttachmentException {
+    Weapon weapon = new PowerBooster(new PowerBooster(new ChainGun()));
+    MockLifeForm tester = new MockLifeForm("Tester", 10);
+    MockLifeForm dummy = new MockLifeForm("Dummy", 150);
+
+    tester.pickUpWeapon(weapon);
+    tester.attack(dummy, 60);
+    assertEquals(90, dummy.getCurrentLifePoints());
+
+    tester.attack(dummy, 45);
+    assertEquals(49, dummy.getCurrentLifePoints());
+  }
+
   @Test
-  public void plasmaCannonStabilizerPowerBooster() {fail();}
-**/
+  public void testPlasmaCannonWithStabilizerAndPowerBooster() throws WeaponException,
+                                                                     AttachmentException {
+    SimpleTimer timer = new SimpleTimer();
+    Weapon weapon = new PowerBooster(new Stabilizer(new PlasmaCannon()));
+    timer.addTimeObserver(weapon);
+    MockLifeForm tester = new MockLifeForm("Tester", 10);
+    MockLifeForm dummy = new MockLifeForm("Dummy", 300);
+
+    tester.pickUpWeapon(weapon);
+    tester.attack(dummy, 40);
+    assertEquals(176, dummy.getCurrentLifePoints());
+
+    timer.timeChanged();
+
+    tester.attack(dummy, 20);
+    assertEquals(96, dummy.getCurrentLifePoints());
+  }
+}

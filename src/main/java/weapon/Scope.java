@@ -3,7 +3,9 @@ package weapon;
 import exceptions.AttachmentException;
 import exceptions.WeaponException;
 
-
+/**
+ * Created by Daniel Armstrong
+ */
 public class Scope extends Attachment {
 
   /**
@@ -34,23 +36,22 @@ public class Scope extends Attachment {
    * @throws WeaponException when distance is negative
    */
   public int fire(int distance) throws WeaponException {
-    if (distance <= this.getMaxRange()) {
-      int damage = this.weapon.getBaseDamage();
-      if (this.weapon.getMaxRange() < distance) {
-        damage += 5;
-      }
-
+    double damage;
+    // if distance > this.getMaxRange(), base weapon handles out of range
+    if (distance > this.weapon.getMaxRange() && distance <= this.getMaxRange()) {
+      damage = (double) this.weapon.fire(this.weapon.getMaxRange()) + 5;
+    } else {
       double rangeModifier = (double) (this.getMaxRange() - distance) / (this.getMaxRange());
-      double totalDamage = damage * (1.0 + rangeModifier);
-      return (int) totalDamage;
+      damage = this.weapon.fire(distance) * (1.0 + rangeModifier);
     }
-    return 0;
+
+    return (int) damage;
   }
 
   /**
-   * @return a string form of the weapon and its attachments
+   * @return a string form of the Weapon and its Attachments
    */
   public String toString() {
-    return this.weapon.toString() + "Scope; ";
+    return this.weapon.toString() + " +Scope";
   }
 }

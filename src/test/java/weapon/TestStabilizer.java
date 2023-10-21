@@ -2,6 +2,8 @@ package weapon;
 
 import static org.junit.Assert.*;
 
+import gameplay.SimpleTimer;
+import lifeform.MockLifeForm;
 import org.junit.Test;
 
 import exceptions.AttachmentException;
@@ -35,29 +37,68 @@ public class TestStabilizer {
     assertEquals(2, b.getCurrentAmmo());
   }
 
-  /**
-   * @Test public void testToString() throws AttachmentException, WeaponException
-   *       { Stabilizer b = new Stabilizer(new MockWeapon(10, 10, 10, 10));
-   *       assertEquals("Mock Weapon Stabilizer Attachment ", b.toString()); }
-   * @Test public void plasmaCannonAndStabilizer() {fail();}
-   * @Test public void plasmaCannonAndStabilizerAndStabilizer() {fail();}
-   * @Test public void pistolAndScopeAndStabilizer() {fail();}
-   * @Test public void chainGunAndPowerBoosterAndStabilizer() {fail();}
-   **/
-  
-  /**
-   *   @Test
-  public void testNoDamageWhenOutOfRange() throws AttachmentException, WeaponException {
-    Stabilizer b = new Stabilizer(new MockWeapon(10, 10, 10, 10));
-    assertEquals(0, b.fire(20));
+  @Test
+  public void testPlasmaCannonWithStabilizer() throws AttachmentException, WeaponException {
+    SimpleTimer timer = new SimpleTimer();
+    Weapon weapon = new Stabilizer(new PlasmaCannon());
+    timer.addTimeObserver(weapon);
+    MockLifeForm tester = new MockLifeForm("Tester", 10);
+    MockLifeForm dummy = new MockLifeForm("Dummy", 200);
+
+    tester.pickUpWeapon(weapon);
+    tester.attack(dummy, 40);
+    assertEquals(138, dummy.getCurrentLifePoints());
+
+    timer.timeChanged();
+
+    tester.attack(dummy, 30);
+    assertEquals(92, dummy.getCurrentLifePoints());
   }
 
   @Test
-  public void testNegativeDistant() throws AttachmentException, WeaponException {
-    Stabilizer b = new Stabilizer(new MockWeapon(0, 0, 0, 0));
-    b.fire(-10);
+  public void testPlasmaCannonWith2Stabilizers() throws AttachmentException, WeaponException {
+    SimpleTimer timer = new SimpleTimer();
+    Weapon weapon = new Stabilizer(new Stabilizer(new PlasmaCannon()));
+    timer.addTimeObserver(weapon);
+    MockLifeForm tester = new MockLifeForm("Tester", 10);
+    MockLifeForm dummy = new MockLifeForm("Dummy", 200);
+
+    tester.pickUpWeapon(weapon);
+    tester.attack(dummy, 40);
+    assertEquals(123, dummy.getCurrentLifePoints());
+
+    timer.timeChanged();
+
+    tester.attack(dummy, 30);
+    assertEquals(66, dummy.getCurrentLifePoints());
   }
 
-   */
+  @Test
+  public void testPistolWithScopeAndStabilizer() throws AttachmentException, WeaponException {
+    Weapon weapon = new Stabilizer(new Scope(new Pistol()));
+    MockLifeForm tester = new MockLifeForm("Tester", 10);
+    MockLifeForm dummy = new MockLifeForm("Dummy", 100);
 
+    tester.pickUpWeapon(weapon);
+    tester.attack(dummy, 60);
+    assertEquals(92, dummy.getCurrentLifePoints());
+
+    tester.attack(dummy, 40);
+    assertEquals(86, dummy.getCurrentLifePoints());
+  }
+
+  @Test
+  public void testChainGunWithPowerBoosterAndStabilizer() throws AttachmentException,
+                                                                 WeaponException {
+    Weapon weapon = new Stabilizer(new PowerBooster(new ChainGun()));
+    MockLifeForm tester = new MockLifeForm("Tester", 10);
+    MockLifeForm dummy = new MockLifeForm("Dummy", 100);
+
+    tester.pickUpWeapon(weapon);
+    tester.attack(dummy, 50);
+    assertEquals(70, dummy.getCurrentLifePoints());
+
+    tester.attack(dummy, 40);
+    assertEquals(47, dummy.getCurrentLifePoints());
+  }
 }

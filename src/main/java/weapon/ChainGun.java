@@ -2,9 +2,10 @@ package weapon;
 
 import exceptions.WeaponException;
 
+/**
+ * Created by Stella Andersen
+ */
 public class ChainGun extends GenericWeapon {
-  private double damage = 0.0;
-
   /**
    * Constructor for ChainGun weapon.
    */
@@ -27,8 +28,9 @@ public class ChainGun extends GenericWeapon {
    * reduce this damage. The damage will be zero if the target is out of range, or
    * if the weapon is out of ammo.
    */
-  @Override
   public int fire(int distance) throws WeaponException {
+    double damage = 0.0;
+
     if (distance < 0) {
       throw new WeaponException(null);
     
@@ -51,7 +53,6 @@ public class ChainGun extends GenericWeapon {
    * 
    * @return the String description for the weapon.
    */
-  @Override
   public String toString() {
     String chainGun = "ChainGun";
     return chainGun;

@@ -3,7 +3,8 @@ package weapon;
 import exceptions.WeaponException;
 
 /**
- * An generic Attachment class for modifying concrete Weapon classes
+ * A generic Attachment class for modifying concrete Weapon classes
+ * Created by Daniel Armstrong
  */
 public abstract class Attachment implements Weapon {
   protected Weapon weapon;

@@ -4,6 +4,7 @@ import exceptions.WeaponException;
 
 /**
  * The abstract class implementing Weapon that outlines the general behaviors of any base Weapon
+ * Created by Daniel Armstrong
  */
 public abstract class GenericWeapon implements Weapon {
   protected int baseDamage;

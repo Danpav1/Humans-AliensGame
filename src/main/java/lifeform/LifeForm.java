@@ -6,6 +6,7 @@ import weapon.Weapon;
 /**
  * Keeps track of the information associated with a simple life form.
  * Also provides the functionality related to the life form.
+ * Weapons functionality added by Gavin Albright
  */
 public abstract class LifeForm {
   private final String myName;
