@@ -82,18 +82,24 @@ public class TestLifeForm {
     assertEquals(0, steven.getCurrentLifePoints());
   }
 
-
-
+  /**
+   * Tests that LifeForms can pick up Weapons.
+   *
+   * Written by Gavin Albright
+   */
   @Test
   public void testPickup() {
     LifeForm stan = new MockLifeForm("stan", 20);
     MockWeapon test = new MockWeapon();
     boolean result = stan.pickUpWeapon(test);
     assertEquals(result, true);
-
-
   }
 
+  /**
+   * Tests that LifeForms cannot pick up Weapons when they are already holding one.
+   *
+   * Written by Gavin Albright.
+   */
   @Test
   public void testPickupWhileHolding() {
     LifeForm stan = new MockLifeForm("stan", 20);
@@ -102,10 +108,13 @@ public class TestLifeForm {
     stan.pickUpWeapon(test);
     boolean result = stan.pickUpWeapon(testTwo);
     assertEquals(result, false);
-
-
   }
 
+  /**
+   * Tests that LifeForms can drop Weapons.
+   *
+   * Written by Gavin Albright
+   */
   @Test
   public void testDrop() throws WeaponException {
     LifeForm stan = new MockLifeForm("stan", 20);
@@ -113,9 +122,13 @@ public class TestLifeForm {
     stan.pickUpWeapon(test);
     Weapon returner = stan.dropWeapon();
     assertFalse(stan.hasWeapon());
-
   }
 
+  /**
+   * Tests that LifeForms can use Weapons in their attack() method.
+   *
+   * Written by Gavin Albright
+   */
   @Test
   public void testWeaponUse() throws WeaponException {
     LifeForm stan = new MockLifeForm("stan", 20);
@@ -124,9 +137,14 @@ public class TestLifeForm {
     stan.pickUpWeapon(test);
     stan.attack(dan, 10);
     assertEquals(dan.getCurrentLifePoints(), 29);
-
   }
 
+  /**
+   * Tests that when a LifeForm is out of ammo and within melee range, will melee a target
+   * instead of shooting them.
+   *
+   * Written by Gavin Albright
+   */
   @Test
   public void testAmmoZero() throws WeaponException {
     LifeForm stan = new MockLifeForm("stan", 20, 1);
@@ -138,15 +156,25 @@ public class TestLifeForm {
     assertEquals(dan.getCurrentLifePoints(), 25);
   }
 
+  /**
+   * Tests that if a LifeForm is out of ammo and out of melee range, no damage is done
+   * to the target.
+   *
+   * Written by Gavin Albright
+   */
   @Test
   public void testMeleeFail() throws WeaponException {
     LifeForm stan = new MockLifeForm("stan", 20, 1);
     LifeForm dan = new MockLifeForm("Dan", 30);
     stan.attack(dan, 15);
     assertEquals(dan.getCurrentLifePoints(), 30);
-
   }
 
+  /**
+   * Tests that a LifeForm's Weapon can be reloaded.
+   *
+   * Written by Gavin Albright
+   */
   @Test
   public void testReload() throws WeaponException {
     LifeForm stan = new MockLifeForm("stan", 20, 1);
@@ -157,7 +185,5 @@ public class TestLifeForm {
     assertEquals(stan.weapon.getCurrentAmmo(), 0);
     stan.weapon.reload();
     assertEquals(stan.weapon.getCurrentAmmo(), 1);
-
-
   }
 }

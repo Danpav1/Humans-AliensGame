@@ -29,21 +29,22 @@ public class PlasmaCannon extends GenericWeapon {
    * if the weapon is out of ammo.
    */
   public int fire(int distance) throws WeaponException {
-    double damage = 0;
     if (distance < 0) {
-      throw new WeaponException(null);
-    
-    } else if (distance > this.maxRange) {
-      this.currentAmmo--;
-      this.shotsLeft--;
-      return 0;
-    
-    } else if (this.currentAmmo > 0 && this.shotsLeft > 0) {
-      damage = (double) this.baseDamage * (double) this.currentAmmo / (double) this.maxAmmo;
+      throw new WeaponException("Distance was " + distance
+                              + ". Distance cannot be negative.");
+    }
+
+    double damage = 0.0;
+
+    if (this.currentAmmo > 0 && this.shotsLeft > 0) {
+      if (distance <= this.maxRange) {
+        damage = this.baseDamage * (double) this.currentAmmo / this.maxAmmo;
+      }
       this.currentAmmo--;
       this.shotsLeft--;
     }
-    return Double.valueOf(Math.floor(damage)).intValue();
+
+    return (int) damage;
   }
 
   /**
@@ -52,8 +53,7 @@ public class PlasmaCannon extends GenericWeapon {
    * @return the String description for the weapon.
    */
   public String toString() {
-    String plasmaCannon = "PlasmaCannon";
-    return plasmaCannon;
+    return "PlasmaCannon";
   }
 
 }

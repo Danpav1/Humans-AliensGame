@@ -7,7 +7,7 @@ import exceptions.WeaponException;
  */
 public class ChainGun extends GenericWeapon {
   /**
-   * Constructor for ChainGun weapon.
+   * Constructor for ChainGuns
    */
   public ChainGun() {
     this.baseDamage = 15;
@@ -29,33 +29,30 @@ public class ChainGun extends GenericWeapon {
    * if the weapon is out of ammo.
    */
   public int fire(int distance) throws WeaponException {
+    if (distance < 0) {
+      throw new WeaponException("Distance was " + distance
+                              + ". Distance cannot be negative.");
+    }
+
     double damage = 0.0;
 
-    if (distance < 0) {
-      throw new WeaponException(null);
-    
-    } else if (distance > this.maxRange) {
-      this.currentAmmo--;
-      this.shotsLeft--;
-      return 0;
-    
-    } else if (this.currentAmmo > 0 && this.shotsLeft > 0) {
-      damage = (double) this.baseDamage * (double) distance / (double) this.maxRange;
+    if (this.currentAmmo > 0 && this.shotsLeft > 0) {
+      if (distance <= this.maxRange) {
+        damage = this.baseDamage * (double) distance / this.maxRange;
+      }
       this.currentAmmo--;
       this.shotsLeft--;
     }
-    return Double.valueOf(Math.floor(damage)).intValue();
 
+    return (int) damage;
   }
 
   /**
-   * Displays the weapon
-   * 
-   * @return the String description for the weapon.
+   * Displays the Weapon
+   *
+   * @return the String description for the Weapon
    */
   public String toString() {
-    String chainGun = "ChainGun";
-    return chainGun;
+    return "ChainGun";
   }
-
 }

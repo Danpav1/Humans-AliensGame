@@ -74,15 +74,14 @@ public abstract class LifeForm {
    * @param opponent the LifeForm to be attacked
    */
   public void attack(LifeForm opponent, int distance) throws WeaponException {
-    int damage;
+    int damage = 0;
 
-    if (hasWeapon() && weapon.getCurrentAmmo() > 0) {
-      damage = weapon.fire(distance);
+    if (hasWeapon() && this.weapon.getCurrentAmmo() > 0) {
+      damage = this.weapon.fire(distance);
     } else if (distance <= 5) {
       damage = this.attackStrength;
-    } else {
-      damage = 0;
     }
+
     if (this.currentLifePoints != 0) {
       opponent.takeHit(damage);
     }
@@ -107,7 +106,7 @@ public abstract class LifeForm {
    * @return true, if the LifeForm is holding a weapon, false otherwise
    */
   boolean hasWeapon() {
-    return weapon != null;
+    return this.weapon != null;
   }
 
   /**
