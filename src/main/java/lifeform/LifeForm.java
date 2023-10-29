@@ -13,10 +13,14 @@ public abstract class LifeForm {
   protected int currentLifePoints;
   protected int attackStrength;
 
+  protected int column;
+  protected int row;
+
   protected Weapon weapon;
 
   /**
    * Create a LifeForm without specified strength
+   *
    * @param name the name of the life form
    * @param points the current starting life points of the life form
    */
@@ -26,6 +30,7 @@ public abstract class LifeForm {
 
   /**
    * Create a LifeForm with specified strength
+   *
    * @param name the name of the life form
    * @param points the current starting life points of the life form
    * @param strength the attack strength of the life form
@@ -34,43 +39,15 @@ public abstract class LifeForm {
     this.myName = name;
     this.currentLifePoints = points;
     this.attackStrength = strength;
-  }
 
-  /**
-   * @return the name of the life form
-   */
-  public String getName() {
-    return myName;
-  }
-
-  /**
-   * @return the amount of current life points the life form has
-   */
-  public int getCurrentLifePoints() {
-    return currentLifePoints;
-  }
-
-  /**
-   * @return the attackStrength of the LifeForm
-   */
-  public int getAttackStrength() {
-    return this.attackStrength;
-  }
-
-  /**
-   * Lowers the LifeForm's currentLifePoints by the given number. Will not allow the
-   * currentLifePoints to fall below zero.
-   * @param damage the number of points to damage the LifeForm by
-   */
-  void takeHit(int damage) {
-    int newLifePoints = this.currentLifePoints - damage;
-
-    this.currentLifePoints = Math.max(0, newLifePoints);
+    this.row = -1;
+    this.column = -1;
   }
 
   /**
    * Causes a LifeForm to "attack" another LifeForm. The passed LifeForm's health is
    * lowered by the called LifeForm's attackStrength.
+   *
    * @param opponent the LifeForm to be attacked
    */
   public void attack(LifeForm opponent, int distance) throws WeaponException {
@@ -88,8 +65,67 @@ public abstract class LifeForm {
   }
 
   /**
+   * Drops the weapon that the LifeForm is holding and returns it
+   *
+   * @return the weapon the LifeForm was holding, null if it wasn't holding anything
+   */
+  public Weapon dropWeapon() {
+    Weapon returnVal = this.weapon;
+    this.weapon = null;
+    return returnVal;
+  }
+
+  /**
+   * @return the attackStrength of the LifeForm
+   */
+  public int getAttackStrength() {
+    return this.attackStrength;
+  }
+
+  /**
+   * @return the column of the Environment that the LifeForm resides in;
+   *         -1, if not in an Environment
+   */
+  public int getCol() {
+    return this.column;
+  }
+
+  /**
+   * @return the amount of current life points the life form has
+   */
+  public int getCurrentLifePoints() {
+    return currentLifePoints;
+  }
+
+  /**
+   * @return the name of the life form
+   */
+  public String getName() {
+    return myName;
+  }
+
+  /**
+   * @return the row of the Environment that the LifeForm resides in;
+   *         -1, if not in an Environment
+   */
+  public int getRow() {
+    return this.row;
+  }
+
+  /**
+   * Determines whether the LifeForm is holding a weapon
+   *
+   * @return true, if the LifeForm is holding a weapon, false otherwise
+   */
+  boolean hasWeapon() {
+    return this.weapon != null;
+  }
+
+  /**
    * Picks up a weapon if the LifeForm is not already holding one
+   *
    * @param weapon the weapon for the LifeForm to pick up
+   *
    * @return true, if the appointed weapon was picked up, false otherwise
    */
   public boolean pickUpWeapon(Weapon weapon) {
@@ -102,20 +138,27 @@ public abstract class LifeForm {
   }
 
   /**
-   * Determines whether the LifeForm is holding a weapon
-   * @return true, if the LifeForm is holding a weapon, false otherwise
+   * Used by the Environment to set the location of a LifeForm for reference
+   *
+   * @param row the specified row of the Environment
+   * @param col the specified column of the Environment
    */
-  boolean hasWeapon() {
-    return this.weapon != null;
+  public void setLocation(int row, int col) {
+    if (row >= 0 && col >= 0) {
+      this.row = row;
+      this.column = col;
+    }
   }
 
   /**
-   * Drops the weapon that the LifeForm is holding and returns it
-   * @return the weapon the LifeForm was holding, null if it wasn't holding anything
+   * Lowers the LifeForm's currentLifePoints by the given number. Will not allow the
+   * currentLifePoints to fall below zero.
+   *
+   * @param damage the number of points to damage the LifeForm by
    */
-  public Weapon dropWeapon() {
-    Weapon returnVal = this.weapon;
-    this.weapon = null;
-    return returnVal;
+  void takeHit(int damage) {
+    int newLifePoints = this.currentLifePoints - damage;
+
+    this.currentLifePoints = Math.max(0, newLifePoints);
   }
 }

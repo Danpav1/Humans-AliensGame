@@ -11,6 +11,57 @@ import weapon.Weapon;
  * Tests the functionality provided by the LifeForm class
  */
 public class TestLifeForm {
+  /*
+   * Lab 5 tests begin -----------------------------------------------------------------------------
+   */
+
+  /**
+   * Tests that LifeForms can keep track of their coordinates in the Environment
+   */
+  @Test
+  public void testHasCoordinates() {
+    LifeForm critter = new MockLifeForm("Critter", 1);
+
+    assertEquals(-1, critter.getRow());
+    assertEquals(-1, critter.getCol());
+  }
+
+  /**
+   * Tests that LifeForms can have their locations set
+   */
+  @Test
+  public void testCanSetLocation() {
+    LifeForm creature = new MockLifeForm("Creature", 1);
+
+    creature.setLocation(4, 5);
+
+    assertEquals(4, creature.getRow());
+    assertEquals(5, creature.getCol());
+  }
+
+  /**
+   * Tests that LifeForms will not change their location if either
+   * coordinate is negative
+   */
+  @Test
+  public void testWontMoveIfNegativeCoordinate() {
+    LifeForm jerry = new MockLifeForm("Jerry", 1);
+
+    jerry.setLocation(5, -5);
+
+    assertEquals(-1, jerry.getRow());
+    assertEquals(-1, jerry.getCol());
+
+    jerry.setLocation(-4, 4);
+
+    assertEquals(-1, jerry.getRow());
+    assertEquals(-1, jerry.getCol());
+  }
+
+  /*
+   * Lab 5 tests end; Lab 4 tests begin ------------------------------------------------------------
+   */
+
   /**
    * When a LifeForm is created, it should know its name and how
    * many life points it has

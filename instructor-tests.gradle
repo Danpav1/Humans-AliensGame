@@ -1,18 +1,3 @@
-task zipzip(type: Zip) {
-  archiveName = 'lab0-name.zip'
-  from projectDir
-  excludes = ["**/.gradle"]
-  includes=["src/**/*", "build.gradle", "instructor-tests.gradle"]
-  destinationDir = file("${buildDir}/dist")
-}
-
-task testZip(type: Zip) {
-  archiveName = 'lab1-instructor-tests.zip'
-  from sourceSets.test.output
-  excludes = ["**/.gradle"]
-  destinationDir = file("${buildDir}/dist")
-}
-
 task downloadFile(type: Download) {
   quiet true
   src 'https://www.dropbox.com/s/ynq048wbd2kyuk1/lab5-instructor-tests.zip?dl=1'
