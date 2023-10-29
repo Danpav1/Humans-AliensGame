@@ -190,27 +190,15 @@ Answer: Yes, so long as everyone is trying hard to accomplish the parts they are
 
 **How will you use the in-class time?**
 
-Answer: To check in and make sure everyone is on the correct time table
-
-Example answer: We will spend most of our in-class time discussing work
-assignment and keeping track of the progress.
+Answer: To check in and make sure everyone is on the correct time table.
 
 **How often will you meet outside of class?**
 
-Answer: twice a week over discord, Tues/Thurs Afternoons
+Answer: twice a week over discord.
 
 **How will work be divided among team members?**
 
-Answer: Divide the assignments into the 5 portions on the UML, assigning each to a different person based on time availability
-
-Example answer: First we will divide the work load into a few pieces, e.g 4-8
-pieces. We will rate each task with a score between 1 and 5. For example, we
-divide the lab into 5 smaller tasks with score 1,1,4,5,10. Then each of us four
-will do around 5 points. We roll a dice to determine who to pick first.  The
-result could be that one picks the first 3 tasks, the second picks the
-5-pointer and the rest two work on the 10-pointer together.
-
-(Besides coding, tasks include printing the code and the sheets, etc.)
+Answer: Divide according to UML and workflow outlined in the assigned lab. Each person will get roughly equal amounts of work and assignments will be discussed in a meeting.
 
 **What will you do if one or more team members are not doing their share of the work?**
 
@@ -237,8 +225,7 @@ Example answer: Using the following table
 
 | Task | Assignee | Deadline | Progress (date) |
 |---|---|---|---|
-| Scope and Stabilizer classes | John Doe | 10/11/18 | Scope done; Stabilizer 50% (10/09/18) |
-| Hard copy | John Doe | 10/17/18 | Cannot print: code not finished |
+| Lab 5 | Each | 10/28/2023 | |
 
 
 # Team Meeting Log
@@ -248,7 +235,5 @@ of class.
 
 | Meeting # | When | Where | Attendees | Note |
 |---|---|---|---|---|
-| 1 | 2:40-3:50pm, 10/04 | MCT162 | All members | Meet the team |
-| 2 | 3:20-3:50, 10/9 | MCT162 | All members | Team Contract and Work Assignment|
 
 
