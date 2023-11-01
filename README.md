@@ -45,11 +45,21 @@ after the certain lab is finished.)
 
 Answer: Using a Discord group listing deadlines and responsibilities, transcribed into the following table.
 
-Example answer: Using the following table
+| Lab | Task | Assignee | Deadline | Progress (date) |
+|---|---|---|---|---|
+| 5 | Full Lab | Each | 10/28/2023 | Complete (10/27/2023)|
+|---|---|---|---|---|
+| 6 | Activity 1 | Daniel Armstrong | 11/06/2023 | Unfinished (11/01/2023) |
+| 6 | Activity 2 | Zack Yourkavitch | 11/06/2023 | Unfinished (11/01/2023) |
+| 6 | Activity 3 | Zack Yourkavitch | 11/06/2023 | Unfinished (11/01/2023) |
+| 6 | Activity 4 | Garrett Goshorn  | 11/06/2023 | Unfinished (11/01/2023) |
+|---|---|---|---|---|
+| 6 | Game UI                | Dan Pavenko      | 11/19/2023 (tentative) | Unfinished (11/01/2023) |
+| 6 | Turning and Movement   | Garrett Goshorn  | 11/19/2023 (tentative) | Unfinished (11/01/2023) |
+| 6 | Invoker                | Elijah Hill      | 11/19/2023 (tentative) | Unfinished (11/01/2023) |
+| 6 | Commands               | Zack Yourkavitch | 11/19/2023 (tentative) | Unfinished (11/01/2023) |
+| 6 | Support and Assistance | Daniel Armstrong | 11/19/2023 (tentative) | Unfinished (11/01/2023) |
 
-| Task | Assignee | Deadline | Progress (date) |
-|---|---|---|---|
-| Lab 5 | Each | 10/28/2023 | |
 
 
 # Team Meeting Log
@@ -59,6 +69,6 @@ of class.
 
 | Meeting # | When | Where | Attendees | Note |
 |---|---|---|---|---|
-| 1 | 10/23/2023 | Discord | All Members Present | Reviewed Lab 5 for Submission |
-
+| 1 | 10/23/2023 | Discord  | All Members Present | Reviewed Lab 5 for submission |
+| 2 | 11/01/2023 | In-Class | All Members Present | Discussed task assignments, lab strategies |
 
