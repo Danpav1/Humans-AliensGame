@@ -10,6 +10,23 @@ import org.junit.Test;
  * Tests the functionality provided by the Human class
  */
 public class TestHuman {
+  /*
+   * Lab 6 tests begin
+   */
+
+  /**
+   * Tests that the human default maxSpeed is 3
+   */
+  @Test
+  public void testMaxSpeed() {
+    Human fred = new Human("Fred", 30, 10);
+    assertEquals(3, fred.getMaxSpeed());
+  }
+
+  /*
+   * Lab 6 tests end; Lab 1-5 tests begin -----------------------------------------------------------------------------
+   */
+
   /**
    * Tests that you can initialize a Human
    */

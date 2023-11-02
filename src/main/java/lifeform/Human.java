@@ -16,6 +16,7 @@ public class Human extends LifeForm {
   public Human(String name, int lifePoints, int armor) {
     super(name, lifePoints, 5);
     this.armorPoints = Math.max(0, armor);
+    this.maxSpeed = 3;
   }
 
   /**

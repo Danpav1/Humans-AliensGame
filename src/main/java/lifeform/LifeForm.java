@@ -1,5 +1,6 @@
 package lifeform;
 
+import environment.Environment;
 import exceptions.WeaponException;
 import weapon.Weapon;
 
@@ -17,6 +18,8 @@ public abstract class LifeForm {
   protected int row;
 
   protected Weapon weapon;
+  protected String currentDirection = "north";
+  protected int maxSpeed;
 
   /**
    * Create a LifeForm without specified strength
@@ -160,5 +163,29 @@ public abstract class LifeForm {
     int newLifePoints = this.currentLifePoints - damage;
 
     this.currentLifePoints = Math.max(0, newLifePoints);
+  }
+
+  public String getCurrentDirection() {
+    return this.currentDirection;
+  }
+
+  public int getMaxSpeed() {
+    return this.maxSpeed;
+  }
+
+  public void changeDirectionNorth() {
+    this.currentDirection = "north";
+  }
+
+  public void changeDirectionEast() {
+    this.currentDirection = "east";
+  }
+
+  public void changeDirectionSouth() {
+    this.currentDirection = "south";
+  }
+
+  public void changeDirectionWest() {
+    this.currentDirection = "west";
   }
 }

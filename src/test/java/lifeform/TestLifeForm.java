@@ -11,8 +11,37 @@ import weapon.Weapon;
  * Tests the functionality provided by the LifeForm class
  */
 public class TestLifeForm {
+
+  /**
+   * Tests that the default direction of a LifeForm is north
+   */
+  @Test
+  public void testDefaultDirection() {
+    LifeForm critter = new MockLifeForm("Critter",1);
+    assertEquals("north", critter.getCurrentDirection());
+  }
+
+  /**
+   * Tests that a LifeForm can turn in any cardinal direction
+   */
+  @Test
+  public void testChangeDirection() {
+    LifeForm critter = new MockLifeForm("Critter", 1);
+    //Testing critter's default direction is north
+    assertEquals("north", critter.getCurrentDirection());
+    //Critter's direction changed to east
+    critter.changeDirectionEast();
+    assertEquals("east", critter.getCurrentDirection());
+    //Critter's direction changed to south
+    critter.changeDirectionSouth();
+    assertEquals("south", critter.getCurrentDirection());
+    //Critter's direction changed to west
+    critter.changeDirectionWest();
+    assertEquals("west", critter.getCurrentDirection());
+  }
+
   /*
-   * Lab 5 tests begin -----------------------------------------------------------------------------
+   * Lab 6 tests end; Lab 5 tests begin -----------------------------------------------------------------------------
    */
 
   /**

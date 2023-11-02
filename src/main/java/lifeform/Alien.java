@@ -58,6 +58,7 @@ public class Alien extends LifeForm implements TimerObserver {
     this.maxHitPoints = maxHitPoints;
     this.recoveryType = behavior;
     this.recoveryRate = recoveryRate;
+    this.maxSpeed = 2;
   }
 
   /**

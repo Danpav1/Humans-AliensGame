@@ -12,6 +12,23 @@ import recovery.*;
  * Tests the functionality provided by the Alien class
  */
 public class TestAlien {
+  /*
+   * Lab 6 tests begin
+   */
+
+  /**
+   * Tests that the alien default maxSpeed is 2
+   */
+  @Test
+  public void testMaxSpeed() throws RecoveryRateException {
+    Alien alien = new Alien("Alien", 30, new RecoveryNone());
+    assertEquals(2, alien.getMaxSpeed());
+  }
+
+  /*
+   * Lab 6 tests end; Lab 1-5 tests begin -----------------------------------------------------------------------------
+   */
+
   /**
    * Tests the initialization of an Alien using the constructor that uses only name
    * and maxHitPoints

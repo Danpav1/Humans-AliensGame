@@ -13,7 +13,7 @@ public class Environment {
 
   private static Environment uniqueEnvironment;
 
-  private final Cell[][] grid;
+  protected Cell[][] grid;
   private final int rows;
   private final int columns;
 
@@ -39,9 +39,8 @@ public class Environment {
    * Adds a LifeForm to a Cell in the Environment
    *
    * @param entity the LifeForm being added
-   * @param row the row of the Cell to add the LifeForm to
-   * @param col the column of the Cell to add the LifeForm to
-   *
+   * @param row    the row of the Cell to add the LifeForm to
+   * @param col    the column of the Cell to add the LifeForm to
    * @return true, if the LifeForm was successfully added,
    * false otherwise
    */
@@ -60,9 +59,8 @@ public class Environment {
    * Adds a specified Weapon to a specified location in the Environment
    *
    * @param weapon the specified Weapon
-   * @param row the specified row of the Environment
-   * @param col the specified column of the Environment
-   *
+   * @param row    the specified row of the Environment
+   * @param col    the specified column of the Environment
    * @return true, if the weapon was successfully added; false, otherwise
    */
   public boolean addWeapon(Weapon weapon, int row, int col) {
@@ -92,14 +90,13 @@ public class Environment {
    * @param col1 the first point's column
    * @param row2 the second point's row
    * @param col2 the second point's column
-   *
    * @return the distance between the two points
    */
   public double getDistance(int row1, int col1, int row2, int col2) throws EnvironmentException {
     if (!(isInBounds(row1, col1) && isInBounds(row2, col2))) {
       throw new EnvironmentException("An invalid coordinate was entered. "
-                                   + "LifeForms should be placed in the grid "
-                                   + "before taking distances between them.");
+              + "LifeForms should be placed in the grid "
+              + "before taking distances between them.");
     }
 
     double horizontalDistance = Math.abs(5 * (row2 - row1));
@@ -113,12 +110,11 @@ public class Environment {
    *
    * @param lifeform1 the first LifeForm
    * @param lifeform2 the second LifeForm
-   *
    * @return the distance between the two LifeForms
    */
   public double getDistance(LifeForm lifeform1, LifeForm lifeform2) throws EnvironmentException {
     return this.getDistance(lifeform1.getRow(), lifeform1.getCol(),
-                            lifeform2.getRow(), lifeform2.getCol());
+            lifeform2.getRow(), lifeform2.getCol());
   }
 
   /**
@@ -139,7 +135,6 @@ public class Environment {
    *
    * @param row the row of the Cell requested
    * @param col the column of the Cell requested
-   *
    * @return the LifeForm contained in the Cell requested
    */
   public LifeForm getLifeForm(int row, int col) {
@@ -172,14 +167,13 @@ public class Environment {
    *
    * @param row the row to check
    * @param col the column to check
-   *
    * @return an array of Weapons representing the weapons stored in the cell.
    */
   public Weapon[] getWeapons(int row, int col) {
     Weapon weapon1 = this.grid[row][col].getWeapon1();
     Weapon weapon2 = this.grid[row][col].getWeapon2();
 
-    return new Weapon[] {weapon1, weapon2};
+    return new Weapon[]{weapon1, weapon2};
   }
 
   /**
@@ -188,7 +182,6 @@ public class Environment {
    *
    * @param row the row being requested
    * @param col the column being requested
-   *
    * @return boolean representing existence of the requested row and column
    */
   private boolean isInBounds(int row, int col) {
@@ -218,12 +211,186 @@ public class Environment {
    * Removes a Weapon from a specified location in the Environment
    *
    * @param weapon the specified Weapon
-   * @param row the specified row of the Environment
-   * @param col the specified column of the Environment
+   * @param row    the specified row of the Environment
+   * @param col    the specified column of the Environment
    */
   public void removeWeapon(Weapon weapon, int row, int col) {
     if (isInBounds(row, col)) {
       this.grid[row][col].removeWeapon(weapon);
     }
   }
-}
+
+  /**
+   * Updates the location of the entity on the grid as well as
+   * updates the row and column instance variables of the entity
+   *
+   * @param entity is the entity whose location is being updated
+   * @param row    is the row the entity has been moved to
+   * @param col    is the column the entity has been moved to
+   */
+  public void updateGridLocation(LifeForm entity, int row, int col) {
+    removeLifeForm(entity.getRow(), entity.getCol());
+    if (this.isInBounds(row, col)) {
+      boolean successfullyAdded = this.grid[row][col].addLifeForm(entity);
+      if (successfullyAdded) {
+        entity.setLocation(row, col);
+      }
+    }
+  }
+
+  /**
+   * Moves an entity in a selected cardinal direction
+   *
+   * @param entity the entity that is moving
+   * @return boolean that is true if move is successful or false if it fails
+   */
+  public boolean move(LifeForm entity) {
+    boolean success = false;
+    switch (entity.getCurrentDirection()) {
+      //Case if currentDirection is north
+      case "north" -> {
+        if (isInBounds(entity.getRow() + entity.getMaxSpeed(), entity.getCol())) {
+          //Moves entity north by maxSpeed cells if there isn't another entity in that spot
+          if (this.grid[entity.getRow() + entity.getMaxSpeed()][entity.getCol()].getLifeForm() == null) {
+            updateGridLocation(entity, entity.getRow() + entity.getMaxSpeed(), entity.getCol());
+            success = true;
+            break;
+          }
+        }
+          if (isInBounds(entity.getRow() + entity.getMaxSpeed() - 1, entity.getCol())) {
+            //Moves entity north by (maxSpeed - 1) cells if spot is empty and if there is another entity maxSpeed units away
+            if (this.grid[entity.getRow() + entity.getMaxSpeed() - 1][entity.getCol()].getLifeForm() == null) {
+              updateGridLocation(entity, entity.getRow() + entity.getMaxSpeed() - 1, entity.getCol());
+              success = true;
+              break;
+            }
+          }
+          if (isInBounds(entity.getRow() + entity.getMaxSpeed() - 2, entity.getCol())) {
+            //Moves entity north by (maxSpeed - 2) cells if spot is empty and there is another entity (maxSpeed - 1) units away
+            if (this.grid[entity.getRow() + entity.getMaxSpeed() - 2][entity.getCol()].getLifeForm() == null) {
+              updateGridLocation(entity, entity.getRow() + entity.getMaxSpeed() - 2, entity.getCol());
+              success = true;
+              break;
+            }
+          }
+          if (isInBounds(entity.getRow() + entity.getMaxSpeed() - 3, entity.getCol()) && entity.getMaxSpeed() >= 3) {
+            //Moves entity north by (maxSpeed - 3) cells if spot is empty and there is another entity (maxSpeed - 2) units away
+            //This function does the same as the previous if statement for aliens
+            if (this.grid[entity.getRow() + entity.getMaxSpeed() - 3][entity.getCol()].getLifeForm() == null) {
+              updateGridLocation(entity, entity.getRow() + entity.getMaxSpeed() - 3, entity.getCol());
+              success = true;
+            }
+          }
+        }
+      //Case if currentDirection is east
+      case "east" -> {
+        if (isInBounds(entity.getRow(), entity.getCol() + entity.getMaxSpeed())) {
+          //Moves entity east by maxSpeed cells if there isn't another entity in that spot
+          if (this.grid[entity.getRow()][entity.getCol() + entity.getMaxSpeed()].getLifeForm() == null) {
+            updateGridLocation(entity, entity.getRow(), entity.getCol() + entity.getMaxSpeed());
+            success = true;
+            break;
+          }
+        }
+          if (isInBounds(entity.getRow(), entity.getCol() + entity.getMaxSpeed() - 1)) {
+            //Moves entity east by (maxSpeed - 1) cells if spot is empty and if there is another entity maxSpeed units away
+            if (this.grid[entity.getRow()][entity.getCol() + entity.getMaxSpeed() - 1].getLifeForm() == null) {
+              updateGridLocation(entity, entity.getRow(), entity.getCol() + entity.getMaxSpeed() - 1);
+              success = true;
+              break;
+            }
+          }
+          if (isInBounds(entity.getRow(), entity.getCol() + entity.getMaxSpeed() - 2)) {
+            //Moves entity east by (maxSpeed - 2) cells if spot is empty and there is another entity (maxSpeed - 1) units away
+            if (this.grid[entity.getRow()][entity.getCol() + entity.getMaxSpeed() - 2].getLifeForm() == null) {
+              updateGridLocation(entity, entity.getRow(), entity.getCol() + entity.getMaxSpeed() - 2);
+              success = true;
+              break;
+            }
+          }
+          if (isInBounds(entity.getRow(), entity.getCol() + entity.getMaxSpeed() - 3) && entity.getMaxSpeed() >= 3) {
+            //Moves entity east by (maxSpeed - 3) cells if spot is empty and there is another entity (maxSpeed - 2) units away
+            //This function does the same as the previous if statement for aliens
+            if (this.grid[entity.getRow()][entity.getCol() + entity.getMaxSpeed() - 3].getLifeForm() == null) {
+              updateGridLocation(entity, entity.getRow(), entity.getCol() + entity.getMaxSpeed() - 3);
+              success = true;
+            }
+          }
+        }
+      //Case if currentDirection is south
+      case "south" -> {
+        if (isInBounds(entity.getRow() - entity.getMaxSpeed(), entity.getCol())) {
+          //Moves entity south by maxSpeed cells if there isn't another entity in that spot
+          if (this.grid[entity.getRow() - entity.getMaxSpeed()][entity.getCol()].getLifeForm() == null) {
+            updateGridLocation(entity, entity.getRow() - entity.getMaxSpeed(), entity.getCol());
+            success = true;
+            break;
+          }
+        }
+          if (isInBounds(entity.getRow() - entity.getMaxSpeed() + 1, entity.getCol())) {
+            //Moves entity south by (maxSpeed - 1) cells if spot is empty and if there is another entity maxSpeed units away
+            if (this.grid[entity.getRow() - entity.getMaxSpeed() + 1][entity.getCol()].getLifeForm() == null) {
+              updateGridLocation(entity, entity.getRow() - entity.getMaxSpeed() + 1, entity.getCol());
+              success = true;
+              break;
+            }
+          }
+          if (isInBounds(entity.getRow() - entity.getMaxSpeed() + 2, entity.getCol())) {
+            //Moves entity south by (maxSpeed - 2) cells if spot is empty and there is another entity (maxSpeed - 1) units away
+            if (this.grid[entity.getRow() - entity.getMaxSpeed() + 2][entity.getCol()].getLifeForm() == null) {
+              updateGridLocation(entity, entity.getRow() - entity.getMaxSpeed() + 2, entity.getCol());
+              success = true;
+              break;
+            }
+          }
+          if (isInBounds(entity.getRow() - entity.getMaxSpeed() + 3, entity.getCol()) && entity.getMaxSpeed() >= 3) {
+            //Moves entity south by (maxSpeed - 3) cells if spot is empty and there is another entity (maxSpeed - 2) units away
+            //This function does the same as the previous if statement for aliens
+            if (this.grid[entity.getRow() - entity.getMaxSpeed() + 3][entity.getCol()].getLifeForm() == null) {
+              updateGridLocation(entity, entity.getRow() - entity.getMaxSpeed() + 3, entity.getCol());
+              success = true;
+            }
+          }
+        }
+      //Case if currentDirection is west
+      case "west" -> {
+        if (isInBounds(entity.getRow(), entity.getCol() - entity.getMaxSpeed())) {
+          //Moves entity west by maxSpeed cells if there isn't another entity in that spot
+          if (this.grid[entity.getRow()][entity.getCol() - entity.getMaxSpeed()].getLifeForm() == null) {
+            updateGridLocation(entity, entity.getRow(), entity.getCol() - entity.getMaxSpeed());
+            success = true;
+            break;
+          }
+        }
+        if (isInBounds(entity.getRow(), entity.getCol() - entity.getMaxSpeed() + 1)) {
+          //Moves entity west by (maxSpeed - 1) cells if spot is empty and if there is another entity maxSpeed units away
+          if (this.grid[entity.getRow()][entity.getCol() - entity.getMaxSpeed() + 1].getLifeForm() == null) {
+            updateGridLocation(entity, entity.getRow(), entity.getCol() - entity.getMaxSpeed() + 1);
+            success = true;
+            break;
+          }
+        }
+        if (isInBounds(entity.getRow(), entity.getCol() - entity.getMaxSpeed() + 2)) {
+          //Moves entity west by (maxSpeed - 2) cells if spot is empty and there is another entity (maxSpeed - 1) units away
+          if (this.grid[entity.getRow()][entity.getCol() - entity.getMaxSpeed() + 2].getLifeForm() == null) {
+            updateGridLocation(entity, entity.getRow(), entity.getCol() - entity.getMaxSpeed() + 2);
+            success = true;
+            break;
+          }
+        }
+        if (isInBounds(entity.getRow(), entity.getCol() - entity.getMaxSpeed() + 3) && entity.getMaxSpeed() >= 3) {
+          //Moves entity west by (maxSpeed - 3) cells if spot is empty and there is another entity (maxSpeed - 2) units away
+          //This function does the same as the previous if statement for aliens
+          if (this.grid[entity.getRow()][entity.getCol() - entity.getMaxSpeed() + 3].getLifeForm() == null) {
+            updateGridLocation(entity, entity.getRow(), entity.getCol() - entity.getMaxSpeed() + 3);
+            success = true;
+          }
+        }
+      }
+      default -> {
+        success = false;
+      }
+    }
+      return success;
+    }
+  }
