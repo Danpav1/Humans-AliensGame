@@ -11,6 +11,7 @@ import exceptions.WeaponException;
 public interface Weapon extends TimerObserver {
   /**
    * Fires the Weapon once, and lowers the currentAmmo of the Weapon by 1
+   *
    * @return the damage the Weapon will deal to the target
    */
   int fire(int distance) throws WeaponException;

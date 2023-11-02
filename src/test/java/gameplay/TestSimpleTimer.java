@@ -83,8 +83,8 @@ public class TestSimpleTimer {
     SimpleTimer st = new SimpleTimer(1000);
     st.start();
     Thread.sleep(250); // So we are 1/4th a second different
-    for (int x=0;x<5;x++){
-      assertEquals(x,st.getRound()); //assumes round starts at 0
+    for (int x = 0; x < 5; x++) {
+      assertEquals(x, st.getRound()); //assumes round starts at 0
       Thread.sleep(1000); // wait for the next time change
     }
   }

@@ -18,7 +18,6 @@ public class Cell {
    * LifeForm is already present
    *
    * @param entity the LifeForm held in the cell
-   *
    * @return true if the LifeForm was added to the Cell, false otherwise
    */
   public boolean addLifeForm(LifeForm entity) {
@@ -36,7 +35,6 @@ public class Cell {
    * if the operation cannot be done.
    *
    * @param weapon the Weapon to be added to the Cell
-   *
    * @return true, if the operation was a success; false, otherwise
    */
   public boolean addWeapon(Weapon weapon) {
@@ -108,7 +106,6 @@ public class Cell {
    * Tries to remove a specified Weapon from the Cell. Returns null if it fails.
    *
    * @param weapon the Weapon to remove from the Cell
-   *
    * @return the Weapon requested; null, if the requested Weapon isn't in the Cell
    */
   public Weapon removeWeapon(Weapon weapon) {

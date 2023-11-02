@@ -11,6 +11,7 @@ public abstract class Attachment implements Weapon {
 
   /**
    * Fires the Weapon once, and lowers the currentAmmo of the Weapon by 1
+   *
    * @return the damage the Weapon will deal to the target
    */
   public abstract int fire(int distance) throws WeaponException;
@@ -78,6 +79,7 @@ public abstract class Attachment implements Weapon {
 
   /**
    * Updates the time of the weapon that the Attachment wraps
+   *
    * @param time the current time being held by the Timer subject
    */
   public void updateTime(int time) {

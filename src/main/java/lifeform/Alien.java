@@ -19,7 +19,8 @@ public class Alien extends LifeForm implements TimerObserver {
 
   /**
    * Creates an Alien with no recovery type specified
-   * @param name the name of the Alien
+   *
+   * @param name         the name of the Alien
    * @param maxHitPoints the max maxHitPoints of the Alien
    */
   public Alien(String name, int maxHitPoints) throws RecoveryRateException {
@@ -28,9 +29,10 @@ public class Alien extends LifeForm implements TimerObserver {
 
   /**
    * Creates an Alien with recovery type specified
-   * @param name the name of the Alien
+   *
+   * @param name         the name of the Alien
    * @param maxHitPoints the max maxHitPoints of the Alien
-   * @param behavior The RecoveryBehavior to assign to the Alien
+   * @param behavior     The RecoveryBehavior to assign to the Alien
    */
   public Alien(String name,
                int maxHitPoints,
@@ -40,9 +42,10 @@ public class Alien extends LifeForm implements TimerObserver {
 
   /**
    * Creates an alien with recovery type and rate specified
-   * @param name the name of the Alien
+   *
+   * @param name         the name of the Alien
    * @param maxHitPoints the max maxHitPoints of the Alien
-   * @param behavior the RecoveryBehavior to assign to the Alien
+   * @param behavior     the RecoveryBehavior to assign to the Alien
    * @param recoveryRate the number of rounds between recoveries
    */
   public Alien(String name,
@@ -63,6 +66,7 @@ public class Alien extends LifeForm implements TimerObserver {
 
   /**
    * Accessor for the maxLifePoints field
+   *
    * @return the maxHitPoints field value
    */
   int getMaxLifePoints() {
@@ -71,6 +75,7 @@ public class Alien extends LifeForm implements TimerObserver {
 
   /**
    * Accessor for the recoveryRate field
+   *
    * @return the recoveryRate field value
    */
   int getRecoveryRate() {

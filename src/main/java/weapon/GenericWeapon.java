@@ -16,6 +16,7 @@ public abstract class GenericWeapon implements Weapon {
 
   /**
    * Fires the Weapon once, and lowers the currentAmmo of the Weapon by 1
+   *
    * @param distance the distance to the target being fired at
    * @return the damage the Weapon will deal to the target
    */
@@ -84,6 +85,7 @@ public abstract class GenericWeapon implements Weapon {
 
   /**
    * Updates the weapon when the round changes so that it can fire again
+   *
    * @param time the current time being held by the Timer subject
    */
   public void updateTime(int time) {

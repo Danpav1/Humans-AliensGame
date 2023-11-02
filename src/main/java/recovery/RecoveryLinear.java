@@ -8,6 +8,7 @@ public class RecoveryLinear implements RecoveryBehavior {
 
   /**
    * Creates a RecoveryLinear object
+   *
    * @param recoveryAmount The flat amount the LifeForm should be healed by per recovery
    */
   public RecoveryLinear(int recoveryAmount) {
@@ -17,8 +18,9 @@ public class RecoveryLinear implements RecoveryBehavior {
   /**
    * Calculates an appropriate health value after recovery based on the currentLifePoints,
    * the maxLifePoints, and the recoveryStep
+   *
    * @param currentLife the currentLifePoints of the LifeForm
-   * @param maxLife the madLifePoints of the LifeForm
+   * @param maxLife     the madLifePoints of the LifeForm
    * @return the appropriate calculation for how much health the LifeForm should
    * have after the recovery
    */

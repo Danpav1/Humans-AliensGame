@@ -54,7 +54,7 @@ public class TestAttachment {
       exception1Caught = true;
     }
 
-    try{
+    try {
       MockAttachment attachment3 = new MockAttachment(attachment);
 
       attachment3.fire(0);

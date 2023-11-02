@@ -31,12 +31,12 @@ public class TestEnvironment {
   @Test
   public void testMovesNorth() throws RecoveryRateException {
     //Initializes a new environment, a human, and an alien
-    Environment environment = Environment.getEnvironment(5,5);
+    Environment environment = Environment.getEnvironment(5, 5);
     Human bob = new Human("bob", 11, 10);
     Alien alien1 = new Alien("alien", 10, new RecoveryNone());
     //Places the human and alien on the board with no obstacles
-    environment.addLifeForm(bob, 1,2);
-    environment.addLifeForm(alien1,1,3);
+    environment.addLifeForm(bob, 1, 2);
+    environment.addLifeForm(alien1, 1, 3);
     //Moves the human and alien north by their respective maxSpeed
     boolean humanSuccess = environment.move(bob);
     boolean alienSuccess = environment.move(alien1);
@@ -49,8 +49,8 @@ public class TestEnvironment {
     assertEquals(3, alien1.getRow());
     assertEquals(3, alien1.getCol());
     //Sets human's and alien's location next to the northern border
-    environment.updateGridLocation(bob,4,2);
-    environment.updateGridLocation(alien1,4,3);
+    environment.updateGridLocation(bob, 4, 2);
+    environment.updateGridLocation(alien1, 4, 3);
     //Moves human and alien north again
     humanSuccess = environment.move(bob);
     alienSuccess = environment.move(alien1);
@@ -60,11 +60,11 @@ public class TestEnvironment {
     assertEquals(2, bob.getCol());
     //Tests if alien didn't move due to going out of bounds
     assertFalse(alienSuccess);
-    assertEquals(4,alien1.getRow());
+    assertEquals(4, alien1.getRow());
     assertEquals(3, alien1.getCol());
     //Sets human's location directly south of alien
-    environment.updateGridLocation(bob,1,3);
-    environment.updateGridLocation(alien1,2,3);
+    environment.updateGridLocation(bob, 1, 3);
+    environment.updateGridLocation(alien1, 2, 3);
     //Moves human north
     humanSuccess = environment.move(bob);
     //Tests if human moved north through alien correctly
@@ -72,8 +72,8 @@ public class TestEnvironment {
     assertEquals(4, bob.getRow());
     assertEquals(3, bob.getCol());
     //Sets alien's location directly south of human
-    environment.updateGridLocation(bob,2,3);
-    environment.updateGridLocation(alien1,1,3);
+    environment.updateGridLocation(bob, 2, 3);
+    environment.updateGridLocation(alien1, 1, 3);
     //Moves alien north
     alienSuccess = environment.move(alien1);
     //Tests if alien moved north through human correctly
@@ -81,8 +81,8 @@ public class TestEnvironment {
     assertEquals(3, alien1.getRow());
     assertEquals(3, alien1.getCol());
     //Sets human's location 3 spots south of alien
-    environment.updateGridLocation(bob,0,3);
-    environment.updateGridLocation(alien1,3,3);
+    environment.updateGridLocation(bob, 0, 3);
+    environment.updateGridLocation(alien1, 3, 3);
     //Moves human north
     humanSuccess = environment.move(bob);
     //Tests if human moved north up to alien correctly
@@ -90,18 +90,18 @@ public class TestEnvironment {
     assertEquals(2, bob.getRow());
     assertEquals(3, bob.getCol());
     //Initializes another alien
-    Alien alien2 = new Alien("alien2",10, new RecoveryNone());
-    environment.addLifeForm(alien2, 3,2);
+    Alien alien2 = new Alien("alien2", 10, new RecoveryNone());
+    environment.addLifeForm(alien2, 3, 2);
     //Moves alien1 directly south of alien2
-    environment.updateGridLocation(alien1,2,2);
+    environment.updateGridLocation(alien1, 2, 2);
     //Moves human underneath alien1 and alien2 so there is a one space gap
-    environment.updateGridLocation(bob,0,2);
+    environment.updateGridLocation(bob, 0, 2);
     //Moves human north
     humanSuccess = environment.move(bob);
     //Tests if human moves north correctly
     assertTrue(humanSuccess);
     assertEquals(1, bob.getRow());
-    assertEquals(2,bob.getCol());
+    assertEquals(2, bob.getCol());
 
     Environment.removeEnvironment();
   }
@@ -112,12 +112,12 @@ public class TestEnvironment {
   @Test
   public void testMovesEast() throws RecoveryRateException {
     //Initializes a new environment, a human, and an alien
-    Environment environment = Environment.getEnvironment(5,5);
+    Environment environment = Environment.getEnvironment(5, 5);
     Human bob = new Human("bob", 10, 10);
     Alien alien1 = new Alien("alien", 10, new RecoveryNone());
     //Places the human and alien on the board with no obstacles
-    environment.addLifeForm(bob, 2,1);
-    environment.addLifeForm(alien1,3,1);
+    environment.addLifeForm(bob, 2, 1);
+    environment.addLifeForm(alien1, 3, 1);
     //Changes direction of human and alien to east
     bob.changeDirectionEast();
     alien1.changeDirectionEast();
@@ -133,8 +133,8 @@ public class TestEnvironment {
     assertEquals(3, alien1.getRow());
     assertEquals(3, alien1.getCol());
     //Sets human's and alien's location next to the eastern border
-    environment.updateGridLocation(bob,2,4);
-    environment.updateGridLocation(alien1,3,4);
+    environment.updateGridLocation(bob, 2, 4);
+    environment.updateGridLocation(alien1, 3, 4);
     //Moves human and alien east again
     humanSuccess = environment.move(bob);
     alienSuccess = environment.move(alien1);
@@ -144,11 +144,11 @@ public class TestEnvironment {
     assertEquals(4, bob.getCol());
     //Tests if alien didn't move due to going out of bounds
     assertFalse(alienSuccess);
-    assertEquals(3,alien1.getRow());
+    assertEquals(3, alien1.getRow());
     assertEquals(4, alien1.getCol());
     //Sets human's location directly west of alien
-    environment.updateGridLocation(bob,3,1);
-    environment.updateGridLocation(alien1,3,2);
+    environment.updateGridLocation(bob, 3, 1);
+    environment.updateGridLocation(alien1, 3, 2);
     //Moves human east
     humanSuccess = environment.move(bob);
     //Tests if human moved east through alien correctly
@@ -156,8 +156,8 @@ public class TestEnvironment {
     assertEquals(3, bob.getRow());
     assertEquals(4, bob.getCol());
     //Sets alien's location directly west of human
-    environment.updateGridLocation(bob,3,2);
-    environment.updateGridLocation(alien1,3,1);
+    environment.updateGridLocation(bob, 3, 2);
+    environment.updateGridLocation(alien1, 3, 1);
     //Moves alien east
     alienSuccess = environment.move(alien1);
     //Tests if alien moved east through human correctly
@@ -165,8 +165,8 @@ public class TestEnvironment {
     assertEquals(3, alien1.getRow());
     assertEquals(3, alien1.getCol());
     //Sets human's location 3 spots west of alien
-    environment.updateGridLocation(bob,3,0);
-    environment.updateGridLocation(alien1,3,3);
+    environment.updateGridLocation(bob, 3, 0);
+    environment.updateGridLocation(alien1, 3, 3);
     //Moves human east
     humanSuccess = environment.move(bob);
     //Tests if human moved east up to alien correctly
@@ -174,19 +174,19 @@ public class TestEnvironment {
     assertEquals(3, bob.getRow());
     assertEquals(2, bob.getCol());
     //Initializes another alien
-    Alien alien2 = new Alien("alien2",10, new RecoveryNone());
-    environment.addLifeForm(alien2, 2,3);
+    Alien alien2 = new Alien("alien2", 10, new RecoveryNone());
+    environment.addLifeForm(alien2, 2, 3);
     alien2.changeDirectionEast();
     //Moves alien1 directly west of alien2
-    environment.updateGridLocation(alien1,2,2);
+    environment.updateGridLocation(alien1, 2, 2);
     //Moves human beside alien1 and alien2 so there is a one space gap
-    environment.updateGridLocation(bob,2,0);
+    environment.updateGridLocation(bob, 2, 0);
     //Moves human east
     humanSuccess = environment.move(bob);
     //Tests if human moves east correctly
     assertTrue(humanSuccess);
     assertEquals(2, bob.getRow());
-    assertEquals(1,bob.getCol());
+    assertEquals(1, bob.getCol());
 
     Environment.removeEnvironment();
   }
@@ -197,12 +197,12 @@ public class TestEnvironment {
   @Test
   public void testMovesSouth() throws RecoveryRateException {
     //Initializes a new environment, a human, and an alien
-    Environment environment = Environment.getEnvironment(5,5);
+    Environment environment = Environment.getEnvironment(5, 5);
     Human bob = new Human("bob", 10, 10);
     Alien alien1 = new Alien("alien", 10, new RecoveryNone());
     //Places the human and alien on the board with no obstacles
-    environment.addLifeForm(bob, 4,2);
-    environment.addLifeForm(alien1,4,3);
+    environment.addLifeForm(bob, 4, 2);
+    environment.addLifeForm(alien1, 4, 3);
     //Changes human and alien direction to south
     bob.changeDirectionSouth();
     alien1.changeDirectionSouth();
@@ -218,8 +218,8 @@ public class TestEnvironment {
     assertEquals(2, alien1.getRow());
     assertEquals(3, alien1.getCol());
     //Sets human's and alien's location next to the southern border
-    environment.updateGridLocation(bob,0,2);
-    environment.updateGridLocation(alien1,0,3);
+    environment.updateGridLocation(bob, 0, 2);
+    environment.updateGridLocation(alien1, 0, 3);
     //Moves human and alien south again
     humanSuccess = environment.move(bob);
     alienSuccess = environment.move(alien1);
@@ -229,11 +229,11 @@ public class TestEnvironment {
     assertEquals(2, bob.getCol());
     //Tests if alien didn't move due to going out of bounds
     assertFalse(alienSuccess);
-    assertEquals(0,alien1.getRow());
+    assertEquals(0, alien1.getRow());
     assertEquals(3, alien1.getCol());
     //Sets human's location directly north of alien
-    environment.updateGridLocation(bob,4,3);
-    environment.updateGridLocation(alien1,3,3);
+    environment.updateGridLocation(bob, 4, 3);
+    environment.updateGridLocation(alien1, 3, 3);
     //Moves human south
     humanSuccess = environment.move(bob);
     //Tests if human moved south through alien correctly
@@ -241,8 +241,8 @@ public class TestEnvironment {
     assertEquals(1, bob.getRow());
     assertEquals(3, bob.getCol());
     //Sets alien's location directly north of human
-    environment.updateGridLocation(bob,3,3);
-    environment.updateGridLocation(alien1,4,3);
+    environment.updateGridLocation(bob, 3, 3);
+    environment.updateGridLocation(alien1, 4, 3);
     //Moves alien south
     alienSuccess = environment.move(alien1);
     //Tests if alien moved south through human correctly
@@ -250,8 +250,8 @@ public class TestEnvironment {
     assertEquals(2, alien1.getRow());
     assertEquals(3, alien1.getCol());
     //Sets human's location 3 spots north of alien
-    environment.updateGridLocation(bob,3,3);
-    environment.updateGridLocation(alien1,0,3);
+    environment.updateGridLocation(bob, 3, 3);
+    environment.updateGridLocation(alien1, 0, 3);
     //Moves human south
     humanSuccess = environment.move(bob);
     //Tests if human moved south down to alien correctly
@@ -259,19 +259,19 @@ public class TestEnvironment {
     assertEquals(1, bob.getRow());
     assertEquals(3, bob.getCol());
     //Initializes another alien
-    Alien alien2 = new Alien("alien2",10, new RecoveryNone());
-    environment.addLifeForm(alien2, 0,2);
+    Alien alien2 = new Alien("alien2", 10, new RecoveryNone());
+    environment.addLifeForm(alien2, 0, 2);
     alien2.changeDirectionSouth();
     //Moves alien1 directly north of alien2
-    environment.updateGridLocation(alien1,1,2);
+    environment.updateGridLocation(alien1, 1, 2);
     //Moves human above alien1 and alien2 so there is a one space gap
-    environment.updateGridLocation(bob,3,2);
+    environment.updateGridLocation(bob, 3, 2);
     //Moves human south
     humanSuccess = environment.move(bob);
     //Tests if human moves south correctly
     assertTrue(humanSuccess);
     assertEquals(2, bob.getRow());
-    assertEquals(2,bob.getCol());
+    assertEquals(2, bob.getCol());
 
     Environment.removeEnvironment();
   }
@@ -282,12 +282,12 @@ public class TestEnvironment {
   @Test
   public void testMovesWest() throws RecoveryRateException {
     //Initializes a new environment, a human, and an alien
-    Environment environment = Environment.getEnvironment(5,5);
+    Environment environment = Environment.getEnvironment(5, 5);
     Human bob = new Human("bob", 10, 10);
     Alien alien1 = new Alien("alien", 10, new RecoveryNone());
     //Places the human and alien on the board with no obstacles
-    environment.addLifeForm(bob, 2,4);
-    environment.addLifeForm(alien1,3,4);
+    environment.addLifeForm(bob, 2, 4);
+    environment.addLifeForm(alien1, 3, 4);
     //Changes direction of human and alien to west
     bob.changeDirectionWest();
     alien1.changeDirectionWest();
@@ -303,8 +303,8 @@ public class TestEnvironment {
     assertEquals(3, alien1.getRow());
     assertEquals(2, alien1.getCol());
     //Sets human's and alien's location next to the western border
-    environment.updateGridLocation(bob,2,0);
-    environment.updateGridLocation(alien1,3,0);
+    environment.updateGridLocation(bob, 2, 0);
+    environment.updateGridLocation(alien1, 3, 0);
     //Moves human and alien west again
     humanSuccess = environment.move(bob);
     alienSuccess = environment.move(alien1);
@@ -314,11 +314,11 @@ public class TestEnvironment {
     assertEquals(0, bob.getCol());
     //Tests if alien didn't move due to going out of bounds
     assertFalse(alienSuccess);
-    assertEquals(3,alien1.getRow());
+    assertEquals(3, alien1.getRow());
     assertEquals(0, alien1.getCol());
     //Sets human's location directly east of alien
-    environment.updateGridLocation(bob,3,3);
-    environment.updateGridLocation(alien1,3,2);
+    environment.updateGridLocation(bob, 3, 3);
+    environment.updateGridLocation(alien1, 3, 2);
     //Moves human west
     humanSuccess = environment.move(bob);
     //Tests if human moved west through alien correctly
@@ -326,8 +326,8 @@ public class TestEnvironment {
     assertEquals(3, bob.getRow());
     assertEquals(0, bob.getCol());
     //Sets alien's location directly east of human
-    environment.updateGridLocation(bob,3,2);
-    environment.updateGridLocation(alien1,3,3);
+    environment.updateGridLocation(bob, 3, 2);
+    environment.updateGridLocation(alien1, 3, 3);
     //Moves alien west
     alienSuccess = environment.move(alien1);
     //Tests if alien moved west through human correctly
@@ -335,8 +335,8 @@ public class TestEnvironment {
     assertEquals(3, alien1.getRow());
     assertEquals(1, alien1.getCol());
     //Sets human's location 3 spots east of alien
-    environment.updateGridLocation(bob,3,3);
-    environment.updateGridLocation(alien1,3,0);
+    environment.updateGridLocation(bob, 3, 3);
+    environment.updateGridLocation(alien1, 3, 0);
     //Moves human west
     humanSuccess = environment.move(bob);
     //Tests if human moved west up to alien correctly
@@ -344,19 +344,19 @@ public class TestEnvironment {
     assertEquals(3, bob.getRow());
     assertEquals(1, bob.getCol());
     //Initializes another alien
-    Alien alien2 = new Alien("alien2",10, new RecoveryNone());
-    environment.addLifeForm(alien2, 2,1);
+    Alien alien2 = new Alien("alien2", 10, new RecoveryNone());
+    environment.addLifeForm(alien2, 2, 1);
     alien2.changeDirectionWest();
     //Moves alien1 directly east of alien2
-    environment.updateGridLocation(alien1,2,0);
+    environment.updateGridLocation(alien1, 2, 0);
     //Moves human beside alien1 and alien2 so there is a one space gap
-    environment.updateGridLocation(bob,2,3);
+    environment.updateGridLocation(bob, 2, 3);
     //Moves human west
     humanSuccess = environment.move(bob);
     //Tests if human moves west correctly
     assertTrue(humanSuccess);
     assertEquals(2, bob.getRow());
-    assertEquals(2,bob.getCol());
+    assertEquals(2, bob.getCol());
 
     Environment.removeEnvironment();
   }
@@ -367,13 +367,13 @@ public class TestEnvironment {
   @Test
   public void testMovingOnEdge() throws RecoveryRateException {
     //Initializes a new environment, a human, and an alien
-    Environment environment = Environment.getEnvironment(5,5);
+    Environment environment = Environment.getEnvironment(5, 5);
     Human bob = new Human("bob", 10, 10);
     Alien alien1 = new Alien("alien", 10, new RecoveryNone());
     //Places the Human and Alien on the board, with Human being 2 away from northern border
     // and Alien being 1 away
-    environment.addLifeForm(bob, 2,2);
-    environment.addLifeForm(alien1,3,3);
+    environment.addLifeForm(bob, 2, 2);
+    environment.addLifeForm(alien1, 3, 3);
     //Changes direction of LifeForms to north
     bob.changeDirectionNorth();
     alien1.changeDirectionNorth();
@@ -383,39 +383,39 @@ public class TestEnvironment {
     //Tests if Human moved correctly
     assertTrue(humanSuccess);
     assertEquals(4, bob.getRow());
-    assertEquals(2,bob.getCol());
+    assertEquals(2, bob.getCol());
     //Tests if Alien moved correctly
     assertTrue(alienSuccess);
-    assertEquals(4,alien1.getRow());
-    assertEquals(3,alien1.getCol());
+    assertEquals(4, alien1.getRow());
+    assertEquals(3, alien1.getCol());
     //Places Human 1 away from northern border
-    environment.updateGridLocation(bob, 3,2);
+    environment.updateGridLocation(bob, 3, 2);
     //Moves Human north
     humanSuccess = environment.move(bob);
     //Tests if Human moved correctly
     assertTrue(humanSuccess);
     assertEquals(4, bob.getRow());
-    assertEquals(2,bob.getCol());
+    assertEquals(2, bob.getCol());
     //Changes LifeForms direction to east
     bob.changeDirectionEast();
     alien1.changeDirectionEast();
     //Places Human 2 away from eastern border
-    environment.updateGridLocation(bob, 2,2);
+    environment.updateGridLocation(bob, 2, 2);
     //Places Alien 1 away from eastern border
-    environment.updateGridLocation(alien1,3,3);
+    environment.updateGridLocation(alien1, 3, 3);
     //Moves Human and Alien east
     humanSuccess = environment.move(bob);
     alienSuccess = environment.move(alien1);
     //Tests if Human moved correctly
     assertTrue(humanSuccess);
-    assertEquals(2,bob.getRow());
+    assertEquals(2, bob.getRow());
     assertEquals(4, bob.getCol());
     //Tests if Alien moved correctly
     assertTrue(alienSuccess);
     assertEquals(3, alien1.getRow());
     assertEquals(4, alien1.getCol());
     //Places Human 1 away from eastern border
-    environment.updateGridLocation(bob, 2,3);
+    environment.updateGridLocation(bob, 2, 3);
     //Moves Human east
     humanSuccess = environment.move(bob);
     //Tests if Human moved correctly
@@ -428,7 +428,7 @@ public class TestEnvironment {
     //Places Human 2 away from southern border
     environment.updateGridLocation(bob, 2, 1);
     //Places Alien 1 away from southern border
-    environment.updateGridLocation(alien1,1,3);
+    environment.updateGridLocation(alien1, 1, 3);
     //Moves Alien and Human south
     humanSuccess = environment.move(bob);
     alienSuccess = environment.move(alien1);
@@ -441,20 +441,20 @@ public class TestEnvironment {
     assertEquals(0, alien1.getRow());
     assertEquals(3, alien1.getCol());
     //Places Human 1 away from southern border
-    environment.updateGridLocation(bob, 1,1);
+    environment.updateGridLocation(bob, 1, 1);
     //Moves Human south
     humanSuccess = environment.move(bob);
     //Tests if Human moves correctly
     assertTrue(humanSuccess);
-    assertEquals(0,bob.getRow());
+    assertEquals(0, bob.getRow());
     assertEquals(1, bob.getCol());
     //Changes LifeForms direction to west
     bob.changeDirectionWest();
     alien1.changeDirectionWest();
     //Places Human 2 away from western border
-    environment.updateGridLocation(bob, 2,2);
+    environment.updateGridLocation(bob, 2, 2);
     //Places Alien 1 away from western border
-    environment.updateGridLocation(alien1,3,1);
+    environment.updateGridLocation(alien1, 3, 1);
     //Moves LifeForms west
     humanSuccess = environment.move(bob);
     alienSuccess = environment.move(alien1);
@@ -467,7 +467,7 @@ public class TestEnvironment {
     assertEquals(3, alien1.getRow());
     assertEquals(0, alien1.getCol());
     //Places Human 1 away from western border
-    environment.updateGridLocation(bob, 2,1);
+    environment.updateGridLocation(bob, 2, 1);
     //Moves Human west
     humanSuccess = environment.move(bob);
     //Tests if Human moves correctly
@@ -655,7 +655,6 @@ public class TestEnvironment {
    * Helper function that counts the number of Weapons in an Environment's getWeapons() return
    *
    * @param weapons the array of Weapons returned by getWeapons()
-   *
    * @return the number of weapons in the array
    */
   int countWeapons(Weapon[] weapons) {
@@ -726,7 +725,7 @@ public class TestEnvironment {
   @Test
   public void testRemoveLifeForm() {
     Environment environment = Environment.getEnvironment(1, 1);
-    LifeForm craig =  new MockLifeForm("Craig", 50);
+    LifeForm craig = new MockLifeForm("Craig", 50);
 
     environment.addLifeForm(craig, 0, 0);
     assertEquals(craig, environment.getLifeForm(0, 0));

@@ -12,13 +12,12 @@ public class Scope extends Attachment {
    * Constructs Scope
    *
    * @param baseWeapon the weapon that the scope applies to
-   *
    * @throws AttachmentException when the weapon has two attachments already
    */
   public Scope(Weapon baseWeapon) throws AttachmentException {
     if (baseWeapon.getNumAttachments() >= 2) {
       throw new AttachmentException("Weapon is full. "
-                                  + "Weapons cannot have more than two attachments.");
+              + "Weapons cannot have more than two attachments.");
     }
 
     this.weapon = baseWeapon;
@@ -38,9 +37,7 @@ public class Scope extends Attachment {
    * Fire the weapon and calculate the damage modifier
    *
    * @param distance the distance to the target
-   *
    * @return the final calculation of modified damage
-   *
    * @throws WeaponException when distance is negative
    */
   public int fire(int distance) throws WeaponException {

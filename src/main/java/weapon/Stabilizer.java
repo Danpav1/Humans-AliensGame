@@ -10,6 +10,7 @@ import gameplay.TimerObserver;
 public class Stabilizer extends Attachment implements TimerObserver, Weapon {
   /**
    * Constructor for Stabilizers
+   *
    * @param baseWeapon the Weapon to attach the Stabilizer to
    * @throws AttachmentException if the Weapon already has two Attachments on it
    */
@@ -24,6 +25,7 @@ public class Stabilizer extends Attachment implements TimerObserver, Weapon {
 
   /**
    * Fires the Weapon and provides a flat damage buff of 25% to the Weapon
+   *
    * @param distance the distance from the Weapon to the target
    * @return the modified damage appropriate to the Weapon
    * @throws WeaponException when distance is negative

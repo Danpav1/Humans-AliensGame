@@ -7,6 +7,7 @@ public class MockAttachment extends Attachment {
 
   /**
    * Constructor for MockAttachments
+   *
    * @param weapon the weapon that the attachment will apply to
    */
   public MockAttachment(Weapon weapon) throws AttachmentException {

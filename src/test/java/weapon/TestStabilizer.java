@@ -23,7 +23,6 @@ public class TestStabilizer {
     assertEquals(1, b.fire(5));
   }
 
-  
 
   @Test
   public void testReload() throws AttachmentException, WeaponException {
@@ -89,7 +88,7 @@ public class TestStabilizer {
 
   @Test
   public void testChainGunWithPowerBoosterAndStabilizer() throws AttachmentException,
-                                                                 WeaponException {
+          WeaponException {
     Weapon weapon = new Stabilizer(new PowerBooster(new ChainGun()));
     MockLifeForm tester = new MockLifeForm("Tester", 10);
     MockLifeForm dummy = new MockLifeForm("Dummy", 100);

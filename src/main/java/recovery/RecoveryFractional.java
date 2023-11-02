@@ -8,6 +8,7 @@ public class RecoveryFractional implements RecoveryBehavior {
 
   /**
    * Creates a RecoveryFractional object
+   *
    * @param recoveryFraction the fractional amount of currentHealth that
    *                         should be recovered per recovery
    */
@@ -18,8 +19,9 @@ public class RecoveryFractional implements RecoveryBehavior {
   /**
    * Calculates an appropriate health value after recovery based on the currentLifePoints,
    * the maxLifePoints, and the recoveryStep
+   *
    * @param currentLife the currentLifePoints of the LifeForm
-   * @param maxLife the madLifePoints of the LifeForm
+   * @param maxLife     the madLifePoints of the LifeForm
    * @return the appropriate calculation for how much health the LifeForm should
    * have after the recovery
    */

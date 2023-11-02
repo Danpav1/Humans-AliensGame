@@ -24,7 +24,7 @@ public abstract class LifeForm {
   /**
    * Create a LifeForm without specified strength
    *
-   * @param name the name of the life form
+   * @param name   the name of the life form
    * @param points the current starting life points of the life form
    */
   public LifeForm(String name, int points) {
@@ -34,8 +34,8 @@ public abstract class LifeForm {
   /**
    * Create a LifeForm with specified strength
    *
-   * @param name the name of the life form
-   * @param points the current starting life points of the life form
+   * @param name     the name of the life form
+   * @param points   the current starting life points of the life form
    * @param strength the attack strength of the life form
    */
   public LifeForm(String name, int points, int strength) {
@@ -87,7 +87,7 @@ public abstract class LifeForm {
 
   /**
    * @return the column of the Environment that the LifeForm resides in;
-   *         -1, if not in an Environment
+   * -1, if not in an Environment
    */
   public int getCol() {
     return this.column;
@@ -109,7 +109,7 @@ public abstract class LifeForm {
 
   /**
    * @return the row of the Environment that the LifeForm resides in;
-   *         -1, if not in an Environment
+   * -1, if not in an Environment
    */
   public int getRow() {
     return this.row;
@@ -128,7 +128,6 @@ public abstract class LifeForm {
    * Picks up a weapon if the LifeForm is not already holding one
    *
    * @param weapon the weapon for the LifeForm to pick up
-   *
    * @return true, if the appointed weapon was picked up, false otherwise
    */
   public boolean pickUpWeapon(Weapon weapon) {

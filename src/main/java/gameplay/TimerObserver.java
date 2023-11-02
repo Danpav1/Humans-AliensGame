@@ -7,6 +7,7 @@ package gameplay;
 public interface TimerObserver {
   /**
    * Outlines a response to being updated by a Timer subject
+   *
    * @param time the current time being held by the Timer subject
    */
   void updateTime(int time);

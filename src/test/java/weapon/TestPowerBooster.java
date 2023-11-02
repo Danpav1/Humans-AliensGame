@@ -25,7 +25,7 @@ public class TestPowerBooster {
     assertEquals(5, b.getCurrentAmmo());
     assertEquals(15, b.fire(5));
   }
-  
+
   @Test
   public void testDamageCalculation2() throws AttachmentException, WeaponException {
     PowerBooster b = new PowerBooster(new MockWeapon(7, 10, 10, 10));
@@ -40,10 +40,10 @@ public class TestPowerBooster {
     assertEquals(3, b.getCurrentAmmo());
     assertEquals(9, b.fire(5));
   }
-  
+
   @Test
   public void testAttachmentException() throws AttachmentException {
-    
+
     boolean exception1Caught = false;
 
     try {
@@ -100,7 +100,7 @@ public class TestPowerBooster {
 
   @Test
   public void testPlasmaCannonWithStabilizerAndPowerBooster() throws WeaponException,
-                                                                     AttachmentException {
+          AttachmentException {
     SimpleTimer timer = new SimpleTimer();
     Weapon weapon = new PowerBooster(new Stabilizer(new PlasmaCannon()));
     timer.addTimeObserver(weapon);

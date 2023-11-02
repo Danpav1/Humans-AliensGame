@@ -35,6 +35,7 @@ public class SimpleTimer extends Thread implements Timer {
 
   /**
    * Constructs a SimpleTimer with a specified thread sleep
+   *
    * @param sleep the time, in milliseconds, to sleep between thread executions
    */
   public SimpleTimer(int sleep) {
@@ -44,6 +45,7 @@ public class SimpleTimer extends Thread implements Timer {
 
   /**
    * Adds a TimerObserver to theObservers
+   *
    * @param observer the TimerObserver to watch this SimpleTimer
    */
   public void addTimeObserver(TimerObserver observer) {
@@ -52,6 +54,7 @@ public class SimpleTimer extends Thread implements Timer {
 
   /**
    * Removes a Specified TimerObserver from theObservers
+   *
    * @param observer the TimerObserver to remove from theObservers
    */
   public void removeTimeObserver(TimerObserver observer) {

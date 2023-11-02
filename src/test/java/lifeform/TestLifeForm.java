@@ -17,7 +17,7 @@ public class TestLifeForm {
    */
   @Test
   public void testDefaultDirection() {
-    LifeForm critter = new MockLifeForm("Critter",1);
+    LifeForm critter = new MockLifeForm("Critter", 1);
     assertEquals("north", critter.getCurrentDirection());
   }
 
@@ -164,7 +164,7 @@ public class TestLifeForm {
 
   /**
    * Tests that LifeForms can pick up Weapons.
-   *
+   * <p>
    * Written by Gavin Albright
    */
   @Test
@@ -177,7 +177,7 @@ public class TestLifeForm {
 
   /**
    * Tests that LifeForms cannot pick up Weapons when they are already holding one.
-   *
+   * <p>
    * Written by Gavin Albright.
    */
   @Test
@@ -192,7 +192,7 @@ public class TestLifeForm {
 
   /**
    * Tests that LifeForms can drop Weapons.
-   *
+   * <p>
    * Written by Gavin Albright
    */
   @Test
@@ -206,7 +206,7 @@ public class TestLifeForm {
 
   /**
    * Tests that LifeForms can use Weapons in their attack() method.
-   *
+   * <p>
    * Written by Gavin Albright
    */
   @Test
@@ -222,14 +222,14 @@ public class TestLifeForm {
   /**
    * Tests that when a LifeForm is out of ammo and within melee range, will melee a target
    * instead of shooting them.
-   *
+   * <p>
    * Written by Gavin Albright
    */
   @Test
   public void testAmmoZero() throws WeaponException {
     LifeForm stan = new MockLifeForm("stan", 20, 1);
     LifeForm dan = new MockLifeForm("Dan", 30);
-    MockWeapon test = new MockWeapon(4,1,20,3);
+    MockWeapon test = new MockWeapon(4, 1, 20, 3);
     stan.pickUpWeapon(test);
     stan.attack(dan, 10);
     stan.attack(dan, 5);
@@ -239,7 +239,7 @@ public class TestLifeForm {
   /**
    * Tests that if a LifeForm is out of ammo and out of melee range, no damage is done
    * to the target.
-   *
+   * <p>
    * Written by Gavin Albright
    */
   @Test
@@ -252,14 +252,14 @@ public class TestLifeForm {
 
   /**
    * Tests that a LifeForm's Weapon can be reloaded.
-   *
+   * <p>
    * Written by Gavin Albright
    */
   @Test
   public void testReload() throws WeaponException {
     LifeForm stan = new MockLifeForm("stan", 20, 1);
     LifeForm dan = new MockLifeForm("Dan", 30);
-    MockWeapon test = new MockWeapon(4,1,20,3);
+    MockWeapon test = new MockWeapon(4, 1, 20, 3);
     stan.pickUpWeapon(test);
     stan.attack(dan, 10);
     assertEquals(stan.weapon.getCurrentAmmo(), 0);

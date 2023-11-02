@@ -20,10 +20,9 @@ public class PlasmaCannon extends GenericWeapon {
 
   /**
    * Fire at a target that is a certain distance away.
-   * 
+   *
    * @param distance the distance away from the target. If in range, the target
-   * will be hit.
-   * 
+   *                 will be hit.
    * @return the damage the weapon deals to the target. The target's armor may
    * reduce this damage. The damage will be zero if the target is out of range, or
    * if the weapon is out of ammo.
@@ -31,7 +30,7 @@ public class PlasmaCannon extends GenericWeapon {
   public int fire(int distance) throws WeaponException {
     if (distance < 0) {
       throw new WeaponException("Distance was " + distance
-                              + ". Distance cannot be negative.");
+              + ". Distance cannot be negative.");
     }
 
     double damage = 0.0;
@@ -49,7 +48,7 @@ public class PlasmaCannon extends GenericWeapon {
 
   /**
    * Displays the weapon
-   * 
+   *
    * @return the String description for the weapon.
    */
   public String toString() {

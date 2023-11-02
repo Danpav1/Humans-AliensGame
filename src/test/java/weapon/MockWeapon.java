@@ -9,12 +9,13 @@ public class MockWeapon extends GenericWeapon {
 
   /**
    * The full constructor for MockWeapon
+   *
    * @param baseDamage
    * @param maxAmmo
    * @param maxRange
    * @param rateOfFire
    */
-  public MockWeapon(int baseDamage, int maxAmmo, int maxRange, int rateOfFire){
+  public MockWeapon(int baseDamage, int maxAmmo, int maxRange, int rateOfFire) {
     this.baseDamage = baseDamage;
     this.maxAmmo = maxAmmo;
     this.currentAmmo = this.maxAmmo;
@@ -32,6 +33,7 @@ public class MockWeapon extends GenericWeapon {
 
   /**
    * Fires a round as outlined in GenericWeapon
+   *
    * @param distance the distance to the target being fired at
    * @return the damage the Weapon will do to the target
    */

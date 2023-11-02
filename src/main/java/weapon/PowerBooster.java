@@ -12,7 +12,6 @@ public class PowerBooster extends Attachment {
    * Constructor for PowerBoosters
    *
    * @param baseWeapon the Weapon to attach the PowerBooster to
-   *
    * @throws AttachmentException if the Weapon already has two Attachments on it
    */
   public PowerBooster(Weapon baseWeapon) throws AttachmentException {
@@ -26,7 +25,7 @@ public class PowerBooster extends Attachment {
      */
     if (baseWeapon.getNumAttachments() >= 2) {
       throw new AttachmentException("Weapon is full. "
-                                  + "Weapons cannot have more than two attachments.");
+              + "Weapons cannot have more than two attachments.");
     }
 
     this.weapon = baseWeapon;
@@ -36,9 +35,7 @@ public class PowerBooster extends Attachment {
    * Fires the Weapon and multiplies its damage by 1 + (currentAmmo / maxAmmo)
    *
    * @param distance the distance between the Weapon and the target
-   *
    * @return the modified damage appropriate to the weapon
-   *
    * @throws WeaponException when distance is negative
    */
   public int fire(int distance) throws WeaponException {

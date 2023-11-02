@@ -148,7 +148,7 @@ public class TestAlien {
   public void testWillThrowRecoveryRateException() {
     boolean exceptionCaught = false;
 
-    try{
+    try {
       Alien martian = new Alien("Martian", 20, new RecoveryNone(), -1);
     } catch (RecoveryRateException e) {
       exceptionCaught = true;
