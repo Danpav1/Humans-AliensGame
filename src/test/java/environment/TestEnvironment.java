@@ -32,7 +32,7 @@ public class TestEnvironment {
   public void testMovesNorth() throws RecoveryRateException {
     //Initializes a new environment, a human, and an alien
     Environment environment = Environment.getEnvironment(5,5);
-    Human bob = new Human("bob", 10, 10);
+    Human bob = new Human("bob", 11, 10);
     Alien alien1 = new Alien("alien", 10, new RecoveryNone());
     //Places the human and alien on the board with no obstacles
     environment.addLifeForm(bob, 1,2);
