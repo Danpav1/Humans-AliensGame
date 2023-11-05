@@ -10,8 +10,9 @@ public class FaceNorthCommand implements Command {
   private LifeForm entity;
 
   /**
-   * Constructor for FaceNorth
-   * @param entity
+   * Constructor for FaceNorthCommand
+   *
+   * @param entity the entity the command pertains to
    */
   public FaceNorthCommand(LifeForm entity) {
     this.entity = entity;
@@ -21,6 +22,6 @@ public class FaceNorthCommand implements Command {
    * Causes a LifeForm to face north
    */
   public void execute() {
-    entity.changeDirectionNorth();
+    this.entity.changeDirectionNorth();
   }
 }

@@ -1,5 +1,6 @@
 package commands;
 
+import environment.Environment;
 import lifeform.LifeForm;
 
 /**
@@ -10,8 +11,9 @@ public class MoveCommand implements Command {
   private LifeForm entity;
 
   /**
-   * Constructor for the MoveCommand
-   * @param entity
+   * Constructor for MoveCommand
+   *
+   * @param entity the entity the command pertains to
    */
   public MoveCommand(LifeForm entity) {
     this.entity = entity;
@@ -22,6 +24,6 @@ public class MoveCommand implements Command {
    */
   @Override
   public void execute() {
-    entity.move();
+    Environment.getEnvironment(0, 0).move(this.entity);
   }
 }

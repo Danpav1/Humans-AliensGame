@@ -14,6 +14,7 @@ public class Environment {
   private static Environment uniqueEnvironment;
 
   protected Cell[][] grid;
+
   private final int rows;
   private final int columns;
 

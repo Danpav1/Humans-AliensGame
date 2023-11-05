@@ -13,8 +13,6 @@ public abstract class LifeForm {
   private final String myName;
   protected int currentLifePoints;
   protected int attackStrength;
-  //Adding container variable to test
-protected Environment container = Environment.getEnvironment(0, 0);
   protected int column;
   protected int row;
 
@@ -165,15 +163,6 @@ protected Environment container = Environment.getEnvironment(0, 0);
     this.currentLifePoints = Math.max(0, newLifePoints);
   }
 
-  /**
-   * Move function for a LifeForm, added for simplicity of constructing a
-   * command with a LifeForm
-   * @return whether or not move was successful
-   */
-  public boolean move() {
-    return this.container.move(this);
-  }
-
   public String getCurrentDirection() {
     return this.currentDirection;
   }
@@ -196,9 +185,5 @@ protected Environment container = Environment.getEnvironment(0, 0);
 
   public void changeDirectionWest() {
     this.currentDirection = "west";
-  }
-
-  public Environment getContainer() {
-    return this.container;
   }
 }

@@ -10,8 +10,9 @@ public class FaceSouthCommand implements Command {
   private LifeForm entity;
 
   /**
-   * Constructor for the command
-   * @param entity
+   * Constructor for FaceSouthCommand
+   *
+   * @param entity the entity the command pertains to
    */
   public FaceSouthCommand(LifeForm entity) {
     this.entity = entity;
@@ -21,6 +22,6 @@ public class FaceSouthCommand implements Command {
    * Executes the direction change
    */
   public void execute() {
-    entity.changeDirectionSouth();
+    this.entity.changeDirectionSouth();
   }
 }
