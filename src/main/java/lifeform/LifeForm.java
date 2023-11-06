@@ -139,6 +139,14 @@ public abstract class LifeForm {
   }
 
   /**
+   * Getter for the weapon field
+   * @return the currently held weapon, null if there is none
+   */
+  public Weapon getWeapon() {
+    return this.weapon;
+  }
+
+  /**
    * Used by the Environment to set the location of a LifeForm for reference
    *
    * @param row the specified row of the Environment
