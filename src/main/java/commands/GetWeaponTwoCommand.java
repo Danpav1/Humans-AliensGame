@@ -26,9 +26,10 @@ public class GetWeaponTwoCommand implements Command {
   public void execute() {
     Weapon[] weapons = Environment.getEnvironment(0, 0).getWeapons(this.entity.getRow(),
                                                                    this.entity.getCol());
-    if(weapons[1] != null && this.entity.getWeapon() == null) {
+    if (weapons[1] != null && this.entity.getWeapon() == null) {
       this.entity.pickUpWeapon(weapons[1]);
-      Environment.getEnvironment(0, 0).removeWeapon(weapons[1], this.entity.getRow(), this.entity.getCol());
+      Environment.getEnvironment(0, 0).removeWeapon(weapons[1], this.entity.getRow(),
+              this.entity.getCol());
     }
   }
 }

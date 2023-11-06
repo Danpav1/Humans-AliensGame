@@ -34,7 +34,9 @@ public class AttackCommand implements Command {
         //int distance = (int) this.entity.getContainer().getDistance(this.entity, targetEntity);
         int distance = (int) Environment.getEnvironment(0,0).getDistance(this.entity, targetEntity);
         this.entity.attack(targetEntity, distance);
-      } catch (EnvironmentException | WeaponException ignored) {}
+      } catch (EnvironmentException | WeaponException ignored) {
+        //ignore, adding comment for checkstyle
+      }
     }
   }
 
@@ -102,6 +104,9 @@ public class AttackCommand implements Command {
           }
         }
         break;
+
+      default:
+        return null;
     }
     return null;
   }
