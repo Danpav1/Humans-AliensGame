@@ -36,9 +36,40 @@ public class Invoker {
 
   /**
    * executes designated Command from array based on the index number input
-   * @param commandIndex
+   * @param comName name of Command to execute
    */
-  public void executeCommand(int commandIndex) {
-    commands[commandIndex].execute();
+  public void executeCommand(commandName comName) {
+    switch (comName) {
+      case MOVE:
+        commands[0].execute();
+        break;
+      case FACENORTH:
+        commands[1].execute();
+        break;
+      case FACEEAST:
+        commands[2].execute();
+        break;
+      case FACESOUTH:
+        commands[3].execute();
+        break;
+      case FACEWEST:
+        commands[4].execute();
+        break;
+      case ATTACK:
+        commands[5].execute();
+        break;
+      case DROPWEAPON:
+        commands[6].execute();
+        break;
+      case GETWEAPONONE:
+        commands[7].execute();
+        break;
+      case GETWEAPONTWO:
+        commands[8].execute();
+        break;
+      case RELOAD:
+        commands[9].execute();
+        break;
+    }
   }
 }

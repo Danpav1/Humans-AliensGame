@@ -23,7 +23,7 @@ public class TestInvoker {
     Invoker invoker = new Invoker(jerry);
 
 
-    invoker.executeCommand(3);
+    invoker.executeCommand(commandName.FACESOUTH);
     assertEquals(jerry.getCurrentDirection(), "south");
 
     Environment.removeEnvironment();
@@ -39,14 +39,14 @@ public class TestInvoker {
 
     Invoker invoker = new Invoker(jerry);
 
-    invoker.executeCommand(3);
+    invoker.executeCommand(commandName.FACESOUTH);
     assertEquals(jerry.getCurrentDirection(), "south");
-    invoker.executeCommand(0);
+    invoker.executeCommand(commandName.MOVE);
     assertEquals(jerry.getCol(), 1);
     assertEquals(jerry.getRow(), 2);
-    invoker.executeCommand(7);
+    invoker.executeCommand(commandName.GETWEAPONONE);
     assertEquals(jerry.getWeapon(), gun);
-    invoker.executeCommand(1);
+    invoker.executeCommand(commandName.FACENORTH);
     assertEquals(jerry.getCurrentDirection(), "north");
 
     Environment.removeEnvironment();
