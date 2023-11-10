@@ -43,28 +43,28 @@ public class Invoker {
       case MOVE:
         commands[0].execute();
         break;
-      case FACENORTH:
+      case FACE_NORTH:
         commands[1].execute();
         break;
-      case FACEEAST:
+      case FACE_EAST:
         commands[2].execute();
         break;
-      case FACESOUTH:
+      case FACE_SOUTH:
         commands[3].execute();
         break;
-      case FACEWEST:
+      case FACE_WEST:
         commands[4].execute();
         break;
       case ATTACK:
         commands[5].execute();
         break;
-      case DROPWEAPON:
+      case DROP_WEAPON:
         commands[6].execute();
         break;
-      case GETWEAPONONE:
+      case GET_WEAPON_ONE:
         commands[7].execute();
         break;
-      case GETWEAPONTWO:
+      case GET_WEAPON_TWO:
         commands[8].execute();
         break;
       case RELOAD:
