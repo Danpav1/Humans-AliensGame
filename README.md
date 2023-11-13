@@ -71,5 +71,6 @@ of class.
 |---|---|---|---|---|
 | 1 | 10/23/2023 | Discord  | All Members Present | Reviewed Lab 5 for submission |
 | 2 | 11/01/2023 | In-Class | All Members Present | Discussed task assignments, lab strategies |
-| 3 | 11/8/2023 | 235 | All Members Present | Progress Update/Assignment check-in |
+| 3 | 11/8/2023 | In-Classroom | All Members Present | Progress Update/Assignment check-in |
+| 4 | 11/13/2023 | 165 | All Members Present | Progress Update/Assignment check-in (Post Activity Check) |
 
