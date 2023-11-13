@@ -23,7 +23,7 @@ public class TestInvoker {
     Invoker invoker = new Invoker(jerry);
 
 
-    invoker.executeCommand(commandName.FACE_SOUTH);
+    invoker.executeCommand(CommandName.FACE_SOUTH);
     assertEquals(jerry.getCurrentDirection(), "south");
 
     Environment.removeEnvironment();
@@ -31,6 +31,7 @@ public class TestInvoker {
 
   @Test
   public void testMultipleCommands() {
+    Environment.removeEnvironment();
     LifeForm jerry = new MockLifeForm();
     Environment environment = Environment.getEnvironment(4, 5);
     environment.addLifeForm(jerry, 1, 1);
@@ -39,14 +40,14 @@ public class TestInvoker {
 
     Invoker invoker = new Invoker(jerry);
 
-    invoker.executeCommand(commandName.FACE_SOUTH);
+    invoker.executeCommand(CommandName.FACE_SOUTH);
     assertEquals(jerry.getCurrentDirection(), "south");
-    invoker.executeCommand(commandName.MOVE);
+    invoker.executeCommand(CommandName.MOVE);
     assertEquals(jerry.getCol(), 1);
     assertEquals(jerry.getRow(), 2);
-    invoker.executeCommand(commandName.GET_WEAPON_ONE);
+    invoker.executeCommand(CommandName.GET_WEAPON_ONE);
     assertEquals(jerry.getWeapon(), gun);
-    invoker.executeCommand(commandName.FACE_NORTH);
+    invoker.executeCommand(CommandName.FACE_NORTH);
     assertEquals(jerry.getCurrentDirection(), "north");
 
     Environment.removeEnvironment();

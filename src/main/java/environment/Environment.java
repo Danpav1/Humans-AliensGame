@@ -246,195 +246,64 @@ public class Environment {
    * @return boolean that is true if move is successful or false if it fails
    */
   public boolean move(LifeForm entity) {
-    boolean success = false;
-    switch (entity.getCurrentDirection()) {
-      case "north": {
-        //Case if currentDirection is north
-        if (isInBounds(entity.getRow() + entity.getMaxSpeed(), entity.getCol())) {
-          //Moves entity north by maxSpeed cells if there isn't another entity in that spot
-          if (this.grid[entity.getRow()
-                  + entity.getMaxSpeed()][entity.getCol()].getLifeForm() == null) {
-            updateGridLocation(entity, entity.getRow() + entity.getMaxSpeed(), entity.getCol());
-            success = true;
-            break;
+    int speed = entity.getMaxSpeed();
+    int entityRow = entity.getRow();
+    int entityCol = entity.getCol();
+    String direction = entity.getCurrentDirection();
+
+    boolean vertical = (direction.equals("north") || direction.equals("south"));
+    boolean positive = (direction.equals("south") || direction.equals("east"));
+
+    for (int i = speed; i > 0; i--) {
+
+      if (vertical) {
+
+        if (positive) {
+
+          if (isInBounds(entityRow + i, entityCol)) {
+            if (this.grid[entityRow + i][entityCol].getLifeForm() == null) {
+              this.updateGridLocation(entity, entityRow + i, entityCol);
+              return true;
+            }
           }
-        }
-        if (isInBounds(entity.getRow() + entity.getMaxSpeed() - 1, entity.getCol())) {
-          //Moves entity north by (maxSpeed - 1) cells if spot is empty and if there is
-          // another entity maxSpeed units away
-          if (this.grid[entity.getRow() + entity.getMaxSpeed() - 1][entity.getCol()].getLifeForm()
-                  == null) {
-            updateGridLocation(entity, entity.getRow() + entity.getMaxSpeed() - 1, entity.getCol());
-            success = true;
-            break;
+
+        } else { // not positive
+
+          if (isInBounds(entityRow - i, entityCol)) {
+            if (this.grid[entityRow - i][entityCol].getLifeForm() == null) {
+              this.updateGridLocation(entity, entityRow - i, entityCol);
+              return true;
+            }
           }
+
         }
-        if (isInBounds(entity.getRow() + entity.getMaxSpeed() - 2, entity.getCol())) {
-          //Moves entity north by (maxSpeed - 2) cells if spot is empty and there is another
-          // entity (maxSpeed - 1) units away
-          if (this.grid[entity.getRow() + entity.getMaxSpeed() - 2][entity.getCol()].getLifeForm()
-                  == null) {
-            updateGridLocation(entity, entity.getRow() + entity.getMaxSpeed() - 2, entity.getCol());
-            success = true;
-            break;
+
+      } else { // not vertical
+
+        if (positive) {
+
+          if (isInBounds(entityRow, entityCol + i)) {
+            if (this.grid[entityRow][entityCol + i].getLifeForm() == null) {
+              this.updateGridLocation(entity, entityRow, entityCol + i);
+              return true;
+            }
           }
-        }
-        if (isInBounds(entity.getRow() + entity.getMaxSpeed() - 3, entity.getCol())
-                && entity.getMaxSpeed() >= 3) {
-          //Moves entity north by (maxSpeed - 3) cells if spot is empty and there is another entity
-          // (maxSpeed - 2) units away
-          if (this.grid[entity.getRow() + entity.getMaxSpeed() - 3][entity.getCol()].getLifeForm()
-                  == null) {
-            updateGridLocation(entity, entity.getRow() + entity.getMaxSpeed() - 3, entity.getCol());
-            success = true;
-            break;
+
+        } else { // not positive
+
+          if (isInBounds(entityRow, entityCol - i)) {
+            if (this.grid[entityRow][entityCol - i].getLifeForm() == null) {
+              this.updateGridLocation(entity, entityRow, entityCol - i);
+              return true;
+            }
           }
+
         }
-        break;
+
       }
 
-      case "east": {
-        //Case if currentDirection is east
-        if (isInBounds(entity.getRow(), entity.getCol() + entity.getMaxSpeed())) {
-          //Moves entity east by maxSpeed cells if there isn't another entity in that spot
-          if (this.grid[entity.getRow()][entity.getCol() + entity.getMaxSpeed()].getLifeForm()
-                  == null) {
-            updateGridLocation(entity, entity.getRow(), entity.getCol() + entity.getMaxSpeed());
-            success = true;
-            break;
-          }
-        }
-        if (isInBounds(entity.getRow(), entity.getCol() + entity.getMaxSpeed() - 1)) {
-          //Moves entity east by (maxSpeed - 1) cells if spot is empty and if there is another
-          // entity maxSpeed units away
-          if (this.grid[entity.getRow()][entity.getCol() + entity.getMaxSpeed() - 1].getLifeForm()
-                  == null) {
-            updateGridLocation(entity, entity.getRow(), entity.getCol() + entity.getMaxSpeed() - 1);
-            success = true;
-            break;
-          }
-        }
-        if (isInBounds(entity.getRow(), entity.getCol() + entity.getMaxSpeed() - 2)) {
-          //Moves entity east by (maxSpeed - 2) cells if spot is empty and there is another entity
-          // (maxSpeed - 1) units away
-          if (this.grid[entity.getRow()][entity.getCol() + entity.getMaxSpeed() - 2].getLifeForm()
-                  == null) {
-            updateGridLocation(entity, entity.getRow(), entity.getCol() + entity.getMaxSpeed() - 2);
-            success = true;
-            break;
-          }
-        }
-        if (isInBounds(entity.getRow(), entity.getCol() + entity.getMaxSpeed() - 3)
-                && entity.getMaxSpeed() >= 3) {
-          //Moves entity east by (maxSpeed - 3) cells if spot is empty and there is another entity
-          // (maxSpeed - 2) units away
-          //This function does the same as the previous if statement for aliens
-          if (this.grid[entity.getRow()][entity.getCol() + entity.getMaxSpeed() - 3].getLifeForm()
-                  == null) {
-            updateGridLocation(entity, entity.getRow(), entity.getCol() + entity.getMaxSpeed() - 3);
-            success = true;
-            break;
-          }
-        }
-        break;
-      }
-
-      case "south": {
-        //Case if currentDirection is south
-        if (isInBounds(entity.getRow() - entity.getMaxSpeed(), entity.getCol())) {
-          //Moves entity south by maxSpeed cells if there isn't another entity in that spot
-          if (this.grid[entity.getRow() - entity.getMaxSpeed()][entity.getCol()].getLifeForm()
-                  == null) {
-            updateGridLocation(entity, entity.getRow() - entity.getMaxSpeed(), entity.getCol());
-            success = true;
-            break;
-          }
-        }
-        if (isInBounds(entity.getRow() - entity.getMaxSpeed() + 1, entity.getCol())) {
-          //Moves entity south by (maxSpeed - 1) cells if spot is empty and if there is another
-          // entity maxSpeed units away
-          if (this.grid[entity.getRow() - entity.getMaxSpeed() + 1][entity.getCol()].getLifeForm()
-                  == null) {
-            updateGridLocation(entity, entity.getRow() - entity.getMaxSpeed() + 1, entity.getCol());
-            success = true;
-            break;
-          }
-        }
-        if (isInBounds(entity.getRow() - entity.getMaxSpeed() + 2, entity.getCol())) {
-          //Moves entity south by (maxSpeed - 2) cells if spot is empty and there is another entity
-          // (maxSpeed - 1) units away
-          if (this.grid[entity.getRow() - entity.getMaxSpeed() + 2][entity.getCol()].getLifeForm()
-                  == null) {
-            updateGridLocation(entity, entity.getRow() - entity.getMaxSpeed() + 2, entity.getCol());
-            success = true;
-            break;
-          }
-        }
-        if (isInBounds(entity.getRow() - entity.getMaxSpeed() + 3, entity.getCol())
-                && entity.getMaxSpeed() >= 3) {
-          //Moves entity south by (maxSpeed - 3) cells if spot is empty and there is another entity
-          // (maxSpeed - 2) units away
-          //This function does the same as the previous if statement for aliens
-          if (this.grid[entity.getRow() - entity.getMaxSpeed() + 3][entity.getCol()].getLifeForm()
-                  == null) {
-            updateGridLocation(entity, entity.getRow() - entity.getMaxSpeed() + 3, entity.getCol());
-            success = true;
-            break;
-          }
-        }
-        break;
-      }
-
-      case "west": {
-        //Case if currentDirection is west
-        if (isInBounds(entity.getRow(), entity.getCol() - entity.getMaxSpeed())) {
-          //Moves entity west by maxSpeed cells if there isn't another entity in that spot
-          if (this.grid[entity.getRow()][entity.getCol() - entity.getMaxSpeed()].getLifeForm()
-                  == null) {
-            updateGridLocation(entity, entity.getRow(), entity.getCol() - entity.getMaxSpeed());
-            success = true;
-            break;
-          }
-        }
-        if (isInBounds(entity.getRow(), entity.getCol() - entity.getMaxSpeed() + 1)) {
-          //Moves entity west by (maxSpeed - 1) cells if spot is empty and if there is another
-          // entity maxSpeed units away
-          if (this.grid[entity.getRow()][entity.getCol() - entity.getMaxSpeed() + 1].getLifeForm()
-                  == null) {
-            updateGridLocation(entity, entity.getRow(), entity.getCol() - entity.getMaxSpeed() + 1);
-            success = true;
-            break;
-          }
-        }
-        if (isInBounds(entity.getRow(), entity.getCol() - entity.getMaxSpeed() + 2)) {
-          //Moves entity west by (maxSpeed - 2) cells if spot is empty and there is another entity
-          // (maxSpeed - 1) units away
-          if (this.grid[entity.getRow()][entity.getCol() - entity.getMaxSpeed() + 2].getLifeForm()
-                  == null) {
-            updateGridLocation(entity, entity.getRow(), entity.getCol() - entity.getMaxSpeed() + 2);
-            success = true;
-            break;
-          }
-        }
-        if (isInBounds(entity.getRow(), entity.getCol() - entity.getMaxSpeed() + 3)
-                && entity.getMaxSpeed() >= 3) {
-          //Moves entity west by (maxSpeed - 3) cells if spot is empty and there is another entity
-          // (maxSpeed - 2) units away
-          //This function does the same as the previous if statement for aliens
-          if (this.grid[entity.getRow()][entity.getCol() - entity.getMaxSpeed() + 3].getLifeForm()
-                  == null) {
-            updateGridLocation(entity, entity.getRow(), entity.getCol() - entity.getMaxSpeed() + 3);
-            success = true;
-            break;
-          }
-        }
-        break;
-      }
-
-      default: {
-        success = false;
-      }
     }
-    return success;
+
+    return false;
   }
 }

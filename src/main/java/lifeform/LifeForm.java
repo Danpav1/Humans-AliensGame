@@ -18,7 +18,7 @@ public abstract class LifeForm {
 
   protected Weapon weapon;
   protected String currentDirection = "north";
-  protected int maxSpeed;
+  protected int maxSpeed = 1;
 
   /**
    * Create a LifeForm without specified strength

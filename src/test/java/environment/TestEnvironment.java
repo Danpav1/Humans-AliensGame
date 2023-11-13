@@ -2,6 +2,8 @@ package environment;
 
 import static org.junit.Assert.*;
 
+import com.sun.jdi.event.MonitorContendedEnteredEvent;
+import commands.MoveCommand;
 import exceptions.EnvironmentException;
 import exceptions.RecoveryRateException;
 import lifeform.Alien;
@@ -29,7 +31,7 @@ public class TestEnvironment {
    * Tests if aliens and humans move north correctly
    */
   @Test
-  public void testMovesNorth() throws RecoveryRateException {
+  public void testMovesSouth() throws RecoveryRateException {
     //Initializes a new environment, a human, and an alien
     Environment environment = Environment.getEnvironment(5, 5);
     Human bob = new Human("bob", 11, 10);
@@ -37,6 +39,9 @@ public class TestEnvironment {
     //Places the human and alien on the board with no obstacles
     environment.addLifeForm(bob, 1, 2);
     environment.addLifeForm(alien1, 1, 3);
+    //Changes the LifeForms' directions to south
+    bob.changeDirectionSouth();
+    alien1.changeDirectionSouth();
     //Moves the human and alien north by their respective maxSpeed
     boolean humanSuccess = environment.move(bob);
     boolean alienSuccess = environment.move(alien1);
@@ -195,7 +200,7 @@ public class TestEnvironment {
    * Tests if human and alien move south correctly
    */
   @Test
-  public void testMovesSouth() throws RecoveryRateException {
+  public void testMovesNorth() throws RecoveryRateException {
     //Initializes a new environment, a human, and an alien
     Environment environment = Environment.getEnvironment(5, 5);
     Human bob = new Human("bob", 10, 10);
@@ -204,8 +209,8 @@ public class TestEnvironment {
     environment.addLifeForm(bob, 4, 2);
     environment.addLifeForm(alien1, 4, 3);
     //Changes human and alien direction to south
-    bob.changeDirectionSouth();
-    alien1.changeDirectionSouth();
+    bob.changeDirectionNorth();
+    alien1.changeDirectionNorth();
     //Moves the human and alien south by their respective maxSpeed
     boolean humanSuccess = environment.move(bob);
     boolean alienSuccess = environment.move(alien1);
@@ -261,7 +266,7 @@ public class TestEnvironment {
     //Initializes another alien
     Alien alien2 = new Alien("alien2", 10, new RecoveryNone());
     environment.addLifeForm(alien2, 0, 2);
-    alien2.changeDirectionSouth();
+    alien2.changeDirectionNorth();
     //Moves alien1 directly north of alien2
     environment.updateGridLocation(alien1, 1, 2);
     //Moves human above alien1 and alien2 so there is a one space gap
@@ -375,8 +380,8 @@ public class TestEnvironment {
     environment.addLifeForm(bob, 2, 2);
     environment.addLifeForm(alien1, 3, 3);
     //Changes direction of LifeForms to north
-    bob.changeDirectionNorth();
-    alien1.changeDirectionNorth();
+    bob.changeDirectionSouth();
+    alien1.changeDirectionSouth();
     //Moves the LifeForms north
     boolean humanSuccess = environment.move(bob);
     boolean alienSuccess = environment.move(alien1);
@@ -423,8 +428,8 @@ public class TestEnvironment {
     assertEquals(2, bob.getRow());
     assertEquals(4, bob.getCol());
     //Changes LifeForms direction to south
-    bob.changeDirectionSouth();
-    alien1.changeDirectionSouth();
+    bob.changeDirectionNorth();
+    alien1.changeDirectionNorth();
     //Places Human 2 away from southern border
     environment.updateGridLocation(bob, 2, 1);
     //Places Alien 1 away from southern border
@@ -478,8 +483,26 @@ public class TestEnvironment {
     Environment.removeEnvironment();
   }
 
+  /**
+   * Why is testInvoker failing
+   */
+  @Test
+  public void testMovementOfSingleCell() {
+    LifeForm bob = new MockLifeForm();
+    MoveCommand moveCommand = new MoveCommand(bob);
+    Environment environment = Environment.getEnvironment(5, 5);
+
+    environment.addLifeForm(bob, 1, 1);
+
+    bob.changeDirectionSouth();
+
+    assertTrue(environment.move(bob));
+
+    Environment.removeEnvironment();
+  }
+
   /*
-   * Lab 6 tests end; Lab 5 tests begin -----------------------------------------------------------------------------
+   * Lab 6 tests end; Lab 5 tests begin ------------------------------------------------------------
    */
 
   /**
