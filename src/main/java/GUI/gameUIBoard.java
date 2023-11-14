@@ -14,6 +14,8 @@ import weapon.ChainGun;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.text.BadLocationException;
+
 
 /**
 * The Swing GUI for the game board.
@@ -82,7 +84,10 @@ public class gameUIBoard {
   private JTextField textFieldWeapon1;
   private JTextField textFieldWeapon2;
   private JTextField textFieldSelectedCoords;
-  
+
+  //our data section
+  private JTextArea displayTextArea;
+
   /**
   * constructor for GUI, removed the "startUI" and put the initiliazation code within this constructor.
   * @param world
@@ -434,6 +439,9 @@ public class gameUIBoard {
         textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
       }
       
+      displayTextArea.append("\n" + "Selected: " + selectedArr[0] + ", " + selectedArr[1]);
+      displayTextArea.setCaretPosition(displayTextArea.getDocument().getLength());  
+
       // Select the clicked button and change its background color to dark gray
       clickedButton.setBackground(Color.darkGray);
     }
@@ -454,27 +462,12 @@ public class gameUIBoard {
     displayBoxPanel.setBackground(Color.gray);
     displayBoxPanel.setBorder(new LineBorder(Color.BLACK, BORDER_WIDTH));
     displayBoxPanel.add(scrollPane, BorderLayout.CENTER);
-    
-    // this is a temporary button to test the functionality of the text area
-    JButton addButton = new JButton("Add Line");
-    addButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        // Append another line of text to the text area
-        displayTextArea.append("\n  moved some arbitrary direction \n");
-        
-        //scrolls all the way down at every click
-        JScrollBar verticalScrollBar = scrollPane.getVerticalScrollBar();
-        verticalScrollBar.setValue(verticalScrollBar.getMaximum());
-      }
-    });
-    displayBoxPanel.add(addButton, BorderLayout.SOUTH);
-    
     return displayBoxPanel;
   }
   
   private JTextArea createDisplayBoxTextArea() {
     JTextArea displayTextArea = new JTextArea("Action History:", 3, 6);
+    this.displayTextArea = displayTextArea;
     displayTextArea.setEditable(false); //makes the text field display only
     displayTextArea.setBackground(Color.lightGray);
     return displayTextArea;
