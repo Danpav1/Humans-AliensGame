@@ -3,6 +3,15 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.LineBorder;
+import environment.Environment;
+import lifeform.Alien;
+import lifeform.Human;
+import lifeform.LifeForm;
+import weapon.Weapon;
+import weapon.PlasmaCannon;
+import weapon.Pistol;
+import weapon.ChainGun;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,39 +21,175 @@ import java.awt.event.ActionListener;
 */
 public class gameUIBoard {
   
-  //constants
+  //constant for border size of elements
   private static final int BORDER_WIDTH = 1;
-
-  //asset paths
-  private static final String HUMAN_IMAGE_PATH = "src/main/java/assets/images/human.png";
-  private static final String ALIEN_IMAGE_PATH = "src/main/java/assets/images/alien.png";
+  
+  //constants for our weapon image paths
   private static final String PISTOL_IMAGE_PATH = "src/main/java/assets/images/pistol.png";
   private static final String CHAINGUN_IMAGE_PATH = "src/main/java/assets/images/chainGun.png";
   private static final String PLASMACANNON_IMAGE_PATH = "src/main/java/assets/images/plasmaCannon.png";
-
+  
+  //unarmed human path(s)
+  private static final String HUMAN_NORTH_PATH = "src/main/java/assets/images/humannorth.png";
+  private static final String HUMAN_SOUTH_PATH = "src/main/java/assets/images/humansouth.png";
+  private static final String HUMAN_EAST_PATH = "src/main/java/assets/images/legend icons/pistolLegend.png";
+  private static final String HUMAN_WEST_PATH = "src/main/java/assets/images/humanwest.png";
+  
+  //alien path(s)
+  private static final String ALIEN_NORTH_PATH = "src/main/java/assets/images/aliennorth.png";
+  private static final String ALIEN_SOUTH_PATH = "src/main/java/assets/images/aliensouth.png";
+  private static final String ALIEN_EAST_PATH = "src/main/java/assets/images/alieneast.png";
+  private static final String ALIEN_WEST_PATH = "src/main/java/assets/images/alienwest.png";
+  
+  //pistol human path(s)
+  private static final String HUMAN_NORTH_PISTOL_PATH = "src/main/java/assets/images/humanpistolnorth.png";
+  private static final String HUMAN_SOUTH_PISTOL_PATH = "src/main/java/assets/images/humanpistolsouth.png";
+  private static final String HUMAN_EAST_PISTOL_PATH = "src/main/java/assets/images/humanpistoleast.png";
+  private static final String HUMAN_WEST_PISTOL_PATH = "src/main/java/assets/images/humanpistolwest.png";
+  
+  //plasma human path(s)
+  private static final String HUMAN_NORTH_PLASMACANNON_PATH = "src/main/java/assets/images/humanplasmanorth.png";
+  private static final String HUMAN_SOUTH_PLASMACANNON_PATH = "src/main/java/assets/images/humanplasmasouth.png";
+  private static final String HUMAN_EAST_PLASMACANNON_PATH = "src/main/java/assets/images/humanplasmaeast.png";
+  private static final String HUMAN_WEST_PLASMACANNON_PATH = "src/main/java/assets/images/humanplasmawest.png";
+  
+  //chain human path(s)
+  private static final String HUMAN_NORTH_CHAINGUN_PATH = "src/main/java/assets/images/humanchainnorth.png";
+  private static final String HUMAN_SOUTH_CHAINGUN_PATH = "src/main/java/assets/images/humanchainsouth.png";
+  private static final String HUMAN_EAST_CHAINGUN_PATH = "src/main/java/assets/images/humanchaineast.png";
+  private static final String HUMAN_WEST_CHAINGUN_PATH = "src/main/java/assets/images/humanchainwest.png";
+  
+  //legend images path(s)
   private static final String HUMAN_LEGEND_IMAGE_PATH = "src/main/java/assets/images/legend icons/humanLegend.png";
   private static final String ALIEN_LEGEND_IMAGE_PATH = "src/main/java/assets/images/legend icons/alienLegend.png";
   private static final String PISTOL_LEGEND_IMAGE_PATH = "src/main/java/assets/images/legend icons/pistolLegend.png";
   private static final String CHAINGUN_LEGEND_IMAGE_PATH = "src/main/java/assets/images/legend icons/chaingunLegend.png";
   private static final String PLASMACANNON_LEGEND_IMAGE_PATH = "src/main/java/assets/images/legend icons/plasmaCannonLegend.png";
-
+  
   //our board (matrix)
-  private JLabel[][] boardArray = new JLabel[6][6];
+  private JButton[][] boardArray;
+  
+  //our environment
+  Environment world;
   
   /**
-  * method that starts the UI sequence.
-  * 
-  * This could be removed and put into a custom constructor if the added control of a start method
-  *  is not needed.
+  * constructor for GUI, removed the "startUI" and put the initiliazation code within this constructor.
+  * @param world
   */
-  protected void startUI() { 
-    createAndDisplayUI();
+  public gameUIBoard(Environment world) {
+    this.world = world;
+    refreshBoard();
+    createFrame();
   }
   
   /**
-  * Creates and displays the main JFrame and UI components.
+  * reads the environment "world" matrix and syncs it with our "boardArray" matrix
   */
-  private void createAndDisplayUI() {
+  private void refreshBoard() {
+    int numOfRows = this.world.getNumRows();
+    int numOfCols = this.world.getNumCols();
+    
+    this.boardArray = new JButton[numOfCols][numOfRows];
+    
+    for (int i = 0; i < numOfRows; i++) {
+      for (int j = 0; j < numOfCols; j++) {
+        //button logic
+        JButton button = new JButton();
+        button.setBackground(Color.lightGray);
+        button.setOpaque(true);
+        button.setBorder(new LineBorder(Color.BLACK, BORDER_WIDTH));
+        
+        // Adds the ActionListener to each button (button selection)
+        button.addActionListener(new ButtonClickListener());
+        
+        //looks for lifeforms and applies them to our buttons
+        LifeForm currLifeForm = world.getLifeForm(i, j);
+        String direction;
+        Weapon equippedWeapon;
+        if (currLifeForm != null) { // null check so we dont get the direction of a cell with no lifeform, etc
+          direction = world.getLifeForm(i, j).getCurrentDirection();
+          equippedWeapon = world.getLifeForm(i, j).getWeapon();
+        } else {
+          direction = "null";
+          equippedWeapon = null;
+        }
+        
+        //alien
+        if (currLifeForm instanceof Alien && direction.equals("north")) {
+          button.setIcon(new ImageIcon(ALIEN_NORTH_PATH));
+        } else if (currLifeForm instanceof Alien && direction.equals("south")) {
+          button.setIcon(new ImageIcon(ALIEN_SOUTH_PATH));
+        } else if (currLifeForm instanceof Alien && direction.equals("east")) {
+          button.setIcon(new ImageIcon(ALIEN_EAST_PATH));
+        } else if (currLifeForm instanceof Alien && direction.equals("west")) {
+          button.setIcon(new ImageIcon(ALIEN_WEST_PATH));
+        }
+        
+        //unarmed human
+        if (currLifeForm instanceof Human && direction.equals("north")) {
+          button.setIcon(new ImageIcon(HUMAN_NORTH_PATH));
+        } else if (currLifeForm instanceof Human && direction.equals("south")) {
+          button.setIcon(new ImageIcon(HUMAN_SOUTH_PATH));
+        } else if (currLifeForm instanceof Human && direction.equals("east")) {
+          button.setIcon(new ImageIcon(HUMAN_EAST_PATH));
+        } else if (currLifeForm instanceof Human && direction.equals("west")) {
+          button.setIcon(new ImageIcon(HUMAN_WEST_PATH));
+        }
+        
+        //pistol human
+        if (currLifeForm instanceof Human && direction.equals("north") && equippedWeapon instanceof Pistol) {
+          button.setIcon(new ImageIcon(HUMAN_NORTH_PISTOL_PATH));
+        } else if (currLifeForm instanceof Human && direction.equals("south") && equippedWeapon instanceof Pistol) {
+          button.setIcon(new ImageIcon(HUMAN_SOUTH_PISTOL_PATH));
+        } else if (currLifeForm instanceof Human && direction.equals("east") && equippedWeapon instanceof Pistol) {
+          button.setIcon(new ImageIcon(HUMAN_EAST_PISTOL_PATH));
+        }  else if (currLifeForm instanceof Human && direction.equals("west") && equippedWeapon instanceof Pistol) {
+          button.setIcon(new ImageIcon(HUMAN_WEST_PISTOL_PATH));
+        }
+        
+        //plasma human
+        if (currLifeForm instanceof Human && direction.equals("north") && equippedWeapon instanceof PlasmaCannon) {
+          button.setIcon(new ImageIcon(HUMAN_NORTH_PLASMACANNON_PATH));
+        } else if (currLifeForm instanceof Human && direction.equals("south") && equippedWeapon instanceof PlasmaCannon) {
+          button.setIcon(new ImageIcon(HUMAN_SOUTH_PLASMACANNON_PATH));
+        } else if (currLifeForm instanceof Human && direction.equals("east") && equippedWeapon instanceof PlasmaCannon) {
+          button.setIcon(new ImageIcon(HUMAN_EAST_PLASMACANNON_PATH));
+        }  else if (currLifeForm instanceof Human && direction.equals("west") && equippedWeapon instanceof PlasmaCannon) {
+          button.setIcon(new ImageIcon(HUMAN_WEST_PLASMACANNON_PATH));
+        }
+        
+        //chaingun human
+        if (currLifeForm instanceof Human && direction.equals("north") && equippedWeapon instanceof ChainGun) {
+          button.setIcon(new ImageIcon(HUMAN_NORTH_CHAINGUN_PATH));
+        } else if (currLifeForm instanceof Human && direction.equals("south") && equippedWeapon instanceof ChainGun) {
+          button.setIcon(new ImageIcon(HUMAN_SOUTH_CHAINGUN_PATH));
+        } else if (currLifeForm instanceof Human && direction.equals("east") && equippedWeapon instanceof ChainGun) {
+          button.setIcon(new ImageIcon(HUMAN_EAST_CHAINGUN_PATH));
+        }  else if (currLifeForm instanceof Human && direction.equals("west") && equippedWeapon instanceof ChainGun) {
+          button.setIcon(new ImageIcon(HUMAN_WEST_CHAINGUN_PATH));
+        }
+        
+        // unequipped weapons in environment
+        Weapon currWeapon = world.getWeapons(i, j)[0];
+        if (currWeapon instanceof PlasmaCannon) {
+          button.setIcon(new ImageIcon(PLASMACANNON_IMAGE_PATH));
+        } else if (currWeapon instanceof Pistol) {
+          button.setIcon(new ImageIcon(PISTOL_IMAGE_PATH));
+        } else if (currWeapon instanceof ChainGun) {
+          button.setIcon(new ImageIcon(CHAINGUN_IMAGE_PATH));
+        }
+        
+        // Update the corresponding button in the boardArray
+        this.boardArray[j][i] = button;
+      }
+    }
+    createBoardPanel(); // recreates the boardpanel so the new elements can be reattached & appear
+  }
+  
+  /**
+  * Creates and displays the main JFrame.
+  */
+  private void createFrame() {
     JFrame boardFrame = new JFrame("Humans & Aliens Game");
     boardFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     boardFrame.setLayout(new BorderLayout());
@@ -56,8 +201,8 @@ public class gameUIBoard {
   }
   
   /**
-  * Creates and rethrns the JPanel "containerPanel". This panel houses the legendPanel, boardPanel,
-  *  displayPanel & infoPanel. Also sets the "form" / amount of space they take.
+  * Creates and rethrns the JPanel "containerPanel". This is our first panel that sits on top of the main JFrame.
+  * This panel is responsible for formatting everything and it "houses" all other panels / components.
   * @return
   */
   public JPanel createContainerPanel() {
@@ -131,7 +276,7 @@ public class gameUIBoard {
     picturePanel1.setBackground(Color.gray);
     picturePanel1.add(pictureLabel1, BorderLayout.WEST);
     legendGridPanel.add(picturePanel1);
-
+    
     // Panel for the second picture (alien)
     JPanel picturePanel2 = new JPanel(new BorderLayout());
     JLabel pictureLabel2 = new JLabel(new ImageIcon(ALIEN_LEGEND_IMAGE_PATH));
@@ -145,28 +290,28 @@ public class gameUIBoard {
     picturePanel3.setBackground(Color.gray);
     picturePanel3.add(pictureLabel3, BorderLayout.EAST);
     legendGridPanel.add(picturePanel3);
-
+    
     // Panel for the fourth picture (pistol)
     JPanel picturePanel4 = new JPanel(new BorderLayout());
     JLabel pictureLabel4 = new JLabel(new ImageIcon(PISTOL_LEGEND_IMAGE_PATH));
     picturePanel4.setBackground(Color.gray);
     picturePanel4.add(pictureLabel4, BorderLayout.WEST);
     legendGridPanel.add(picturePanel4);
-
+    
     // Panel for the fifth picture (chaingun)
     JPanel picturePanel5 = new JPanel(new BorderLayout());
     JLabel pictureLabel5 = new JLabel(new ImageIcon(CHAINGUN_LEGEND_IMAGE_PATH));
     picturePanel5.setBackground(Color.gray);
     picturePanel5.add(pictureLabel5, BorderLayout.CENTER);
     legendGridPanel.add(picturePanel5);
-
+    
     // Panel for the fifth picture (placeholder)
     JPanel picturePanel6 = new JPanel(new BorderLayout());
     JLabel pictureLabel6 = new JLabel(new ImageIcon("placeholder"));
     picturePanel6.setBackground(Color.gray);
     picturePanel6.add(pictureLabel6, BorderLayout.CENTER);
     legendGridPanel.add(picturePanel6);
-
+    
     // Add the grid panel to the bottom half of the legend panel
     legendPanel.add(legendGridPanel, BorderLayout.SOUTH);
     
@@ -180,46 +325,43 @@ public class gameUIBoard {
   
   /**
   * Creates and returns the JPanel "boardPanel". This panel will house our game board.
+  * This panel also attaches our grid / matrix to itself.
   * @return boardPanel
   */
   private JPanel createBoardPanel() {
-    JPanel boardPanel = new JPanel(new GridLayout(6, 6));
-
-    //creates board within our 2d matrix
-    for (int i = 0; i < 6; i++) {
-        for (int j = 0; j < 6; j++) {
-            JLabel label = new JLabel(new ImageIcon("placeholder"));
-            label.setBackground(Color.lightGray);
-            label.setOpaque(true); // Set opaque to true to make the background color visible
-            label.setBorder(new LineBorder(Color.BLACK, BORDER_WIDTH));
-            this.boardArray[j][i] = label;
-        }
-    }
-
-    //adds a human to pos 0 0
-    ImageIcon icon = new ImageIcon(HUMAN_IMAGE_PATH);
-    this.boardArray[0][0].setIcon(icon);
-    this.boardArray[0][0].setBackground(Color.lightGray);
-
-    //adds an alien to pos 3 2
-    ImageIcon icon2 = new ImageIcon(ALIEN_IMAGE_PATH);
-    this.boardArray[3][2].setIcon(icon2);
-    this.boardArray[3][2].setBackground(Color.lightGray);
-
-    //adds a pistol to pos 5 1
-    ImageIcon icon3 = new ImageIcon(PISTOL_IMAGE_PATH);
-    this.boardArray[5][1].setIcon(icon3);
-    this.boardArray[5][1].setBackground(Color.lightGray);
-
-    //reads our 2d matrix and adds it as elements to the UI
-    for (int i = 0; i < 6; i++) {
-      for (int j = 0; j < 6; j++) {
+    int numOfRows = this.world.getNumRows();
+    int numOfCols = this.world.getNumCols();
+    JPanel boardPanel = new JPanel(new GridLayout(numOfRows, numOfCols)); //creates the UI grid and sizes it
+    
+    // reads our 2d matrix and adds it as elements to the board panel
+    for (int i = 0; i < numOfRows; i++) {
+      for (int j = 0; j < numOfCols; j++) {
         boardPanel.add(this.boardArray[j][i]);
       }
     }
-
+    
     boardPanel.setBorder(new LineBorder(Color.BLACK, BORDER_WIDTH));
     return boardPanel;
+  }
+  
+  /**
+  * ActionListener for the buttons in the game board.
+  */
+  private class ButtonClickListener implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      JButton clickedButton = (JButton) e.getSource();
+      
+      // deselect all buttons (change their background color to light gray)
+      for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+          boardArray[j][i].setBackground(Color.lightGray);
+        }
+      }
+      
+      // select the clicked button and change its background color to dark gray
+      clickedButton.setBackground(Color.darkGray);
+    }
   }
   
   /**
@@ -270,49 +412,49 @@ public class gameUIBoard {
   private JPanel createInfoPanel() {
     JPanel infoPanel = new JPanel();
     JPanel infoGridPanel = new JPanel(new GridLayout(2, 6));
-
+    
     // Panel for the first text field
     JPanel textFieldPanel1 = new JPanel(new BorderLayout());
     JTextField textField1 = new JTextField("Health:--------");
     textFieldPanel1.setBackground(Color.gray);
     textFieldPanel1.add(textField1, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel1);
-
+    
     // Panel for the second text field
     JPanel textFieldPanel2 = new JPanel(new BorderLayout());
     JTextField textField2 = new JTextField("Current Weapon:---------");
     textFieldPanel2.setBackground(Color.gray);
     textFieldPanel2.add(textField2, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel2);
-
+    
     // Panel for the third text field
     JPanel textFieldPanel3 = new JPanel(new BorderLayout());
     JTextField textField3 = new JTextField("Weapon 1:---------");
     textFieldPanel3.setBackground(Color.gray);
     textFieldPanel3.add(textField3, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel3);
-
+    
     // Panel for the fourth text field
     JPanel textFieldPanel4 = new JPanel(new BorderLayout());
     JTextField textField4 = new JTextField("Data point 4:---------");
     textFieldPanel4.setBackground(Color.gray);
     textFieldPanel4.add(textField4, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel4);
-
+    
     // Panel for the fifth text field
     JPanel textFieldPanel5 = new JPanel(new BorderLayout());
     JTextField textField5 = new JTextField("Data point 5:---------");
     textFieldPanel5.setBackground(Color.gray);
     textFieldPanel5.add(textField5, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel5);
-
+    
     // Panel for the sixth text field
     JPanel textFieldPanel6 = new JPanel(new BorderLayout());
     JTextField textField6 = new JTextField("Data point 6:---------");
     textFieldPanel6.setBackground(Color.gray);
     textFieldPanel6.add(textField6, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel6);
-
+    
     // this is a temporary button to test the functionality of the text fields
     JButton addButton = new JButton("update data");
     addButton.addActionListener(new ActionListener() {
@@ -328,7 +470,7 @@ public class gameUIBoard {
       }
     });
     infoPanel.add(addButton, BorderLayout.SOUTH);
-
+    
     // this is a temporary button to test the functionality of the text fields
     JButton addButton1 = new JButton("reset data");
     addButton1.addActionListener(new ActionListener() {
@@ -344,13 +486,13 @@ public class gameUIBoard {
       }
     });
     infoPanel.add(addButton1, BorderLayout.NORTH);
-
+    
     //adds the grid panel to our info panel
     infoPanel.add(infoGridPanel);
-
+    
     // Set preferred size to ensure fixed size
     infoPanel.setPreferredSize(new Dimension(300, 100)); // Adjust the dimensions as needed
-
+    
     infoPanel.setBackground(Color.gray);
     infoPanel.setBorder(new LineBorder(Color.BLACK, BORDER_WIDTH));
     return infoPanel;

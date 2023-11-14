@@ -24,7 +24,7 @@ public class Environment {
    * @param rows the number of rows of the Environment
    * @param cols the number of columns of the Environment
    */
-  private Environment(int rows, int cols) {
+  public Environment(int rows, int cols) {
     this.rows = rows;
     this.columns = cols;
 
