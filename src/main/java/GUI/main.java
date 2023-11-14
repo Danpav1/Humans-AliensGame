@@ -27,6 +27,8 @@ public class main {
     LifeForm human = new Human("Sugma", 100, 10);
     Weapon plasmaCannon = new PlasmaCannon();
     Weapon pistol = new Pistol();
+    Weapon pistol2 = new Pistol();
+    Weapon pistol3 = new Pistol();
     Weapon chainGun = new ChainGun();
 
     alien.changeDirectionSouth();
@@ -36,8 +38,11 @@ public class main {
     world.addLifeForm(alien, 0, 0); //adds our alien "Ligma" to pos 0, 0
     world.addLifeForm(human, 3, 3); //adds our human "Sugma" to pos 3, 3
     world.addWeapon(plasmaCannon, 5, 1);
+    world.addWeapon(pistol2, 0, 0);
     world.addWeapon(pistol, 2, 5);
     world.addWeapon(chainGun, 3, 4);
+    world.addWeapon(pistol, 3, 4);
+
     
     new gameUIBoard(world);
   }

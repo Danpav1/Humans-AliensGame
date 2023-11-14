@@ -70,7 +70,18 @@ public class gameUIBoard {
   private JButton[][] boardArray;
   
   //our environment
-  Environment world;
+  private Environment world;
+  
+  //our selected JButton
+  private int selectedArr[] = {-1, -1};
+  
+  //our info sections text fields
+  private JTextField textFieldHealth;
+  private JTextField textFieldAmmo;
+  private JTextField textFieldEquippedWeapon;
+  private JTextField textFieldWeapon1;
+  private JTextField textFieldWeapon2;
+  private JTextField textFieldSelectedCoords;
   
   /**
   * constructor for GUI, removed the "startUI" and put the initiliazation code within this constructor.
@@ -112,6 +123,16 @@ public class gameUIBoard {
         } else {
           direction = "null";
           equippedWeapon = null;
+        }
+        
+        // unequipped weapons in environment
+        Weapon currWeapon = world.getWeapons(i, j)[0];
+        if (currWeapon instanceof PlasmaCannon) {
+          button.setIcon(new ImageIcon(PLASMACANNON_IMAGE_PATH));
+        } else if (currWeapon instanceof Pistol) {
+          button.setIcon(new ImageIcon(PISTOL_IMAGE_PATH));
+        } else if (currWeapon instanceof ChainGun) {
+          button.setIcon(new ImageIcon(CHAINGUN_IMAGE_PATH));
         }
         
         //alien
@@ -169,15 +190,6 @@ public class gameUIBoard {
           button.setIcon(new ImageIcon(HUMAN_WEST_CHAINGUN_PATH));
         }
         
-        // unequipped weapons in environment
-        Weapon currWeapon = world.getWeapons(i, j)[0];
-        if (currWeapon instanceof PlasmaCannon) {
-          button.setIcon(new ImageIcon(PLASMACANNON_IMAGE_PATH));
-        } else if (currWeapon instanceof Pistol) {
-          button.setIcon(new ImageIcon(PISTOL_IMAGE_PATH));
-        } else if (currWeapon instanceof ChainGun) {
-          button.setIcon(new ImageIcon(CHAINGUN_IMAGE_PATH));
-        }
         
         // Update the corresponding button in the boardArray
         this.boardArray[j][i] = button;
@@ -345,24 +357,88 @@ public class gameUIBoard {
   }
   
   /**
-  * ActionListener for the buttons in the game board.
+  * our button selection code
   */
   private class ButtonClickListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
       JButton clickedButton = (JButton) e.getSource();
       
-      // deselect all buttons (change their background color to light gray)
+      // Iterate through the boardArray to find the clicked button
+      for (int i = 0; i < boardArray.length; i++) {
+        for (int j = 0; j < boardArray[0].length; j++) {
+          if (boardArray[i][j] == clickedButton) {
+            // Store the row and column indices in selectedArr
+            selectedArr[0] = j; // row
+            selectedArr[1] = i; // column
+            break; // Break out of the loop since we found the clicked button
+          }
+        }
+      }
+      
+      // Deselect all buttons (change their background color to light gray)
       for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 6; j++) {
           boardArray[j][i].setBackground(Color.lightGray);
         }
       }
       
-      // select the clicked button and change its background color to dark gray
+      /**
+      * i coded this at 1 am after 6 hr of coding. dont 100% know why it works and i learned
+      *  that ActionListeners are very annoying and finicky
+      */
+      LifeForm lf = world.getLifeForm(selectedArr[0], selectedArr[1]);
+      if (lf != null) {
+        Weapon[] groundWeapons = world.getWeapons(selectedArr[0], selectedArr[1]);
+        if (groundWeapons[0] == null && groundWeapons[1] == null) {
+          textFieldWeapon1.setText("Weapon 1: null");
+          textFieldWeapon2.setText("Weapon 2: null");
+        } else if (groundWeapons[0] != null && groundWeapons[1] == null) {
+          textFieldWeapon1.setText("Weapon 1: " + groundWeapons[0]);
+          textFieldWeapon2.setText("Weapon 2: null");
+        } else if (groundWeapons[0] == null && groundWeapons[1] != null) {
+          textFieldWeapon1.setText("Weapon 1: null");
+          textFieldWeapon2.setText("Weapon 2: " + groundWeapons[1]);
+        } else if (groundWeapons[0] != null && groundWeapons[1] != null)
+        textFieldWeapon1.setText("Weapon 1: " + groundWeapons[0]);
+        textFieldWeapon2.setText("Weapon 2: " + groundWeapons[1]);
+        
+        if (lf.getWeapon() != null) {
+          textFieldEquippedWeapon.setText("Equipped Weapon: " + lf.getWeapon());
+          textFieldAmmo.setText("Ammo: " + lf.getWeapon().getCurrentAmmo());
+        } else if (lf.getWeapon() == null) {
+          textFieldEquippedWeapon.setText("Equipped Weapon: none");
+          textFieldAmmo.setText("Ammo: null");
+        }
+        
+        textFieldHealth.setText("Health: " + lf.getCurrentLifePoints());
+        
+        textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
+      } else {
+        
+        textFieldHealth.setText("Health: null");
+        
+        Weapon[] groundWeapons = world.getWeapons(selectedArr[0], selectedArr[1]);
+        if (groundWeapons[0] == null && groundWeapons[1] == null) {
+          textFieldWeapon1.setText("Weapon 1: null");
+          textFieldWeapon2.setText("Weapon 2: null");
+        } else if (groundWeapons[0] != null && groundWeapons[1] == null) {
+          textFieldWeapon1.setText("Weapon 1: " + groundWeapons[0]);
+          textFieldWeapon2.setText("Weapon 2: null");
+        } else if (groundWeapons[0] == null && groundWeapons[1] != null) {
+          textFieldWeapon1.setText("Weapon 1: null");
+          textFieldWeapon2.setText("Weapon 2: " + groundWeapons[1]);
+        } else if (groundWeapons[0] != null && groundWeapons[1] != null)
+        textFieldWeapon1.setText("Weapon 1: " + groundWeapons[0]);
+        textFieldWeapon2.setText("Weapon 2: " + groundWeapons[1]);
+        textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
+      }
+      
+      // Select the clicked button and change its background color to dark gray
       clickedButton.setBackground(Color.darkGray);
     }
   }
+  
   
   /**
   * Creates and returns the JPanel "displayBoxPanel". This panel will house the "text box" that shows
@@ -415,77 +491,51 @@ public class gameUIBoard {
     
     // Panel for the first text field
     JPanel textFieldPanel1 = new JPanel(new BorderLayout());
-    JTextField textField1 = new JTextField("Health:--------");
+    JTextField textField1 = new JTextField("Health: null");
     textFieldPanel1.setBackground(Color.gray);
     textFieldPanel1.add(textField1, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel1);
+    this.textFieldHealth = textField1;
     
     // Panel for the second text field
     JPanel textFieldPanel2 = new JPanel(new BorderLayout());
-    JTextField textField2 = new JTextField("Current Weapon:---------");
+    JTextField textField2 = new JTextField("Ammo: null");
     textFieldPanel2.setBackground(Color.gray);
     textFieldPanel2.add(textField2, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel2);
+    this.textFieldAmmo = textField2;
     
     // Panel for the third text field
     JPanel textFieldPanel3 = new JPanel(new BorderLayout());
-    JTextField textField3 = new JTextField("Weapon 1:---------");
+    JTextField textField3 = new JTextField("Equipped Weapon: null");
     textFieldPanel3.setBackground(Color.gray);
     textFieldPanel3.add(textField3, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel3);
+    this.textFieldEquippedWeapon = textField3;
     
     // Panel for the fourth text field
     JPanel textFieldPanel4 = new JPanel(new BorderLayout());
-    JTextField textField4 = new JTextField("Data point 4:---------");
+    JTextField textField4 = new JTextField("Cell Weapon 1: null");
     textFieldPanel4.setBackground(Color.gray);
     textFieldPanel4.add(textField4, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel4);
+    this.textFieldWeapon1 = textField4;
     
     // Panel for the fifth text field
     JPanel textFieldPanel5 = new JPanel(new BorderLayout());
-    JTextField textField5 = new JTextField("Data point 5:---------");
+    JTextField textField5 = new JTextField("Cell Weapon 2: null");
     textFieldPanel5.setBackground(Color.gray);
     textFieldPanel5.add(textField5, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel5);
+    this.textFieldWeapon2 = textField5;
     
     // Panel for the sixth text field
     JPanel textFieldPanel6 = new JPanel(new BorderLayout());
-    JTextField textField6 = new JTextField("Data point 6:---------");
+    JTextField textField6 = new JTextField("Selected Coords:---------");
     textFieldPanel6.setBackground(Color.gray);
     textFieldPanel6.add(textField6, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel6);
-    
-    // this is a temporary button to test the functionality of the text fields
-    JButton addButton = new JButton("update data");
-    addButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        // Update the content after the header while keeping the header
-        textField1.setText("Data point 1: " + "0000000");
-        textField2.setText("Data point 2: " + "1111111");
-        textField3.setText("Data point 3: " + "2222222");
-        textField4.setText("Data point 4: " + "3333333");
-        textField5.setText("Data point 4: " + "4444444");
-        textField6.setText("Data point 4: " + "5555555");
-      }
-    });
-    infoPanel.add(addButton, BorderLayout.SOUTH);
-    
-    // this is a temporary button to test the functionality of the text fields
-    JButton addButton1 = new JButton("reset data");
-    addButton1.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        // Update the content after the header while keeping the header
-        textField1.setText("Data point 1: " + "-------");
-        textField2.setText("Data point 2: " + "-------");
-        textField3.setText("Data point 3: " + "-------");
-        textField4.setText("Data point 4: " + "-------");
-        textField5.setText("Data point 4: " + "-------");
-        textField6.setText("Data point 4: " + "-------");
-      }
-    });
-    infoPanel.add(addButton1, BorderLayout.NORTH);
+    this.textFieldSelectedCoords = textField6;
     
     //adds the grid panel to our info panel
     infoPanel.add(infoGridPanel);
