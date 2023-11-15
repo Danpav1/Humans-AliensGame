@@ -74,7 +74,7 @@ public class gameUIBoard {
   
   //our selected JButton
   private int selectedArr[] = {-1, -1};
-
+  
   //all of our swing elements
   private JFrame boardFrame;
   private JPanel containerPanel;
@@ -342,7 +342,7 @@ public class gameUIBoard {
     
     // Set preferred size to ensure fixed size
     legendPanel.setPreferredSize(new Dimension(150, 400));
-
+    
     this.legendGridPanel = legendGridPanel;
     this.legendPanel = legendPanel;
     return legendPanel;
@@ -397,7 +397,7 @@ public class gameUIBoard {
         }
       }
       
-
+      
       updateTextFields();
       updateDisplayTextArea("\n" + "Selected: " + selectedArr[0] + ", " + selectedArr[1]); 
       
@@ -405,14 +405,14 @@ public class gameUIBoard {
       clickedButton.setBackground(Color.darkGray);
     }
   }
-
+  
   /**
-   * method that updates the display text area with a given string
-   * @param message
-   */
+  * method that updates the display text area with a given string
+  * @param message
+  */
   private void updateDisplayTextArea(String message) {
-      displayTextArea.append(message);
-      displayTextArea.setCaretPosition(displayTextArea.getDocument().getLength()); 
+    displayTextArea.append(message);
+    displayTextArea.setCaretPosition(displayTextArea.getDocument().getLength()); 
   }
   
   /**
@@ -420,54 +420,50 @@ public class gameUIBoard {
   */
   private void updateTextFields() {
     LifeForm lf = world.getLifeForm(selectedArr[0], selectedArr[1]);
+    
+    // default values
+    String cellWeapon1Text = "Cell Weapon 1: null";
+    String cellWeapon2Text = "Cell Weapon 2: null";
+    String equippedWeaponText = "Equipped Weapon: null";
+    String ammoText = "Ammo: null";
+    String healthText = "Health: null";
+    
     if (lf != null) {
       Weapon[] groundWeapons = world.getWeapons(selectedArr[0], selectedArr[1]);
-      if (groundWeapons[0] == null && groundWeapons[1] == null) {
-        textFieldWeapon1.setText("Cell Weapon 1: null");
-        textFieldWeapon2.setText("Cell Weapon 2: null");
-      } else if (groundWeapons[0] != null && groundWeapons[1] == null) {
-        textFieldWeapon1.setText("Cell Weapon 1: " + groundWeapons[0]);
-        textFieldWeapon2.setText("Cell Weapon 2: null");
-      } else if (groundWeapons[0] == null && groundWeapons[1] != null) {
-        textFieldWeapon1.setText("Cell Weapon 1: null");
-        textFieldWeapon2.setText("Cell Weapon 2: " + groundWeapons[1]);
-      } else if (groundWeapons[0] != null && groundWeapons[1] != null)
-      textFieldWeapon1.setText("Cell Weapon 1: " + groundWeapons[0]);
-      textFieldWeapon2.setText("Cell Weapon 2: " + groundWeapons[1]);
       
-      if (lf.getWeapon() != null) {
-        textFieldEquippedWeapon.setText("Equipped Weapon: " + lf.getWeapon());
-        textFieldAmmo.setText("Ammo: " + lf.getWeapon().getCurrentAmmo());
-      } else if (lf.getWeapon() == null) {
-        textFieldEquippedWeapon.setText("Equipped Weapon: null");
-        textFieldAmmo.setText("Ammo: null");
+      if (groundWeapons[0] != null) {
+        cellWeapon1Text = "Cell Weapon 1: " + groundWeapons[0];
+      }
+      if (groundWeapons[1] != null) {
+        cellWeapon2Text = "Cell Weapon 2: " + groundWeapons[1];
       }
       
-      textFieldHealth.setText("Health: " + lf.getCurrentLifePoints());
+      if (lf.getWeapon() != null) {
+        equippedWeaponText = "Equipped Weapon: " + lf.getWeapon();
+        ammoText = "Ammo: " + lf.getWeapon().getCurrentAmmo();
+      }
       
-      textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
-    } else {
-      
-      textFieldHealth.setText("Health: null");
-      textFieldAmmo.setText("Ammo: null");
-      textFieldEquippedWeapon.setText("Equipped Weapon: null");
-      
+      healthText = "Health: " + lf.getCurrentLifePoints();
+    } else if (lf == null) {
       Weapon[] groundWeapons = world.getWeapons(selectedArr[0], selectedArr[1]);
-      if (groundWeapons[0] == null && groundWeapons[1] == null) {
-        textFieldWeapon1.setText("Cell Weapon 1: null");
-        textFieldWeapon2.setText("Cell Weapon 2: null");
-      } else if (groundWeapons[0] != null && groundWeapons[1] == null) {
-        textFieldWeapon1.setText("Cell Weapon 1: " + groundWeapons[0]);
-        textFieldWeapon2.setText("Cell Weapon 2: null");
-      } else if (groundWeapons[0] == null && groundWeapons[1] != null) {
-        textFieldWeapon1.setText("Cell Weapon 1: null");
-        textFieldWeapon2.setText("Cell Weapon 2: " + groundWeapons[1]);
-      } else if (groundWeapons[0] != null && groundWeapons[1] != null)
-      textFieldWeapon1.setText("Cell Weapon 1: " + groundWeapons[0]);
-      textFieldWeapon2.setText("Cell Weapon 2: " + groundWeapons[1]);
-      textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
+      
+      if (groundWeapons[0] != null) {
+        cellWeapon1Text = "Cell Weapon 1: " + groundWeapons[0];
+      }
+      if (groundWeapons[1] != null) {
+        cellWeapon2Text = "Cell Weapon 2: " + groundWeapons[1];
+      }
     }
+    
+    // update text fields
+    textFieldWeapon1.setText(cellWeapon1Text);
+    textFieldWeapon2.setText(cellWeapon2Text);
+    textFieldEquippedWeapon.setText(equippedWeaponText);
+    textFieldAmmo.setText(ammoText);
+    textFieldHealth.setText(healthText);
+    textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
   }
+  
   
   
   /**
