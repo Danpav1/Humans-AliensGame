@@ -74,17 +74,24 @@ public class gameUIBoard {
   
   //our selected JButton
   private int selectedArr[] = {-1, -1};
-  
-  //our info sections text fields
+
+  //all of our swing elements
+  private JFrame boardFrame;
+  private JPanel containerPanel;
+  private JPanel legendPanel;
+  private JPanel legendGridPanel;
+  private JPanel infoPanel;
+  private JPanel infoGridPanel;
+  private JPanel boardPanel;
+  private JPanel displayBoxPanel;
+  private JTextArea displayTextArea;
+  private JTextArea legendInstructionTextArea;
   private JTextField textFieldHealth;
   private JTextField textFieldAmmo;
   private JTextField textFieldEquippedWeapon;
   private JTextField textFieldWeapon1;
   private JTextField textFieldWeapon2;
   private JTextField textFieldSelectedCoords;
-  
-  //our data section
-  private JTextArea displayTextArea;
   
   /**
   * constructor for GUI, removed the "startUI" and put the initiliazation code within this constructor.
@@ -208,11 +215,10 @@ public class gameUIBoard {
     JFrame boardFrame = new JFrame("Humans & Aliens Game");
     boardFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     boardFrame.setLayout(new BorderLayout());
-    
     boardFrame.add(createContainerPanel(), BorderLayout.CENTER);
-    
     boardFrame.setSize(1400, 800);
     boardFrame.setVisible(true);
+    this.boardFrame = boardFrame;
   }
   
   /**
@@ -265,6 +271,7 @@ public class gameUIBoard {
     gbc.fill = GridBagConstraints.BOTH;
     containerPanel.add(infoPanel, gbc);
     
+    this.containerPanel = containerPanel;
     return containerPanel;
   }
   
@@ -335,6 +342,9 @@ public class gameUIBoard {
     
     // Set preferred size to ensure fixed size
     legendPanel.setPreferredSize(new Dimension(150, 400));
+
+    this.legendGridPanel = legendGridPanel;
+    this.legendPanel = legendPanel;
     return legendPanel;
   }
   
@@ -356,6 +366,7 @@ public class gameUIBoard {
     }
     
     boardPanel.setBorder(new LineBorder(Color.BLACK, BORDER_WIDTH));
+    this.boardPanel = boardPanel;
     return boardPanel;
   }
   
@@ -473,6 +484,7 @@ public class gameUIBoard {
     displayBoxPanel.setBackground(Color.gray);
     displayBoxPanel.setBorder(new LineBorder(Color.BLACK, BORDER_WIDTH));
     displayBoxPanel.add(scrollPane, BorderLayout.CENTER);
+    this.displayBoxPanel = displayBoxPanel;
     return displayBoxPanel;
   }
   
@@ -481,6 +493,7 @@ public class gameUIBoard {
     this.displayTextArea = displayTextArea;
     displayTextArea.setEditable(false); //makes the text field display only
     displayTextArea.setBackground(Color.lightGray);
+    this.displayTextArea = displayTextArea;
     return displayTextArea;
   }
   
@@ -549,6 +562,8 @@ public class gameUIBoard {
     
     infoPanel.setBackground(Color.gray);
     infoPanel.setBorder(new LineBorder(Color.BLACK, BORDER_WIDTH));
+    this.infoGridPanel = infoGridPanel;
+    this.infoPanel = infoPanel;
     return infoPanel;
   }
   
@@ -573,6 +588,7 @@ public class gameUIBoard {
     legendInstructionTextArea.append("  Get Weapon 2: picks up the cells weapon 2.\n\n");
     legendInstructionTextArea.append("  Drop Weapon: drops the weapon the human is holding.\n\n");
     legendInstructionTextArea.append("  Reload: reloads the weapon the human is holding\n\n");
+    this.legendInstructionTextArea = legendInstructionTextArea;
     return legendInstructionTextArea;
   }
 }
