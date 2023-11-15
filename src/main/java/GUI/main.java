@@ -22,7 +22,7 @@ public class main {
    * @throws RecoveryRateException
    */
   public static void main(String[] args) throws RecoveryRateException {
-    Environment world = Environment.getEnvironment(8, 8); //creates our "world" // board that the GUI references
+    Environment world = Environment.getEnvironment(9, 9); //creates our "world" // board that the GUI references
     LifeForm alien = new Alien("Ligma", 100); 
     LifeForm human = new Human("Sugma", 100, 10);
     Weapon plasmaCannon = new PlasmaCannon();

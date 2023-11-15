@@ -111,7 +111,7 @@ public class gameUIBoard {
     boardFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     boardFrame.setLayout(new BorderLayout());
     boardFrame.add(createContainerPanel(), BorderLayout.CENTER);
-    boardFrame.setSize(1400, 800);
+    boardFrame.setSize(1500, 1000);
     boardFrame.setVisible(true);
     this.boardFrame = boardFrame;
   }
