@@ -422,6 +422,8 @@ public class gameUIBoard {
       } else {
         
         textFieldHealth.setText("Health: null");
+        textFieldAmmo.setText("Ammo: null");
+        textFieldEquippedWeapon.setText("Equipped Weapon: null");
         
         Weapon[] groundWeapons = world.getWeapons(selectedArr[0], selectedArr[1]);
         if (groundWeapons[0] == null && groundWeapons[1] == null) {
