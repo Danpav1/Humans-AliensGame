@@ -14,8 +14,6 @@ import weapon.ChainGun;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.text.BadLocationException;
-
 
 /**
 * The Swing GUI for the game board.
@@ -382,8 +380,8 @@ public class gameUIBoard {
       }
       
       // Deselect all buttons (change their background color to light gray)
-      for (int i = 0; i < 6; i++) {
-        for (int j = 0; j < 6; j++) {
+      for (int i = 0; i < boardArray.length; i++) {
+        for (int j = 0; j < boardArray[0].length; j++) {
           boardArray[j][i].setBackground(Color.lightGray);
         }
       }
