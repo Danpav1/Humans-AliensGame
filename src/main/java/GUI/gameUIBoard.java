@@ -82,10 +82,10 @@ public class gameUIBoard {
   private JTextField textFieldWeapon1;
   private JTextField textFieldWeapon2;
   private JTextField textFieldSelectedCoords;
-
+  
   //our data section
   private JTextArea displayTextArea;
-
+  
   /**
   * constructor for GUI, removed the "startUI" and put the initiliazation code within this constructor.
   * @param world
@@ -386,64 +386,75 @@ public class gameUIBoard {
         }
       }
       
-      /**
-      * i coded this at 1 am after 6 hr of coding. dont 100% know why it works and i learned
-      *  that ActionListeners are very annoying and finicky
-      */
-      LifeForm lf = world.getLifeForm(selectedArr[0], selectedArr[1]);
-      if (lf != null) {
-        Weapon[] groundWeapons = world.getWeapons(selectedArr[0], selectedArr[1]);
-        if (groundWeapons[0] == null && groundWeapons[1] == null) {
-          textFieldWeapon1.setText("Weapon 1: null");
-          textFieldWeapon2.setText("Weapon 2: null");
-        } else if (groundWeapons[0] != null && groundWeapons[1] == null) {
-          textFieldWeapon1.setText("Weapon 1: " + groundWeapons[0]);
-          textFieldWeapon2.setText("Weapon 2: null");
-        } else if (groundWeapons[0] == null && groundWeapons[1] != null) {
-          textFieldWeapon1.setText("Weapon 1: null");
-          textFieldWeapon2.setText("Weapon 2: " + groundWeapons[1]);
-        } else if (groundWeapons[0] != null && groundWeapons[1] != null)
-        textFieldWeapon1.setText("Weapon 1: " + groundWeapons[0]);
-        textFieldWeapon2.setText("Weapon 2: " + groundWeapons[1]);
-        
-        if (lf.getWeapon() != null) {
-          textFieldEquippedWeapon.setText("Equipped Weapon: " + lf.getWeapon());
-          textFieldAmmo.setText("Ammo: " + lf.getWeapon().getCurrentAmmo());
-        } else if (lf.getWeapon() == null) {
-          textFieldEquippedWeapon.setText("Equipped Weapon: none");
-          textFieldAmmo.setText("Ammo: null");
-        }
-        
-        textFieldHealth.setText("Health: " + lf.getCurrentLifePoints());
-        
-        textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
-      } else {
-        
-        textFieldHealth.setText("Health: null");
-        textFieldAmmo.setText("Ammo: null");
-        textFieldEquippedWeapon.setText("Equipped Weapon: null");
-        
-        Weapon[] groundWeapons = world.getWeapons(selectedArr[0], selectedArr[1]);
-        if (groundWeapons[0] == null && groundWeapons[1] == null) {
-          textFieldWeapon1.setText("Weapon 1: null");
-          textFieldWeapon2.setText("Weapon 2: null");
-        } else if (groundWeapons[0] != null && groundWeapons[1] == null) {
-          textFieldWeapon1.setText("Weapon 1: " + groundWeapons[0]);
-          textFieldWeapon2.setText("Weapon 2: null");
-        } else if (groundWeapons[0] == null && groundWeapons[1] != null) {
-          textFieldWeapon1.setText("Weapon 1: null");
-          textFieldWeapon2.setText("Weapon 2: " + groundWeapons[1]);
-        } else if (groundWeapons[0] != null && groundWeapons[1] != null)
-        textFieldWeapon1.setText("Weapon 1: " + groundWeapons[0]);
-        textFieldWeapon2.setText("Weapon 2: " + groundWeapons[1]);
-        textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
-      }
-      
-      displayTextArea.append("\n" + "Selected: " + selectedArr[0] + ", " + selectedArr[1]);
-      displayTextArea.setCaretPosition(displayTextArea.getDocument().getLength());  
 
+      updateTextFields();
+      updateDisplayTextArea("\n" + "Selected: " + selectedArr[0] + ", " + selectedArr[1]); 
+      
       // Select the clicked button and change its background color to dark gray
       clickedButton.setBackground(Color.darkGray);
+    }
+  }
+
+  /**
+   * method that updates the display text area with a given string
+   * @param message
+   */
+  private void updateDisplayTextArea(String message) {
+      displayTextArea.append(message);
+      displayTextArea.setCaretPosition(displayTextArea.getDocument().getLength()); 
+  }
+  
+  /**
+  * method that updates the text fields within the info section with predefined cell content
+  */
+  private void updateTextFields() {
+    LifeForm lf = world.getLifeForm(selectedArr[0], selectedArr[1]);
+    if (lf != null) {
+      Weapon[] groundWeapons = world.getWeapons(selectedArr[0], selectedArr[1]);
+      if (groundWeapons[0] == null && groundWeapons[1] == null) {
+        textFieldWeapon1.setText("Weapon 1: null");
+        textFieldWeapon2.setText("Weapon 2: null");
+      } else if (groundWeapons[0] != null && groundWeapons[1] == null) {
+        textFieldWeapon1.setText("Weapon 1: " + groundWeapons[0]);
+        textFieldWeapon2.setText("Weapon 2: null");
+      } else if (groundWeapons[0] == null && groundWeapons[1] != null) {
+        textFieldWeapon1.setText("Weapon 1: null");
+        textFieldWeapon2.setText("Weapon 2: " + groundWeapons[1]);
+      } else if (groundWeapons[0] != null && groundWeapons[1] != null)
+      textFieldWeapon1.setText("Weapon 1: " + groundWeapons[0]);
+      textFieldWeapon2.setText("Weapon 2: " + groundWeapons[1]);
+      
+      if (lf.getWeapon() != null) {
+        textFieldEquippedWeapon.setText("Equipped Weapon: " + lf.getWeapon());
+        textFieldAmmo.setText("Ammo: " + lf.getWeapon().getCurrentAmmo());
+      } else if (lf.getWeapon() == null) {
+        textFieldEquippedWeapon.setText("Equipped Weapon: none");
+        textFieldAmmo.setText("Ammo: null");
+      }
+      
+      textFieldHealth.setText("Health: " + lf.getCurrentLifePoints());
+      
+      textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
+    } else {
+      
+      textFieldHealth.setText("Health: null");
+      textFieldAmmo.setText("Ammo: null");
+      textFieldEquippedWeapon.setText("Equipped Weapon: null");
+      
+      Weapon[] groundWeapons = world.getWeapons(selectedArr[0], selectedArr[1]);
+      if (groundWeapons[0] == null && groundWeapons[1] == null) {
+        textFieldWeapon1.setText("Weapon 1: null");
+        textFieldWeapon2.setText("Weapon 2: null");
+      } else if (groundWeapons[0] != null && groundWeapons[1] == null) {
+        textFieldWeapon1.setText("Weapon 1: " + groundWeapons[0]);
+        textFieldWeapon2.setText("Weapon 2: null");
+      } else if (groundWeapons[0] == null && groundWeapons[1] != null) {
+        textFieldWeapon1.setText("Weapon 1: null");
+        textFieldWeapon2.setText("Weapon 2: " + groundWeapons[1]);
+      } else if (groundWeapons[0] != null && groundWeapons[1] != null)
+      textFieldWeapon1.setText("Weapon 1: " + groundWeapons[0]);
+      textFieldWeapon2.setText("Weapon 2: " + groundWeapons[1]);
+      textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
     }
   }
   
@@ -524,7 +535,7 @@ public class gameUIBoard {
     
     // Panel for the sixth text field
     JPanel textFieldPanel6 = new JPanel(new BorderLayout());
-    JTextField textField6 = new JTextField("Selected Coords:---------");
+    JTextField textField6 = new JTextField("Selected Coords: null");
     textFieldPanel6.setBackground(Color.gray);
     textFieldPanel6.add(textField6, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel6);
