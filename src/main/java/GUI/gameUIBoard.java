@@ -423,23 +423,23 @@ public class gameUIBoard {
     if (lf != null) {
       Weapon[] groundWeapons = world.getWeapons(selectedArr[0], selectedArr[1]);
       if (groundWeapons[0] == null && groundWeapons[1] == null) {
-        textFieldWeapon1.setText("Weapon 1: null");
-        textFieldWeapon2.setText("Weapon 2: null");
+        textFieldWeapon1.setText("Cell Weapon 1: null");
+        textFieldWeapon2.setText("Cell Weapon 2: null");
       } else if (groundWeapons[0] != null && groundWeapons[1] == null) {
-        textFieldWeapon1.setText("Weapon 1: " + groundWeapons[0]);
-        textFieldWeapon2.setText("Weapon 2: null");
+        textFieldWeapon1.setText("Cell Weapon 1: " + groundWeapons[0]);
+        textFieldWeapon2.setText("Cell Weapon 2: null");
       } else if (groundWeapons[0] == null && groundWeapons[1] != null) {
-        textFieldWeapon1.setText("Weapon 1: null");
-        textFieldWeapon2.setText("Weapon 2: " + groundWeapons[1]);
+        textFieldWeapon1.setText("Cell Weapon 1: null");
+        textFieldWeapon2.setText("Cell Weapon 2: " + groundWeapons[1]);
       } else if (groundWeapons[0] != null && groundWeapons[1] != null)
-      textFieldWeapon1.setText("Weapon 1: " + groundWeapons[0]);
-      textFieldWeapon2.setText("Weapon 2: " + groundWeapons[1]);
+      textFieldWeapon1.setText("Cell Weapon 1: " + groundWeapons[0]);
+      textFieldWeapon2.setText("Cell Weapon 2: " + groundWeapons[1]);
       
       if (lf.getWeapon() != null) {
         textFieldEquippedWeapon.setText("Equipped Weapon: " + lf.getWeapon());
         textFieldAmmo.setText("Ammo: " + lf.getWeapon().getCurrentAmmo());
       } else if (lf.getWeapon() == null) {
-        textFieldEquippedWeapon.setText("Equipped Weapon: none");
+        textFieldEquippedWeapon.setText("Equipped Weapon: null");
         textFieldAmmo.setText("Ammo: null");
       }
       
@@ -454,17 +454,17 @@ public class gameUIBoard {
       
       Weapon[] groundWeapons = world.getWeapons(selectedArr[0], selectedArr[1]);
       if (groundWeapons[0] == null && groundWeapons[1] == null) {
-        textFieldWeapon1.setText("Weapon 1: null");
-        textFieldWeapon2.setText("Weapon 2: null");
+        textFieldWeapon1.setText("Cell Weapon 1: null");
+        textFieldWeapon2.setText("Cell Weapon 2: null");
       } else if (groundWeapons[0] != null && groundWeapons[1] == null) {
-        textFieldWeapon1.setText("Weapon 1: " + groundWeapons[0]);
-        textFieldWeapon2.setText("Weapon 2: null");
+        textFieldWeapon1.setText("Cell Weapon 1: " + groundWeapons[0]);
+        textFieldWeapon2.setText("Cell Weapon 2: null");
       } else if (groundWeapons[0] == null && groundWeapons[1] != null) {
-        textFieldWeapon1.setText("Weapon 1: null");
-        textFieldWeapon2.setText("Weapon 2: " + groundWeapons[1]);
+        textFieldWeapon1.setText("Cell Weapon 1: null");
+        textFieldWeapon2.setText("Cell Weapon 2: " + groundWeapons[1]);
       } else if (groundWeapons[0] != null && groundWeapons[1] != null)
-      textFieldWeapon1.setText("Weapon 1: " + groundWeapons[0]);
-      textFieldWeapon2.setText("Weapon 2: " + groundWeapons[1]);
+      textFieldWeapon1.setText("Cell Weapon 1: " + groundWeapons[0]);
+      textFieldWeapon2.setText("Cell Weapon 2: " + groundWeapons[1]);
       textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
     }
   }
@@ -508,7 +508,7 @@ public class gameUIBoard {
     
     // Panel for the first text field
     JPanel textFieldPanel1 = new JPanel(new BorderLayout());
-    JTextField textField1 = new JTextField("Health: null");
+    JTextField textField1 = new JTextField("Health: null               ");
     textFieldPanel1.setBackground(Color.gray);
     textFieldPanel1.add(textField1, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel1);
@@ -516,7 +516,7 @@ public class gameUIBoard {
     
     // Panel for the second text field
     JPanel textFieldPanel2 = new JPanel(new BorderLayout());
-    JTextField textField2 = new JTextField("Ammo: null");
+    JTextField textField2 = new JTextField("Ammo: null               ");
     textFieldPanel2.setBackground(Color.gray);
     textFieldPanel2.add(textField2, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel2);
@@ -524,7 +524,7 @@ public class gameUIBoard {
     
     // Panel for the third text field
     JPanel textFieldPanel3 = new JPanel(new BorderLayout());
-    JTextField textField3 = new JTextField("Equipped Weapon: null");
+    JTextField textField3 = new JTextField("Equipped Weapon: null             ");
     textFieldPanel3.setBackground(Color.gray);
     textFieldPanel3.add(textField3, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel3);
@@ -532,7 +532,7 @@ public class gameUIBoard {
     
     // Panel for the fourth text field
     JPanel textFieldPanel4 = new JPanel(new BorderLayout());
-    JTextField textField4 = new JTextField("Cell Weapon 1: null");
+    JTextField textField4 = new JTextField("Cell Weapon 1: null               ");
     textFieldPanel4.setBackground(Color.gray);
     textFieldPanel4.add(textField4, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel4);
@@ -540,7 +540,7 @@ public class gameUIBoard {
     
     // Panel for the fifth text field
     JPanel textFieldPanel5 = new JPanel(new BorderLayout());
-    JTextField textField5 = new JTextField("Cell Weapon 2: null");
+    JTextField textField5 = new JTextField("Cell Weapon 2: null               ");
     textFieldPanel5.setBackground(Color.gray);
     textFieldPanel5.add(textField5, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel5);
@@ -548,7 +548,7 @@ public class gameUIBoard {
     
     // Panel for the sixth text field
     JPanel textFieldPanel6 = new JPanel(new BorderLayout());
-    JTextField textField6 = new JTextField("Selected Coords: null");
+    JTextField textField6 = new JTextField("Selected Coords: null               ");
     textFieldPanel6.setBackground(Color.gray);
     textFieldPanel6.add(textField6, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel6);
