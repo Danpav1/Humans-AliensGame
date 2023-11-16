@@ -24,11 +24,11 @@ public class TestEnvironment {
   final double DELTA = 0.01;
 
   /*
-   * Lab 6 tests begin
+   * Lab 6 tests begin -----------------------------------------------------------------------------
    */
 
   /**
-   * Tests if aliens and humans move north correctly
+   * Tests if aliens and humans move south correctly
    */
   @Test
   public void testMovesSouth() throws RecoveryRateException {
@@ -42,7 +42,7 @@ public class TestEnvironment {
     //Changes the LifeForms' directions to south
     bob.changeDirectionSouth();
     alien1.changeDirectionSouth();
-    //Moves the human and alien north by their respective maxSpeed
+    //Moves the human and alien south by their respective maxSpeed
     boolean humanSuccess = environment.move(bob);
     boolean alienSuccess = environment.move(alien1);
     //Tests if the human moved to the correct place
@@ -53,10 +53,10 @@ public class TestEnvironment {
     assertTrue(alienSuccess);
     assertEquals(3, alien1.getRow());
     assertEquals(3, alien1.getCol());
-    //Sets human's and alien's location next to the northern border
+    //Sets human's and alien's location next to the southern border
     environment.updateGridLocation(bob, 4, 2);
     environment.updateGridLocation(alien1, 4, 3);
-    //Moves human and alien north again
+    //Moves human and alien south again
     humanSuccess = environment.move(bob);
     alienSuccess = environment.move(alien1);
     //Tests if human didn't move due to going out of bounds
@@ -67,43 +67,43 @@ public class TestEnvironment {
     assertFalse(alienSuccess);
     assertEquals(4, alien1.getRow());
     assertEquals(3, alien1.getCol());
-    //Sets human's location directly south of alien
+    //Sets human's location directly north of alien
     environment.updateGridLocation(bob, 1, 3);
     environment.updateGridLocation(alien1, 2, 3);
-    //Moves human north
+    //Moves human south
     humanSuccess = environment.move(bob);
-    //Tests if human moved north through alien correctly
+    //Tests if human moved south through alien correctly
     assertTrue(humanSuccess);
     assertEquals(4, bob.getRow());
     assertEquals(3, bob.getCol());
-    //Sets alien's location directly south of human
+    //Sets alien's location directly north of human
     environment.updateGridLocation(bob, 2, 3);
     environment.updateGridLocation(alien1, 1, 3);
-    //Moves alien north
+    //Moves alien south
     alienSuccess = environment.move(alien1);
-    //Tests if alien moved north through human correctly
+    //Tests if alien moved south through human correctly
     assertTrue(alienSuccess);
     assertEquals(3, alien1.getRow());
     assertEquals(3, alien1.getCol());
-    //Sets human's location 3 spots south of alien
+    //Sets human's location 3 spots north of alien
     environment.updateGridLocation(bob, 0, 3);
     environment.updateGridLocation(alien1, 3, 3);
-    //Moves human north
+    //Moves human south
     humanSuccess = environment.move(bob);
-    //Tests if human moved north up to alien correctly
+    //Tests if human moved south down to alien correctly
     assertTrue(humanSuccess);
     assertEquals(2, bob.getRow());
     assertEquals(3, bob.getCol());
     //Initializes another alien
     Alien alien2 = new Alien("alien2", 10, new RecoveryNone());
     environment.addLifeForm(alien2, 3, 2);
-    //Moves alien1 directly south of alien2
+    //Moves alien1 directly north of alien2
     environment.updateGridLocation(alien1, 2, 2);
-    //Moves human underneath alien1 and alien2 so there is a one space gap
+    //Moves human north of alien1 and alien2 so there is a one space gap
     environment.updateGridLocation(bob, 0, 2);
-    //Moves human north
+    //Moves human south
     humanSuccess = environment.move(bob);
-    //Tests if human moves north correctly
+    //Tests if human moves south correctly
     assertTrue(humanSuccess);
     assertEquals(1, bob.getRow());
     assertEquals(2, bob.getCol());
@@ -208,10 +208,10 @@ public class TestEnvironment {
     //Places the human and alien on the board with no obstacles
     environment.addLifeForm(bob, 4, 2);
     environment.addLifeForm(alien1, 4, 3);
-    //Changes human and alien direction to south
+    //Changes human and alien direction to north
     bob.changeDirectionNorth();
     alien1.changeDirectionNorth();
-    //Moves the human and alien south by their respective maxSpeed
+    //Moves the human and alien north by their respective maxSpeed
     boolean humanSuccess = environment.move(bob);
     boolean alienSuccess = environment.move(alien1);
     //Tests if the human moved to the correct place
@@ -222,10 +222,10 @@ public class TestEnvironment {
     assertTrue(alienSuccess);
     assertEquals(2, alien1.getRow());
     assertEquals(3, alien1.getCol());
-    //Sets human's and alien's location next to the southern border
+    //Sets human's and alien's location next to the northern border
     environment.updateGridLocation(bob, 0, 2);
     environment.updateGridLocation(alien1, 0, 3);
-    //Moves human and alien south again
+    //Moves human and alien north again
     humanSuccess = environment.move(bob);
     alienSuccess = environment.move(alien1);
     //Tests if human didn't move due to going out of bounds
@@ -236,30 +236,30 @@ public class TestEnvironment {
     assertFalse(alienSuccess);
     assertEquals(0, alien1.getRow());
     assertEquals(3, alien1.getCol());
-    //Sets human's location directly north of alien
+    //Sets human's location directly south of alien
     environment.updateGridLocation(bob, 4, 3);
     environment.updateGridLocation(alien1, 3, 3);
-    //Moves human south
+    //Moves human north
     humanSuccess = environment.move(bob);
-    //Tests if human moved south through alien correctly
+    //Tests if human moved north through alien correctly
     assertTrue(humanSuccess);
     assertEquals(1, bob.getRow());
     assertEquals(3, bob.getCol());
-    //Sets alien's location directly north of human
+    //Sets alien's location directly south of human
     environment.updateGridLocation(bob, 3, 3);
     environment.updateGridLocation(alien1, 4, 3);
-    //Moves alien south
+    //Moves alien north
     alienSuccess = environment.move(alien1);
-    //Tests if alien moved south through human correctly
+    //Tests if alien moved north through human correctly
     assertTrue(alienSuccess);
     assertEquals(2, alien1.getRow());
     assertEquals(3, alien1.getCol());
-    //Sets human's location 3 spots north of alien
+    //Sets human's location 3 spots south of alien
     environment.updateGridLocation(bob, 3, 3);
     environment.updateGridLocation(alien1, 0, 3);
-    //Moves human south
+    //Moves human north
     humanSuccess = environment.move(bob);
-    //Tests if human moved south down to alien correctly
+    //Tests if human moved north up to alien correctly
     assertTrue(humanSuccess);
     assertEquals(1, bob.getRow());
     assertEquals(3, bob.getCol());
@@ -267,13 +267,13 @@ public class TestEnvironment {
     Alien alien2 = new Alien("alien2", 10, new RecoveryNone());
     environment.addLifeForm(alien2, 0, 2);
     alien2.changeDirectionNorth();
-    //Moves alien1 directly north of alien2
+    //Moves alien1 directly south of alien2
     environment.updateGridLocation(alien1, 1, 2);
-    //Moves human above alien1 and alien2 so there is a one space gap
+    //Moves human south of alien1 and alien2 so there is a one space gap
     environment.updateGridLocation(bob, 3, 2);
-    //Moves human south
+    //Moves human north
     humanSuccess = environment.move(bob);
-    //Tests if human moves south correctly
+    //Tests if human moves north correctly
     assertTrue(humanSuccess);
     assertEquals(2, bob.getRow());
     assertEquals(2, bob.getCol());
@@ -375,14 +375,14 @@ public class TestEnvironment {
     Environment environment = Environment.getEnvironment(5, 5);
     Human bob = new Human("bob", 10, 10);
     Alien alien1 = new Alien("alien", 10, new RecoveryNone());
-    //Places the Human and Alien on the board, with Human being 2 away from northern border
+    //Places the Human and Alien on the board, with Human being 2 away from southern border
     // and Alien being 1 away
     environment.addLifeForm(bob, 2, 2);
     environment.addLifeForm(alien1, 3, 3);
-    //Changes direction of LifeForms to north
+    //Changes direction of LifeForms to south
     bob.changeDirectionSouth();
     alien1.changeDirectionSouth();
-    //Moves the LifeForms north
+    //Moves the LifeForms south
     boolean humanSuccess = environment.move(bob);
     boolean alienSuccess = environment.move(alien1);
     //Tests if Human moved correctly
@@ -393,9 +393,9 @@ public class TestEnvironment {
     assertTrue(alienSuccess);
     assertEquals(4, alien1.getRow());
     assertEquals(3, alien1.getCol());
-    //Places Human 1 away from northern border
+    //Places Human 1 away from southern border
     environment.updateGridLocation(bob, 3, 2);
-    //Moves Human north
+    //Moves Human south
     humanSuccess = environment.move(bob);
     //Tests if Human moved correctly
     assertTrue(humanSuccess);
@@ -427,14 +427,14 @@ public class TestEnvironment {
     assertTrue(humanSuccess);
     assertEquals(2, bob.getRow());
     assertEquals(4, bob.getCol());
-    //Changes LifeForms direction to south
+    //Changes LifeForms direction to north
     bob.changeDirectionNorth();
     alien1.changeDirectionNorth();
-    //Places Human 2 away from southern border
+    //Places Human 2 away from northern border
     environment.updateGridLocation(bob, 2, 1);
-    //Places Alien 1 away from southern border
+    //Places Alien 1 away from northern border
     environment.updateGridLocation(alien1, 1, 3);
-    //Moves Alien and Human south
+    //Moves Alien and Human north
     humanSuccess = environment.move(bob);
     alienSuccess = environment.move(alien1);
     //Tests if Human moves correctly
@@ -445,9 +445,9 @@ public class TestEnvironment {
     assertTrue(alienSuccess);
     assertEquals(0, alien1.getRow());
     assertEquals(3, alien1.getCol());
-    //Places Human 1 away from southern border
+    //Places Human 1 away from northern border
     environment.updateGridLocation(bob, 1, 1);
-    //Moves Human south
+    //Moves Human north
     humanSuccess = environment.move(bob);
     //Tests if Human moves correctly
     assertTrue(humanSuccess);

@@ -14,6 +14,9 @@ import static org.junit.Assert.*;
  */
 public class TestInvoker {
 
+  /**
+   * Tests that a single command works in isolation
+   */
   @Test
   public void testOneCommand() {
     LifeForm jerry = new MockLifeForm();
@@ -29,6 +32,9 @@ public class TestInvoker {
     Environment.removeEnvironment();
   }
 
+  /**
+   * Tests that multiple commands can be used from the same invoker
+   */
   @Test
   public void testMultipleCommands() {
     Environment.removeEnvironment();
@@ -51,5 +57,34 @@ public class TestInvoker {
     assertEquals(jerry.getCurrentDirection(), "north");
 
     Environment.removeEnvironment();
+  }
+
+  /**
+   * Tests that an invoker can switch targets
+   */
+  @Test
+  public void testSwitchTargets() {
+    Environment environment = Environment.getEnvironment(5, 5);
+    LifeForm first = new MockLifeForm();
+    LifeForm second = new MockLifeForm();
+
+    environment.addLifeForm(first, 1, 0);
+    environment.addLifeForm(second, 2, 0);
+
+    Invoker invoker = new Invoker(first);
+
+    invoker.executeCommand(CommandName.FACE_EAST);
+    assertEquals("east", first.getCurrentDirection());
+
+    invoker.executeCommand(CommandName.MOVE);
+    assertEquals(1, first.getCol());
+
+    invoker.setLifeForm(second);
+
+    invoker.executeCommand(CommandName.FACE_EAST);
+    assertEquals("east", second.getCurrentDirection());
+
+    invoker.executeCommand(CommandName.MOVE);
+    assertEquals(1, second.getCol());
   }
 }
