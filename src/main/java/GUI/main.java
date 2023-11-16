@@ -44,5 +44,6 @@ public class Main {
     world.addWeapon(pistol3, 3, 4);
 
     GameUI.getGameUI(world);
+    RemoteUI.getRemote();
   }
 }
