@@ -133,7 +133,7 @@ public class GameUI {
   * This panel is responsible for formatting everything and it "houses" all other panels / components.
   * @return
   */
-  public JPanel createContainerPanel() {
+  private JPanel createContainerPanel() {
     // the panels that will house the legend, board, moves display & cell info section.
     JPanel legendPanel = createLegendPanel();
     JPanel boardPanel = createBoardPanel();
