@@ -394,7 +394,7 @@ public class GameUI {
   /**
   * reads the environment "world" matrix and syncs it with our "boardArray" matrix
   */
-  private void refreshBoard() {
+  public void refreshBoard() {
     int numOfRows = this.world.getNumRows();
     int numOfCols = this.world.getNumCols();
     
@@ -490,7 +490,7 @@ public class GameUI {
         
         
         // Update the corresponding button in the boardArray
-        this.boardArray[j][i] = button;
+        this.boardArray[i][j] = button;
       }
     }
     createBoardPanel(); // recreates the boardpanel so the new elements can be reattached & appear
@@ -587,5 +587,9 @@ public class GameUI {
     textFieldAmmo.setText(ammoText);
     textFieldHealth.setText(healthText);
     textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
+  }
+
+  public LifeForm getSelected() {
+    return world.getLifeForm(selectedArr[0], selectedArr[1]);
   }
 }

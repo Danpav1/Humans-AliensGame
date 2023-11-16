@@ -1,5 +1,6 @@
 package commands;
 
+import GUI.GameUI;
 import lifeform.LifeForm;
 
 /**
@@ -22,6 +23,8 @@ public class FaceEastCommand implements Command {
    * Executes the direction change
    */
   public void execute() {
+    GameUI.getGameUI().updateDisplayTextArea("Changed selected entity direction: East");
     this.entity.changeDirectionEast();
+    GameUI.getGameUI().refreshBoard();
   }
 }

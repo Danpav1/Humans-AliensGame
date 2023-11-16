@@ -1,5 +1,6 @@
 package commands;
 
+import GUI.GameUI;
 import exceptions.EnvironmentException;
 import exceptions.WeaponException;
 import environment.Environment;
@@ -27,6 +28,7 @@ public class AttackCommand implements Command {
    */
   @Override
   public void execute() {
+    GameUI.getGameUI().updateDisplayTextArea("Attacking!\n");
     LifeForm targetEntity = this.acquireTarget();
 
     if (targetEntity != null) {

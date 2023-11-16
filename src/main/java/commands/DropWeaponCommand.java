@@ -1,5 +1,6 @@
 package commands;
 
+import GUI.GameUI;
 import environment.Environment;
 import lifeform.LifeForm;
 import weapon.Weapon;
@@ -24,6 +25,7 @@ public class DropWeaponCommand implements Command {
    */
   @Override
   public void execute() {
+    GameUI.getGameUI().updateDisplayTextArea("Dropping weapon!\n");
     Weapon entityWeapon = entity.dropWeapon();
     if (!(Environment.getEnvironment(0, 0).addWeapon(entityWeapon,
                                                      entity.getRow(),
@@ -32,5 +34,6 @@ public class DropWeaponCommand implements Command {
     } else {
       //Nothing needs to be done here because the execution happens in the conditional
     }
+    GameUI.getGameUI().refreshBoard();
   }
 }

@@ -1,5 +1,7 @@
 package GUI;
 
+import gameplay.Invoker;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,6 +15,7 @@ public class RemoteUI {
   
   //our instance of the class
   private static RemoteUI remote;
+  private Invoker control = new Invoker();
   
   //constructor
   private RemoteUI() {
@@ -140,6 +143,7 @@ public class RemoteUI {
       public void actionPerformed(ActionEvent e) {
         System.out.println("facing north"); //temp. just here to show that button works. delete me when im done.
         // add face north functionality here
+
       }
     });
     
@@ -147,7 +151,7 @@ public class RemoteUI {
     faceEastButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        System.out.println("faceing east"); //temp. just here to show that button works. delete me when im done.
+        System.out.println("facing east"); //temp. just here to show that button works. delete me when im done.
         // add face east functionality here
       }
     });
@@ -174,8 +178,10 @@ public class RemoteUI {
     moveButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        System.out.println("moved"); //temp. just here to show that button works. delete me when im done.
+        //System.out.println("moved"); //temp. just here to show that button works. delete me when im done.
         // add move functionality here
+        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.executeCommand(0);
       }
     });
     
