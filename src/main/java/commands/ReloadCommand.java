@@ -1,5 +1,6 @@
 package commands;
 
+import GUI.GameUI;
 import lifeform.LifeForm;
 
 /**
@@ -22,5 +23,7 @@ public class ReloadCommand implements Command {
    */
   public void execute() {
     this.entity.getWeapon().reload();
+    GameUI game = GameUI.getGameUI();
+    game.updateDisplayTextArea("Reloading!\n");
   }
 }

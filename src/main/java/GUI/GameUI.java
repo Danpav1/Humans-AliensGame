@@ -11,7 +11,6 @@ import weapon.Weapon;
 import weapon.PlasmaCannon;
 import weapon.Pistol;
 import weapon.ChainGun;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -83,16 +82,39 @@ public class GameUI {
   private JTextField textFieldWeapon1;
   private JTextField textFieldWeapon2;
   private JTextField textFieldSelectedCoords;
+
+  //our GUI as a var
+  private static GameUI instanceOfGameUI;
   
   /**
   * constructor for GUI, removed the "startUI" and put the initiliazation code within this constructor.
   * @param world
   */
-  public GameUI(Environment world) {
+  private GameUI(Environment world) {
     this.world = world;
     refreshBoard();
     createFrame();
   }
+
+  /**
+   * Singleton type getter for our class. This getter takes in an instance of environment. If we already
+   *  have an instance of GameUI, we return it. If we dont have an instance of GameUI, we create one and
+   *  return it.
+   */
+  public static GameUI getGameUI(Environment world) {
+    if (instanceOfGameUI == null) {
+      instanceOfGameUI = new GameUI(world);
+    }
+    return instanceOfGameUI;
+  }
+
+  /**
+   * Overloaded "regular" getter for an instance of our class. Takes no inputs and just returns the instance.
+   */
+  public static GameUI getGameUI() {
+    return instanceOfGameUI;
+  }
+  
   
   /**
   * Creates and displays the main JFrame.

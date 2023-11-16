@@ -43,6 +43,6 @@ public class Main {
     world.addWeapon(chainGun, 3, 4);
     world.addWeapon(pistol3, 3, 4);
 
-    new GameUI(world);
+    GameUI.getGameUI(world);
   }
 }
