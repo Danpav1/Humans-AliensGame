@@ -131,6 +131,14 @@ public class Environment {
   }
 
   /**
+   * overloaded getter for environment. just returns our unique environment se we can pass it around.
+   * @return
+   */
+  public static Environment getEnvironment() {
+    return uniqueEnvironment;
+  }
+
+  /**
    * Gets the LifeForm stored at a certain cell, specified by
    * the row and column inputs
    *

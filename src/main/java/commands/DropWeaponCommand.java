@@ -34,6 +34,6 @@ public class DropWeaponCommand implements Command {
     } else {
       //Nothing needs to be done here because the execution happens in the conditional
     }
-    GameUI.getGameUI().refreshBoard();
+    GameUI.getGameUI().updateBoard();
   }
 }

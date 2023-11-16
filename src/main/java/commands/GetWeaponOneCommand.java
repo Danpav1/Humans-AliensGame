@@ -33,6 +33,6 @@ public class GetWeaponOneCommand implements Command {
       Environment.getEnvironment(0, 0).removeWeapon(weapons[0], this.entity.getRow(),
               this.entity.getCol());
     }
-    GameUI.getGameUI().refreshBoard();
+    GameUI.getGameUI().updateBoard();
   }
 }

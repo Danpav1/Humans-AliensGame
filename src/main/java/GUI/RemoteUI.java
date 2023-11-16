@@ -13,10 +13,10 @@ import java.awt.event.ActionListener;
  */
 public class RemoteUI {
   
-  //our instance of the class
+  //our instances
   private static RemoteUI remote;
   private Invoker control = new Invoker();
-  
+
   //constructor
   private RemoteUI() {
     createFrame();
@@ -162,6 +162,8 @@ public class RemoteUI {
       public void actionPerformed(ActionEvent e) {
         System.out.println("facing south"); //temp. just here to show that button works. delete me when im done.
         // add face south functionality here
+        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.executeCommand(3);
       }
     });
     
@@ -170,7 +172,6 @@ public class RemoteUI {
       @Override
       public void actionPerformed(ActionEvent e) {
         System.out.println("facing west"); //temp. just here to show that button works. delete me when im done.
-        // add face west functionality here
       }
     });
     

@@ -3,8 +3,6 @@ package commands;
 import GUI.GameUI;
 import lifeform.LifeForm;
 
-import java.awt.font.GlyphMetrics;
-
 /**
  * Command for making a LifeForm face south
  */
@@ -27,6 +25,6 @@ public class FaceSouthCommand implements Command {
   public void execute() {
     GameUI.getGameUI().updateDisplayTextArea("Changing selected entity direction: South");
     this.entity.changeDirectionSouth();
-    GameUI.getGameUI().refreshBoard();
+    GameUI.getGameUI().updateBoard();
   }
 }

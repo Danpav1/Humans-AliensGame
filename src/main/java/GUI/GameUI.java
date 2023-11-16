@@ -92,7 +92,6 @@ public class GameUI {
   */
   private GameUI(Environment world) {
     this.world = world;
-    refreshBoard();
     createFrame();
   }
 
@@ -114,7 +113,6 @@ public class GameUI {
   public static GameUI getGameUI() {
     return instanceOfGameUI;
   }
-  
   
   /**
   * Creates and displays the main JFrame.
@@ -258,18 +256,110 @@ public class GameUI {
   * @return boardPanel
   */
   private JPanel createBoardPanel() {
+    
     int numOfRows = this.world.getNumRows();
     int numOfCols = this.world.getNumCols();
+
     JPanel boardPanel = new JPanel(new GridLayout(numOfRows, numOfCols)); //creates the UI grid and sizes it
+    boardPanel.setBorder(new LineBorder(Color.BLACK, BORDER_WIDTH));
     
-    // reads our 2d matrix and adds it as elements to the board panel
+    this.boardArray = new JButton[numOfCols][numOfRows];
+    
     for (int i = 0; i < numOfRows; i++) {
       for (int j = 0; j < numOfCols; j++) {
-        boardPanel.add(this.boardArray[j][i]);
+        //button logic
+        JButton button = new JButton();
+        button.setBackground(Color.lightGray);
+        button.setOpaque(true);
+        button.setBorder(new LineBorder(Color.BLACK, BORDER_WIDTH));
+        
+        // Adds the ActionListener to each button (button selection)
+        button.addActionListener(new ButtonClickListener());
+        
+        //looks for lifeforms and applies them to our buttons
+        LifeForm currLifeForm = world.getLifeForm(i, j);
+        String direction;
+        Weapon equippedWeapon;
+        if (currLifeForm != null) { // null check so we dont get the direction of a cell with no lifeform, etc
+          direction = world.getLifeForm(i, j).getCurrentDirection();
+          equippedWeapon = world.getLifeForm(i, j).getWeapon();
+        } else {
+          direction = "null";
+          equippedWeapon = null;
+        }
+        
+        // unequipped weapons in environment
+        Weapon currWeapon = world.getWeapons(i, j)[0];
+        if (currWeapon instanceof PlasmaCannon) {
+          button.setIcon(new ImageIcon(PLASMACANNON_IMAGE_PATH));
+        } else if (currWeapon instanceof Pistol) {
+          button.setIcon(new ImageIcon(PISTOL_IMAGE_PATH));
+        } else if (currWeapon instanceof ChainGun) {
+          button.setIcon(new ImageIcon(CHAINGUN_IMAGE_PATH));
+        }
+        
+        //alien
+        if (currLifeForm instanceof Alien && direction.equals("north")) {
+          button.setIcon(new ImageIcon(ALIEN_NORTH_PATH));
+        } else if (currLifeForm instanceof Alien && direction.equals("south")) {
+          button.setIcon(new ImageIcon(ALIEN_SOUTH_PATH));
+        } else if (currLifeForm instanceof Alien && direction.equals("east")) {
+          button.setIcon(new ImageIcon(ALIEN_EAST_PATH));
+        } else if (currLifeForm instanceof Alien && direction.equals("west")) {
+          button.setIcon(new ImageIcon(ALIEN_WEST_PATH));
+        }
+        
+        //unarmed human
+        if (currLifeForm instanceof Human && direction.equals("north")) {
+          button.setIcon(new ImageIcon(HUMAN_NORTH_PATH));
+        } else if (currLifeForm instanceof Human && direction.equals("south")) {
+          button.setIcon(new ImageIcon(HUMAN_SOUTH_PATH));
+        } else if (currLifeForm instanceof Human && direction.equals("east")) {
+          button.setIcon(new ImageIcon(HUMAN_EAST_PATH));
+        } else if (currLifeForm instanceof Human && direction.equals("west")) {
+          button.setIcon(new ImageIcon(HUMAN_WEST_PATH));
+        }
+        
+        //pistol human
+        if (currLifeForm instanceof Human && direction.equals("north") && equippedWeapon instanceof Pistol) {
+          button.setIcon(new ImageIcon(HUMAN_NORTH_PISTOL_PATH));
+        } else if (currLifeForm instanceof Human && direction.equals("south") && equippedWeapon instanceof Pistol) {
+          button.setIcon(new ImageIcon(HUMAN_SOUTH_PISTOL_PATH));
+        } else if (currLifeForm instanceof Human && direction.equals("east") && equippedWeapon instanceof Pistol) {
+          button.setIcon(new ImageIcon(HUMAN_EAST_PISTOL_PATH));
+        }  else if (currLifeForm instanceof Human && direction.equals("west") && equippedWeapon instanceof Pistol) {
+          button.setIcon(new ImageIcon(HUMAN_WEST_PISTOL_PATH));
+        }
+        
+        //plasma human
+        if (currLifeForm instanceof Human && direction.equals("north") && equippedWeapon instanceof PlasmaCannon) {
+          button.setIcon(new ImageIcon(HUMAN_NORTH_PLASMACANNON_PATH));
+        } else if (currLifeForm instanceof Human && direction.equals("south") && equippedWeapon instanceof PlasmaCannon) {
+          button.setIcon(new ImageIcon(HUMAN_SOUTH_PLASMACANNON_PATH));
+        } else if (currLifeForm instanceof Human && direction.equals("east") && equippedWeapon instanceof PlasmaCannon) {
+          button.setIcon(new ImageIcon(HUMAN_EAST_PLASMACANNON_PATH));
+        }  else if (currLifeForm instanceof Human && direction.equals("west") && equippedWeapon instanceof PlasmaCannon) {
+          button.setIcon(new ImageIcon(HUMAN_WEST_PLASMACANNON_PATH));
+        }
+        
+        //chaingun human
+        if (currLifeForm instanceof Human && direction.equals("north") && equippedWeapon instanceof ChainGun) {
+          button.setIcon(new ImageIcon(HUMAN_NORTH_CHAINGUN_PATH));
+        } else if (currLifeForm instanceof Human && direction.equals("south") && equippedWeapon instanceof ChainGun) {
+          button.setIcon(new ImageIcon(HUMAN_SOUTH_CHAINGUN_PATH));
+        } else if (currLifeForm instanceof Human && direction.equals("east") && equippedWeapon instanceof ChainGun) {
+          button.setIcon(new ImageIcon(HUMAN_EAST_CHAINGUN_PATH));
+        }  else if (currLifeForm instanceof Human && direction.equals("west") && equippedWeapon instanceof ChainGun) {
+          button.setIcon(new ImageIcon(HUMAN_WEST_CHAINGUN_PATH));
+        }
+        
+        // Update the corresponding button in the boardArray
+        this.boardArray[i][j] = button;
+        boardPanel.add(button);
       }
     }
-    
-    boardPanel.setBorder(new LineBorder(Color.BLACK, BORDER_WIDTH));
+    System.out.println("createBoard method ran");
+    //createBoardPanel(); // recreates the boardpanel so the new elements can be reattached & appear
     return boardPanel;
   }
   
@@ -291,7 +381,7 @@ public class GameUI {
   }
   
   private JTextArea createDisplayBoxTextArea() {
-    JTextArea displayTextArea = new JTextArea("Action History:", 3, 6);
+    JTextArea displayTextArea = new JTextArea("Action History:\n", 3, 6);
     this.displayTextArea = displayTextArea;
     displayTextArea.setEditable(false); //makes the text field display only
     displayTextArea.setBackground(Color.lightGray);
@@ -392,39 +482,31 @@ public class GameUI {
   }
   
   /**
-  * reads the environment "world" matrix and syncs it with our "boardArray" matrix
+  * reads the environment "world" matrix and syncs it with our "boardArray" matrix as well as updates our UI.
   */
-  public void refreshBoard() {
+  public void updateBoard() {
     int numOfRows = this.world.getNumRows();
     int numOfCols = this.world.getNumCols();
     
-    this.boardArray = new JButton[numOfCols][numOfRows];
-    
-    for (int i = 0; i < numOfRows; i++) {
-      for (int j = 0; j < numOfCols; j++) {
-        //button logic
-        JButton button = new JButton();
-        button.setBackground(Color.lightGray);
-        button.setOpaque(true);
-        button.setBorder(new LineBorder(Color.BLACK, BORDER_WIDTH));
-        
-        // Adds the ActionListener to each button (button selection)
-        button.addActionListener(new ButtonClickListener());
-        
-        //looks for lifeforms and applies them to our buttons
-        LifeForm currLifeForm = world.getLifeForm(i, j);
+    //iterates through our matrix
+    for (int row = 0; row < numOfRows; row++) {
+      for (int col = 0; col < numOfCols; col++) { 
+        JButton button = this.boardArray[row][col];
+
+       //looks for lifeforms and applies them to our buttons
+        LifeForm currLifeForm = world.getLifeForm(row, col);
         String direction;
         Weapon equippedWeapon;
         if (currLifeForm != null) { // null check so we dont get the direction of a cell with no lifeform, etc
-          direction = world.getLifeForm(i, j).getCurrentDirection();
-          equippedWeapon = world.getLifeForm(i, j).getWeapon();
+          direction = world.getLifeForm(row, col).getCurrentDirection();
+          equippedWeapon = world.getLifeForm(row, col).getWeapon();
         } else {
           direction = "null";
           equippedWeapon = null;
         }
         
         // unequipped weapons in environment
-        Weapon currWeapon = world.getWeapons(i, j)[0];
+        Weapon currWeapon = world.getWeapons(row, col)[0];
         if (currWeapon instanceof PlasmaCannon) {
           button.setIcon(new ImageIcon(PLASMACANNON_IMAGE_PATH));
         } else if (currWeapon instanceof Pistol) {
@@ -488,12 +570,12 @@ public class GameUI {
           button.setIcon(new ImageIcon(HUMAN_WEST_CHAINGUN_PATH));
         }
         
-        
         // Update the corresponding button in the boardArray
-        this.boardArray[i][j] = button;
+        this.boardArray[row][col] = button;
       }
     }
-    createBoardPanel(); // recreates the boardpanel so the new elements can be reattached & appear
+    System.out.println("updateBoard method ran");
+    //createBoardPanel(); // recreates the boardpanel so the new elements can be reattached & appear
   }
   
   /**
@@ -515,16 +597,16 @@ public class GameUI {
           }
         }
       }
+
+      updateTextFields();
+      updateDisplayTextArea("Selected: " + selectedArr[0] + ", " + selectedArr[1] + "\n");
       
       // Deselect all buttons (change their background color to light gray)
       for (int i = 0; i < boardArray.length; i++) {
         for (int j = 0; j < boardArray[0].length; j++) {
           boardArray[j][i].setBackground(Color.lightGray);
         }
-      }
-      
-      updateTextFields();
-      updateDisplayTextArea("\n" + "Selected: " + selectedArr[0] + ", " + selectedArr[1]); 
+      } 
       
       // Select the clicked button and change its background color to dark gray
       clickedButton.setBackground(Color.darkGray);
@@ -589,6 +671,10 @@ public class GameUI {
     textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
   }
 
+  /**
+   * getter for the life form in the selection coords
+   * @return
+   */
   public LifeForm getSelected() {
     return world.getLifeForm(selectedArr[0], selectedArr[1]);
   }
