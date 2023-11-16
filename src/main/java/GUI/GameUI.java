@@ -82,7 +82,7 @@ public class GameUI {
   private JTextField textFieldWeapon1;
   private JTextField textFieldWeapon2;
   private JTextField textFieldSelectedCoords;
-
+  
   //our GUI as a var
   private static GameUI instanceOfGameUI;
   
@@ -94,22 +94,22 @@ public class GameUI {
     this.world = world;
     createFrame();
   }
-
+  
   /**
-   * Singleton type getter for our class. This getter takes in an instance of environment. If we already
-   *  have an instance of GameUI, we return it. If we dont have an instance of GameUI, we create one and
-   *  return it.
-   */
+  * Singleton type getter for our class. This getter takes in an instance of environment. If we already
+  *  have an instance of GameUI, we return it. If we dont have an instance of GameUI, we create one and
+  *  return it.
+  */
   public static GameUI getGameUI(Environment world) {
     if (instanceOfGameUI == null) {
       instanceOfGameUI = new GameUI(world);
     }
     return instanceOfGameUI;
   }
-
+  
   /**
-   * Overloaded "regular" getter for an instance of our class. Takes no inputs and just returns the instance.
-   */
+  * Overloaded "regular" getter for an instance of our class. Takes no inputs and just returns the instance.
+  */
   public static GameUI getGameUI() {
     return instanceOfGameUI;
   }
@@ -251,22 +251,21 @@ public class GameUI {
   }
   
   /**
-  * Creates and returns the JPanel "boardPanel". This panel will house our game board.
-  * This panel also attaches our grid / matrix to itself.
+  * Creates and houses the matrix / board. Also populates the board at start
   * @return boardPanel
   */
   private JPanel createBoardPanel() {
     
     int numOfRows = this.world.getNumRows();
     int numOfCols = this.world.getNumCols();
-
+    
     JPanel boardPanel = new JPanel(new GridLayout(numOfRows, numOfCols)); //creates the UI grid and sizes it
     boardPanel.setBorder(new LineBorder(Color.BLACK, BORDER_WIDTH));
     
     this.boardArray = new JButton[numOfCols][numOfRows];
     
-    for (int i = 0; i < numOfRows; i++) {
-      for (int j = 0; j < numOfCols; j++) {
+    for (int row = 0; row < numOfRows; row++) {
+      for (int col = 0; col < numOfCols; col++) {
         //button logic
         JButton button = new JButton();
         button.setBackground(Color.lightGray);
@@ -277,19 +276,19 @@ public class GameUI {
         button.addActionListener(new ButtonClickListener());
         
         //looks for lifeforms and applies them to our buttons
-        LifeForm currLifeForm = world.getLifeForm(i, j);
+        LifeForm currLifeForm = world.getLifeForm(row, col);
         String direction;
         Weapon equippedWeapon;
         if (currLifeForm != null) { // null check so we dont get the direction of a cell with no lifeform, etc
-          direction = world.getLifeForm(i, j).getCurrentDirection();
-          equippedWeapon = world.getLifeForm(i, j).getWeapon();
+          direction = world.getLifeForm(row, col).getCurrentDirection();
+          equippedWeapon = world.getLifeForm(row, col).getWeapon();
         } else {
           direction = "null";
           equippedWeapon = null;
         }
         
         // unequipped weapons in environment
-        Weapon currWeapon = world.getWeapons(i, j)[0];
+        Weapon currWeapon = world.getWeapons(row, col)[0];
         if (currWeapon instanceof PlasmaCannon) {
           button.setIcon(new ImageIcon(PLASMACANNON_IMAGE_PATH));
         } else if (currWeapon instanceof Pistol) {
@@ -354,7 +353,7 @@ public class GameUI {
         }
         
         // Update the corresponding button in the boardArray
-        this.boardArray[i][j] = button;
+        this.boardArray[row][col] = button;
         boardPanel.add(button);
       }
     }
@@ -482,7 +481,7 @@ public class GameUI {
   }
   
   /**
-  * reads the environment "world" matrix and syncs it with our "boardArray" matrix as well as updates our UI.
+  * reads the environment "world" matrix and syncs it with our "boardArray" matrix as well as updates our board
   */
   public void updateBoard() {
     int numOfRows = this.world.getNumRows();
@@ -492,8 +491,8 @@ public class GameUI {
     for (int row = 0; row < numOfRows; row++) {
       for (int col = 0; col < numOfCols; col++) { 
         JButton button = this.boardArray[row][col];
-
-       //looks for lifeforms and applies them to our buttons
+        
+        //looks for lifeforms and applies them to our buttons
         LifeForm currLifeForm = world.getLifeForm(row, col);
         String direction;
         Weapon equippedWeapon;
@@ -503,6 +502,7 @@ public class GameUI {
         } else {
           direction = "null";
           equippedWeapon = null;
+          button.setIcon(new ImageIcon("")); //sets image to blank
         }
         
         // unequipped weapons in environment
@@ -574,8 +574,6 @@ public class GameUI {
         this.boardArray[row][col] = button;
       }
     }
-    System.out.println("updateBoard method ran");
-    //createBoardPanel(); // recreates the boardpanel so the new elements can be reattached & appear
   }
   
   /**
@@ -597,7 +595,7 @@ public class GameUI {
           }
         }
       }
-
+      
       updateTextFields();
       updateDisplayTextArea("Selected: " + selectedArr[0] + ", " + selectedArr[1] + "\n");
       
@@ -670,11 +668,11 @@ public class GameUI {
     textFieldHealth.setText(healthText);
     textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
   }
-
+  
   /**
-   * getter for the life form in the selection coords
-   * @return
-   */
+  * getter for the life form in the selection coords
+  * @return
+  */
   public LifeForm getSelected() {
     return world.getLifeForm(selectedArr[0], selectedArr[1]);
   }
