@@ -1,6 +1,5 @@
 package commands;
 
-import GUI.GameUI;
 import environment.Environment;
 import lifeform.LifeForm;
 
@@ -26,7 +25,5 @@ public class MoveCommand implements Command {
   @Override
   public void execute() {
     Environment.getEnvironment(0, 0).move(this.entity);
-    GameUI game = GameUI.getGameUI();
-    game.updateDisplayTextArea("Moving!\n");
   }
 }
