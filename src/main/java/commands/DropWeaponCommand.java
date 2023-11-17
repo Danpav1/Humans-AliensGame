@@ -25,7 +25,7 @@ public class DropWeaponCommand implements Command {
    */
   @Override
   public void execute() {
-    GameUI.getGameUI().updateDisplayTextArea("Dropping weapon!\n");
+    //GameUI.getGameUI().updateDisplayTextArea("Dropping weapon!\n");
     Weapon entityWeapon = entity.dropWeapon();
     if (!(Environment.getEnvironment(0, 0).addWeapon(entityWeapon,
                                                      entity.getRow(),

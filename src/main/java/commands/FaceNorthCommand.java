@@ -23,7 +23,7 @@ public class FaceNorthCommand implements Command {
    * Causes a LifeForm to face north
    */
   public void execute() {
-    GameUI.getGameUI().updateDisplayTextArea("Changing selected entity direction: North\n");
+    //GameUI.getGameUI().updateDisplayTextArea("Changing selected entity direction: North\n");
     this.entity.changeDirectionNorth();
   }
 }

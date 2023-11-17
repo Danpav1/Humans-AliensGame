@@ -25,7 +25,7 @@ public class GetWeaponTwoCommand implements Command {
    * Executes the weapon picking upping
    */
   public void execute() {
-    GameUI.getGameUI().updateDisplayTextArea("Picking up weapon 2\n");
+    //GameUI.getGameUI().updateDisplayTextArea("Picking up weapon 2\n");
     Weapon[] weapons = Environment.getEnvironment(0, 0).getWeapons(this.entity.getRow(),
                                                                    this.entity.getCol());
     if (weapons[1] != null && this.entity.getWeapon() == null) {

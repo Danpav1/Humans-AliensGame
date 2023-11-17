@@ -4,8 +4,6 @@ import exceptions.WeaponException;
 import lifeform.*;
 import org.junit.Test;
 
-import GUI.GameUI;
-import environment.Environment;
 import weapon.*;
 import static org.junit.Assert.*;
 
@@ -17,8 +15,6 @@ public class TestReloadCommand {
    */
   @Test
   public void testReload() throws WeaponException {
-    Environment world = Environment.getEnvironment(5, 5); //this fixes test
-    GameUI game = GameUI.getGameUI(world); // this fixes test
     LifeForm x = new Human("dave", 1, 1);
     Weapon w = new Pistol();
     Command reload = new ReloadCommand(x);

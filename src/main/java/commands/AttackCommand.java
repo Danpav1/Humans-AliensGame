@@ -28,7 +28,7 @@ public class AttackCommand implements Command {
    */
   @Override
   public void execute() {
-    GameUI.getGameUI().updateDisplayTextArea("Attacking!\n");
+    //GameUI.getGameUI().updateDisplayTextArea("Attacking!\n");
     LifeForm targetEntity = this.acquireTarget();
 
     if (targetEntity != null) {

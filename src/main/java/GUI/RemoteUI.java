@@ -3,6 +3,9 @@ package GUI;
 import gameplay.Invoker;
 
 import javax.swing.*;
+
+import environment.Environment;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +14,7 @@ import java.awt.event.ActionListener;
  * remote or "invoker"
  * @author Daniel Pavenko 
  */
-public class RemoteUI {
+public class RemoteUI{
   
   //our instances
   private static RemoteUI remote;
@@ -78,6 +81,9 @@ public class RemoteUI {
         System.out.println("attack"); //temp. just here to show that button works. delete me when im done.
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(5);
+        Environment world = Environment.getEnvironment();
+        GameUI game = GameUI.getGameUI(world);
+        game.updateDisplayTextArea("Attacking\n");
       }
     });
     
@@ -88,6 +94,9 @@ public class RemoteUI {
         System.out.println("get Weapon 1"); //temp. just here to show that button works. delete me when im done.
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(7);
+        Environment world = Environment.getEnvironment();
+        GameUI game = GameUI.getGameUI(world);
+        game.updateDisplayTextArea("Getting Weapon 1\n");
       }
     });
     
@@ -98,6 +107,9 @@ public class RemoteUI {
         System.out.println("get weapon 2"); //temp. just here to show that button works. delete me when im done.
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(8);
+        Environment world = Environment.getEnvironment();
+        GameUI game = GameUI.getGameUI(world);
+        game.updateDisplayTextArea("Getting weapon 2\n");
       }
     });
     
@@ -108,6 +120,9 @@ public class RemoteUI {
         System.out.println("drop weapon"); //temp. just here to show that button works. delete me when im done.
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(6);
+        Environment world = Environment.getEnvironment();
+        GameUI game = GameUI.getGameUI(world);
+        game.updateDisplayTextArea("Dropping Weapon\n");
       }
     });
     
@@ -118,6 +133,9 @@ public class RemoteUI {
         System.out.println("Reload"); //temp. just here to show that button works. delete me when im done.
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(9);
+        Environment world = Environment.getEnvironment();
+        GameUI game = GameUI.getGameUI(world);
+        game.updateDisplayTextArea("Reloading Weapon\n");
       }
     });
     
@@ -150,6 +168,9 @@ public class RemoteUI {
         System.out.println("facing north"); //temp. just here to show that button works. delete me when im done.
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(1);
+        Environment world = Environment.getEnvironment();
+        GameUI game = GameUI.getGameUI(world);
+        game.updateDisplayTextArea("Facing North\n");
       }
     });
     
@@ -160,6 +181,9 @@ public class RemoteUI {
         System.out.println("facing east"); //temp. just here to show that button works. delete me when im done.
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(2);
+        Environment world = Environment.getEnvironment();
+        GameUI game = GameUI.getGameUI(world);
+        game.updateDisplayTextArea("Facing East\n");
       }
     });
     
@@ -170,6 +194,9 @@ public class RemoteUI {
         System.out.println("facing south"); //temp. just here to show that button works. delete me when im done.
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(3);
+        Environment world = Environment.getEnvironment();
+        GameUI game = GameUI.getGameUI(world);
+        game.updateDisplayTextArea("Facing South\n");
       }
     });
     
@@ -179,6 +206,9 @@ public class RemoteUI {
       public void actionPerformed(ActionEvent e) {
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(4);
+        Environment world = Environment.getEnvironment();
+        GameUI game = GameUI.getGameUI(world);
+        game.updateDisplayTextArea("Facing West\n");
       }
     });
     
@@ -188,6 +218,9 @@ public class RemoteUI {
       public void actionPerformed(ActionEvent e) {
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(0);
+        Environment world = Environment.getEnvironment();
+        GameUI game = GameUI.getGameUI(world);
+        game.updateDisplayTextArea("Moving\n");
       }
     });
     return rightButtonPanel;

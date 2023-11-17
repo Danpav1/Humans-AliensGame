@@ -25,7 +25,7 @@ public class MoveCommand implements Command {
    */
   @Override
   public void execute() {
-    GameUI.getGameUI().updateDisplayTextArea("Moving selected entity\n");
+    //GameUI.getGameUI().updateDisplayTextArea("Moving selected entity\n");
     Environment.getEnvironment().move(this.entity);
   }
 }
