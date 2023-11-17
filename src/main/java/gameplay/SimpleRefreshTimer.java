@@ -6,6 +6,7 @@ import java.util.ArrayList;
 /**
 * The SimpleRefreshTimer class handles a basic refresh system, and acts as a subject in an
 * observer pattern. It is observed by GameUI.
+@author Daniel Pavenko
 */
 public class SimpleRefreshTimer extends Thread implements RefreshTimer {
   private List<RefreshTimerObserver> theObservers = new ArrayList<>();

@@ -3,6 +3,7 @@ package gameplay;
 /**
  * An interface that is responsible for managing the refreshing of the GameUI,
  * and represents the Subject for observer objects implementing RefreshTimerObserver
+ * @author Daniel Pavenko
  */
 public interface RefreshTimer {
   /**

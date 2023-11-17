@@ -72,9 +72,6 @@ public class GameUI implements RefreshTimerObserver {
   //our environment
   private Environment world;
   
-  //our selected JButton
-  private int selectedArr[] = {-1, -1};
-  
   //all of our swing elements
   private JTextArea displayTextArea;
   private JTextField textFieldHealth;
@@ -83,6 +80,9 @@ public class GameUI implements RefreshTimerObserver {
   private JTextField textFieldWeapon1;
   private JTextField textFieldWeapon2;
   private JTextField textFieldSelectedCoords;
+
+  //data points for our text elements
+  private int selectedArr[] = {-1, -1};
   
   //our GUI as a var
   private static GameUI instanceOfGameUI;
@@ -500,7 +500,7 @@ public class GameUI implements RefreshTimerObserver {
           button.setBackground(Color.DARK_GRAY);
           selectedArr[0] = row;
           selectedArr[1] = col;
-          textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
+          updateTextFields();
         } else {
           button.setBackground(Color.lightGray);
         }

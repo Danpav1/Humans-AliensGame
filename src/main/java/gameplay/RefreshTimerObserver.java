@@ -2,6 +2,7 @@ package gameplay;
 
 /**
  * An interface responsible for the refresh of the GUI
+ * @author Daniel Pavenko
  */
 public interface RefreshTimerObserver {
   /**
