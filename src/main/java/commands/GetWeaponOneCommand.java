@@ -1,6 +1,5 @@
 package commands;
 
-import GUI.GameUI;
 import environment.Environment;
 import lifeform.LifeForm;
 import weapon.Weapon;
@@ -25,7 +24,6 @@ public class GetWeaponOneCommand implements Command {
    * Executes the pick uppage of said weapon
    */
   public void execute() {
-    //GameUI.getGameUI().updateDisplayTextArea("Picking up weapon 1\n");
     Weapon[] weapons = Environment.getEnvironment(0,0).getWeapons(this.entity.getRow(),
                                                                   this.entity.getCol());
     if (weapons[0] != null && this.entity.getWeapon() == null) {

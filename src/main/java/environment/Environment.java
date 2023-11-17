@@ -254,6 +254,7 @@ public class Environment {
    * @return boolean that is true if move is successful or false if it fails
    */
   public boolean move(LifeForm entity) {
+
     int speed = entity.getMaxSpeed();
     int entityRow = entity.getRow();
     int entityCol = entity.getCol();

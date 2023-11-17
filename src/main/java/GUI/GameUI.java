@@ -587,12 +587,12 @@ public class GameUI implements RefreshTimerObserver {
       JButton clickedButton = (JButton) e.getSource();
       
       // Iterate through the boardArray to find the clicked button
-      for (int i = 0; i < boardArray.length; i++) {
-        for (int j = 0; j < boardArray[0].length; j++) {
-          if (boardArray[i][j] == clickedButton) {
+      for (int row = 0; row < boardArray.length; row++) {
+        for (int col = 0; col < boardArray[0].length; col++) {
+          if (boardArray[row][col] == clickedButton) {
             // Store the row and column indices in selectedArr
-            selectedArr[0] = j; // row
-            selectedArr[1] = i; // column
+            selectedArr[0] = row; // row
+            selectedArr[1] = col; // column
             break; // Break out of the loop since we found the clicked button
           }
         }

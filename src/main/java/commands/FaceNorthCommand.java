@@ -1,6 +1,5 @@
 package commands;
 
-import GUI.GameUI;
 import lifeform.LifeForm;
 
 /**
@@ -23,7 +22,6 @@ public class FaceNorthCommand implements Command {
    * Causes a LifeForm to face north
    */
   public void execute() {
-    //GameUI.getGameUI().updateDisplayTextArea("Changing selected entity direction: North\n");
     this.entity.changeDirectionNorth();
   }
 }
