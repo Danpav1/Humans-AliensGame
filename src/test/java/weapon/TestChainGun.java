@@ -2,6 +2,10 @@ package weapon;
 
 import static org.junit.Assert.assertEquals;
 
+import exceptions.RecoveryRateException;
+import lifeform.Alien;
+import lifeform.Human;
+import lifeform.LifeForm;
 import org.junit.Test;
 
 import exceptions.WeaponException;
@@ -22,5 +26,19 @@ public class TestChainGun {
     bob.attack(joe, 40);
     bob.attack(joe, 23);
     assertEquals(118, joe.getCurrentLifePoints());
+  }
+
+  @Test
+  public void testChainGunWithNoAmmo() throws RecoveryRateException, WeaponException {
+    ChainGun gun = new ChainGun();
+    LifeForm human = new Human("bob", 10,0);
+    LifeForm alien = new Alien("al",100);
+
+    human.pickUpWeapon(gun);
+    gun.currentAmmo = 0;
+
+    assertEquals(0, gun.getCurrentAmmo());
+    human.attack(alien, 2);
+    assertEquals(100, alien.getCurrentLifePoints());
   }
 }
