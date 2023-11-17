@@ -2,7 +2,6 @@ package weapon;
 
 import static org.junit.Assert.*;
 
-import com.sun.net.httpserver.Filter;
 import gameplay.SimpleTimer;
 import lifeform.MockLifeForm;
 import org.junit.Test;
@@ -47,7 +46,7 @@ public class TestPowerBooster {
     boolean exception1Caught = false;
 
     try {
-      PowerBooster b = new PowerBooster(new PowerBooster(new PowerBooster(new MockWeapon(10, 10, 10, 10))));
+      new PowerBooster(new PowerBooster(new PowerBooster(new MockWeapon(10, 10, 10, 10))));
     } catch (AttachmentException e) {
       exception1Caught = true;
     }

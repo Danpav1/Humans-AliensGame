@@ -491,6 +491,8 @@ public class GameUI {
     for (int row = 0; row < numOfRows; row++) {
       for (int col = 0; col < numOfCols; col++) { 
         JButton button = this.boardArray[row][col];
+
+        button.setIcon(new ImageIcon("")); //sets the picture no picture. creates a clean slate
         
         //looks for lifeforms and applies them to our buttons
         LifeForm currLifeForm = world.getLifeForm(row, col);
@@ -502,7 +504,6 @@ public class GameUI {
         } else {
           direction = "null";
           equippedWeapon = null;
-          button.setIcon(new ImageIcon("")); //sets image to blank
         }
         
         // unequipped weapons in environment

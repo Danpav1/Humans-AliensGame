@@ -2,7 +2,6 @@ package environment;
 
 import static org.junit.Assert.*;
 
-import com.sun.jdi.event.MonitorContendedEnteredEvent;
 import commands.MoveCommand;
 import exceptions.EnvironmentException;
 import exceptions.RecoveryRateException;
@@ -489,7 +488,7 @@ public class TestEnvironment {
   @Test
   public void testMovementOfSingleCell() {
     LifeForm bob = new MockLifeForm();
-    MoveCommand moveCommand = new MoveCommand(bob);
+    new MoveCommand(bob);
     Environment environment = Environment.getEnvironment(5, 5);
 
     environment.addLifeForm(bob, 1, 1);

@@ -23,7 +23,7 @@ public class FaceSouthCommand implements Command {
    * Executes the direction change
    */
   public void execute() {
-    GameUI.getGameUI().updateDisplayTextArea("Changing selected entity direction: South");
+    GameUI.getGameUI().updateDisplayTextArea("Changing selected entity direction: South\n");
     this.entity.changeDirectionSouth();
     GameUI.getGameUI().updateBoard();
   }

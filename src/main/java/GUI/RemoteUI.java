@@ -15,11 +15,12 @@ public class RemoteUI {
   
   //our instances
   private static RemoteUI remote;
-  private Invoker control = new Invoker();
+  private Invoker control;
 
   //constructor
   private RemoteUI() {
     createFrame();
+    control = new Invoker();
   }
   
   /**
@@ -75,7 +76,8 @@ public class RemoteUI {
       @Override
       public void actionPerformed(ActionEvent e) {
         System.out.println("attack"); //temp. just here to show that button works. delete me when im done.
-        // add attack functionality here
+        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.executeCommand(5);
       }
     });
     
@@ -84,7 +86,8 @@ public class RemoteUI {
       @Override
       public void actionPerformed(ActionEvent e) {
         System.out.println("get Weapon 1"); //temp. just here to show that button works. delete me when im done.
-        // add get weapon 1 functionality here
+        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.executeCommand(7);
       }
     });
     
@@ -93,7 +96,8 @@ public class RemoteUI {
       @Override
       public void actionPerformed(ActionEvent e) {
         System.out.println("get weapon 2"); //temp. just here to show that button works. delete me when im done.
-        // add get weapon 2 functionality here
+        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.executeCommand(8);
       }
     });
     
@@ -102,7 +106,8 @@ public class RemoteUI {
       @Override
       public void actionPerformed(ActionEvent e) {
         System.out.println("drop weapon"); //temp. just here to show that button works. delete me when im done.
-        // add drop weapon functionality here
+        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.executeCommand(6);
       }
     });
     
@@ -111,7 +116,8 @@ public class RemoteUI {
       @Override
       public void actionPerformed(ActionEvent e) {
         System.out.println("Reload"); //temp. just here to show that button works. delete me when im done.
-        // add reload functionality here
+        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.executeCommand(9);
       }
     });
     
@@ -142,8 +148,8 @@ public class RemoteUI {
       @Override
       public void actionPerformed(ActionEvent e) {
         System.out.println("facing north"); //temp. just here to show that button works. delete me when im done.
-        // add face north functionality here
-
+        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.executeCommand(1);
       }
     });
     
@@ -152,7 +158,8 @@ public class RemoteUI {
       @Override
       public void actionPerformed(ActionEvent e) {
         System.out.println("facing east"); //temp. just here to show that button works. delete me when im done.
-        // add face east functionality here
+        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.executeCommand(2);
       }
     });
     
@@ -161,7 +168,6 @@ public class RemoteUI {
       @Override
       public void actionPerformed(ActionEvent e) {
         System.out.println("facing south"); //temp. just here to show that button works. delete me when im done.
-        // add face south functionality here
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(3);
       }
@@ -171,7 +177,8 @@ public class RemoteUI {
     faceWestButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        System.out.println("facing west"); //temp. just here to show that button works. delete me when im done.
+        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.executeCommand(4);
       }
     });
     
@@ -179,13 +186,10 @@ public class RemoteUI {
     moveButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        //System.out.println("moved"); //temp. just here to show that button works. delete me when im done.
-        // add move functionality here
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(0);
       }
     });
-    
     return rightButtonPanel;
   }
 }

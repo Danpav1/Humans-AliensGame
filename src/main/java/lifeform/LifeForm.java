@@ -1,6 +1,5 @@
 package lifeform;
 
-import environment.Environment;
 import exceptions.WeaponException;
 import weapon.Weapon;
 

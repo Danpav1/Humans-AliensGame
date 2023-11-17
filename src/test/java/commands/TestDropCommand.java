@@ -1,6 +1,5 @@
 package commands;
 
-import com.sun.net.httpserver.Filter;
 import environment.Environment;
 import lifeform.MockLifeForm;
 import org.junit.Test;

@@ -2,7 +2,6 @@ package weapon;
 
 import exceptions.AttachmentException;
 import exceptions.WeaponException;
-import gameplay.TimerObserver;
 
 /**
  * Created by Danny Gonzales
