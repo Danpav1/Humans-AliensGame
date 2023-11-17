@@ -2,9 +2,7 @@ package lifeform;
 
 import recovery.RecoveryBehavior;
 import recovery.RecoveryNone;
-
 import gameplay.TimerObserver;
-
 import exceptions.RecoveryRateException;
 
 /**

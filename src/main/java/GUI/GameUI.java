@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.LineBorder;
 import environment.Environment;
+import gameplay.RefreshTimerObserver;
 import lifeform.Alien;
 import lifeform.Human;
 import lifeform.LifeForm;
@@ -18,7 +19,7 @@ import java.awt.event.ActionListener;
 * The Swing GUI for the game board.
 * @author Daniel Pavenko
 */
-public class GameUI {
+public class GameUI implements RefreshTimerObserver {
   
   //constant for border size of elements
   private static final int BORDER_WIDTH = 1;
@@ -122,7 +123,7 @@ public class GameUI {
     boardFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     boardFrame.setLayout(new BorderLayout());
     boardFrame.add(createContainerPanel(), BorderLayout.CENTER);
-    boardFrame.setSize(1500, 1000);
+    boardFrame.setSize(1300, 900);
     boardFrame.setVisible(true);
   }
   
@@ -479,7 +480,7 @@ public class GameUI {
     legendInstructionTextArea.append("  Reload: reloads the weapon the human is holding\n\n");
     return legendInstructionTextArea;
   }
-  
+
   /**
   * reads the environment "world" matrix and syncs it with our "boardArray" matrix as well as updates our board
   */
@@ -676,5 +677,13 @@ public class GameUI {
   */
   public LifeForm getSelected() {
     return world.getLifeForm(selectedArr[0], selectedArr[1]);
+  }
+
+  /**
+   * method that is required to be implemented by the interface refreshTimerObserver. Refreshes the board
+   *  everytime it is called.
+   */
+  public void updateRefresh() {
+    updateBoard();
   }
 }

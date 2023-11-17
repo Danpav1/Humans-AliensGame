@@ -33,6 +33,5 @@ public class GetWeaponTwoCommand implements Command {
       Environment.getEnvironment(0, 0).removeWeapon(weapons[1], this.entity.getRow(),
               this.entity.getCol());
     }
-    GameUI.getGameUI().updateBoard();
   }
 }

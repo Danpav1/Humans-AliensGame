@@ -25,6 +25,5 @@ public class FaceEastCommand implements Command {
   public void execute() {
     GameUI.getGameUI().updateDisplayTextArea("Changed selected entity direction: East\n");
     this.entity.changeDirectionEast();
-    GameUI.getGameUI().updateBoard();
   }
 }

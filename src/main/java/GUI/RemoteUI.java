@@ -40,7 +40,7 @@ public class RemoteUI {
   private void createFrame() {
     JFrame remoteFrame = new JFrame("Remote");
     remoteFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    remoteFrame.setSize(600, 300);
+    remoteFrame.setSize(400, 300);
     remoteFrame.setLayout(new GridLayout(1, 2));
     
     JPanel leftButtonPanel = createLeftButtonPanel();

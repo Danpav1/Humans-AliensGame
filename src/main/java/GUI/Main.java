@@ -2,6 +2,7 @@ package GUI;
 
 import environment.Environment;
 import exceptions.RecoveryRateException;
+import gameplay.SimpleRefreshTimer;
 import lifeform.Alien;
 import lifeform.Human;
 import lifeform.LifeForm;
@@ -43,7 +44,12 @@ public class Main {
     world.addWeapon(chainGun, 3, 4);
     world.addWeapon(pistol3, 3, 4);
 
-    GameUI.getGameUI(world);
+    GameUI ui = GameUI.getGameUI(world);
     RemoteUI.getRemote();
+
+    SimpleRefreshTimer sft = new SimpleRefreshTimer(); //creates a simple refresh timer with a default sleep of 15hz (66ms)
+    sft.addTimeObserver(ui);
+    sft.run();
+
   }
 }
