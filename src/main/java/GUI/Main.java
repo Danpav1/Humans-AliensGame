@@ -39,7 +39,7 @@ public class Main {
   
     world.addLifeForm(alien, 0, 0); //adds our alien "Ligma" to pos 0, 0
     world.addLifeForm(human, 3, 3); //adds our human "Sugma" to pos 3, 3
-    world.addWeapon(plasmaCannon, 5, 1);
+    world.addWeapon(plasmaCannon, 7, 7);
     world.addWeapon(pistol2, 0, 0);
     world.addWeapon(pistol, 2, 5);
     world.addWeapon(chainGun, 3, 4);
@@ -56,9 +56,8 @@ public class Main {
     GameUI ui = GameUI.getGameUI(world);
     RemoteUI.getRemote();
 
-    SimpleRefreshTimer sft = new SimpleRefreshTimer(); //creates a simple refresh timer with a default sleep of 15hz (66ms)
+    SimpleRefreshTimer sft = new SimpleRefreshTimer(100); //creates a simple refresh timer with a sleep of 10hz (100ms)
     sft.addTimeObserver(ui);
     sft.start();                        ////uses start() instead of run() to correctly run thread
-
   }
 }
