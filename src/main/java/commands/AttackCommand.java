@@ -37,7 +37,7 @@ public class AttackCommand implements Command {
         // check target's health before the attack
         if (targetEntity.getCurrentLifePoints() > 0) {
           this.entity.attack(targetEntity, distance);
-          //After attack, if target's  health is less than is 0, remove from environment
+          //After attack, if target's health is less than is 0, remove from environment
           if(targetEntity.getCurrentLifePoints() <= 0) {
             world.removeLifeForm(targetEntity.getRow(), targetEntity.getCol());
           }
