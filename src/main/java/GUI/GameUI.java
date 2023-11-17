@@ -498,7 +498,10 @@ public class GameUI implements RefreshTimerObserver {
         JButton tempButton = new JButton();
         tempButton.setIcon(new ImageIcon(""));
         
-        if (world.getLifeForm(row, col) == selectedLifeForm) {
+        if (selectedLifeForm == null) {
+          continue;
+        }
+        else if (world.getLifeForm(row, col) == selectedLifeForm) {
           button.setBackground(Color.DARK_GRAY);
           selectedArr[0] = row;
           selectedArr[1] = col;
@@ -747,6 +750,8 @@ public class GameUI implements RefreshTimerObserver {
             selectedArr[1] = col; // column
             if (world.getLifeForm(row, col) instanceof Alien || world.getLifeForm(row, col) instanceof Human) {
               selectedLifeForm = world.getLifeForm(row, col);
+            } else {
+              selectedLifeForm = null;
             }
             break; // Break out of the loop since we found the clicked button
           }
