@@ -25,7 +25,7 @@ public class Main {
    */
   public static void main(String[] args) throws RecoveryRateException {
     Environment world = Environment.getEnvironment(8, 8); //creates our "world" // board that the GUI references
-    LifeForm alien = new Alien("Ligma", 100);
+    LifeForm alien = new Alien("Ligma", 2);
     LifeForm human = new Human("Sugma", 1, 10);
     Weapon plasmaCannon = new PlasmaCannon();
     Weapon pistol = new Pistol();
@@ -56,7 +56,7 @@ public class Main {
     GameUI ui = GameUI.getGameUI(world);
     RemoteUI.getRemote();
 
-    SimpleRefreshTimer sft = new SimpleRefreshTimer(100); //creates a simple refresh timer with a sleep of 10hz (100ms)
+    SimpleRefreshTimer sft = new SimpleRefreshTimer(66); //creates a simple refresh timer with a sleep of 15hz (66ms)
     sft.addTimeObserver(ui);
     sft.start();                        ////uses start() instead of run() to correctly run thread
   }

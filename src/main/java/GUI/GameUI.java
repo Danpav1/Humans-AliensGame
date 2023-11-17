@@ -490,217 +490,355 @@ public class GameUI implements RefreshTimerObserver {
   public void updateBoard() {
     int numOfRows = this.world.getNumRows();
     int numOfCols = this.world.getNumCols();
-      
-      //iterates through our matrix
-      for (int row = 0; row < numOfRows; row++) {
-        for (int col = 0; col < numOfCols; col++) { 
-          
-          JButton button = this.boardArray[row][col];
-          
-          if (world.getLifeForm(row, col) == selectedLifeForm) {
-            button.setBackground(Color.DARK_GRAY);
-            selectedArr[0] = row;
-            selectedArr[1] = col;
-            updateTextFields();
+    
+    //iterates through our matrix
+    for (int row = 0; row < numOfRows; row++) {
+      for (int col = 0; col < numOfCols; col++) { 
+        JButton button = this.boardArray[row][col];
+        JButton tempButton = new JButton();
+        tempButton.setIcon(new ImageIcon(""));
+        
+        if (world.getLifeForm(row, col) == selectedLifeForm) {
+          button.setBackground(Color.DARK_GRAY);
+          selectedArr[0] = row;
+          selectedArr[1] = col;
+          updateTextFields();
+        } else {
+          button.setBackground(Color.lightGray);
+        }
+        
+        button.setIcon(new ImageIcon("")); //sets the picture no picture. creates a clean slate
+        
+        //looks for lifeforms and applies them to our buttons
+        LifeForm currLifeForm = world.getLifeForm(row, col);
+        String direction;
+        Weapon equippedWeapon;
+        if (currLifeForm != null) { // null check so we dont get the direction of a cell with no lifeform, etc
+          direction = world.getLifeForm(row, col).getCurrentDirection();
+          equippedWeapon = world.getLifeForm(row, col).getWeapon();
+        } else {
+          direction = "null";
+          equippedWeapon = null;
+        }
+        
+        // unequipped weapons in environment
+        Weapon currWeapon = world.getWeapons(row, col)[0];
+        if (currWeapon instanceof PlasmaCannon) {
+          tempButton.setIcon(new ImageIcon(PLASMACANNON_IMAGE_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
           } else {
-            button.setBackground(Color.lightGray);
-          }
-          
-          button.setIcon(new ImageIcon("")); //sets the picture no picture. creates a clean slate
-          
-          //looks for lifeforms and applies them to our buttons
-          LifeForm currLifeForm = world.getLifeForm(row, col);
-          String direction;
-          Weapon equippedWeapon;
-          if (currLifeForm != null) { // null check so we dont get the direction of a cell with no lifeform, etc
-            direction = world.getLifeForm(row, col).getCurrentDirection();
-            equippedWeapon = world.getLifeForm(row, col).getWeapon();
-          } else {
-            direction = "null";
-            equippedWeapon = null;
-          }
-          
-          // unequipped weapons in environment
-          Weapon currWeapon = world.getWeapons(row, col)[0];
-          if (currWeapon instanceof PlasmaCannon) {
             button.setIcon(new ImageIcon(PLASMACANNON_IMAGE_PATH));
-          } else if (currWeapon instanceof Pistol) {
+          }
+        } else if (currWeapon instanceof Pistol) {
+          tempButton.setIcon(new ImageIcon(PISTOL_IMAGE_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(PISTOL_IMAGE_PATH));
-          } else if (currWeapon instanceof ChainGun) {
+          }
+        } else if (currWeapon instanceof ChainGun) {
+          tempButton.setIcon(new ImageIcon(CHAINGUN_IMAGE_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(CHAINGUN_IMAGE_PATH));
           }
-          
-          //alien
-          if (currLifeForm instanceof Alien && direction.equals("north")) {
+        }
+        
+        //alien
+        if (currLifeForm instanceof Alien && direction.equals("north")) {
+          tempButton.setIcon(new ImageIcon(ALIEN_NORTH_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(ALIEN_NORTH_PATH));
-          } else if (currLifeForm instanceof Alien && direction.equals("south")) {
+          }
+        } else if (currLifeForm instanceof Alien && direction.equals("south")) {
+          tempButton.setIcon(new ImageIcon(ALIEN_SOUTH_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(ALIEN_SOUTH_PATH));
-          } else if (currLifeForm instanceof Alien && direction.equals("east")) {
+          }
+        } else if (currLifeForm instanceof Alien && direction.equals("east")) {
+          tempButton.setIcon(new ImageIcon(ALIEN_EAST_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(ALIEN_EAST_PATH));
-          } else if (currLifeForm instanceof Alien && direction.equals("west")) {
+          }
+        } else if (currLifeForm instanceof Alien && direction.equals("west")) {
+          tempButton.setIcon(new ImageIcon(ALIEN_WEST_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(ALIEN_WEST_PATH));
           }
-          
-          //unarmed human
-          if (currLifeForm instanceof Human && direction.equals("north")) {
+        }
+        
+        //unarmed human
+        if (currLifeForm instanceof Human && direction.equals("north")) {
+          tempButton.setIcon(new ImageIcon(HUMAN_NORTH_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(HUMAN_NORTH_PATH));
-          } else if (currLifeForm instanceof Human && direction.equals("south")) {
+          }
+        } else if (currLifeForm instanceof Human && direction.equals("south")) {
+          tempButton.setIcon(new ImageIcon(HUMAN_SOUTH_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(HUMAN_SOUTH_PATH));
-          } else if (currLifeForm instanceof Human && direction.equals("east")) {
+          }
+        } else if (currLifeForm instanceof Human && direction.equals("east")) {
+          tempButton.setIcon(new ImageIcon(HUMAN_EAST_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(HUMAN_EAST_PATH));
-          } else if (currLifeForm instanceof Human && direction.equals("west")) {
+          }
+        } else if (currLifeForm instanceof Human && direction.equals("west")) {
+          tempButton.setIcon(new ImageIcon(HUMAN_WEST_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(HUMAN_WEST_PATH));
           }
-          
-          //pistol human
-          if (currLifeForm instanceof Human && direction.equals("north") && equippedWeapon instanceof Pistol) {
+        }
+        
+        //pistol human
+        if (currLifeForm instanceof Human && direction.equals("north") && equippedWeapon instanceof Pistol) {
+          tempButton.setIcon(new ImageIcon(HUMAN_NORTH_PISTOL_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(HUMAN_NORTH_PISTOL_PATH));
-          } else if (currLifeForm instanceof Human && direction.equals("south") && equippedWeapon instanceof Pistol) {
+          }
+        } else if (currLifeForm instanceof Human && direction.equals("south") && equippedWeapon instanceof Pistol) {
+          tempButton.setIcon(new ImageIcon(HUMAN_SOUTH_PISTOL_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(HUMAN_SOUTH_PISTOL_PATH));
-          } else if (currLifeForm instanceof Human && direction.equals("east") && equippedWeapon instanceof Pistol) {
+          }
+        } else if (currLifeForm instanceof Human && direction.equals("east") && equippedWeapon instanceof Pistol) {
+          tempButton.setIcon(new ImageIcon(HUMAN_EAST_PISTOL_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(HUMAN_EAST_PISTOL_PATH));
-          }  else if (currLifeForm instanceof Human && direction.equals("west") && equippedWeapon instanceof Pistol) {
+          }
+        }  else if (currLifeForm instanceof Human && direction.equals("west") && equippedWeapon instanceof Pistol) {
+          tempButton.setIcon(new ImageIcon(HUMAN_WEST_PISTOL_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(HUMAN_WEST_PISTOL_PATH));
           }
-          
-          //plasma human
-          if (currLifeForm instanceof Human && direction.equals("north") && equippedWeapon instanceof PlasmaCannon) {
+        }
+        
+        //plasma human
+        if (currLifeForm instanceof Human && direction.equals("north") && equippedWeapon instanceof PlasmaCannon) {
+          tempButton.setIcon(new ImageIcon(HUMAN_NORTH_PLASMACANNON_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(HUMAN_NORTH_PLASMACANNON_PATH));
-          } else if (currLifeForm instanceof Human && direction.equals("south") && equippedWeapon instanceof PlasmaCannon) {
+          }
+        } else if (currLifeForm instanceof Human && direction.equals("south") && equippedWeapon instanceof PlasmaCannon) {
+          tempButton.setIcon(new ImageIcon(HUMAN_SOUTH_PLASMACANNON_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(HUMAN_SOUTH_PLASMACANNON_PATH));
-          } else if (currLifeForm instanceof Human && direction.equals("east") && equippedWeapon instanceof PlasmaCannon) {
+          }
+        } else if (currLifeForm instanceof Human && direction.equals("east") && equippedWeapon instanceof PlasmaCannon) {
+          tempButton.setIcon(new ImageIcon(HUMAN_EAST_PLASMACANNON_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(HUMAN_EAST_PLASMACANNON_PATH));
-          }  else if (currLifeForm instanceof Human && direction.equals("west") && equippedWeapon instanceof PlasmaCannon) {
+          }
+        }  else if (currLifeForm instanceof Human && direction.equals("west") && equippedWeapon instanceof PlasmaCannon) {
+          tempButton.setIcon(new ImageIcon(HUMAN_WEST_PLASMACANNON_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(HUMAN_WEST_PLASMACANNON_PATH));
           }
-          
-          //chaingun human
-          if (currLifeForm instanceof Human && direction.equals("north") && equippedWeapon instanceof ChainGun) {
+        }
+        
+        //chaingun human
+        if (currLifeForm instanceof Human && direction.equals("north") && equippedWeapon instanceof ChainGun) {
+          tempButton.setIcon(new ImageIcon(HUMAN_NORTH_CHAINGUN_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(HUMAN_NORTH_CHAINGUN_PATH));
-          } else if (currLifeForm instanceof Human && direction.equals("south") && equippedWeapon instanceof ChainGun) {
+          }
+        } else if (currLifeForm instanceof Human && direction.equals("south") && equippedWeapon instanceof ChainGun) {
+          tempButton.setIcon(new ImageIcon(HUMAN_SOUTH_CHAINGUN_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(HUMAN_SOUTH_CHAINGUN_PATH));
-          } else if (currLifeForm instanceof Human && direction.equals("east") && equippedWeapon instanceof ChainGun) {
+          }
+        } else if (currLifeForm instanceof Human && direction.equals("east") && equippedWeapon instanceof ChainGun) {
+          tempButton.setIcon(new ImageIcon(HUMAN_EAST_CHAINGUN_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(HUMAN_EAST_CHAINGUN_PATH));
-          }  else if (currLifeForm instanceof Human && direction.equals("west") && equippedWeapon instanceof ChainGun) {
+          }
+        }  else if (currLifeForm instanceof Human && direction.equals("west") && equippedWeapon instanceof ChainGun) {
+          tempButton.setIcon(new ImageIcon(HUMAN_WEST_CHAINGUN_PATH)); // comparison button
+          if (button.getIcon().equals(tempButton.getIcon()))
+          {
+            //do nothing (there is no not equals method)
+          } else {
             button.setIcon(new ImageIcon(HUMAN_WEST_CHAINGUN_PATH));
           }
-          
-          // Update the corresponding button in the boardArray
-          this.boardArray[row][col] = button;
         }
+        
+        // Update the corresponding button in the boardArray
+        this.boardArray[row][col] = button;
       }
-    }
-    
-    /**
-    * our button selection code
-    */
-    private class ButtonClickListener implements ActionListener {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        JButton clickedButton = (JButton) e.getSource();
-        
-        // Iterate through the boardArray to find the clicked button
-        for (int row = 0; row < boardArray.length; row++) {
-          for (int col = 0; col < boardArray[0].length; col++) {
-            if (boardArray[row][col] == clickedButton) {
-              // Store the row and column indices in selectedArr
-              selectedArr[0] = row; // row
-              selectedArr[1] = col; // column
-              if (world.getLifeForm(row, col) instanceof Alien || world.getLifeForm(row, col) instanceof Human) {
-                selectedLifeForm = world.getLifeForm(row, col);
-              }
-              break; // Break out of the loop since we found the clicked button
-            }
-          }
-        }
-        
-        updateTextFields();
-        updateDisplayTextArea("Selected: " + selectedArr[0] + ", " + selectedArr[1] + "\n");
-        
-        // Deselect all buttons (change their background color to light gray)
-        for (int i = 0; i < boardArray.length; i++) {
-          for (int j = 0; j < boardArray[0].length; j++) {
-            boardArray[j][i].setBackground(Color.lightGray);
-          }
-        } 
-        
-        // Select the clicked button and change its background color to dark gray
-        clickedButton.setBackground(Color.darkGray);
-      }
-    }
-    
-    /**
-    * method that updates the display text area with a given string
-    * @param message
-    */
-    public void updateDisplayTextArea(String message) {
-      displayTextArea.append(message);
-      displayTextArea.setCaretPosition(displayTextArea.getDocument().getLength()); 
-    }
-    
-    /**
-    * method that updates the text fields within the info section with predefined cell content
-    */
-    public void updateTextFields() {
-      LifeForm lf = world.getLifeForm(selectedArr[0], selectedArr[1]);
-      
-      // default values
-      String cellWeapon1Text = "Cell Weapon 1: null";
-      String cellWeapon2Text = "Cell Weapon 2: null";
-      String equippedWeaponText = "Equipped Weapon: null";
-      String ammoText = "Ammo: null";
-      String healthText = "Health: null";
-      
-      if (lf != null) {
-        Weapon[] groundWeapons = world.getWeapons(selectedArr[0], selectedArr[1]);
-        
-        if (groundWeapons[0] != null) {
-          cellWeapon1Text = "Cell Weapon 1: " + groundWeapons[0];
-        }
-        if (groundWeapons[1] != null) {
-          cellWeapon2Text = "Cell Weapon 2: " + groundWeapons[1];
-        }
-        
-        if (lf.getWeapon() != null) {
-          equippedWeaponText = "Equipped Weapon: " + lf.getWeapon();
-          ammoText = "Ammo: " + lf.getWeapon().getCurrentAmmo();
-        }
-        
-        healthText = "Health: " + lf.getCurrentLifePoints();
-      } else if (lf == null) {
-        Weapon[] groundWeapons = world.getWeapons(selectedArr[0], selectedArr[1]);
-        
-        if (groundWeapons[0] != null) {
-          cellWeapon1Text = "Cell Weapon 1: " + groundWeapons[0];
-        }
-        if (groundWeapons[1] != null) {
-          cellWeapon2Text = "Cell Weapon 2: " + groundWeapons[1];
-        }
-      }
-      
-      // update text fields
-      textFieldWeapon1.setText(cellWeapon1Text);
-      textFieldWeapon2.setText(cellWeapon2Text);
-      textFieldEquippedWeapon.setText(equippedWeaponText);
-      textFieldAmmo.setText(ammoText);
-      textFieldHealth.setText(healthText);
-      textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
-    }
-    
-    /**
-    * getter for the life form in the selection coords
-    * @return
-    */
-    public LifeForm getSelected() {
-      return world.getLifeForm(selectedArr[0], selectedArr[1]);
-    }
-    
-    /**
-    * method that is required to be implemented by the interface refreshTimerObserver. Refreshes the board
-    *  everytime it is called.
-    */
-    public void updateRefresh() {
-      updateBoard();
     }
   }
   
+  /**
+  * our button selection code
+  */
+  private class ButtonClickListener implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      JButton clickedButton = (JButton) e.getSource();
+      
+      // Iterate through the boardArray to find the clicked button
+      for (int row = 0; row < boardArray.length; row++) {
+        for (int col = 0; col < boardArray[0].length; col++) {
+          if (boardArray[row][col] == clickedButton) {
+            // Store the row and column indices in selectedArr
+            selectedArr[0] = row; // row
+            selectedArr[1] = col; // column
+            if (world.getLifeForm(row, col) instanceof Alien || world.getLifeForm(row, col) instanceof Human) {
+              selectedLifeForm = world.getLifeForm(row, col);
+            }
+            break; // Break out of the loop since we found the clicked button
+          }
+        }
+      }
+      
+      updateTextFields();
+      updateDisplayTextArea("Selected: " + selectedArr[0] + ", " + selectedArr[1] + "\n");
+      
+      // Deselect all buttons (change their background color to light gray)
+      for (int i = 0; i < boardArray.length; i++) {
+        for (int j = 0; j < boardArray[0].length; j++) {
+          boardArray[j][i].setBackground(Color.lightGray);
+        }
+      } 
+      
+      // Select the clicked button and change its background color to dark gray
+      clickedButton.setBackground(Color.darkGray);
+    }
+  }
+  
+  /**
+  * method that updates the display text area with a given string
+  * @param message
+  */
+  public void updateDisplayTextArea(String message) {
+    displayTextArea.append(message);
+    displayTextArea.setCaretPosition(displayTextArea.getDocument().getLength()); 
+  }
+  
+  /**
+  * method that updates the text fields within the info section with predefined cell content
+  */
+  public void updateTextFields() {
+    LifeForm lf = world.getLifeForm(selectedArr[0], selectedArr[1]);
+    
+    // default values
+    String cellWeapon1Text = "Cell Weapon 1: null";
+    String cellWeapon2Text = "Cell Weapon 2: null";
+    String equippedWeaponText = "Equipped Weapon: null";
+    String ammoText = "Ammo: null";
+    String healthText = "Health: null";
+    
+    if (lf != null) {
+      Weapon[] groundWeapons = world.getWeapons(selectedArr[0], selectedArr[1]);
+      
+      if (groundWeapons[0] != null) {
+        cellWeapon1Text = "Cell Weapon 1: " + groundWeapons[0];
+      }
+      if (groundWeapons[1] != null) {
+        cellWeapon2Text = "Cell Weapon 2: " + groundWeapons[1];
+      }
+      
+      if (lf.getWeapon() != null) {
+        equippedWeaponText = "Equipped Weapon: " + lf.getWeapon();
+        ammoText = "Ammo: " + lf.getWeapon().getCurrentAmmo();
+      }
+      
+      healthText = "Health: " + lf.getCurrentLifePoints();
+    } else if (lf == null) {
+      Weapon[] groundWeapons = world.getWeapons(selectedArr[0], selectedArr[1]);
+      
+      if (groundWeapons[0] != null) {
+        cellWeapon1Text = "Cell Weapon 1: " + groundWeapons[0];
+      }
+      if (groundWeapons[1] != null) {
+        cellWeapon2Text = "Cell Weapon 2: " + groundWeapons[1];
+      }
+    }
+    
+    // update text fields
+    textFieldWeapon1.setText(cellWeapon1Text);
+    textFieldWeapon2.setText(cellWeapon2Text);
+    textFieldEquippedWeapon.setText(equippedWeaponText);
+    textFieldAmmo.setText(ammoText);
+    textFieldHealth.setText(healthText);
+    textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
+  }
+  
+  /**
+  * getter for the life form in the selection coords
+  * @return
+  */
+  public LifeForm getSelected() {
+    return world.getLifeForm(selectedArr[0], selectedArr[1]);
+  }
+  
+  /**
+  * method that is required to be implemented by the interface refreshTimerObserver. Refreshes the board
+  *  everytime it is called.
+  */
+  public void updateRefresh() {
+    updateBoard();
+  }
+}
