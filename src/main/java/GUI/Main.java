@@ -3,6 +3,7 @@ package GUI;
 import environment.Environment;
 import exceptions.RecoveryRateException;
 import gameplay.SimpleRefreshTimer;
+import gameplay.SimpleTimer;
 import lifeform.Alien;
 import lifeform.Human;
 import lifeform.LifeForm;
@@ -44,12 +45,20 @@ public class Main {
     world.addWeapon(chainGun, 3, 4);
     world.addWeapon(pistol3, 3, 4);
 
+    SimpleTimer timer = new SimpleTimer(); //creates a simple timer with a 5 second sleep rate
+    timer.addTimeObserver(plasmaCannon);
+    timer.addTimeObserver(pistol);
+    timer.addTimeObserver(pistol2);
+    timer.addTimeObserver(pistol3);
+    timer.addTimeObserver(chainGun);
+    timer.start();                        //uses start() instead of run() to correctly run thread
+
     GameUI ui = GameUI.getGameUI(world);
     RemoteUI.getRemote();
 
     SimpleRefreshTimer sft = new SimpleRefreshTimer(); //creates a simple refresh timer with a default sleep of 15hz (66ms)
     sft.addTimeObserver(ui);
-    sft.run();
+    sft.start();                        ////uses start() instead of run() to correctly run thread
 
   }
 }

@@ -16,7 +16,7 @@ public class SimpleTimer extends Thread implements Timer {
    * run method for the thread
    */
   public void run() {
-    for (int i = 0; i < 50; i++) {
+    for (int i = 0; i < 99999; i++) {  //Runs for 99999 rounds, essentially forever
       try {
         Thread.sleep(this.sleepTime);
         this.timeChanged();
@@ -30,7 +30,7 @@ public class SimpleTimer extends Thread implements Timer {
    * No-Args Constructor
    */
   public SimpleTimer() {
-    this(1000);
+    this(5000);
   }
 
   /**
