@@ -47,6 +47,13 @@ public class Pistol extends GenericWeapon {
   }
 
   /**
+   * returns the base weapon
+   */
+  public Weapon getBaseWeapon() {
+    return new Pistol();
+  }
+
+  /**
    * Displays the Weapon
    *
    * @return the String description for the Weapon

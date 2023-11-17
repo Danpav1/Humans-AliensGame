@@ -73,6 +73,13 @@ public abstract class Attachment implements Weapon {
   }
 
   /**
+   * getter for the base weapon
+   */
+  public Weapon getBaseWeapon() {
+    return this.weapon;
+  }
+
+  /**
    * @return a string display of the Weapon and its Attachments
    */
   public abstract String toString();

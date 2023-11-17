@@ -46,5 +46,4 @@ public class Stabilizer extends Attachment implements TimerObserver, Weapon {
   public String toString() {
     return weapon.toString() + " +Stabilizer";
   }
-
 }

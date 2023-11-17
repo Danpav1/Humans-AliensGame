@@ -47,6 +47,13 @@ public class ChainGun extends GenericWeapon {
   }
 
   /**
+   * returns the base weapon
+   */
+  public Weapon getBaseWeapon() {
+    return new ChainGun();
+  }
+
+  /**
    * Displays the Weapon
    *
    * @return the String description for the Weapon

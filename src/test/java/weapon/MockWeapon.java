@@ -53,6 +53,13 @@ public class MockWeapon extends GenericWeapon {
   }
 
   /**
+   * returns the base weapon
+   */
+  public Weapon getBaseWeapon() {
+    return new MockWeapon();
+  }
+
+  /**
    * @return a string display of the Weapon and its Attachments
    */
   public String toString() {

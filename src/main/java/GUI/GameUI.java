@@ -516,16 +516,27 @@ public class GameUI implements RefreshTimerObserver {
         LifeForm currLifeForm = world.getLifeForm(row, col);
         String direction;
         Weapon equippedWeapon;
+        Weapon currWeapon;
+
         if (currLifeForm != null) { // null check so we dont get the direction of a cell with no lifeform, etc
           direction = world.getLifeForm(row, col).getCurrentDirection();
-          equippedWeapon = world.getLifeForm(row, col).getWeapon();
+          if (world.getLifeForm(row, col).getWeapon() != null) {
+            equippedWeapon = world.getLifeForm(row, col).getWeapon().getBaseWeapon();
+          } else {
+            equippedWeapon = null;
+          }
         } else {
           direction = "null";
           equippedWeapon = null;
         }
         
         // unequipped weapons in environment
-        Weapon currWeapon = world.getWeapons(row, col)[0];
+        if (world.getWeapons(row, col)[0] != null || world.getWeapons(row, col)[1] != null) {
+          currWeapon = world.getWeapons(row, col)[0].getBaseWeapon();
+        } else {
+          currWeapon = null;
+        }
+        
         if (currWeapon instanceof PlasmaCannon) {
           tempButton.setIcon(new ImageIcon(PLASMACANNON_IMAGE_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon()))
@@ -799,14 +810,14 @@ public class GameUI implements RefreshTimerObserver {
       Weapon[] groundWeapons = world.getWeapons(selectedArr[0], selectedArr[1]);
       
       if (groundWeapons[0] != null) {
-        cellWeapon1Text = "Cell Weapon 1: " + groundWeapons[0];
+        cellWeapon1Text = "Cell Weapon 1: " + groundWeapons[0].toString();
       }
       if (groundWeapons[1] != null) {
-        cellWeapon2Text = "Cell Weapon 2: " + groundWeapons[1];
+        cellWeapon2Text = "Cell Weapon 2: " + groundWeapons[1].toString();
       }
       
       if (lf.getWeapon() != null) {
-        equippedWeaponText = "Equipped Weapon: " + lf.getWeapon();
+        equippedWeaponText = "Equipped Weapon: " + lf.getWeapon().toString();
         ammoText = "Ammo: " + lf.getWeapon().getCurrentAmmo();
       }
       
@@ -815,10 +826,10 @@ public class GameUI implements RefreshTimerObserver {
       Weapon[] groundWeapons = world.getWeapons(selectedArr[0], selectedArr[1]);
       
       if (groundWeapons[0] != null) {
-        cellWeapon1Text = "Cell Weapon 1: " + groundWeapons[0];
+        cellWeapon1Text = "Cell Weapon 1: " + groundWeapons[0].toString();
       }
       if (groundWeapons[1] != null) {
-        cellWeapon2Text = "Cell Weapon 2: " + groundWeapons[1];
+        cellWeapon2Text = "Cell Weapon 2: " + groundWeapons[1].toString();
       }
     }
     

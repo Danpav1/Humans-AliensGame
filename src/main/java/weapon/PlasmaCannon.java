@@ -47,6 +47,13 @@ public class PlasmaCannon extends GenericWeapon {
   }
 
   /**
+   * returns the base weapon
+   */
+  public Weapon getBaseWeapon() {
+    return new PlasmaCannon();
+  }
+
+  /**
    * Displays the weapon
    *
    * @return the String description for the weapon.

@@ -57,6 +57,11 @@ public interface Weapon extends TimerObserver {
   void reload();
 
   /**
+   * Gets the base weapon
+   */
+  Weapon getBaseWeapon();
+
+  /**
    * @return a string display of the Weapon and its Attachments
    */
   String toString();

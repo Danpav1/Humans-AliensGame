@@ -54,5 +54,4 @@ public class PowerBooster extends Attachment {
   public String toString() {
     return weapon.toString() + " +PowerBooster";
   }
-
 }
