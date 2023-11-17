@@ -72,6 +72,11 @@ public abstract class GenericWeapon implements Weapon {
   }
 
   /**
+   * getter for base weapon
+   */
+  public abstract Weapon getBaseWeapon();
+
+  /**
    * Reloads the clip to full capacity
    */
   public void reload() {
