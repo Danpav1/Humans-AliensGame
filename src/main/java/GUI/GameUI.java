@@ -86,6 +86,9 @@ public class GameUI implements RefreshTimerObserver {
   
   //our GUI as a var
   private static GameUI instanceOfGameUI;
+
+  //our selected lifeform, set it to a very unique human so that the selection following code works
+  private LifeForm selectedLifeForm = new Human("temphuman-temphuman-temphuman", 999, 999);
   
   /**
   * constructor for GUI, removed the "startUI" and put the initiliazation code within this constructor.
@@ -493,6 +496,15 @@ public class GameUI implements RefreshTimerObserver {
       for (int col = 0; col < numOfCols; col++) { 
         JButton button = this.boardArray[row][col];
 
+        if (world.getLifeForm(row, col) == selectedLifeForm) {
+          button.setBackground(Color.DARK_GRAY);
+          selectedArr[0] = row;
+          selectedArr[1] = col;
+          textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
+        } else {
+          button.setBackground(Color.lightGray);
+        }
+
         button.setIcon(new ImageIcon("")); //sets the picture no picture. creates a clean slate
         
         //looks for lifeforms and applies them to our buttons
@@ -593,6 +605,9 @@ public class GameUI implements RefreshTimerObserver {
             // Store the row and column indices in selectedArr
             selectedArr[0] = row; // row
             selectedArr[1] = col; // column
+            if (world.getLifeForm(row, col) instanceof Alien || world.getLifeForm(row, col) instanceof Human) {
+              selectedLifeForm = world.getLifeForm(row, col);
+            }
             break; // Break out of the loop since we found the clicked button
           }
         }
