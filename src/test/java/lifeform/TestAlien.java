@@ -3,10 +3,12 @@ package lifeform;
 import static org.junit.Assert.*;
 
 import exceptions.RecoveryRateException;
+import exceptions.WeaponException;
 import gameplay.SimpleTimer;
 import org.junit.Test;
 
 import recovery.*;
+import weapon.Pistol;
 
 /**
  * Tests the functionality provided by the Alien class
@@ -23,6 +25,30 @@ public class TestAlien {
   public void testMaxSpeed() throws RecoveryRateException {
     Alien alien = new Alien("Alien", 30, new RecoveryNone());
     assertEquals(2, alien.getMaxSpeed());
+  }
+
+  @Test
+  public void testAlienAttack() throws RecoveryRateException, WeaponException {
+    Alien alien = new Alien("Sugma",30, new RecoveryNone());
+    Human human = new Human("Ligma",50,0);
+    alien.attack(human,0);
+    assertEquals(40, human.getCurrentLifePoints());
+
+    Pistol pistol = new Pistol();
+    alien.pickUpWeapon(pistol);
+    alien.attack(human,10);
+    assertEquals(30, human.getCurrentLifePoints());
+  }
+
+  @Test
+  public void testAlienAttackWithArmor() throws RecoveryRateException, WeaponException {
+    Alien alien = new Alien("Sugma",30, new RecoveryNone());
+    Human human = new Human("Ligma",50,10);
+    Pistol pistol = new Pistol();
+
+    alien.pickUpWeapon(pistol);
+    alien.attack(human, 0);
+    assertEquals(48, human.getCurrentLifePoints());
   }
 
   /*
