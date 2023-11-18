@@ -3,8 +3,6 @@ package GUI;
 import environment.Environment;
 import exceptions.AttachmentException;
 import exceptions.RecoveryRateException;
-import gameplay.SimpleRefreshTimer;
-import gameplay.SimpleTimer;
 import lifeform.Alien;
 import lifeform.Human;
 import lifeform.LifeForm;
@@ -51,20 +49,20 @@ public class Main {
     world.addWeapon(chainGun, 3, 4);
     world.addWeapon(pistol3, 3, 4);
     world.addWeapon(chainGun2, 6, 1);
-
-    SimpleTimer timer = new SimpleTimer(); //creates a simple timer with a 5 second sleep rate
-    timer.addTimeObserver(plasmaCannon);
-    timer.addTimeObserver(pistol);
-    timer.addTimeObserver(pistol2);
-    timer.addTimeObserver(pistol3);
-    timer.addTimeObserver(chainGun);
-    timer.start();                        //uses start() instead of run() to correctly run thread
+    
+    //SimpleTimer timer = new SimpleTimer(); //creates a simple timer with a 5 second sleep rate
+    //timer.addTimeObserver(plasmaCannon);
+    //timer.addTimeObserver(pistol);
+    //timer.addTimeObserver(pistol2);
+    //timer.addTimeObserver(pistol3);
+    //timer.addTimeObserver(chainGun);
+    //timer.start();                        //uses start() instead of run() to correctly run thread
 
     GameUI ui = GameUI.getGameUI(world);
     RemoteUI.getRemote();
 
-    SimpleRefreshTimer sft = new SimpleRefreshTimer(66); //creates a simple refresh timer with a sleep of 15hz (66ms)
-    sft.addTimeObserver(ui);
-    sft.start();                        ////uses start() instead of run() to correctly run thread
+    //SimpleRefreshTimer sft = new SimpleRefreshTimer(66); //creates a simple refresh timer with a sleep of 15hz (66ms)
+    //sft.addTimeObserver(ui);
+    //sft.start();                        ////uses start() instead of run() to correctly run thread
   }
 }

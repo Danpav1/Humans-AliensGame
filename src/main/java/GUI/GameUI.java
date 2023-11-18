@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.LineBorder;
 import environment.Environment;
-import gameplay.RefreshTimerObserver;
 import lifeform.Alien;
 import lifeform.Human;
 import lifeform.LifeForm;
@@ -19,7 +18,7 @@ import java.awt.event.ActionListener;
 * The Swing GUI for the game board.
 * @author Daniel Pavenko
 */
-public class GameUI implements RefreshTimerObserver {
+public class GameUI {
   
   //constant for border size of elements
   private static final int BORDER_WIDTH = 1;
@@ -361,8 +360,7 @@ public class GameUI implements RefreshTimerObserver {
         boardPanel.add(button);
       }
     }
-    System.out.println("createBoard method ran");
-    //createBoardPanel(); // recreates the boardpanel so the new elements can be reattached & appear
+    updateBoard();
     return boardPanel;
   }
   

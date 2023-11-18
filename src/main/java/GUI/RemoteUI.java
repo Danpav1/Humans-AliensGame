@@ -84,6 +84,7 @@ public class RemoteUI{
         Environment world = Environment.getEnvironment();
         GameUI game = GameUI.getGameUI(world);
         game.updateDisplayTextArea("Attacking\n");
+        game.updateBoard();
       }
     });
     
@@ -97,6 +98,7 @@ public class RemoteUI{
         Environment world = Environment.getEnvironment();
         GameUI game = GameUI.getGameUI(world);
         game.updateDisplayTextArea("Getting Weapon 1\n");
+        game.updateBoard();
       }
     });
     
@@ -110,6 +112,7 @@ public class RemoteUI{
         Environment world = Environment.getEnvironment();
         GameUI game = GameUI.getGameUI(world);
         game.updateDisplayTextArea("Getting weapon 2\n");
+        game.updateBoard();
       }
     });
     
@@ -123,6 +126,7 @@ public class RemoteUI{
         Environment world = Environment.getEnvironment();
         GameUI game = GameUI.getGameUI(world);
         game.updateDisplayTextArea("Dropping Weapon\n");
+        game.updateBoard();
       }
     });
     
@@ -136,6 +140,7 @@ public class RemoteUI{
         Environment world = Environment.getEnvironment();
         GameUI game = GameUI.getGameUI(world);
         game.updateDisplayTextArea("Reloading Weapon\n");
+        game.updateBoard();
       }
     });
     
@@ -171,6 +176,7 @@ public class RemoteUI{
         Environment world = Environment.getEnvironment();
         GameUI game = GameUI.getGameUI(world);
         game.updateDisplayTextArea("Facing North\n");
+        game.updateBoard();
       }
     });
     
@@ -184,6 +190,7 @@ public class RemoteUI{
         Environment world = Environment.getEnvironment();
         GameUI game = GameUI.getGameUI(world);
         game.updateDisplayTextArea("Facing East\n");
+        game.updateBoard();
       }
     });
     
@@ -197,6 +204,7 @@ public class RemoteUI{
         Environment world = Environment.getEnvironment();
         GameUI game = GameUI.getGameUI(world);
         game.updateDisplayTextArea("Facing South\n");
+        game.updateBoard();
       }
     });
     
@@ -209,6 +217,7 @@ public class RemoteUI{
         Environment world = Environment.getEnvironment();
         GameUI game = GameUI.getGameUI(world);
         game.updateDisplayTextArea("Facing West\n");
+        game.updateBoard();
       }
     });
     
@@ -221,6 +230,7 @@ public class RemoteUI{
         Environment world = Environment.getEnvironment();
         GameUI game = GameUI.getGameUI(world);
         game.updateDisplayTextArea("Moving\n");
+        game.updateBoard();
       }
     });
     return rightButtonPanel;
