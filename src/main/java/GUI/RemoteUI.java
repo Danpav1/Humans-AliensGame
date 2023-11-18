@@ -43,7 +43,7 @@ public class RemoteUI{
   private void createFrame() {
     JFrame remoteFrame = new JFrame("Remote");
     remoteFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    remoteFrame.setSize(400, 300);
+    remoteFrame.setSize(600, 300);
     remoteFrame.setLayout(new GridLayout(1, 2));
     
     JPanel leftButtonPanel = createLeftButtonPanel();
@@ -152,19 +152,53 @@ public class RemoteUI{
   * @return
   */
   private JPanel createRightButtonPanel() {
-    JPanel rightButtonPanel = new JPanel(new GridLayout(5, 1));
-    
+    JPanel rightButtonPanel = new JPanel(new GridBagLayout());
+    GridBagConstraints gbc = new GridBagConstraints();
+
     JButton faceNorthButton = new JButton("Face North");
     JButton moveButton = new JButton("Move");
     JButton faceSouthButton = new JButton("Face South");
     JButton faceWestButton = new JButton("Face West");
     JButton faceEastButton = new JButton("Face East");
-    
-    rightButtonPanel.add(faceNorthButton);
-    rightButtonPanel.add(faceEastButton);
-    rightButtonPanel.add(moveButton);
-    rightButtonPanel.add(faceWestButton);
-    rightButtonPanel.add(faceSouthButton);
+
+    gbc.fill = GridBagConstraints.BOTH;
+    gbc.weightx = 1.0;
+    gbc.weighty = 1.0;
+
+    // Face West button taking the first quarter
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 3;
+    rightButtonPanel.add(faceWestButton, gbc);
+
+    // Face North button taking the second quarter
+    gbc.gridx = 1;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    rightButtonPanel.add(faceNorthButton, gbc);
+
+    // Move button taking the second quarter
+    gbc.gridx = 1;
+    gbc.gridy = 1;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    rightButtonPanel.add(moveButton, gbc);
+
+    // Face South button taking the second quarter
+    gbc.gridx = 1;
+    gbc.gridy = 2;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    rightButtonPanel.add(faceSouthButton, gbc);
+
+    // Face East button taking the last quarter
+    gbc.gridx = 2;
+    gbc.gridy = 0;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 3;
+    rightButtonPanel.add(faceEastButton, gbc);
     
     // face north button
     faceNorthButton.addActionListener(new ActionListener() {
