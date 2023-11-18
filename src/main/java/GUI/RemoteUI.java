@@ -61,6 +61,8 @@ public class RemoteUI{
   */
   private JPanel createLeftButtonPanel() {
     JPanel leftButtonPanel = new JPanel(new GridLayout(5, 1));
+
+    leftButtonPanel.setBackground(Color.LIGHT_GRAY);
     
     JButton attackButton = new JButton("Attack");
     JButton getWeapon1Button = new JButton("Get Weapon 1");
@@ -155,6 +157,8 @@ public class RemoteUI{
     JPanel rightButtonPanel = new JPanel(new GridBagLayout());
     GridBagConstraints gbc = new GridBagConstraints();
 
+    rightButtonPanel.setBackground(Color.LIGHT_GRAY);
+
     JButton faceNorthButton = new JButton("Face North");
     JButton moveButton = new JButton("Move");
     JButton faceSouthButton = new JButton("Face South");
@@ -167,9 +171,9 @@ public class RemoteUI{
 
     // Face West button taking the first quarter
     gbc.gridx = 0;
-    gbc.gridy = 0;
+    gbc.gridy = 1;
     gbc.gridwidth = 1;
-    gbc.gridheight = 3;
+    gbc.gridheight = 1;
     rightButtonPanel.add(faceWestButton, gbc);
 
     // Face North button taking the second quarter
@@ -195,9 +199,9 @@ public class RemoteUI{
 
     // Face East button taking the last quarter
     gbc.gridx = 2;
-    gbc.gridy = 0;
+    gbc.gridy = 1;
     gbc.gridwidth = 1;
-    gbc.gridheight = 3;
+    gbc.gridheight = 1;
     rightButtonPanel.add(faceEastButton, gbc);
     
     // face north button
