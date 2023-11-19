@@ -39,7 +39,8 @@ public class GameUi {
   //constants for our weapon image paths
   private static final String PISTOL_IMAGE_PATH = "src/main/java/assets/images/pistol.png";
   private static final String CHAINGUN_IMAGE_PATH = "src/main/java/assets/images/chainGun.png";
-  private static final String PLASMACANNON_IMAGE_PATH = "src/main/java/assets/images/plasmaCannon.png";
+  private static final String PLASMACANNON_IMAGE_PATH
+                                                   = "src/main/java/assets/images/plasmaCannon.png";
   
   //unarmed human path(s)
   private static final String HUMAN_NORTH_PATH = "src/main/java/assets/images/humannorth.png";
@@ -54,47 +55,76 @@ public class GameUi {
   private static final String ALIEN_WEST_PATH = "src/main/java/assets/images/alienwest.png";
   
   //pistol human path(s)
-  private static final String HUMAN_NORTH_PISTOL_PATH = "src/main/java/assets/images/humanpistolnorth.png";
-  private static final String HUMAN_SOUTH_PISTOL_PATH = "src/main/java/assets/images/humanpistolsouth.png";
-  private static final String HUMAN_EAST_PISTOL_PATH = "src/main/java/assets/images/humanpistoleast.png";
-  private static final String HUMAN_WEST_PISTOL_PATH = "src/main/java/assets/images/humanpistolwest.png";
+  private static final String HUMAN_NORTH_PISTOL_PATH
+                                               = "src/main/java/assets/images/humanpistolnorth.png";
+  private static final String HUMAN_SOUTH_PISTOL_PATH
+                                               = "src/main/java/assets/images/humanpistolsouth.png";
+  private static final String HUMAN_EAST_PISTOL_PATH
+                                                = "src/main/java/assets/images/humanpistoleast.png";
+  private static final String HUMAN_WEST_PISTOL_PATH
+                                                = "src/main/java/assets/images/humanpistolwest.png";
   
   //plasma human path(s)
-  private static final String HUMAN_NORTH_PLASMACANNON_PATH = "src/main/java/assets/images/humanplasmanorth.png";
-  private static final String HUMAN_SOUTH_PLASMACANNON_PATH = "src/main/java/assets/images/humanplasmasouth.png";
-  private static final String HUMAN_EAST_PLASMACANNON_PATH = "src/main/java/assets/images/humanplasmaeast.png";
-  private static final String HUMAN_WEST_PLASMACANNON_PATH = "src/main/java/assets/images/humanplasmawest.png";
+  private static final String HUMAN_NORTH_PLASMACANNON_PATH
+                                               = "src/main/java/assets/images/humanplasmanorth.png";
+  private static final String HUMAN_SOUTH_PLASMACANNON_PATH
+                                               = "src/main/java/assets/images/humanplasmasouth.png";
+  private static final String HUMAN_EAST_PLASMACANNON_PATH
+                                                = "src/main/java/assets/images/humanplasmaeast.png";
+  private static final String HUMAN_WEST_PLASMACANNON_PATH
+                                                = "src/main/java/assets/images/humanplasmawest.png";
   
   //chain human path(s)
-  private static final String HUMAN_NORTH_CHAINGUN_PATH = "src/main/java/assets/images/humanchainnorth.png";
-  private static final String HUMAN_SOUTH_CHAINGUN_PATH = "src/main/java/assets/images/humanchainsouth.png";
-  private static final String HUMAN_EAST_CHAINGUN_PATH = "src/main/java/assets/images/humanchaineast.png";
-  private static final String HUMAN_WEST_CHAINGUN_PATH = "src/main/java/assets/images/humanchainwest.png";
+  private static final String HUMAN_NORTH_CHAINGUN_PATH
+                                                = "src/main/java/assets/images/humanchainnorth.png";
+  private static final String HUMAN_SOUTH_CHAINGUN_PATH
+                                                = "src/main/java/assets/images/humanchainsouth.png";
+  private static final String HUMAN_EAST_CHAINGUN_PATH
+                                                 = "src/main/java/assets/images/humanchaineast.png";
+  private static final String HUMAN_WEST_CHAINGUN_PATH
+                                                 = "src/main/java/assets/images/humanchainwest.png";
 
   //pistol alien path(s)
-  private static final String ALIEN_NORTH_PISTOL_PATH = "src/main/java/assets/images/alienpistolnorth.png";
-  private static final String ALIEN_SOUTH_PISTOL_PATH = "src/main/java/assets/images/alienpistolsouth.png";
-  private static final String ALIEN_EAST_PISTOL_PATH = "src/main/java/assets/images/alienpistoleast.png";
-  private static final String ALIEN_WEST_PISTOL_PATH = "src/main/java/assets/images/alienpistolwest.png";
+  private static final String ALIEN_NORTH_PISTOL_PATH
+                                               = "src/main/java/assets/images/alienpistolnorth.png";
+  private static final String ALIEN_SOUTH_PISTOL_PATH
+                                               = "src/main/java/assets/images/alienpistolsouth.png";
+  private static final String ALIEN_EAST_PISTOL_PATH
+                                                = "src/main/java/assets/images/alienpistoleast.png";
+  private static final String ALIEN_WEST_PISTOL_PATH
+                                                = "src/main/java/assets/images/alienpistolwest.png";
   
   //plasma alien path(s)
-  private static final String ALIEN_NORTH_PLASMACANNON_PATH = "src/main/java/assets/images/alienplasmanorth.png";
-  private static final String ALIEN_SOUTH_PLASMACANNON_PATH = "src/main/java/assets/images/alienplasmasouth.png";
-  private static final String ALIEN_EAST_PLASMACANNON_PATH = "src/main/java/assets/images/alienplasmaeast.png";
-  private static final String ALIEN_WEST_PLASMACANNON_PATH = "src/main/java/assets/images/alienplasmawest.png";
+  private static final String ALIEN_NORTH_PLASMACANNON_PATH
+                                               = "src/main/java/assets/images/alienplasmanorth.png";
+  private static final String ALIEN_SOUTH_PLASMACANNON_PATH
+                                               = "src/main/java/assets/images/alienplasmasouth.png";
+  private static final String ALIEN_EAST_PLASMACANNON_PATH
+                                                = "src/main/java/assets/images/alienplasmaeast.png";
+  private static final String ALIEN_WEST_PLASMACANNON_PATH
+                                                = "src/main/java/assets/images/alienplasmawest.png";
   
   //chain alien path(s)
-  private static final String ALIEN_NORTH_CHAINGUN_PATH = "src/main/java/assets/images/alienchainnorth.png";
-  private static final String ALIEN_SOUTH_CHAINGUN_PATH = "src/main/java/assets/images/alienchainsouth.png";
-  private static final String ALIEN_EAST_CHAINGUN_PATH = "src/main/java/assets/images/alienchaineast.png";
-  private static final String ALIEN_WEST_CHAINGUN_PATH = "src/main/java/assets/images/alienchainwest.png";
+  private static final String ALIEN_NORTH_CHAINGUN_PATH
+                                                = "src/main/java/assets/images/alienchainnorth.png";
+  private static final String ALIEN_SOUTH_CHAINGUN_PATH
+                                                = "src/main/java/assets/images/alienchainsouth.png";
+  private static final String ALIEN_EAST_CHAINGUN_PATH
+                                                 = "src/main/java/assets/images/alienchaineast.png";
+  private static final String ALIEN_WEST_CHAINGUN_PATH
+                                                 = "src/main/java/assets/images/alienchainwest.png";
   
   //legend images path(s)
-  private static final String HUMAN_LEGEND_IMAGE_PATH = "src/main/java/assets/images/legend icons/humanLegend.png";
-  private static final String ALIEN_LEGEND_IMAGE_PATH = "src/main/java/assets/images/legend icons/alienLegend.png";
-  private static final String PISTOL_LEGEND_IMAGE_PATH = "src/main/java/assets/images/legend icons/pistolLegend.png";
-  private static final String CHAINGUN_LEGEND_IMAGE_PATH = "src/main/java/assets/images/legend icons/chaingunLegend.png";
-  private static final String PLASMACANNON_LEGEND_IMAGE_PATH = "src/main/java/assets/images/legend icons/plasmaCannonLegend.png";
+  private static final String HUMAN_LEGEND_IMAGE_PATH
+                                       = "src/main/java/assets/images/legend icons/humanLegend.png";
+  private static final String ALIEN_LEGEND_IMAGE_PATH
+                                       = "src/main/java/assets/images/legend icons/alienLegend.png";
+  private static final String PISTOL_LEGEND_IMAGE_PATH
+                                      = "src/main/java/assets/images/legend icons/pistolLegend.png";
+  private static final String CHAINGUN_LEGEND_IMAGE_PATH
+                                    = "src/main/java/assets/images/legend icons/chaingunLegend.png";
+  private static final String PLASMACANNON_LEGEND_IMAGE_PATH
+                                = "src/main/java/assets/images/legend icons/plasmaCannonLegend.png";
   
   //our board (matrix)
   private JButton[][] boardArray;
@@ -121,7 +151,8 @@ public class GameUi {
   private LifeForm selectedLifeForm = new Human("temphuman-temphuman-temphuman", 999, 999);
   
   /**
-  * constructor for GUI, removed the "startUI" and put the initiliazation code within this constructor.
+  * constructor for GUI, removed the "startUI" and put
+  * the initiliazation code within this constructor.
   * @param world
   */
   private GameUi(Environment world) {
@@ -130,9 +161,9 @@ public class GameUi {
   }
   
   /**
-  * Singleton type getter for our class. This getter takes in an instance of environment. If we already
-  *  have an instance of GameUI, we return it. If we dont have an instance of GameUI, we create one and
-  *  return it.
+  * Singleton type getter for our class. This getter takes in an instance of environment. If we
+  * already have an instance of GameUI, we return it. If we dont have an instance of GameUI,
+  * we create one and return it.
   */
   public static GameUi getGameUi(Environment world) {
     if (instanceOfGameUI == null) {
@@ -142,7 +173,8 @@ public class GameUi {
   }
   
   /**
-  * Overloaded "regular" getter for an instance of our class. Takes no inputs and just returns the instance.
+  * Overloaded "regular" getter for an instance of our class.
+  * Takes no inputs and just returns the instance.
   */
   public static GameUi getGameUi() {
     return instanceOfGameUI;
@@ -161,9 +193,10 @@ public class GameUi {
   }
   
   /**
-  * Creates and rethrns the JPanel "containerPanel". This is our first panel that sits on top of the main JFrame.
-  * This panel is responsible for formatting everything and it "houses" all other panels / components.
-  * @return
+  * Creates and returns the JPanel "containerPanel". This is our first panel that sits on top of
+  * the main JFrame. This panel is responsible for formatting everything
+  * and it "houses" all other panels / components.
+  * @return containerPanel
   */
   private JPanel createContainerPanel() {
     // the panels that will house the legend, board, moves display & cell info section.
@@ -292,8 +325,9 @@ public class GameUi {
     
     int numOfRows = this.world.getNumRows();
     int numOfCols = this.world.getNumCols();
-    
-    JPanel boardPanel = new JPanel(new GridLayout(numOfRows, numOfCols)); //creates the UI grid and sizes it
+
+    //creates the UI grid and sizes it
+    JPanel boardPanel = new JPanel(new GridLayout(numOfRows, numOfCols));
     boardPanel.setBorder(new LineBorder(Color.BLACK, BORDER_WIDTH));
     
     this.boardArray = new JButton[numOfCols][numOfRows];
@@ -313,7 +347,8 @@ public class GameUi {
         LifeForm currLifeForm = world.getLifeForm(row, col);
         String direction;
         Weapon equippedWeapon;
-        if (currLifeForm != null) { // null check so we dont get the direction of a cell with no lifeform, etc
+        // null check so we dont get the direction of a cell with no lifeform, etc
+        if (currLifeForm != null) {
           direction = world.getLifeForm(row, col).getCurrentDirection();
           equippedWeapon = world.getLifeForm(row, col).getWeapon();
         } else {
@@ -343,35 +378,59 @@ public class GameUi {
         }
 
         //pistol alien
-        if (currLifeForm instanceof Alien && direction.equals("north") && equippedWeapon instanceof Pistol) {
+        if (currLifeForm instanceof Alien
+            && direction.equals("north")
+            && equippedWeapon instanceof Pistol) {
           button.setIcon(new ImageIcon(ALIEN_NORTH_PISTOL_PATH));
-        } else if (currLifeForm instanceof Alien && direction.equals("south") && equippedWeapon instanceof Pistol) {
+        } else if (currLifeForm instanceof Alien
+                   && direction.equals("south")
+                   && equippedWeapon instanceof Pistol) {
           button.setIcon(new ImageIcon(ALIEN_SOUTH_PISTOL_PATH));
-        } else if (currLifeForm instanceof Alien && direction.equals("east") && equippedWeapon instanceof Pistol) {
+        } else if (currLifeForm instanceof Alien
+                   && direction.equals("east")
+                   && equippedWeapon instanceof Pistol) {
           button.setIcon(new ImageIcon(ALIEN_EAST_PISTOL_PATH));
-        }  else if (currLifeForm instanceof Alien && direction.equals("west") && equippedWeapon instanceof Pistol) {
+        }  else if (currLifeForm instanceof Alien
+                    && direction.equals("west")
+                    && equippedWeapon instanceof Pistol) {
           button.setIcon(new ImageIcon(ALIEN_WEST_PISTOL_PATH));
         }
         
         //plasma alien
-        if (currLifeForm instanceof Alien && direction.equals("north") && equippedWeapon instanceof PlasmaCannon) {
+        if (currLifeForm instanceof Alien
+            && direction.equals("north")
+            && equippedWeapon instanceof PlasmaCannon) {
           button.setIcon(new ImageIcon(ALIEN_NORTH_PLASMACANNON_PATH));
-        } else if (currLifeForm instanceof Alien && direction.equals("south") && equippedWeapon instanceof PlasmaCannon) {
+        } else if (currLifeForm instanceof Alien
+                   && direction.equals("south")
+                   && equippedWeapon instanceof PlasmaCannon) {
           button.setIcon(new ImageIcon(ALIEN_SOUTH_PLASMACANNON_PATH));
-        } else if (currLifeForm instanceof Alien && direction.equals("east") && equippedWeapon instanceof PlasmaCannon) {
+        } else if (currLifeForm instanceof Alien
+                   && direction.equals("east")
+                   && equippedWeapon instanceof PlasmaCannon) {
           button.setIcon(new ImageIcon(ALIEN_EAST_PLASMACANNON_PATH));
-        }  else if (currLifeForm instanceof Alien && direction.equals("west") && equippedWeapon instanceof PlasmaCannon) {
+        } else if (currLifeForm instanceof Alien
+                   && direction.equals("west")
+                   && equippedWeapon instanceof PlasmaCannon) {
           button.setIcon(new ImageIcon(ALIEN_WEST_PLASMACANNON_PATH));
         }
         
         //chaingun alien
-        if (currLifeForm instanceof Alien && direction.equals("north") && equippedWeapon instanceof ChainGun) {
+        if (currLifeForm instanceof Alien
+            && direction.equals("north")
+            && equippedWeapon instanceof ChainGun) {
           button.setIcon(new ImageIcon(ALIEN_NORTH_CHAINGUN_PATH));
-        } else if (currLifeForm instanceof Alien && direction.equals("south") && equippedWeapon instanceof ChainGun) {
+        } else if (currLifeForm instanceof Alien
+                   && direction.equals("south")
+                   && equippedWeapon instanceof ChainGun) {
           button.setIcon(new ImageIcon(ALIEN_SOUTH_CHAINGUN_PATH));
-        } else if (currLifeForm instanceof Alien && direction.equals("east") && equippedWeapon instanceof ChainGun) {
+        } else if (currLifeForm instanceof Alien
+                   && direction.equals("east")
+                   && equippedWeapon instanceof ChainGun) {
           button.setIcon(new ImageIcon(ALIEN_EAST_CHAINGUN_PATH));
-        }  else if (currLifeForm instanceof Alien && direction.equals("west") && equippedWeapon instanceof ChainGun) {
+        } else if (currLifeForm instanceof Alien
+                   && direction.equals("west")
+                   && equippedWeapon instanceof ChainGun) {
           button.setIcon(new ImageIcon(ALIEN_WEST_CHAINGUN_PATH));
         }
         
@@ -387,35 +446,59 @@ public class GameUi {
         }
         
         //pistol human
-        if (currLifeForm instanceof Human && direction.equals("north") && equippedWeapon instanceof Pistol) {
+        if (currLifeForm instanceof Human
+            && direction.equals("north")
+            && equippedWeapon instanceof Pistol) {
           button.setIcon(new ImageIcon(HUMAN_NORTH_PISTOL_PATH));
-        } else if (currLifeForm instanceof Human && direction.equals("south") && equippedWeapon instanceof Pistol) {
+        } else if (currLifeForm instanceof Human
+                   && direction.equals("south")
+                   && equippedWeapon instanceof Pistol) {
           button.setIcon(new ImageIcon(HUMAN_SOUTH_PISTOL_PATH));
-        } else if (currLifeForm instanceof Human && direction.equals("east") && equippedWeapon instanceof Pistol) {
+        } else if (currLifeForm instanceof Human
+                   && direction.equals("east")
+                   && equippedWeapon instanceof Pistol) {
           button.setIcon(new ImageIcon(HUMAN_EAST_PISTOL_PATH));
-        }  else if (currLifeForm instanceof Human && direction.equals("west") && equippedWeapon instanceof Pistol) {
+        } else if (currLifeForm instanceof Human
+                   && direction.equals("west")
+                   && equippedWeapon instanceof Pistol) {
           button.setIcon(new ImageIcon(HUMAN_WEST_PISTOL_PATH));
         }
         
         //plasma human
-        if (currLifeForm instanceof Human && direction.equals("north") && equippedWeapon instanceof PlasmaCannon) {
+        if (currLifeForm instanceof Human
+            && direction.equals("north")
+            && equippedWeapon instanceof PlasmaCannon) {
           button.setIcon(new ImageIcon(HUMAN_NORTH_PLASMACANNON_PATH));
-        } else if (currLifeForm instanceof Human && direction.equals("south") && equippedWeapon instanceof PlasmaCannon) {
+        } else if (currLifeForm instanceof Human
+                   && direction.equals("south")
+                   && equippedWeapon instanceof PlasmaCannon) {
           button.setIcon(new ImageIcon(HUMAN_SOUTH_PLASMACANNON_PATH));
-        } else if (currLifeForm instanceof Human && direction.equals("east") && equippedWeapon instanceof PlasmaCannon) {
+        } else if (currLifeForm instanceof Human
+                   && direction.equals("east")
+                   && equippedWeapon instanceof PlasmaCannon) {
           button.setIcon(new ImageIcon(HUMAN_EAST_PLASMACANNON_PATH));
-        }  else if (currLifeForm instanceof Human && direction.equals("west") && equippedWeapon instanceof PlasmaCannon) {
+        } else if (currLifeForm instanceof Human
+                   && direction.equals("west")
+                   && equippedWeapon instanceof PlasmaCannon) {
           button.setIcon(new ImageIcon(HUMAN_WEST_PLASMACANNON_PATH));
         }
         
         //chaingun human
-        if (currLifeForm instanceof Human && direction.equals("north") && equippedWeapon instanceof ChainGun) {
+        if (currLifeForm instanceof Human
+            && direction.equals("north")
+            && equippedWeapon instanceof ChainGun) {
           button.setIcon(new ImageIcon(HUMAN_NORTH_CHAINGUN_PATH));
-        } else if (currLifeForm instanceof Human && direction.equals("south") && equippedWeapon instanceof ChainGun) {
+        } else if (currLifeForm instanceof Human
+                   && direction.equals("south")
+                   && equippedWeapon instanceof ChainGun) {
           button.setIcon(new ImageIcon(HUMAN_SOUTH_CHAINGUN_PATH));
-        } else if (currLifeForm instanceof Human && direction.equals("east") && equippedWeapon instanceof ChainGun) {
+        } else if (currLifeForm instanceof Human
+                   && direction.equals("east")
+                   && equippedWeapon instanceof ChainGun) {
           button.setIcon(new ImageIcon(HUMAN_EAST_CHAINGUN_PATH));
-        }  else if (currLifeForm instanceof Human && direction.equals("west") && equippedWeapon instanceof ChainGun) {
+        } else if (currLifeForm instanceof Human
+                   && direction.equals("west")
+                   && equippedWeapon instanceof ChainGun) {
           button.setIcon(new ImageIcon(HUMAN_WEST_CHAINGUN_PATH));
         }
         
@@ -429,8 +512,8 @@ public class GameUi {
   }
   
   /**
-  * Creates and returns the JPanel "displayBoxPanel". This panel will house the "text box" that shows
-  *  what moves our human has made.
+  * Creates and returns the JPanel "displayBoxPanel". This panel will house the "text box"
+  * that shows what moves our human has made.
   * @return displayBoxPanel
   */
   private JPanel createDisplayBoxPanel() {
@@ -547,7 +630,8 @@ public class GameUi {
   }
   
   /**
-  * reads the environment "world" matrix and syncs it with our "boardArray" matrix as well as updates our board
+  * reads the environment "world" matrix and syncs it with our "boardArray" matrix
+  * as well as updates our board
   */
   public void updateBoard() {
     int numOfRows = this.world.getNumRows();
@@ -579,7 +663,8 @@ public class GameUi {
         Weapon equippedWeapon;
         Weapon currWeapon;
 
-        if (currLifeForm != null) { // null check so we dont get the direction of a cell with no lifeform, etc
+        // null check so we dont get the direction of a cell with no lifeform, etc
+        if (currLifeForm != null) {
           direction = world.getLifeForm(row, col).getCurrentDirection();
           if (world.getLifeForm(row, col).getWeapon() != null) {
             equippedWeapon = world.getLifeForm(row, col).getWeapon().getBaseWeapon();
@@ -653,28 +738,36 @@ public class GameUi {
         }
 
         //pistol alien
-        if (currLifeForm instanceof Alien && direction.equals("north") && equippedWeapon instanceof Pistol) {
+        if (currLifeForm instanceof Alien
+            && direction.equals("north")
+            && equippedWeapon instanceof Pistol) {
           tempButton.setIcon(new ImageIcon(ALIEN_NORTH_PISTOL_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
           } else {
             button.setIcon(new ImageIcon(ALIEN_NORTH_PISTOL_PATH));
           }
-        } else if (currLifeForm instanceof Alien && direction.equals("south") && equippedWeapon instanceof Pistol) {
+        } else if (currLifeForm instanceof Alien
+                   && direction.equals("south")
+                   && equippedWeapon instanceof Pistol) {
           tempButton.setIcon(new ImageIcon(ALIEN_SOUTH_PISTOL_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
           } else {
             button.setIcon(new ImageIcon(ALIEN_SOUTH_PISTOL_PATH));
           }
-        } else if (currLifeForm instanceof Alien && direction.equals("east") && equippedWeapon instanceof Pistol) {
+        } else if (currLifeForm instanceof Alien
+                   && direction.equals("east")
+                   && equippedWeapon instanceof Pistol) {
           tempButton.setIcon(new ImageIcon(ALIEN_EAST_PISTOL_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
           } else {
             button.setIcon(new ImageIcon(ALIEN_EAST_PISTOL_PATH));
           }
-        }  else if (currLifeForm instanceof Alien && direction.equals("west") && equippedWeapon instanceof Pistol) {
+        } else if (currLifeForm instanceof Alien
+                   && direction.equals("west")
+                   && equippedWeapon instanceof Pistol) {
           tempButton.setIcon(new ImageIcon(ALIEN_WEST_PISTOL_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
@@ -684,28 +777,36 @@ public class GameUi {
         }
         
         //plasma alien
-        if (currLifeForm instanceof Alien && direction.equals("north") && equippedWeapon instanceof PlasmaCannon) {
+        if (currLifeForm instanceof Alien
+            && direction.equals("north")
+            && equippedWeapon instanceof PlasmaCannon) {
           tempButton.setIcon(new ImageIcon(ALIEN_NORTH_PLASMACANNON_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
           } else {
             button.setIcon(new ImageIcon(ALIEN_NORTH_PLASMACANNON_PATH));
           }
-        } else if (currLifeForm instanceof Alien && direction.equals("south") && equippedWeapon instanceof PlasmaCannon) {
+        } else if (currLifeForm instanceof Alien
+                   && direction.equals("south")
+                   && equippedWeapon instanceof PlasmaCannon) {
           tempButton.setIcon(new ImageIcon(ALIEN_SOUTH_PLASMACANNON_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
           } else {
             button.setIcon(new ImageIcon(ALIEN_SOUTH_PLASMACANNON_PATH));
           }
-        } else if (currLifeForm instanceof Alien && direction.equals("east") && equippedWeapon instanceof PlasmaCannon) {
+        } else if (currLifeForm instanceof Alien
+                   && direction.equals("east")
+                   && equippedWeapon instanceof PlasmaCannon) {
           tempButton.setIcon(new ImageIcon(ALIEN_EAST_PLASMACANNON_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
           } else {
             button.setIcon(new ImageIcon(ALIEN_EAST_PLASMACANNON_PATH));
           }
-        }  else if (currLifeForm instanceof Alien && direction.equals("west") && equippedWeapon instanceof PlasmaCannon) {
+        } else if (currLifeForm instanceof Alien
+                   && direction.equals("west")
+                   && equippedWeapon instanceof PlasmaCannon) {
           tempButton.setIcon(new ImageIcon(ALIEN_WEST_PLASMACANNON_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
@@ -715,28 +816,36 @@ public class GameUi {
         }
         
         //chaingun alien
-        if (currLifeForm instanceof Alien && direction.equals("north") && equippedWeapon instanceof ChainGun) {
+        if (currLifeForm instanceof Alien
+            && direction.equals("north")
+            && equippedWeapon instanceof ChainGun) {
           tempButton.setIcon(new ImageIcon(ALIEN_NORTH_CHAINGUN_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
           } else {
             button.setIcon(new ImageIcon(ALIEN_NORTH_CHAINGUN_PATH));
           }
-        } else if (currLifeForm instanceof Alien && direction.equals("south") && equippedWeapon instanceof ChainGun) {
+        } else if (currLifeForm instanceof Alien
+                   && direction.equals("south")
+                   && equippedWeapon instanceof ChainGun) {
           tempButton.setIcon(new ImageIcon(ALIEN_SOUTH_CHAINGUN_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
           } else {
             button.setIcon(new ImageIcon(ALIEN_SOUTH_CHAINGUN_PATH));
           }
-        } else if (currLifeForm instanceof Alien && direction.equals("east") && equippedWeapon instanceof ChainGun) {
+        } else if (currLifeForm instanceof Alien
+                   && direction.equals("east")
+                   && equippedWeapon instanceof ChainGun) {
           tempButton.setIcon(new ImageIcon(ALIEN_EAST_CHAINGUN_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
           } else {
             button.setIcon(new ImageIcon(ALIEN_EAST_CHAINGUN_PATH));
           }
-        }  else if (currLifeForm instanceof Alien && direction.equals("west") && equippedWeapon instanceof ChainGun) {
+        } else if (currLifeForm instanceof Alien
+                   && direction.equals("west")
+                   && equippedWeapon instanceof ChainGun) {
           tempButton.setIcon(new ImageIcon(ALIEN_WEST_CHAINGUN_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
@@ -777,28 +886,36 @@ public class GameUi {
         }
         
         //pistol human
-        if (currLifeForm instanceof Human && direction.equals("north") && equippedWeapon instanceof Pistol) {
+        if (currLifeForm instanceof Human
+            && direction.equals("north")
+            && equippedWeapon instanceof Pistol) {
           tempButton.setIcon(new ImageIcon(HUMAN_NORTH_PISTOL_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
           } else {
             button.setIcon(new ImageIcon(HUMAN_NORTH_PISTOL_PATH));
           }
-        } else if (currLifeForm instanceof Human && direction.equals("south") && equippedWeapon instanceof Pistol) {
+        } else if (currLifeForm instanceof Human
+                   && direction.equals("south")
+                   && equippedWeapon instanceof Pistol) {
           tempButton.setIcon(new ImageIcon(HUMAN_SOUTH_PISTOL_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
           } else {
             button.setIcon(new ImageIcon(HUMAN_SOUTH_PISTOL_PATH));
           }
-        } else if (currLifeForm instanceof Human && direction.equals("east") && equippedWeapon instanceof Pistol) {
+        } else if (currLifeForm instanceof Human
+                   && direction.equals("east")
+                   && equippedWeapon instanceof Pistol) {
           tempButton.setIcon(new ImageIcon(HUMAN_EAST_PISTOL_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
           } else {
             button.setIcon(new ImageIcon(HUMAN_EAST_PISTOL_PATH));
           }
-        }  else if (currLifeForm instanceof Human && direction.equals("west") && equippedWeapon instanceof Pistol) {
+        } else if (currLifeForm instanceof Human
+                   && direction.equals("west")
+                   && equippedWeapon instanceof Pistol) {
           tempButton.setIcon(new ImageIcon(HUMAN_WEST_PISTOL_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
@@ -808,28 +925,36 @@ public class GameUi {
         }
         
         //plasma human
-        if (currLifeForm instanceof Human && direction.equals("north") && equippedWeapon instanceof PlasmaCannon) {
+        if (currLifeForm instanceof Human
+            && direction.equals("north")
+            && equippedWeapon instanceof PlasmaCannon) {
           tempButton.setIcon(new ImageIcon(HUMAN_NORTH_PLASMACANNON_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
           } else {
             button.setIcon(new ImageIcon(HUMAN_NORTH_PLASMACANNON_PATH));
           }
-        } else if (currLifeForm instanceof Human && direction.equals("south") && equippedWeapon instanceof PlasmaCannon) {
+        } else if (currLifeForm instanceof Human
+                   && direction.equals("south")
+                   && equippedWeapon instanceof PlasmaCannon) {
           tempButton.setIcon(new ImageIcon(HUMAN_SOUTH_PLASMACANNON_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
           } else {
             button.setIcon(new ImageIcon(HUMAN_SOUTH_PLASMACANNON_PATH));
           }
-        } else if (currLifeForm instanceof Human && direction.equals("east") && equippedWeapon instanceof PlasmaCannon) {
+        } else if (currLifeForm instanceof Human
+                   && direction.equals("east")
+                   && equippedWeapon instanceof PlasmaCannon) {
           tempButton.setIcon(new ImageIcon(HUMAN_EAST_PLASMACANNON_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
           } else {
             button.setIcon(new ImageIcon(HUMAN_EAST_PLASMACANNON_PATH));
           }
-        }  else if (currLifeForm instanceof Human && direction.equals("west") && equippedWeapon instanceof PlasmaCannon) {
+        } else if (currLifeForm instanceof Human
+                   && direction.equals("west")
+                   && equippedWeapon instanceof PlasmaCannon) {
           tempButton.setIcon(new ImageIcon(HUMAN_WEST_PLASMACANNON_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
@@ -839,28 +964,36 @@ public class GameUi {
         }
         
         //chaingun human
-        if (currLifeForm instanceof Human && direction.equals("north") && equippedWeapon instanceof ChainGun) {
+        if (currLifeForm instanceof Human
+            && direction.equals("north")
+            && equippedWeapon instanceof ChainGun) {
           tempButton.setIcon(new ImageIcon(HUMAN_NORTH_CHAINGUN_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
           } else {
             button.setIcon(new ImageIcon(HUMAN_NORTH_CHAINGUN_PATH));
           }
-        } else if (currLifeForm instanceof Human && direction.equals("south") && equippedWeapon instanceof ChainGun) {
+        } else if (currLifeForm instanceof Human
+                   && direction.equals("south")
+                   && equippedWeapon instanceof ChainGun) {
           tempButton.setIcon(new ImageIcon(HUMAN_SOUTH_CHAINGUN_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
           } else {
             button.setIcon(new ImageIcon(HUMAN_SOUTH_CHAINGUN_PATH));
           }
-        } else if (currLifeForm instanceof Human && direction.equals("east") && equippedWeapon instanceof ChainGun) {
+        } else if (currLifeForm instanceof Human
+                   && direction.equals("east")
+                   && equippedWeapon instanceof ChainGun) {
           tempButton.setIcon(new ImageIcon(HUMAN_EAST_CHAINGUN_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
           } else {
             button.setIcon(new ImageIcon(HUMAN_EAST_CHAINGUN_PATH));
           }
-        }  else if (currLifeForm instanceof Human && direction.equals("west") && equippedWeapon instanceof ChainGun) {
+        } else if (currLifeForm instanceof Human
+                   && direction.equals("west")
+                   && equippedWeapon instanceof ChainGun) {
           tempButton.setIcon(new ImageIcon(HUMAN_WEST_CHAINGUN_PATH)); // comparison button
           if (button.getIcon().equals(tempButton.getIcon())) {
             //do nothing (there is no not equals method)
@@ -890,7 +1023,8 @@ public class GameUi {
             // Store the row and column indices in selectedArr
             selectedArr[0] = row; // row
             selectedArr[1] = col; // column
-            if (world.getLifeForm(row, col) instanceof Alien || world.getLifeForm(row, col) instanceof Human) {
+            if (world.getLifeForm(row, col) instanceof Alien
+                || world.getLifeForm(row, col) instanceof Human) {
               selectedLifeForm = world.getLifeForm(row, col);
             } else {
               selectedLifeForm = null;
@@ -982,8 +1116,8 @@ public class GameUi {
   }
   
   /**
-  * method that is required to be implemented by the interface refreshTimerObserver. Refreshes the board
-  *  everytime it is called.
+  * method that is required to be implemented by the interface refreshTimerObserver.
+  * Refreshes the board everytime it is called.
   */
   public void updateRefresh() {
     updateBoard();
