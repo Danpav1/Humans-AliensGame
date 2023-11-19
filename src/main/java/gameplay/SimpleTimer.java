@@ -27,7 +27,7 @@ public class SimpleTimer extends Thread implements Timer {
   }
 
   /**
-   * No-Args Constructor
+   * No-Args Constructor  Thread sleep for 5000ms or 5 seconds, which means 5 seconds per round
    */
   public SimpleTimer() {
     this(5000);

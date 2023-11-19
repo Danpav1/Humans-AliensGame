@@ -53,7 +53,7 @@ public class Main {
     world.addWeapon(chainGun2, 6, 1);
 
     SimpleTimer timer = new SimpleTimer(); //creates a simple timer with a 5 second sleep rate
-    timer.addTimeObserver(plasmaCannon);
+    timer.addTimeObserver(plasmaCannon);  //Every weapon needs to be added to timer to work correctly
     timer.addTimeObserver(pistol);
     timer.addTimeObserver(pistol2);
     timer.addTimeObserver(pistol3);
