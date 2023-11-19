@@ -38,7 +38,7 @@ public class AttackCommand implements Command {
         if (targetEntity.getCurrentLifePoints() > 0) {
           this.entity.attack(targetEntity, distance);
           //After attack, if target's health is less than is 0, remove from environment
-          if(targetEntity.getCurrentLifePoints() <= 0) {
+          if (targetEntity.getCurrentLifePoints() <= 0) {
             world.removeLifeForm(targetEntity.getRow(), targetEntity.getCol());
           }
         } else {
@@ -70,54 +70,54 @@ public class AttackCommand implements Command {
     switch (facing) {
       case "south":
       
-      for (int row = entityRow + 1; row < environment.getNumRows(); row++) {
+        for (int row = entityRow + 1; row < environment.getNumRows(); row++) {
         
-        target = environment.getLifeForm(row, entityCol);
+          target = environment.getLifeForm(row, entityCol);
         
-        if (target != null) {
-          return target;
+          if (target != null) {
+            return target;
+          }
         }
-      }
-      break;
+        break;
       
       case "east":
       
-      for (int col = entityCol + 1; col < environment.getNumCols(); col++) {
+        for (int col = entityCol + 1; col < environment.getNumCols(); col++) {
+
+          target = environment.getLifeForm(entityRow, col);
         
-        target = environment.getLifeForm(entityRow, col);
-        
-        if (target != null) {
-          return target;
+          if (target != null) {
+            return target;
+          }
         }
-      }
-      break;
+        break;
       
       case "north":
       
-      for (int row = entityRow - 1; row >= 0; row--) {
+        for (int row = entityRow - 1; row >= 0; row--) {
         
-        target = environment.getLifeForm(row, entityCol);
+          target = environment.getLifeForm(row, entityCol);
         
-        if (target != null) {
-          return target;
+          if (target != null) {
+            return target;
+          }
         }
-      }
-      break;
+        break;
       
       case "west":
       
-      for (int col = entityCol - 1; col >= 0; col--) {
+        for (int col = entityCol - 1; col >= 0; col--) {
         
-        target = environment.getLifeForm(entityRow, col);
+          target = environment.getLifeForm(entityRow, col);
         
-        if (target != null) {
-          return target;
+          if (target != null) {
+            return target;
+          }
         }
-      }
-      break;
+        break;
       
       default:
-      return null;
+        return null;
     }
     return null;
   }
