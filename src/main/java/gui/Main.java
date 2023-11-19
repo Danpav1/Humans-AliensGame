@@ -61,7 +61,7 @@ public class Main {
     world.addLifeForm(alien, 0, 0); //adds our alien "Ligma" to pos 0, 0
     world.addLifeForm(human, 3, 3); //adds our human "Sugma" to pos 3, 3
 
-    GameUI ui = GameUI.getGameUI(world);
+    GameUi ui = GameUi.getGameUi(world);
     RemoteUi.getRemote();
   }
 }

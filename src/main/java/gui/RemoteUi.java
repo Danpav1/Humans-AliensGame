@@ -85,10 +85,10 @@ public class RemoteUi {
       @Override
       public void actionPerformed(ActionEvent e) {
         System.out.println("attack");
-        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.setLifeForm(GameUi.getGameUi().getSelected());
         control.executeCommand(5);
         Environment world = Environment.getEnvironment();
-        GameUI game = GameUI.getGameUI(world);
+        GameUi game = GameUi.getGameUi(world);
         game.updateDisplayTextArea("Attacking\n");
         game.updateBoard();
       }
@@ -99,10 +99,10 @@ public class RemoteUi {
       @Override
       public void actionPerformed(ActionEvent e) {
         System.out.println("get Weapon 1");
-        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.setLifeForm(GameUi.getGameUi().getSelected());
         control.executeCommand(7);
         Environment world = Environment.getEnvironment();
-        GameUI game = GameUI.getGameUI(world);
+        GameUi game = GameUi.getGameUi(world);
         game.updateDisplayTextArea("Getting Weapon 1\n");
         game.updateBoard();
       }
@@ -113,10 +113,10 @@ public class RemoteUi {
       @Override
       public void actionPerformed(ActionEvent e) {
         System.out.println("get weapon 2");
-        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.setLifeForm(GameUi.getGameUi().getSelected());
         control.executeCommand(8);
         Environment world = Environment.getEnvironment();
-        GameUI game = GameUI.getGameUI(world);
+        GameUi game = GameUi.getGameUi(world);
         game.updateDisplayTextArea("Getting weapon 2\n");
         game.updateBoard();
       }
@@ -127,10 +127,10 @@ public class RemoteUi {
       @Override
       public void actionPerformed(ActionEvent e) {
         System.out.println("drop weapon");
-        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.setLifeForm(GameUi.getGameUi().getSelected());
         control.executeCommand(6);
         Environment world = Environment.getEnvironment();
-        GameUI game = GameUI.getGameUI(world);
+        GameUi game = GameUi.getGameUi(world);
         game.updateDisplayTextArea("Dropping Weapon\n");
         game.updateBoard();
       }
@@ -141,10 +141,10 @@ public class RemoteUi {
       @Override
       public void actionPerformed(ActionEvent e) {
         System.out.println("Reload");
-        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.setLifeForm(GameUi.getGameUi().getSelected());
         control.executeCommand(9);
         Environment world = Environment.getEnvironment();
-        GameUI game = GameUI.getGameUI(world);
+        GameUi game = GameUi.getGameUi(world);
         game.updateDisplayTextArea("Reloading Weapon\n");
         game.updateBoard();
       }
@@ -213,10 +213,10 @@ public class RemoteUi {
       @Override
       public void actionPerformed(ActionEvent e) {
         System.out.println("facing north");
-        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.setLifeForm(GameUi.getGameUi().getSelected());
         control.executeCommand(1);
         Environment world = Environment.getEnvironment();
-        GameUI game = GameUI.getGameUI(world);
+        GameUi game = GameUi.getGameUi(world);
         game.updateDisplayTextArea("Facing North\n");
         game.updateBoard();
       }
@@ -227,10 +227,10 @@ public class RemoteUi {
       @Override
       public void actionPerformed(ActionEvent e) {
         System.out.println("facing east");
-        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.setLifeForm(GameUi.getGameUi().getSelected());
         control.executeCommand(2);
         Environment world = Environment.getEnvironment();
-        GameUI game = GameUI.getGameUI(world);
+        GameUi game = GameUi.getGameUi(world);
         game.updateDisplayTextArea("Facing East\n");
         game.updateBoard();
       }
@@ -241,10 +241,10 @@ public class RemoteUi {
       @Override
       public void actionPerformed(ActionEvent e) {
         System.out.println("facing south");
-        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.setLifeForm(GameUi.getGameUi().getSelected());
         control.executeCommand(3);
         Environment world = Environment.getEnvironment();
-        GameUI game = GameUI.getGameUI(world);
+        GameUi game = GameUi.getGameUi(world);
         game.updateDisplayTextArea("Facing South\n");
         game.updateBoard();
       }
@@ -254,10 +254,10 @@ public class RemoteUi {
     faceWestButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.setLifeForm(GameUi.getGameUi().getSelected());
         control.executeCommand(4);
         Environment world = Environment.getEnvironment();
-        GameUI game = GameUI.getGameUI(world);
+        GameUi game = GameUi.getGameUi(world);
         game.updateDisplayTextArea("Facing West\n");
         game.updateBoard();
       }
@@ -267,10 +267,10 @@ public class RemoteUi {
     moveButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        control.setLifeForm(GameUI.getGameUI().getSelected());
+        control.setLifeForm(GameUi.getGameUi().getSelected());
         control.executeCommand(0);
         Environment world = Environment.getEnvironment();
-        GameUI game = GameUI.getGameUI(world);
+        GameUi game = GameUi.getGameUi(world);
         game.updateDisplayTextArea("Moving\n");
         game.updateBoard();
       }
