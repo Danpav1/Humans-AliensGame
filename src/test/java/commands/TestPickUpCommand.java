@@ -38,10 +38,11 @@ public class TestPickUpCommand {
     x.pickUpWeapon(w);
     assertEquals(w, x.getWeapon());
     Command pick = new GetWeaponOneCommand(x);
-    game.addWeapon(new Pistol(), 0, 0);
+    Weapon v = new Pistol();
+    game.addWeapon(v, 0, 0);
     game.addLifeForm(x, 0, 0);
     pick.execute();
-    assertEquals(w, x.getWeapon());
+    assertEquals(v, x.getWeapon());
     assertNotNull(game.getWeapons(0, 0)[0]);
     Environment.removeEnvironment();
   }
