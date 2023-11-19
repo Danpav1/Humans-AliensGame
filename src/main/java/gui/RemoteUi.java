@@ -1,12 +1,16 @@
-package GUI;
+package gui;
 
 import gameplay.Invoker;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JButton;
 
 import environment.Environment;
-
-import java.awt.*;
+import java.awt.GridLayout;
+import java.awt.Color;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,14 +18,14 @@ import java.awt.event.ActionListener;
  * remote or "invoker"
  * @author Daniel Pavenko 
  */
-public class RemoteUI{
+public class RemoteUi {
   
   //our instances
-  private static RemoteUI remote;
+  private static RemoteUi remote;
   private Invoker control;
 
   //constructor
-  private RemoteUI() {
+  private RemoteUi() {
     createFrame();
     control = new Invoker();
   }
@@ -30,9 +34,9 @@ public class RemoteUI{
   * restricted getter
   * @return
   */
-  public static RemoteUI getRemote() {
+  public static RemoteUi getRemote() {
     if (remote == null) {
-      remote = new RemoteUI();
+      remote = new RemoteUi();
     }
     return remote;
   }
@@ -80,7 +84,7 @@ public class RemoteUI{
     attackButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        System.out.println("attack"); //temp. just here to show that button works. delete me when im done.
+        System.out.println("attack");
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(5);
         Environment world = Environment.getEnvironment();
@@ -94,7 +98,7 @@ public class RemoteUI{
     getWeapon1Button.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        System.out.println("get Weapon 1"); //temp. just here to show that button works. delete me when im done.
+        System.out.println("get Weapon 1");
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(7);
         Environment world = Environment.getEnvironment();
@@ -108,7 +112,7 @@ public class RemoteUI{
     getWeapon2Button.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        System.out.println("get weapon 2"); //temp. just here to show that button works. delete me when im done.
+        System.out.println("get weapon 2");
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(8);
         Environment world = Environment.getEnvironment();
@@ -122,7 +126,7 @@ public class RemoteUI{
     dropWeaponButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        System.out.println("drop weapon"); //temp. just here to show that button works. delete me when im done.
+        System.out.println("drop weapon");
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(6);
         Environment world = Environment.getEnvironment();
@@ -136,7 +140,7 @@ public class RemoteUI{
     reloadButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        System.out.println("Reload"); //temp. just here to show that button works. delete me when im done.
+        System.out.println("Reload");
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(9);
         Environment world = Environment.getEnvironment();
@@ -159,11 +163,11 @@ public class RemoteUI{
 
     rightButtonPanel.setBackground(Color.LIGHT_GRAY);
 
-    JButton faceNorthButton = new JButton("Face North");
-    JButton moveButton = new JButton("Move");
-    JButton faceSouthButton = new JButton("Face South");
-    JButton faceWestButton = new JButton("Face West");
-    JButton faceEastButton = new JButton("Face East");
+    final JButton faceNorthButton = new JButton("Face North");
+    final JButton moveButton = new JButton("Move");
+    final JButton faceSouthButton = new JButton("Face South");
+    final JButton faceWestButton = new JButton("Face West");
+    final JButton faceEastButton = new JButton("Face East");
 
     gbc.fill = GridBagConstraints.BOTH;
     gbc.weightx = 1.0;
@@ -208,7 +212,7 @@ public class RemoteUI{
     faceNorthButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        System.out.println("facing north"); //temp. just here to show that button works. delete me when im done.
+        System.out.println("facing north");
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(1);
         Environment world = Environment.getEnvironment();
@@ -222,7 +226,7 @@ public class RemoteUI{
     faceEastButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        System.out.println("facing east"); //temp. just here to show that button works. delete me when im done.
+        System.out.println("facing east");
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(2);
         Environment world = Environment.getEnvironment();
@@ -236,7 +240,7 @@ public class RemoteUI{
     faceSouthButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        System.out.println("facing south"); //temp. just here to show that button works. delete me when im done.
+        System.out.println("facing south");
         control.setLifeForm(GameUI.getGameUI().getSelected());
         control.executeCommand(3);
         Environment world = Environment.getEnvironment();

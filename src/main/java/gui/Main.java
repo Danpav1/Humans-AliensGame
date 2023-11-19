@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import environment.Environment;
 import exceptions.AttachmentException;
@@ -27,20 +27,22 @@ public class Main {
    * @throws AttachmentException
    */
   public static void main(String[] args) throws RecoveryRateException, AttachmentException {
-    Environment world = Environment.getEnvironment(6, 6); //creates our "world" // board that the GUI references
-    LifeForm alien = new Alien("Ligma", 2);
+    //creates our "world" // board that the GUI references
+    // some variables made final for checkstyle
+    Environment world = Environment.getEnvironment(6, 6);
+    final LifeForm alien = new Alien("Ligma", 2);
     LifeForm human = new Human("Sugma", 1, 10);
 
     Weapon pistol = new Pistol();
     Weapon plasma = new PlasmaCannon();
-    Weapon chain = new ChainGun();
+    final Weapon chain = new ChainGun();
 
-    Weapon pistol1 = new Scope(new Pistol());
-    Weapon plasma1 = new Stabilizer(new PlasmaCannon());
-    Weapon chain1 = new PowerBooster(new ChainGun());
+    final Weapon pistol1 = new Scope(new Pistol());
+    final Weapon plasma1 = new Stabilizer(new PlasmaCannon());
+    final Weapon chain1 = new PowerBooster(new ChainGun());
 
-    Weapon pistol2 = new PowerBooster(new Scope(new Pistol()));
-    Weapon plasma2 = new Scope(new Scope(new PlasmaCannon()));
+    final Weapon pistol2 = new PowerBooster(new Scope(new Pistol()));
+    final Weapon plasma2 = new Scope(new Scope(new PlasmaCannon()));
     Weapon chain2 = new Stabilizer(new Scope(new ChainGun()));
 
     human.pickUpWeapon(chain2);
@@ -60,6 +62,6 @@ public class Main {
     world.addLifeForm(human, 3, 3); //adds our human "Sugma" to pos 3, 3
 
     GameUI ui = GameUI.getGameUI(world);
-    RemoteUI.getRemote();
+    RemoteUi.getRemote();
   }
 }
