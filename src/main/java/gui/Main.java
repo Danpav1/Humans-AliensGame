@@ -33,6 +33,7 @@ public class Main {
     //creates our "world" // board that the GUI references
     // some variables made final for checkstyle
     final Environment world = Environment.getEnvironment(6, 6);
+
     final RecoveryLinear rrl = new RecoveryLinear(10);
     final Alien alien = new Alien("Ligma", 200, rrl,1);
     final LifeForm human = new Human("Sugma", 1, 10);
