@@ -33,7 +33,8 @@ public class Invoker {
   /**
    * No args constructor
    */
-  public Invoker() {}
+  public Invoker() {
+  }
 
   /**
    * Sets the LifeForm the Invoker controls

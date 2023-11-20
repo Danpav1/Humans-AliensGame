@@ -16,12 +16,13 @@ public class RecoveryNone implements RecoveryBehavior {
   }
 
   /**
-  * getter for the recovery step / amount
-  * @return
-  */
+   * getter for the recovery step / amount
+   *
+   * @return
+   */
   public double getRecoveryAmount() {
     return 0.0;
   }
 
-  }
+}
 

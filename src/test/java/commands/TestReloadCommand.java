@@ -5,12 +5,14 @@ import lifeform.*;
 import org.junit.Test;
 
 import weapon.*;
+
 import static org.junit.Assert.*;
 
 public class TestReloadCommand {
 
   /**
    * Tests using the reload command to reload a weapon
+   *
    * @throws WeaponException for the fire method
    */
   @Test

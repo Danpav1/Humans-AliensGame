@@ -139,6 +139,7 @@ public abstract class LifeForm {
 
   /**
    * Getter for the weapon field
+   *
    * @return the currently held weapon, null if there is none
    */
   public Weapon getWeapon() {

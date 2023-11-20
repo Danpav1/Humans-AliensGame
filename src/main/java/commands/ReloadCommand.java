@@ -11,6 +11,7 @@ public class ReloadCommand implements Command {
 
   /**
    * Constructor
+   *
    * @param entity
    */
   public ReloadCommand(LifeForm entity) {

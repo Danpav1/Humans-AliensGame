@@ -4,6 +4,7 @@ import environment.Environment;
 import lifeform.*;
 import weapon.*;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class TestPickUpCommand {

@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 
 import environment.Environment;
+
 import java.awt.GridLayout;
 import java.awt.Color;
 import java.awt.GridBagLayout;
@@ -16,10 +17,11 @@ import java.awt.event.ActionListener;
 
 /**
  * remote or "invoker"
- * @author Daniel Pavenko 
+ *
+ * @author Daniel Pavenko
  */
 public class RemoteUi {
-  
+
   //our instances
   private static RemoteUi remote;
   private Invoker control;
@@ -29,57 +31,59 @@ public class RemoteUi {
     createFrame();
     control = new Invoker();
   }
-  
+
   /**
-  * restricted getter
-  * @return
-  */
+   * restricted getter
+   *
+   * @return
+   */
   public static RemoteUi getRemote() {
     if (remote == null) {
       remote = new RemoteUi();
     }
     return remote;
   }
-  
+
   /**
-  * creates the frame 
-  */
+   * creates the frame
+   */
   private void createFrame() {
     JFrame remoteFrame = new JFrame("Remote");
     remoteFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     remoteFrame.setSize(600, 300);
     remoteFrame.setLayout(new GridLayout(1, 2));
-    
+
     JPanel leftButtonPanel = createLeftButtonPanel();
     JPanel rightButtonPanel = createRightButtonPanel();
-    
+
     remoteFrame.add(leftButtonPanel);
     remoteFrame.add(rightButtonPanel);
-    
+
     remoteFrame.setVisible(true);
   }
-  
+
   /**
-  * creates the panel that encompasses the left half of the remote
-  * @return
-  */
+   * creates the panel that encompasses the left half of the remote
+   *
+   * @return
+   */
   private JPanel createLeftButtonPanel() {
     JPanel leftButtonPanel = new JPanel(new GridLayout(5, 1));
 
     leftButtonPanel.setBackground(Color.LIGHT_GRAY);
-    
+
     JButton attackButton = new JButton("Attack");
     JButton getWeapon1Button = new JButton("Get Weapon 1");
     JButton getWeapon2Button = new JButton("Get Weapon 2");
     JButton dropWeaponButton = new JButton("Drop Weapon");
     JButton reloadButton = new JButton("Reload");
-    
+
     leftButtonPanel.add(attackButton);
     leftButtonPanel.add(getWeapon1Button);
     leftButtonPanel.add(getWeapon2Button);
     leftButtonPanel.add(dropWeaponButton);
     leftButtonPanel.add(reloadButton);
-    
+
     // attack button
     attackButton.addActionListener(new ActionListener() {
       @Override
@@ -93,7 +97,7 @@ public class RemoteUi {
         game.updateBoard();
       }
     });
-    
+
     //get weapon 1 button
     getWeapon1Button.addActionListener(new ActionListener() {
       @Override
@@ -107,7 +111,7 @@ public class RemoteUi {
         game.updateBoard();
       }
     });
-    
+
     // get weapon 2 button
     getWeapon2Button.addActionListener(new ActionListener() {
       @Override
@@ -121,7 +125,7 @@ public class RemoteUi {
         game.updateBoard();
       }
     });
-    
+
     // drop weapon button
     dropWeaponButton.addActionListener(new ActionListener() {
       @Override
@@ -135,7 +139,7 @@ public class RemoteUi {
         game.updateBoard();
       }
     });
-    
+
     // reload weapon button
     reloadButton.addActionListener(new ActionListener() {
       @Override
@@ -149,14 +153,15 @@ public class RemoteUi {
         game.updateBoard();
       }
     });
-    
+
     return leftButtonPanel;
   }
-  
+
   /**
-  * creates the panel that encompasses the right half of the remote
-  * @return
-  */
+   * creates the panel that encompasses the right half of the remote
+   *
+   * @return
+   */
   private JPanel createRightButtonPanel() {
     JPanel rightButtonPanel = new JPanel(new GridBagLayout());
     GridBagConstraints gbc = new GridBagConstraints();
@@ -207,7 +212,7 @@ public class RemoteUi {
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     rightButtonPanel.add(faceEastButton, gbc);
-    
+
     // face north button
     faceNorthButton.addActionListener(new ActionListener() {
       @Override
@@ -221,7 +226,7 @@ public class RemoteUi {
         game.updateBoard();
       }
     });
-    
+
     // face east button
     faceEastButton.addActionListener(new ActionListener() {
       @Override
@@ -235,7 +240,7 @@ public class RemoteUi {
         game.updateBoard();
       }
     });
-    
+
     // face south button
     faceSouthButton.addActionListener(new ActionListener() {
       @Override
@@ -249,7 +254,7 @@ public class RemoteUi {
         game.updateBoard();
       }
     });
-    
+
     // face west button
     faceWestButton.addActionListener(new ActionListener() {
       @Override
@@ -262,7 +267,7 @@ public class RemoteUi {
         game.updateBoard();
       }
     });
-    
+
     // move button
     moveButton.addActionListener(new ActionListener() {
       @Override

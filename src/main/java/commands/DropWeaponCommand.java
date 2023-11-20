@@ -13,6 +13,7 @@ public class DropWeaponCommand implements Command {
 
   /**
    * Constructor for the command
+   *
    * @param entity
    */
   public DropWeaponCommand(LifeForm entity) {
@@ -26,8 +27,8 @@ public class DropWeaponCommand implements Command {
   public void execute() {
     Weapon entityWeapon = entity.dropWeapon();
     if (!(Environment.getEnvironment(0, 0).addWeapon(entityWeapon,
-                                                     entity.getRow(),
-                                                     entity.getCol()))) {
+            entity.getRow(),
+            entity.getCol()))) {
       entity.pickUpWeapon(entityWeapon);
     } else {
       //Nothing needs to be done here because the execution happens in the conditional

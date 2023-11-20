@@ -5,6 +5,7 @@ import lifeform.MockLifeForm;
 import org.junit.Test;
 import weapon.*;
 import lifeform.*;
+
 import static org.junit.Assert.*;
 
 public class TestDropCommand {

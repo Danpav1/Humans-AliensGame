@@ -3,7 +3,9 @@ package commands;
 import environment.Environment;
 import lifeform.Human;
 import lifeform.LifeForm;
+
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 

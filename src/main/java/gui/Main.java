@@ -23,9 +23,10 @@ import weapon.Weapon;
  */
 
 public class Main {
-  
+
   /**
    * main method that "starts" the GUI
+   *
    * @param args
    * @throws RecoveryRateException
    * @throws AttachmentException
@@ -38,9 +39,9 @@ public class Main {
     final RecoveryFractional rrf = new RecoveryFractional(2.5);
     final RecoveryLinear rrl = new RecoveryLinear(8);
     final RecoveryNone rrn = new RecoveryNone();
-    final Alien alien = new Alien("Ligma", 200, rrl,2);
+    final Alien alien = new Alien("Ligma", 200, rrl, 2);
     final LifeForm human = new Human("Sugma", 1, 10);
-  
+
 
     Weapon pistol = new Pistol();
     Weapon plasma = new PlasmaCannon();
@@ -78,7 +79,7 @@ public class Main {
     world.addWeapon(pistol2, 1, 4);
     world.addWeapon(plasma2, 2, 3);
     world.addWeapon(chain2, 2, 3);
-    
+
     world.addLifeForm(alien, 0, 0); //adds our alien "Ligma" to pos 0, 0
     world.addLifeForm(human, 3, 3); //adds our human "Sugma" to pos 3, 3
 
