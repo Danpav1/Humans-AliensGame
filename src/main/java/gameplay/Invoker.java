@@ -14,12 +14,15 @@ import commands.ReloadCommand;
 
 import lifeform.LifeForm;
 
+import lifeform.LifeForm;
+
 /**
  * @author Elijah Hill
  * executes commands based on input commandIndex number and a standardized list
  */
 public class Invoker {
   Command[] commands = new Command[CommandName.BUTTON_AMOUNT];
+  LifeForm lf;
 
   /**
    * Constructor for the Invoker
@@ -42,6 +45,8 @@ public class Invoker {
    * @param lf the LifeForm to control
    */
   public void setLifeForm(LifeForm lf) {
+    this.lf = lf;
+
     this.commands[CommandName.MOVE] = new MoveCommand(lf);
     this.commands[CommandName.FACE_NORTH] = new FaceNorthCommand(lf);
     this.commands[CommandName.FACE_EAST] = new FaceEastCommand(lf);
@@ -60,6 +65,8 @@ public class Invoker {
    * @param commandName name of Command to execute
    */
   public void executeCommand(int commandName) {
-    this.commands[commandName].execute();
+    if (lf != null) {
+      this.commands[commandName].execute();
+    }
   }
 }
