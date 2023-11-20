@@ -46,8 +46,12 @@ public class AttackCommand implements Command {
           world.removeLifeForm(targetEntity.getRow(), targetEntity.getCol());
         }
       } catch (EnvironmentException | WeaponException ignored) {
-        // Ignore, adding comment for checkstyle
+        // Exceptions will not occur under current circumstances.
       }
+    } else {
+      try {
+        this.entity.getWeapon().fire(0);
+      } catch (WeaponException e) { /* Exception cannot occur in hard-coded example */}
     }
   }
   
