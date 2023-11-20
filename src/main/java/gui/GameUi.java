@@ -1,6 +1,9 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
+import java.io.InputStream;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -196,7 +199,7 @@ public class GameUi implements TimerObserver {
     boardFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     boardFrame.setLayout(new BorderLayout());
     boardFrame.add(createContainerPanel(), BorderLayout.CENTER);
-    boardFrame.setSize(1300, 900);
+    boardFrame.setSize(1350, 900);
     boardFrame.setVisible(true);
   }
   
@@ -529,6 +532,8 @@ public class GameUi implements TimerObserver {
   private JPanel createDisplayBoxPanel() {
     JPanel displayBoxPanel = new JPanel();
     JTextArea displayTextArea = createDisplayBoxTextArea();
+    Font axiformaHeavy = loadCustomFont("src/main/java/assets/fonts/Axiforma-Heavy.ttf");
+    displayTextArea.setFont(axiformaHeavy);
     JScrollPane scrollPane = new JScrollPane(displayTextArea);
     scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
     displayBoxPanel.setLayout(new BorderLayout());
@@ -555,77 +560,87 @@ public class GameUi implements TimerObserver {
   private JPanel createInfoPanel() {
     final JPanel infoPanel = new JPanel();
     JPanel infoGridPanel = new JPanel(new GridLayout(3, 3));
+    Font axiformaHeavy = loadCustomFont("src/main/java/assets/fonts/Axiforma-Heavy.ttf");
     
     // Panel for the first text field
     JPanel textFieldPanel1 = new JPanel(new BorderLayout());
-    JTextField textField1 = new JTextField("---------------------------------------");
+    JTextField textField1 = new JTextField("\t\t\t      ");
     textFieldPanel1.setBackground(Color.gray);
     textFieldPanel1.add(textField1, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel1);
+    textField1.setFont(axiformaHeavy);
     this.textFieldHealth = textField1;
     
     // Panel for the second text field
     JPanel textFieldPanel2 = new JPanel(new BorderLayout());
-    JTextField textField2 = new JTextField("---------------------------------------");
+    JTextField textField2 = new JTextField("\t\t\t      ");
     textFieldPanel2.setBackground(Color.gray);
     textFieldPanel2.add(textField2, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel2);
+    textField2.setFont(axiformaHeavy);
     this.textFieldAmmo = textField2;
     
     // Panel for the third text field
     JPanel textFieldPanel3 = new JPanel(new BorderLayout());
-    JTextField textField3 = new JTextField("---------------------------------------");
+    JTextField textField3 = new JTextField("\t\t\t      ");
     textFieldPanel3.setBackground(Color.gray);
     textFieldPanel3.add(textField3, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel3);
+    textField3.setFont(axiformaHeavy);
     this.textFieldEquippedWeapon = textField3;
     
     // Panel for the fourth text field
     JPanel textFieldPanel4 = new JPanel(new BorderLayout());
-    JTextField textField4 = new JTextField("---------------------------------------");
+    JTextField textField4 = new JTextField("\t\t\t      ");
     textFieldPanel4.setBackground(Color.gray);
     textFieldPanel4.add(textField4, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel4);
+    textField4.setFont(axiformaHeavy);
     this.textFieldArmor = textField4;
     
     // Panel for the fifth text field
     JPanel textFieldPanel5 = new JPanel(new BorderLayout());
-    JTextField textField5 = new JTextField("---------------------------------------");
+    JTextField textField5 = new JTextField("\t\t\t      ");
     textFieldPanel5.setBackground(Color.gray);
     textFieldPanel5.add(textField5, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel5);
+    textField5.setFont(axiformaHeavy);
     this.textFieldWeapon1 = textField5;
     
     // Panel for the sixth text field
     JPanel textFieldPanel6 = new JPanel(new BorderLayout());
-    JTextField textField6 = new JTextField("---------------------------------------");
+    JTextField textField6 = new JTextField("\t\t\t      ");
     textFieldPanel6.setBackground(Color.gray);
     textFieldPanel6.add(textField6, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel6);
+    textField6.setFont(axiformaHeavy);
     this.textFieldWeapon2 = textField6;
     
     // Panel for the seventh text field
     JPanel textFieldPanel7 = new JPanel(new BorderLayout());
-    JTextField textField7 = new JTextField("---------------------------------------");
+    JTextField textField7 = new JTextField("\t\t\t      ");
     textFieldPanel7.setBackground(Color.gray);
     textFieldPanel7.add(textField7, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel7);
+    textField7.setFont(axiformaHeavy);
     this.textFieldRecoveryType = textField7;
     
     // Panel for the eigth text field
     JPanel textFieldPanel8 = new JPanel(new BorderLayout());
-    JTextField textField8 = new JTextField("---------------------------------------");
+    JTextField textField8 = new JTextField("\t\t\t      ");
     textFieldPanel8.setBackground(Color.gray);
     textFieldPanel8.add(textField8, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel8);
+    textField8.setFont(axiformaHeavy);
     this.textFieldRecoveryRate = textField8;
     
     // Panel for the ninth text field
     JPanel textFieldPanel9 = new JPanel(new BorderLayout());
-    JTextField textField9 = new JTextField("---------------------------------------");
+    JTextField textField9 = new JTextField("\t\t\t      ");
     textFieldPanel9.setBackground(Color.gray);
     textFieldPanel9.add(textField9, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel9);
+    textField9.setFont(axiformaHeavy);
     this.textFieldSelectedCoords = textField9;
     
     //adds the grid panel to our info panel
@@ -645,11 +660,13 @@ public class GameUi implements TimerObserver {
   */
   private JTextArea createLegendInstructionTextArea() {
     JTextArea legendInstructionTextArea = new JTextArea("Legend:", 5, 5);
+    Font axiformaHeavy = loadCustomFont("src/main/java/assets/fonts/Axiforma-Heavy.ttf");
+    legendInstructionTextArea.setFont(axiformaHeavy);
     legendInstructionTextArea.setEditable(false);
     legendInstructionTextArea.setLineWrap(true); // enable line wrapping
     legendInstructionTextArea.setWrapStyleWord(true); // wrap at word boundaries
     legendInstructionTextArea.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
-    legendInstructionTextArea.setText("Legend:\n\n");
+    legendInstructionTextArea.setText("\nLegend:\n\n");
     legendInstructionTextArea.append("  Face North: faces the human north / up.\n\n");
     legendInstructionTextArea.append("  Face West: faces the human west / left\n\n");
     legendInstructionTextArea.append("  Face East: faces the human east / right\n\n");
@@ -1101,15 +1118,15 @@ public class GameUi implements TimerObserver {
     LifeForm lf = world.getLifeForm(selectedArr[0], selectedArr[1]);
     
     // default values
-    String cellWeapon1Text = "Cell Weapon 1: none\t\t     ";
-    String cellWeapon2Text = "Cell Weapon 2: none\t\t     ";
-    String equippedWeaponText = "Equipped Weapon: none\t\t     ";
-    String ammoText = "Ammo: N/A\t\t     ";
-    String healthText = "Health: N/A\t\t     ";
-    String recoveryRateText = "RecoveryRate: N/A\t\t     ";
-    String recoveryTypeText = "RecoveryType: N/A\t\t     ";
-    String armorText = "Armor: N/A\t\t     ";
-    String selectedCoordsText = selectedArr[0] + ", " + selectedArr[1] + "\t\t     ";
+    String cellWeapon1Text = "Cell Weapon 1: none\t\t      ";
+    String cellWeapon2Text = "Cell Weapon 2: none\t\t      ";
+    String equippedWeaponText = "Equipped Weapon: none\t\t      ";
+    String ammoText = "Ammo: N/A\t\t       ";
+    String healthText = "Health: N/A\t\t      ";
+    String recoveryRateText = "RecoveryRate: N/A\t\t      ";
+    String recoveryTypeText = "RecoveryType: N/A\t\t      ";
+    String armorText = "Armor: N/A\t\t      ";
+    String selectedCoordsText = selectedArr[0] + ", " + selectedArr[1] + "\t\t      ";
     
     
     if (lf != null) {
@@ -1173,5 +1190,24 @@ public class GameUi implements TimerObserver {
   */
   public void updateTime(int time) {
     updateBoard();
+  }
+  
+  // method to load a custom font from file
+  private Font loadCustomFont(String fontFileName) {
+    try {
+      // load the font file
+      InputStream fontStream = GameUi.class.getResourceAsStream(fontFileName);
+      Font customFont = Font.createFont(Font.TRUETYPE_FONT, fontStream);
+      
+      // register the font
+      GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+      ge.registerFont(customFont);
+      
+      return customFont;
+    } catch (Exception e) {
+      e.printStackTrace();
+      // if the font can't be loaded, return a default font
+      return new Font("Arial", Font.PLAIN, 13);
+    }
   }
 }
