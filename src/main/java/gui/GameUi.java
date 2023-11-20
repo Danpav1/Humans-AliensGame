@@ -573,7 +573,7 @@ public class GameUi implements TimerObserver {
     textFieldPanel1.setBackground(Color.gray);
     textFieldPanel1.add(textField1, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel1);
-    textField1.setFont(axiformaHeavy);
+    textField1.setFont(loadCustomFont("src/main/java/assets/fonts/Axiforma-Heavy.ttf"));
     this.textFieldHealth = textField1;
 
     // Panel for the second text field
@@ -582,7 +582,7 @@ public class GameUi implements TimerObserver {
     textFieldPanel2.setBackground(Color.gray);
     textFieldPanel2.add(textField2, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel2);
-    textField2.setFont(axiformaHeavy);
+    textField2.setFont(loadCustomFont("src/main/java/assets/fonts/Axiforma-Heavy.ttf"));
     this.textFieldAmmo = textField2;
 
     // Panel for the third text field
@@ -591,7 +591,7 @@ public class GameUi implements TimerObserver {
     textFieldPanel3.setBackground(Color.gray);
     textFieldPanel3.add(textField3, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel3);
-    textField3.setFont(axiformaHeavy);
+    textField3.setFont(loadCustomFont("src/main/java/assets/fonts/Axiforma-Heavy.ttf"));
     this.textFieldEquippedWeapon = textField3;
 
     // Panel for the fourth text field
@@ -600,7 +600,7 @@ public class GameUi implements TimerObserver {
     textFieldPanel4.setBackground(Color.gray);
     textFieldPanel4.add(textField4, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel4);
-    textField4.setFont(axiformaHeavy);
+    textField4.setFont(loadCustomFont("src/main/java/assets/fonts/Axiforma-Heavy.ttf"));
     this.textFieldArmor = textField4;
 
     // Panel for the fifth text field
@@ -609,7 +609,7 @@ public class GameUi implements TimerObserver {
     textFieldPanel5.setBackground(Color.gray);
     textFieldPanel5.add(textField5, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel5);
-    textField5.setFont(axiformaHeavy);
+    textField5.setFont(loadCustomFont("src/main/java/assets/fonts/Axiforma-Heavy.ttf"));
     this.textFieldWeapon1 = textField5;
 
     // Panel for the sixth text field
@@ -618,7 +618,7 @@ public class GameUi implements TimerObserver {
     textFieldPanel6.setBackground(Color.gray);
     textFieldPanel6.add(textField6, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel6);
-    textField6.setFont(axiformaHeavy);
+    textField6.setFont(loadCustomFont("src/main/java/assets/fonts/Axiforma-Heavy.ttf"));
     this.textFieldWeapon2 = textField6;
 
     // Panel for the seventh text field
@@ -627,7 +627,7 @@ public class GameUi implements TimerObserver {
     textFieldPanel7.setBackground(Color.gray);
     textFieldPanel7.add(textField7, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel7);
-    textField7.setFont(axiformaHeavy);
+    textField7.setFont(loadCustomFont("src/main/java/assets/fonts/Axiforma-Heavy.ttf"));
     this.textFieldRecoveryType = textField7;
 
     // Panel for the eigth text field
@@ -636,7 +636,7 @@ public class GameUi implements TimerObserver {
     textFieldPanel8.setBackground(Color.gray);
     textFieldPanel8.add(textField8, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel8);
-    textField8.setFont(axiformaHeavy);
+    textField8.setFont(loadCustomFont("src/main/java/assets/fonts/Axiforma-Heavy.ttf"));
     this.textFieldRecoveryRate = textField8;
 
     // Panel for the ninth text field
@@ -645,7 +645,7 @@ public class GameUi implements TimerObserver {
     textFieldPanel9.setBackground(Color.gray);
     textFieldPanel9.add(textField9, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel9);
-    textField9.setFont(axiformaHeavy);
+    textField9.setFont(loadCustomFont("src/main/java/assets/fonts/Axiforma-Heavy.ttf"));
     this.textFieldSelectedCoords = textField9;
 
     //adds the grid panel to our info panel
@@ -1135,7 +1135,6 @@ public class GameUi implements TimerObserver {
     String armorText = "Armor: N/A\t\t      ";
     final String selectedCoordsText = selectedArr[0] + ", " + selectedArr[1] + "\t\t      ";
 
-
     if (lf != null) {
       if (lf instanceof Alien) {
         Alien a = (Alien) world.getLifeForm(selectedArr[0], selectedArr[1]);
@@ -1180,7 +1179,7 @@ public class GameUi implements TimerObserver {
     textFieldArmor.setText(armorText);
     textFieldRecoveryRate.setText(recoveryRateText);
     textFieldRecoveryType.setText(recoveryTypeText);
-    textFieldSelectedCoords.setText(selectedCoordsText);
+    textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1] + "\t\t      ");
   }
 
   /**
@@ -1197,6 +1196,7 @@ public class GameUi implements TimerObserver {
    * Refreshes the board everytime it is called.
    */
   public void updateTime(int time) {
+    updateDisplayTextArea("A new round has started!\n");
     updateBoard();
   }
 

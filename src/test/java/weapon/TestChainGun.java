@@ -2,10 +2,6 @@ package weapon;
 
 import static org.junit.Assert.assertEquals;
 
-import exceptions.RecoveryRateException;
-import lifeform.Alien;
-import lifeform.Human;
-import lifeform.LifeForm;
 import org.junit.Test;
 
 import exceptions.WeaponException;

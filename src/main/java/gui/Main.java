@@ -36,6 +36,7 @@ public class Main {
     // some variables made final for checkstyle
     final Environment world = Environment.getEnvironment(6, 6);
 
+
     final RecoveryFractional rrf = new RecoveryFractional(2.5);
     final RecoveryLinear rrl = new RecoveryLinear(8);
     final RecoveryNone rrn = new RecoveryNone();
@@ -55,7 +56,7 @@ public class Main {
     final Weapon plasma2 = new Scope(new Scope(new PlasmaCannon()));
     Weapon chain2 = new Stabilizer(new Scope(new ChainGun()));
 
-    SimpleTimer timer = new SimpleTimer(); //adds timer so each round is 5 seconds
+    SimpleTimer timer = new SimpleTimer(); //adds timer so each round is 7 seconds
     timer.addTimeObserver(pistol);
     timer.addTimeObserver(pistol1);
     timer.addTimeObserver(pistol2);

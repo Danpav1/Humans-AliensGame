@@ -2,12 +2,11 @@ package weapon;
 
 import exceptions.AttachmentException;
 import exceptions.WeaponException;
-import gameplay.TimerObserver;
 
 /**
  * Created by Danny Gonzales
  */
-public class Stabilizer extends Attachment implements TimerObserver, Weapon {
+public class Stabilizer extends Attachment {
   /**
    * Constructor for Stabilizers
    *
