@@ -54,7 +54,7 @@ public class Main {
     final Weapon plasma2 = new Scope(new Scope(new PlasmaCannon()));
     Weapon chain2 = new Stabilizer(new Scope(new ChainGun()));
 
-    SimpleTimer timer = new SimpleTimer(); //adds timer so each round is 5 seconds
+    SimpleTimer timer = new SimpleTimer(); //adds timer so each round is 7 seconds
     timer.addTimeObserver(pistol);
     timer.addTimeObserver(pistol1);
     timer.addTimeObserver(pistol2);

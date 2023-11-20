@@ -1189,6 +1189,7 @@ public class GameUi implements TimerObserver {
   * Refreshes the board everytime it is called.
   */
   public void updateTime(int time) {
+    updateDisplayTextArea("A new round has started!\n");
     updateBoard();
   }
   
