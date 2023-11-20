@@ -4,11 +4,12 @@ import environment.Environment;
 import exceptions.AttachmentException;
 import exceptions.RecoveryRateException;
 import gameplay.SimpleTimer;
-import gameplay.TimerObserver;
 import lifeform.Alien;
 import lifeform.Human;
 import lifeform.LifeForm;
+import recovery.RecoveryFractional;
 import recovery.RecoveryLinear;
+import recovery.RecoveryNone;
 import weapon.ChainGun;
 import weapon.Pistol;
 import weapon.PlasmaCannon;
@@ -34,8 +35,10 @@ public class Main {
     // some variables made final for checkstyle
     final Environment world = Environment.getEnvironment(6, 6);
 
-    final RecoveryLinear rrl = new RecoveryLinear(10);
-    final Alien alien = new Alien("Ligma", 200, rrl,1);
+    final RecoveryFractional rrf = new RecoveryFractional(2.5);
+    final RecoveryLinear rrl = new RecoveryLinear(8);
+    final RecoveryNone rrn = new RecoveryNone();
+    final Alien alien = new Alien("Ligma", 200, rrl,2);
     final LifeForm human = new Human("Sugma", 1, 10);
   
 
@@ -62,7 +65,6 @@ public class Main {
     timer.addTimeObserver(plasma1);
     timer.addTimeObserver(plasma2);
     timer.addTimeObserver(alien);
-    timer.start();
 
     human.pickUpWeapon(chain2);
     world.addWeapon(pistol, 0, 0);
@@ -81,6 +83,10 @@ public class Main {
     world.addLifeForm(human, 3, 3); //adds our human "Sugma" to pos 3, 3
 
     GameUi ui = GameUi.getGameUi(world);
+
+    timer.addTimeObserver(ui);
+    timer.start();
+
     RemoteUi.getRemote();
   }
 }

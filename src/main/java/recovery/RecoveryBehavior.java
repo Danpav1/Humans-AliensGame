@@ -1,7 +1,5 @@
 package recovery;
 
-import gameplay.TimerObserver;
-
 /**
  * An interface that is responsible for Alien recovery behavior
  */
@@ -15,4 +13,6 @@ public interface RecoveryBehavior {
    * @return the new health value after the respective calculation
    */
   int calculateRecovery(int currentLife, int maxLife);
+
+  double getRecoveryAmount();
 }

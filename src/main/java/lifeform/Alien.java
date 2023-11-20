@@ -1,6 +1,8 @@
 package lifeform;
 
 import recovery.RecoveryBehavior;
+import recovery.RecoveryFractional;
+import recovery.RecoveryLinear;
 import recovery.RecoveryNone;
 import gameplay.TimerObserver;
 import exceptions.RecoveryRateException;
@@ -67,7 +69,7 @@ public class Alien extends LifeForm implements TimerObserver {
    *
    * @return the maxHitPoints field value
    */
-  int getMaxLifePoints() {
+  public int getMaxLifePoints() {
     return this.maxHitPoints;
   }
 
@@ -78,6 +80,20 @@ public class Alien extends LifeForm implements TimerObserver {
    */
   public int getRecoveryRate() {
     return this.recoveryRate;
+  }
+
+  /**
+   * returns the type of recovery behavior in string format
+   * @return
+   */
+  public String getRecoveryTypeToString() {
+    if (this.recoveryType instanceof RecoveryFractional) {
+      return "RecoveryFractional: " + recoveryType.getRecoveryAmount();
+    } else if (this.recoveryType instanceof RecoveryLinear ) {
+      return "RecoveryLinear: " + recoveryType.getRecoveryAmount();
+    } else {
+      return "RecoveryNone: " + recoveryType.getRecoveryAmount();
+    }
   }
 
   /**
