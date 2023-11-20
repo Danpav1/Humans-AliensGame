@@ -76,7 +76,7 @@ public class Alien extends LifeForm implements TimerObserver {
    *
    * @return the recoveryRate field value
    */
-  int getRecoveryRate() {
+  public int getRecoveryRate() {
     return this.recoveryRate;
   }
 

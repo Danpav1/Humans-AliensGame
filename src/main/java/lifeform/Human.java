@@ -25,7 +25,7 @@ public class Human extends LifeForm {
    *
    * @return the current armor points of the Human
    */
-  int getArmorPoints() {
+  public int getArmorPoints() {
     return this.armorPoints;
   }
 

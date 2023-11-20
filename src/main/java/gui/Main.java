@@ -4,6 +4,7 @@ import environment.Environment;
 import exceptions.AttachmentException;
 import exceptions.RecoveryRateException;
 import gameplay.SimpleTimer;
+import gameplay.TimerObserver;
 import lifeform.Alien;
 import lifeform.Human;
 import lifeform.LifeForm;

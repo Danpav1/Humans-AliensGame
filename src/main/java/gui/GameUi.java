@@ -139,10 +139,11 @@ public class GameUi {
   private JTextField textFieldEquippedWeapon;
   private JTextField textFieldWeapon1;
   private JTextField textFieldWeapon2;
-  private JTextField textFieldSelectedCoords;
+  private JTextField textFieldRecoveryOrArmor;
   
   //data points for our text elements
   private int[] selectedArr = {-1, -1};
+
   
   //our GUI as a var
   private static GameUi instanceOfGameUI;
@@ -550,7 +551,7 @@ public class GameUi {
     
     // Panel for the first text field
     JPanel textFieldPanel1 = new JPanel(new BorderLayout());
-    JTextField textField1 = new JTextField("Health: null               ");
+    JTextField textField1 = new JTextField("---------------------------------------");
     textFieldPanel1.setBackground(Color.gray);
     textFieldPanel1.add(textField1, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel1);
@@ -558,7 +559,7 @@ public class GameUi {
     
     // Panel for the second text field
     JPanel textFieldPanel2 = new JPanel(new BorderLayout());
-    JTextField textField2 = new JTextField("Ammo: null               ");
+    JTextField textField2 = new JTextField("---------------------------------------");
     textFieldPanel2.setBackground(Color.gray);
     textFieldPanel2.add(textField2, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel2);
@@ -566,7 +567,7 @@ public class GameUi {
     
     // Panel for the third text field
     JPanel textFieldPanel3 = new JPanel(new BorderLayout());
-    JTextField textField3 = new JTextField("Equipped Weapon: null             ");
+    JTextField textField3 = new JTextField("---------------------------------------");
     textFieldPanel3.setBackground(Color.gray);
     textFieldPanel3.add(textField3, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel3);
@@ -574,7 +575,7 @@ public class GameUi {
     
     // Panel for the fourth text field
     JPanel textFieldPanel4 = new JPanel(new BorderLayout());
-    JTextField textField4 = new JTextField("Cell Weapon 1: null               ");
+    JTextField textField4 = new JTextField("---------------------------------------");
     textFieldPanel4.setBackground(Color.gray);
     textFieldPanel4.add(textField4, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel4);
@@ -582,7 +583,7 @@ public class GameUi {
     
     // Panel for the fifth text field
     JPanel textFieldPanel5 = new JPanel(new BorderLayout());
-    JTextField textField5 = new JTextField("Cell Weapon 2: null               ");
+    JTextField textField5 = new JTextField("---------------------------------------");
     textFieldPanel5.setBackground(Color.gray);
     textFieldPanel5.add(textField5, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel5);
@@ -590,11 +591,11 @@ public class GameUi {
     
     // Panel for the sixth text field
     JPanel textFieldPanel6 = new JPanel(new BorderLayout());
-    JTextField textField6 = new JTextField("Selected Coords: null               ");
+    JTextField textField6 = new JTextField("---------------------------------------");
     textFieldPanel6.setBackground(Color.gray);
     textFieldPanel6.add(textField6, BorderLayout.CENTER);
     infoGridPanel.add(textFieldPanel6);
-    this.textFieldSelectedCoords = textField6;
+    this.textFieldRecoveryOrArmor = textField6;
     
     //adds the grid panel to our info panel
     infoPanel.add(infoGridPanel);
@@ -1069,13 +1070,21 @@ public class GameUi {
     LifeForm lf = world.getLifeForm(selectedArr[0], selectedArr[1]);
     
     // default values
-    String cellWeapon1Text = "Cell Weapon 1: null";
-    String cellWeapon2Text = "Cell Weapon 2: null";
-    String equippedWeaponText = "Equipped Weapon: null";
-    String ammoText = "Ammo: null";
-    String healthText = "Health: null";
+    String cellWeapon1Text = "---------------------------------------";
+    String cellWeapon2Text = "---------------------------------------";
+    String equippedWeaponText = "---------------------------------------";
+    String ammoText = "---------------------------------------";
+    String healthText = "---------------------------------------";
+    String recoveryOrArmorText = "---------------------------------------";
     
     if (lf != null) {
+      if (lf instanceof Alien) {
+        Alien a = (Alien) world.getLifeForm(selectedArr[0], selectedArr[1]);
+        recoveryOrArmorText = "Recovery Rate: " + a.getRecoveryRate();
+      } else if (lf instanceof Human) {
+        Human h = (Human) world.getLifeForm(selectedArr[0], selectedArr[1]);
+        recoveryOrArmorText = "Armor: " + h.getArmorPoints();
+      }
       Weapon[] groundWeapons = world.getWeapons(selectedArr[0], selectedArr[1]);
       
       if (groundWeapons[0] != null) {
@@ -1108,7 +1117,7 @@ public class GameUi {
     textFieldEquippedWeapon.setText(equippedWeaponText);
     textFieldAmmo.setText(ammoText);
     textFieldHealth.setText(healthText);
-    textFieldSelectedCoords.setText(selectedArr[0] + ", " + selectedArr[1]);
+    textFieldRecoveryOrArmor.setText(recoveryOrArmorText);
   }
   
   /**

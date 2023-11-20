@@ -1,7 +1,6 @@
 package weapon;
 
 import gameplay.TimerObserver;
-
 import exceptions.WeaponException;
 
 /**
