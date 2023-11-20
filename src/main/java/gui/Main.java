@@ -34,7 +34,7 @@ public class Main {
     // some variables made final for checkstyle
     final Environment world = Environment.getEnvironment(6, 6);
     final RecoveryLinear rrl = new RecoveryLinear(1);
-    final LifeForm alien = new Alien("Ligma", 200, rrl);
+    final LifeForm alien = new Alien("Ligma", 200, rrl, 1);
     final LifeForm human = new Human("Sugma", 1, 10);
   
 
