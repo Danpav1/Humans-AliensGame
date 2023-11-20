@@ -89,7 +89,7 @@ public class Alien extends LifeForm implements TimerObserver {
   public String getRecoveryTypeToString() {
     if (this.recoveryType instanceof RecoveryFractional) {
       return "RecoveryFractional: " + recoveryType.getRecoveryAmount();
-    } else if (this.recoveryType instanceof RecoveryLinear ) {
+    } else if (this.recoveryType instanceof RecoveryLinear) {
       return "RecoveryLinear: " + recoveryType.getRecoveryAmount();
     } else {
       return "RecoveryNone: " + recoveryType.getRecoveryAmount();

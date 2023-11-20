@@ -7,9 +7,7 @@ import gameplay.SimpleTimer;
 import lifeform.Alien;
 import lifeform.Human;
 import lifeform.LifeForm;
-import recovery.RecoveryFractional;
 import recovery.RecoveryLinear;
-import recovery.RecoveryNone;
 import weapon.ChainGun;
 import weapon.Pistol;
 import weapon.PlasmaCannon;
@@ -35,9 +33,7 @@ public class Main {
     // some variables made final for checkstyle
     final Environment world = Environment.getEnvironment(6, 6);
 
-    final RecoveryFractional rrf = new RecoveryFractional(2.5);
-    final RecoveryLinear rrl = new RecoveryLinear(8);
-    final RecoveryNone rrn = new RecoveryNone();
+    final RecoveryLinear rrl = new RecoveryLinear(10);
     final Alien alien = new Alien("Ligma", 200, rrl,2);
     final LifeForm human = new Human("Sugma", 1, 10);
   

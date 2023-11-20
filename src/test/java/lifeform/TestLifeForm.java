@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import exceptions.WeaponException;
 import org.junit.Test;
 import weapon.MockWeapon;
-import weapon.Weapon;
 
 /**
  * Tests the functionality provided by the LifeForm class
@@ -200,7 +199,7 @@ public class TestLifeForm {
     LifeForm stan = new MockLifeForm("stan", 20);
     MockWeapon test = new MockWeapon();
     stan.pickUpWeapon(test);
-    Weapon returner = stan.dropWeapon();
+    stan.dropWeapon();
     assertFalse(stan.hasWeapon());
   }
 
