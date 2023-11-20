@@ -1,5 +1,7 @@
 package recovery;
 
+import gameplay.TimerObserver;
+
 /**
  * An interface that is responsible for Alien recovery behavior
  */

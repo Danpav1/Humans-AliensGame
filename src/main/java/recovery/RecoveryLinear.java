@@ -1,5 +1,7 @@
 package recovery;
 
+import lifeform.Alien;
+
 /**
  * A RecoveryBehavior class that recovers health linearly over time
  */
@@ -33,4 +35,5 @@ public class RecoveryLinear implements RecoveryBehavior {
       return Math.max(0, Math.min(maxLife, totalLife));
     }
   }
-}
+  }
+

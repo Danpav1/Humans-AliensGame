@@ -4,6 +4,7 @@ import environment.Environment;
 import exceptions.AttachmentException;
 import exceptions.RecoveryRateException;
 import gameplay.SimpleTimer;
+import gameplay.TimerObserver;
 import lifeform.Alien;
 import lifeform.Human;
 import lifeform.LifeForm;
@@ -32,8 +33,8 @@ public class Main {
     //creates our "world" // board that the GUI references
     // some variables made final for checkstyle
     final Environment world = Environment.getEnvironment(6, 6);
-    final RecoveryLinear rrl = new RecoveryLinear(1);
-    final LifeForm alien = new Alien("Ligma", 200, rrl);
+    final RecoveryLinear rrl = new RecoveryLinear(10);
+    final Alien alien = new Alien("Ligma", 200, rrl,1);
     final LifeForm human = new Human("Sugma", 1, 10);
   
 
@@ -59,6 +60,7 @@ public class Main {
     timer.addTimeObserver(plasma);
     timer.addTimeObserver(plasma1);
     timer.addTimeObserver(plasma2);
+    timer.addTimeObserver(alien);
     timer.start();
 
     human.pickUpWeapon(chain2);
