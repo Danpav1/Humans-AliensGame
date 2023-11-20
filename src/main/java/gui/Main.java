@@ -7,6 +7,7 @@ import gameplay.SimpleTimer;
 import lifeform.Alien;
 import lifeform.Human;
 import lifeform.LifeForm;
+import recovery.RecoveryLinear;
 import weapon.ChainGun;
 import weapon.Pistol;
 import weapon.PlasmaCannon;
@@ -31,8 +32,10 @@ public class Main {
     //creates our "world" // board that the GUI references
     // some variables made final for checkstyle
     final Environment world = Environment.getEnvironment(6, 6);
-    final LifeForm alien = new Alien("Ligma", 200);
+    final RecoveryLinear rrl = new RecoveryLinear(1);
+    final LifeForm alien = new Alien("Ligma", 200, rrl);
     final LifeForm human = new Human("Sugma", 1, 10);
+  
 
     Weapon pistol = new Pistol();
     Weapon plasma = new PlasmaCannon();
@@ -60,10 +63,10 @@ public class Main {
 
     human.pickUpWeapon(chain2);
     world.addWeapon(pistol, 0, 0);
-    world.addWeapon(plasma, 2, 0);
+    world.addWeapon(plasma, 5, 5);
     world.addWeapon(chain, 4, 0);
 
-    world.addWeapon(pistol1, 1, 1);
+    world.addWeapon(pistol1, 0, 5);
     world.addWeapon(plasma1, 2, 3);
     world.addWeapon(chain1, 5, 5);
 

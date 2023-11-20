@@ -211,7 +211,7 @@ public class GameUi {
     GridBagConstraints gbc = new GridBagConstraints();
     gbc.gridx = 0; 
     gbc.gridy = 0;
-    gbc.weightx = 1.0 / 5.0; // take up a 1/5 of width
+    gbc.weightx = 1.5 / 5.0; // take up a 1.5/5 of width
     gbc.weighty = 4.0 / 5.0; // take up 4/5 of height
     gbc.fill = GridBagConstraints.BOTH;
     containerPanel.add(legendPanel, gbc);
@@ -220,7 +220,7 @@ public class GameUi {
     gbc = new GridBagConstraints();
     gbc.gridx = 1;
     gbc.gridy = 0;
-    gbc.weightx = 4.0 / 5.0; // take up 4/5 of width
+    gbc.weightx = 3.5 / 5.0; // take up 3.5/5 of width
     gbc.weighty = 4.0 / 5.0; // take up 4/5 of height
     gbc.fill = GridBagConstraints.BOTH;
     containerPanel.add(boardPanel, gbc);
