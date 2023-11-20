@@ -365,7 +365,9 @@ public class GameUi {
         } else if (currWeapon instanceof ChainGun) {
           button.setIcon(new ImageIcon(CHAINGUN_IMAGE_PATH));
         }
-        
+
+
+
         //unarmed alien
         if (currLifeForm instanceof Alien && direction.equals("north")) {
           button.setIcon(new ImageIcon(ALIEN_NORTH_PATH));
@@ -677,8 +679,10 @@ public class GameUi {
         }
         
         // unequipped weapons in environment
-        if (world.getWeapons(row, col)[0] != null || world.getWeapons(row, col)[1] != null) {
+        if (world.getWeapons(row, col)[0] != null) {
           currWeapon = world.getWeapons(row, col)[0].getBaseWeapon();
+        } else if (world.getWeapons(row, col)[1] != null) {
+          currWeapon = world.getWeapons(row, col)[1].getBaseWeapon();
         } else {
           currWeapon = null;
         }
