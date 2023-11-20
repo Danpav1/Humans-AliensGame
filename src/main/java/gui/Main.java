@@ -3,6 +3,7 @@ package gui;
 import environment.Environment;
 import exceptions.AttachmentException;
 import exceptions.RecoveryRateException;
+import gameplay.SimpleTimer;
 import lifeform.Alien;
 import lifeform.Human;
 import lifeform.LifeForm;
@@ -29,9 +30,9 @@ public class Main {
   public static void main(String[] args) throws RecoveryRateException, AttachmentException {
     //creates our "world" // board that the GUI references
     // some variables made final for checkstyle
-    Environment world = Environment.getEnvironment(6, 6);
-    final LifeForm alien = new Alien("Ligma", 2);
-    LifeForm human = new Human("Sugma", 1, 10);
+    final Environment world = Environment.getEnvironment(6, 6);
+    final LifeForm alien = new Alien("Ligma", 200);
+    final LifeForm human = new Human("Sugma", 1, 10);
 
     Weapon pistol = new Pistol();
     Weapon plasma = new PlasmaCannon();
@@ -44,6 +45,18 @@ public class Main {
     final Weapon pistol2 = new PowerBooster(new Scope(new Pistol()));
     final Weapon plasma2 = new Scope(new Scope(new PlasmaCannon()));
     Weapon chain2 = new Stabilizer(new Scope(new ChainGun()));
+
+    SimpleTimer timer = new SimpleTimer(); //adds timer so each round is 5 seconds
+    timer.addTimeObserver(pistol);
+    timer.addTimeObserver(pistol1);
+    timer.addTimeObserver(pistol2);
+    timer.addTimeObserver(chain);
+    timer.addTimeObserver(chain1);
+    timer.addTimeObserver(chain2);
+    timer.addTimeObserver(plasma);
+    timer.addTimeObserver(plasma1);
+    timer.addTimeObserver(plasma2);
+    timer.start();
 
     human.pickUpWeapon(chain2);
     world.addWeapon(pistol, 0, 0);
