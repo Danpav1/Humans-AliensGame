@@ -154,12 +154,14 @@ public class GameUi implements TimerObserver {
   //data points for our text elements
   private int[] selectedArr = {-1, -1};
 
-
   //our GUI as a var
   private static GameUi instanceOfGameUI;
 
   //our selected lifeform, set it to a very unique human so that the selection following code works
   private LifeForm selectedLifeForm = new Human("temphuman-temphuman-temphuman", 999, 999);
+
+  //round counter
+  private int round = 0;
 
   /**
    * constructor for GUI, removed the "startUI" and put
@@ -565,7 +567,6 @@ public class GameUi implements TimerObserver {
   private JPanel createInfoPanel() {
     final JPanel infoPanel = new JPanel();
     JPanel infoGridPanel = new JPanel(new GridLayout(3, 3));
-    final Font axiformaHeavy = loadCustomFont("src/main/java/assets/fonts/Axiforma-Heavy.ttf");
 
     // Panel for the first text field
     JPanel textFieldPanel1 = new JPanel(new BorderLayout());
@@ -1133,7 +1134,6 @@ public class GameUi implements TimerObserver {
     String recoveryRateText = "RecoveryRate: N/A\t\t      ";
     String recoveryTypeText = "RecoveryType: N/A\t\t      ";
     String armorText = "Armor: N/A\t\t      ";
-    final String selectedCoordsText = selectedArr[0] + ", " + selectedArr[1] + "\t\t      ";
 
     if (lf != null) {
       if (lf instanceof Alien) {
@@ -1196,7 +1196,8 @@ public class GameUi implements TimerObserver {
    * Refreshes the board everytime it is called.
    */
   public void updateTime(int time) {
-    updateDisplayTextArea("A new round has started!\n");
+    this.round++;
+    updateDisplayTextArea("Round " + this.round + "\n");
     updateBoard();
   }
 
